@@ -26,7 +26,6 @@ class SplashPresenterTest {
 
     @Test
     fun shouldShowSplash(){
-
         Mockito.verify(view).showSplash()
     }
 }
