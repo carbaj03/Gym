@@ -19,7 +19,7 @@ class SplashActivity : BaseActivity(), SplashView {
     @Inject
     lateinit var presenter: SplashPresenter
 
-    val logoApp by lazy { find<RecyclerView>(R.id.logoApp) }
+    val logoApp by lazy { find<TextView>(R.id.logoApp) }
 
     override fun setupActivityComponent() {
         GymApplication.appComponent.plus(SplashModule(this)).inject(this)

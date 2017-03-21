@@ -13,6 +13,18 @@ buildscript {
 }
 
 allprojects {
+    ext {
+        // Android config
+        androidBuildToolsVersion = '25.0.2'
+        androidMinSdkVersion = 16
+        androidTargetSdkVersion = 25
+        androidCompileSdkVersion = 25
+        androidApplicationId = 'com.acv.gym'
+        androidVersionCode = 1
+        androidVersionName = '1.0'
+    }
+
+
     repositories {
         jcenter()
         maven { url "https://jitpack.io" }

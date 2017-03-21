@@ -1,4 +1,4 @@
-package com.acv.data;
+package com.acv.gym.data;
 
 import org.junit.Test;
 
