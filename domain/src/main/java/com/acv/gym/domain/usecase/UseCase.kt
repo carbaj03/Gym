@@ -1,4 +1,4 @@
-package com.jmpergar.klean.domain
+package com.acv.gym.domain.usecase
 
 import org.funktionale.either.Disjunction
 

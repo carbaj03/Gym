@@ -1,14 +1,12 @@
 package com.acv.gym.presentation.splash
 
 import com.acv.gym.presentation.TestViewInjector
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.junit.MockitoJUnit
-import org.mockito.junit.MockitoJUnitRunner
+import org.mockito.runners.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class SplashPresenterTest {
@@ -25,7 +23,7 @@ class SplashPresenterTest {
     }
 
     @Test
-    fun shouldShowSplash(){
+    fun shouldShowSplash() {
         Mockito.verify(view).showSplash()
     }
 }
