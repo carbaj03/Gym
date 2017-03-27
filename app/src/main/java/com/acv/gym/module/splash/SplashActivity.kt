@@ -16,8 +16,7 @@ import org.jetbrains.anko.find
 import javax.inject.Inject
 
 class SplashActivity : BaseActivity(), SplashView {
-    @Inject
-    lateinit var presenter: SplashPresenter
+    @Inject lateinit var presenter: SplashPresenter
 
     val logoApp by lazy { find<TextView>(R.id.logoApp) }
 
@@ -32,9 +31,18 @@ class SplashActivity : BaseActivity(), SplashView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.attachView(this)
+        presenter.loadSplash()
     }
 
     override fun showSplash() {
         logoApp.visibility = View.VISIBLE
+    }
+
+    override fun renderNetworkError() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun renderServerError() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

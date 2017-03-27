@@ -9,5 +9,6 @@ class SplashActivityTest : AcceptanceTest<SplashActivity>(SplashActivity::class.
     @Test
     fun shouldSayHelloWorld() {
         checkThat.viewContainsText(R.id.logoApp, R.string.app_name)
+        checkThat.viewIsDisplay(R.id.logoApp)
     }
 }

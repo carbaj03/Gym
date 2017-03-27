@@ -7,7 +7,7 @@ import com.acv.gym.domain.model.LaunchAppModel
 import com.acv.gym.domain.usecase.UseCase
 import org.funktionale.either.Disjunction
 
-class CheckSplashUseCase(val collectionsDataSource: LaunchAppLocalGateway) : UseCase<Any, LaunchAppModel, GenericExceptions> {
+open class CheckSplashUseCase(val collectionsDataSource: LaunchAppLocalGateway) : UseCase<Any, LaunchAppModel, GenericExceptions> {
 
     override fun execute(input: Any): Disjunction<GenericExceptions, LaunchAppModel>
             = collectionsDataSource.obtainLaunchApp()

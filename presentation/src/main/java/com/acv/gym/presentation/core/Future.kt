@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.acv.gym.core
+package com.acv.gym.presentation.core
 
+import javafx.application.Application.launch
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.android.UI
@@ -32,13 +33,12 @@ class Future<T> {
 
     constructor(f: () -> T) : this(async(CommonPool) { f() })
 
-    fun <X> map(f: (T) -> X): Future<X> {
-        return Future(async(CommonPool) { f(deferred.await()) })
-    }
+    fun <X> map(f: (T) -> X): Future<X> =
+            Future(async(CommonPool) { f(deferred.await()) })
 
-    fun <X> flatMap(f: (T) -> Future<X>): Future<X> {
-        return Future(async(CommonPool) { f(deferred.await()).deferred.await() })
-    }
+
+    fun <X> flatMap(f: (T) -> Future<X>): Future<X> =
+            Future(async(CommonPool) { f(deferred.await()).deferred.await() })
 
     fun onComplete(f: (T) -> Unit) {
         launch(UI) {

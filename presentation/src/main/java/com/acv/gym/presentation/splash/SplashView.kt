@@ -1,8 +1,9 @@
 package com.acv.gym.presentation.splash
 
-import me.panavtec.threaddecoratedview.views.qualifiers.ThreadDecoratedView
+import com.acv.gym.presentation.View
 
-@ThreadDecoratedView
-interface SplashView {
+interface SplashView : View {
     fun showSplash()
+    fun renderNetworkError()
+    fun renderServerError()
 }
