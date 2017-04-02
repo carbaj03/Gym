@@ -12,6 +12,7 @@ import com.acv.gym.presentation.splash.SplashPresenter
 import com.acv.gym.presentation.splash.SplashView
 import com.acv.gym.ui.BaseActivity
 import org.jetbrains.anko.find
+import org.jetbrains.anko.toast
 
 import javax.inject.Inject
 
@@ -32,6 +33,14 @@ class SplashActivity : BaseActivity(), SplashView {
         super.onCreate(savedInstanceState)
         presenter.attachView(this)
         presenter.loadSplash()
+
+
+
+        logoApp.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                toast("Hello")
+            }
+        })
     }
 
     override fun showSplash() {

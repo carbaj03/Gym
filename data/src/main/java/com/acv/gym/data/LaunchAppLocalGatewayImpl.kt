@@ -23,5 +23,4 @@ class LaunchAppLocalGatewayImpl(private val sharedPreferences: Cache) : LaunchAp
     override fun persistLaunchApp(): Disjunction<GenericExceptions, LaunchAppModel> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
 }

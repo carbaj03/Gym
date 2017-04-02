@@ -10,4 +10,7 @@ dependencies {
 
     compile "org.funktionale:funktionale-either:1.0.0-final"
     compile "org.funktionale:funktionale-validation:1.0.0-final"
+
+    compile rootProject.ext.dependencies.coroutines
+    compile rootProject.ext.dependencies.coroutinesAndroid
 }

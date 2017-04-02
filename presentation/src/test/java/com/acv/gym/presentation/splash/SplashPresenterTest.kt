@@ -4,6 +4,9 @@ import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.LaunchAppModel
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
 import com.acv.gym.presentation.core.Future
+import com.acv.gym.presentation.core.InteractorExecution
+import com.acv.gym.presentation.core.InteractorInvoker
+import kotlinx.coroutines.experimental.runBlocking
 import org.funktionale.either.Disjunction
 import org.junit.Before
 import org.junit.Test
@@ -26,7 +29,7 @@ class SplashPresenterTest {
 
     @Before
     fun setUp() {
-        presenter = SplashPresenter(checkSplashUseCase)
+        presenter = SplashPresenter(checkSplashUseCase, TestInteractorInvoker.create())
         presenter.attachView(view)
     }
 
@@ -34,8 +37,14 @@ class SplashPresenterTest {
     fun shouldShowSplash() {
         `when`(checkSplashUseCase.execute(Any())).thenReturn(Disjunction.right(LaunchAppModel(true)))
 
-        presenter.loadSplash()
+        runBlocking {
+            presenter.loadSplash()
+        }
 
         Mockito.verify(view).showSplash()
     }
+
+//    suspend fun getSplash(): Future<Disjunction<GenericExceptions, LaunchAppModel>> {
+//        return InteractorExecution(checkSplashUseCase, Any()).execute(interactorInvokerImp)
+//    }
 }

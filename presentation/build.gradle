@@ -8,7 +8,4 @@ dependencies {
 
     testCompile rootProject.ext.testDependencies.junit
     testCompile rootProject.ext.testDependencies.mockito
-
-    compile rootProject.ext.dependencies.coroutines
-    compile rootProject.ext.dependencies.coroutinesAndroid
 }
