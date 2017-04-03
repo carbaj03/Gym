@@ -16,7 +16,6 @@
 
 package com.acv.gym.presentation.core
 
-import javafx.application.Application.launch
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.android.UI

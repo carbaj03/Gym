@@ -9,6 +9,11 @@ class InteractorExecutionFutureTask<I, E, R>(val interactorExecution: Interactor
         future.onComplete { renderFeedResult(it) }
     }
 
+    fun init(){
+        val future = Future { interactorExecution.interactor.execute(interactorExecution.algo) }
+        future.onComplete { renderFeedResult(it) }
+    }
+
     private fun renderFeedResult(result: Disjunction<E, R>): Any =
             when (result) {
                 is Disjunction.Left -> handleError(result.swap().get())
