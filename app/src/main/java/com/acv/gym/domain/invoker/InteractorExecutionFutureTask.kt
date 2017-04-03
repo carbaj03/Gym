@@ -9,14 +9,14 @@ class InteractorExecutionFutureTask<I, E, R>(val interactorExecution: Interactor
     lateinit private var future : Future<Disjunction<E, R>>
 
     fun init() {
-        future = Future { interactorExecution.interactor.execute(interactorExecution.algo) }
+        future = Future { interactorExecution.interactor.execute(interactorExecution.params) }
         future.onComplete { renderFeedResult(it) }
     }
 
     private fun renderFeedResult(result: Disjunction<E, R>): Any =
             when (result) {
                 is Disjunction.Left -> handleError(result.swap().get())
-                is Disjunction.Right -> result.map { handleResult(it) }
+                is Disjunction.Right -> handleResult(result.value)
             }
 
     private fun handleResult(result: R) {

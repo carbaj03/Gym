@@ -27,12 +27,12 @@ class SplashPresenterTest {
     }
 
     @Test
-    fun shouldShowSplashWhenCallUseCase() {
+    fun `should show splash When call use case`() {
         `when`(checkSplashUseCase.execute(any())).thenReturn(Disjunction.right(LaunchAppModel(true)))
 
         presenter.loadSplash()
 
-        verify(view).showSplash()
+         verify(view).showSplash()
     }
 
     @Test
@@ -44,4 +44,12 @@ class SplashPresenterTest {
         verify(view).renderServerError()
     }
 
+    @Test
+    fun `should show network error When not connection`() {
+        `when`(checkSplashUseCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.NetworkError()))
+
+        presenter.loadSplash()
+
+        verify(view).renderNetworkError()
+    }
 }

@@ -4,7 +4,7 @@ import com.acv.gym.domain.usecase.UseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
 
 
-open class InteractorExecution<I, E, R>(val interactor: UseCase<I, R, E>, val algo: I) {
+open class InteractorExecution<I, E, R>(val interactor: UseCase<I, R, E>, val params: I) {
     lateinit var interactorResult: (R) -> Any
         private set
 

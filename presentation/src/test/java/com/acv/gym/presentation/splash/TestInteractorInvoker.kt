@@ -18,7 +18,7 @@ object TestInteractorInvoker {
 
             when (response) {
                 is Disjunction.Left -> execution.interactorError(response.swap().get())
-                is Disjunction.Right -> response.map { execution.interactorResult(it) }
+                is Disjunction.Right -> execution.interactorResult(response.value)
             }
         }.`when`(interactorInvoker).execute(anyInteractorExecution())
         return interactorInvoker
