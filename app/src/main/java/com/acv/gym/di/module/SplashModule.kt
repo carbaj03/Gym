@@ -8,8 +8,8 @@ import com.acv.gym.data.local.SharedPreferencesCache
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.gateway.LaunchAppLocalGateway
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
-import com.acv.gym.presentation.core.InteractorInvoker
-import com.acv.gym.presentation.core.InteractorInvokerImp
+import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.domain.invoker.InteractorInvokerImp
 import com.acv.gym.presentation.splash.SplashPresenter
 import dagger.Module
 import dagger.Provides
@@ -39,7 +39,7 @@ class SplashModule(activity: Activity) : ActivityModule(activity) {
     fun provideCache(): Cache
             = SharedPreferencesCache(activity.applicationContext)
 
-    @Provides @Singleton
+    @ActivityScope @Provides
     fun provideInteractorInvoker(): InteractorInvoker = InteractorInvokerImp()
 
 }

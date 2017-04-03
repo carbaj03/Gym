@@ -3,29 +3,22 @@ package com.acv.gym.presentation.splash
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.LaunchAppModel
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
-import com.acv.gym.presentation.core.Future
-import com.acv.gym.presentation.core.InteractorExecution
-import com.acv.gym.presentation.core.InteractorInvoker
-import kotlinx.coroutines.experimental.runBlocking
+import com.nhaarman.mockito_kotlin.any
+import com.nhaarman.mockito_kotlin.mock
+import com.nhaarman.mockito_kotlin.verify
 import org.funktionale.either.Disjunction
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.`when`
-import org.mockito.runners.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
+
 class SplashPresenterTest {
 
-    @Mock
-    lateinit var view: SplashView
+    val view: SplashView = mock()
+
+    val checkSplashUseCase: CheckSplashUseCase = mock()
 
     lateinit var presenter: SplashPresenter
-
-    @Mock
-    lateinit var checkSplashUseCase : CheckSplashUseCase
 
     @Before
     fun setUp() {
@@ -34,17 +27,21 @@ class SplashPresenterTest {
     }
 
     @Test
-    fun shouldShowSplash() {
-        `when`(checkSplashUseCase.execute(Any())).thenReturn(Disjunction.right(LaunchAppModel(true)))
+    fun shouldShowSplashWhenCallUseCase() {
+        `when`(checkSplashUseCase.execute(any())).thenReturn(Disjunction.right(LaunchAppModel(true)))
 
-        runBlocking {
-            presenter.loadSplash()
-        }
+        presenter.loadSplash()
 
-        Mockito.verify(view).showSplash()
+        verify(view).showSplash()
     }
 
-//    suspend fun getSplash(): Future<Disjunction<GenericExceptions, LaunchAppModel>> {
-//        return InteractorExecution(checkSplashUseCase, Any()).execute(interactorInvokerImp)
-//    }
+    @Test
+    fun `should show server error When splash fail`() {
+        `when`(checkSplashUseCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.ServerError()))
+
+        presenter.loadSplash()
+
+        verify(view).renderServerError()
+    }
+
 }

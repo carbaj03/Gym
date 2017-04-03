@@ -1,16 +1,15 @@
-package com.acv.gym.presentation.core
+package com.acv.gym.domain.invoker
 
+import com.acv.gym.presentation.core.Future
+import com.acv.gym.presentation.invoker.InteractorExecution
 import org.funktionale.either.Disjunction
 
 class InteractorExecutionFutureTask<I, E, R>(val interactorExecution: InteractorExecution<I, E, R>) {
 
-    init {
-        val future = Future { interactorExecution.interactor.execute(interactorExecution.algo) }
-        future.onComplete { renderFeedResult(it) }
-    }
+    lateinit private var future : Future<Disjunction<E, R>>
 
-    fun init(){
-        val future = Future { interactorExecution.interactor.execute(interactorExecution.algo) }
+    fun init() {
+        future = Future { interactorExecution.interactor.execute(interactorExecution.algo) }
         future.onComplete { renderFeedResult(it) }
     }
 
@@ -25,7 +24,7 @@ class InteractorExecutionFutureTask<I, E, R>(val interactorExecution: Interactor
     }
 
     private fun handleError(result: E) {
-        interactorExecution.error(result)
+        interactorExecution.interactorError(result)
     }
 
 }

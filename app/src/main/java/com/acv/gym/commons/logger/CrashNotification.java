@@ -15,6 +15,6 @@ public class CrashNotification {
     }
 
     public static void logError(Throwable t) {
-        // TODO report non-fatal error.
+        // TODO report non-fatal errorResult.
     }
 }

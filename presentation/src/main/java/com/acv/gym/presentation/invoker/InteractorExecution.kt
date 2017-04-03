@@ -1,13 +1,14 @@
-package com.acv.gym.presentation.core
+package com.acv.gym.presentation.invoker
 
 import com.acv.gym.domain.usecase.UseCase
+import com.acv.gym.presentation.invoker.InteractorInvoker
 
 
 open class InteractorExecution<I, E, R>(val interactor: UseCase<I, R, E>, val algo: I) {
     lateinit var interactorResult: (R) -> Any
         private set
 
-    lateinit var error: (E) -> Any
+    lateinit var interactorError: (E) -> Any
         private set
 
     fun result(body: (R) -> Any): InteractorExecution<I, E, R> {
@@ -15,8 +16,8 @@ open class InteractorExecution<I, E, R>(val interactor: UseCase<I, R, E>, val al
         return this
     }
 
-    fun error(body: (E) -> Any): InteractorExecution<I, E, R> {
-        this.error = body
+    fun errorResult(body: (E) -> Any): InteractorExecution<I, E, R> {
+        this.interactorError = body
         return this
     }
 

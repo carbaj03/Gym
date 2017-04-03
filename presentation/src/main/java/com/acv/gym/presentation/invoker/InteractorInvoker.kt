@@ -1,6 +1,7 @@
-package com.acv.gym.presentation.core
+package com.acv.gym.presentation.invoker
 
 
+import com.acv.gym.presentation.invoker.InteractorExecution
 import org.funktionale.either.Disjunction
 
 interface InteractorInvoker {

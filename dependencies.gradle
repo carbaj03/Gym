@@ -30,7 +30,6 @@ allprojects {
 
                 kotlin       : 'org.jetbrains.kotlin:kotlin-stdlib:1.0.6',
                 kotlinTest   : 'org.jetbrains.kotlin:kotlin-test-junit:1.0.6',
-
         ]
     }
 }
