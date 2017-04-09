@@ -1,22 +1,19 @@
-package com.acv.gym.data
+package com.acv.gym.data.local
 
 import com.acv.gym.data.local.Cache
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.data.local.LaunchAppLocalGatewayImpl
+import com.nhaarman.mockito_kotlin.mock
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.Mockito.doThrow
-import org.mockito.runners.MockitoJUnitRunner
 import java.lang.Exception
 
 
-@RunWith(MockitoJUnitRunner::class)
 class LaunchAppLocalGatewayImplTest {
 
-    @Mock lateinit var sharedPreferences: Cache
+    val sharedPreferences: Cache = mock()
     private lateinit var launchAppLocalGatewayImpl: LaunchAppLocalGatewayImpl
 
     @Before
@@ -25,7 +22,7 @@ class LaunchAppLocalGatewayImplTest {
     }
 
     @Test
-    fun shouldNotHappyCaseWhenNotThrowException() {
+    fun shouldNotHappyCaseWhenThrowException() {
         doThrow(Exception::class.java).`when`(sharedPreferences).get(LaunchAppLocalGatewayImpl.KEY_IS_FIRST_TIME_LAUNCH_APP, true)
 
         val launchAppModel = launchAppLocalGatewayImpl.obtainLaunchApp()

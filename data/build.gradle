@@ -23,5 +23,6 @@ dependencies {
     compile rootProject.ext.dependencies.kotlinStdlibJre7
 
     testCompile rootProject.ext.testDependencies.junit
+    testCompile rootProject.ext.testDependencies.mockitoKotlin
     testCompile rootProject.ext.testDependencies.mockito
 }

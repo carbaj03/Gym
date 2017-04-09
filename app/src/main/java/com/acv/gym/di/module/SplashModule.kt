@@ -2,7 +2,7 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.LaunchAppLocalGatewayImpl
+import com.acv.gym.data.local.LaunchAppLocalGatewayImpl
 import com.acv.gym.data.local.Cache
 import com.acv.gym.data.local.SharedPreferencesCache
 import com.acv.gym.di.scope.ActivityScope

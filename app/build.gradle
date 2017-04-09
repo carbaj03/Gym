@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
@@ -20,6 +21,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+// Required for annotation processing plugins like Dagger
+kapt {
+    generateStubs = true
 }
 
 dependencies {

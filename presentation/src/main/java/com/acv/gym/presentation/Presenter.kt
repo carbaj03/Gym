@@ -33,4 +33,5 @@ abstract class Presenter<T : View> {
     open fun destroy() {
 //        logger.d("BasePresenter", "-> destroy (This method can be override but is no needed)")
     }
+
 }

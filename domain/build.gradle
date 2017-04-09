@@ -5,8 +5,11 @@ targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
     testCompile rootProject.ext.testDependencies.junit
+    testCompile rootProject.ext.testDependencies.mockitoKotlin
     testCompile rootProject.ext.testDependencies.mockito
-    testCompile rootProject.ext.testDependencies.hamcrest
+//    testCompile rootProject.ext.testDependencies.junit
+//    testCompile rootProject.ext.testDependencies.mockito
+//    testCompile rootProject.ext.testDependencies.hamcrest
 
     compile "org.funktionale:funktionale-either:1.0.0-final"
     compile "org.funktionale:funktionale-validation:1.0.0-final"
