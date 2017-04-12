@@ -2,8 +2,8 @@ package com.acv.gym.presentation.splash
 
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.LaunchAppModel
+import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
-import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import org.funktionale.either.Disjunction
@@ -18,26 +18,28 @@ class SplashPresenterTest {
 
     val checkSplashUseCase: CheckSplashUseCase = mock()
 
+    var any: Command = mock()
+
     lateinit var presenter: SplashPresenter
 
     @Before
     fun setUp() {
-        presenter = SplashPresenter(checkSplashUseCase, TestInteractorInvoker.create())
+        presenter = SplashPresenter(checkSplashUseCase, TestInteractorInvoker.create(any))
         presenter.attachView(view)
     }
 
     @Test
     fun `should show splash When call use case`() {
-        `when`(checkSplashUseCase.execute(any())).thenReturn(Disjunction.right(LaunchAppModel(true)))
+        `when`(checkSplashUseCase.execute(any)).thenReturn(Disjunction.right(LaunchAppModel(true)))
 
         presenter.loadSplash()
 
-         verify(view).showSplash()
+        verify(view).showSplash()
     }
 
     @Test
     fun `should show server error When splash fail`() {
-        `when`(checkSplashUseCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.ServerError()))
+        `when`(checkSplashUseCase.execute(any)).thenReturn(Disjunction.left(GenericExceptions.ServerError()))
 
         presenter.loadSplash()
 
@@ -46,7 +48,7 @@ class SplashPresenterTest {
 
     @Test
     fun `should show network error When not connection`() {
-        `when`(checkSplashUseCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.NetworkError()))
+        `when`(checkSplashUseCase.execute(any)).thenReturn(Disjunction.left(GenericExceptions.NetworkError()))
 
         presenter.loadSplash()
 

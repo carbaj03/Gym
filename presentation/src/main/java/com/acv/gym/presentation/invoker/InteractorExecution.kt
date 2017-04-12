@@ -1,7 +1,8 @@
 package com.acv.gym.presentation.invoker
 
+import com.acv.gym.domain.usecase.Command
+import com.acv.gym.domain.usecase.EmptyCommand
 import com.acv.gym.domain.usecase.UseCase
-import com.acv.gym.presentation.invoker.InteractorInvoker
 
 
 open class InteractorExecution<I, E, R>(val interactor: UseCase<I, R, E>, val params: I) {

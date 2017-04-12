@@ -23,6 +23,12 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.1.1'
+    }
+}
+
 // Required for annotation processing plugins like Dagger
 kapt {
     generateStubs = true
@@ -50,7 +56,10 @@ dependencies {
 
     compile rootProject.ext.dependencies.log
 
-    testCompile rootProject.ext.testDependencies.junit
+    androidTestCompile rootProject.ext.testDependencies.junit
+    androidTestCompile rootProject.ext.testDependencies.mockitoKotlin
+    androidTestCompile rootProject.ext.testDependencies.mockito
+
 
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
@@ -58,3 +67,4 @@ dependencies {
     androidTestCompile 'com.github.fabioCollini:DaggerMock:0.6.3'
     testCompile 'com.github.fabioCollini:DaggerMock:0.6.3'
 }
+

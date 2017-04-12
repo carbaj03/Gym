@@ -5,6 +5,7 @@ import android.view.View
 import com.acv.gym.GymApplication
 import com.acv.gym.R
 import com.acv.gym.di.module.SplashModule
+import com.acv.gym.domain.usecase.EmptyCommand
 import com.acv.gym.presentation.splash.SplashPresenter
 import com.acv.gym.presentation.splash.SplashView
 import com.acv.gym.ui.BaseActivity

@@ -3,6 +3,7 @@ package com.acv.gym.presentation.routine
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.LaunchAppModel
 import com.acv.gym.domain.model.RoutineModel
+import com.acv.gym.domain.model.SessionExerciseModel
 import com.acv.gym.domain.usecase.routine.GetRoutinesUseCase
 import com.acv.gym.presentation.splash.SplashView
 import com.acv.gym.presentation.splash.TestInteractorInvoker
@@ -23,14 +24,13 @@ class RoutinesPresenterTest {
 
     @Before
     fun setUp() {
-        presenter = RoutinesPresenter(useCase, TestInteractorInvoker.create())
+        presenter = RoutinesPresenter(useCase, TestInteractorInvoker.create(""))
         presenter.attachView(view)
     }
 
     @Test
     fun `should show routines When call use case`() {
-        var listOf = listOf(RoutineModel("1", "Full Body", ""),
-                RoutineModel("2", "Torso/Pierna", ""), RoutineModel("3", "Push/Pull/Leg", ""))
+        var listOf = getRoutines()
         Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.right(listOf))
 
         presenter.loadRoutines()
@@ -55,4 +55,6 @@ class RoutinesPresenterTest {
 
         verify(view, times(1)).renderNetworkError()
     }
+
+    private fun getRoutines() = listOf(RoutineModel("", "", ""))
 }

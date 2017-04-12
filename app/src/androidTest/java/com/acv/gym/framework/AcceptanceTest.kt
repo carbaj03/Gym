@@ -30,6 +30,10 @@ abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) {
 
     @Rule @JvmField
     val testRule: ActivityTestRule<T> = IntentsTestRule(clazz)
+
+    @Rule @JvmField
+    var rule = EspressoDaggerMockRule()
+
     val checkThat: Matchers = Matchers()
     val events: Events = Events()
 }
