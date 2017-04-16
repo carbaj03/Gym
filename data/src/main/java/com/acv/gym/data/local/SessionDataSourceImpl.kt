@@ -6,6 +6,8 @@ import com.acv.gym.domain.model.SessionExerciseModel
 
 
 class SessionDataSourceImpl : SessionDataSource {
-    override fun getAll() = listOf(SessionExerciseModel("1", "1" , 20f, 10, "1"),
-            SessionExerciseModel("2", "1" , 20f, 10, "1"), SessionExerciseModel("2", "1" , 20f, 10, "1"))
+    override fun getAllBy(date: String): List<SessionExerciseModel>  =
+            listOf(SessionExerciseModel("1", "1" , 20f, 10, "1"),
+                    SessionExerciseModel("2", "1" , 20f, 10, "1"),
+                    SessionExerciseModel("3", "1" , 20f, 10, "1"))
 }

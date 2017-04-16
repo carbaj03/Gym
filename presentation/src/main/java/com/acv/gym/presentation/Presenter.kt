@@ -1,13 +1,13 @@
 package com.acv.gym.presentation
 
 
-abstract class Presenter<T : View> {
+abstract class Presenter<out T : View>(val view : T) {
 
-    lateinit var view: T
+//    lateinit var view: T
 
-    fun attachView(view: T){
-        this.view = view
-    }
+//    fun attachView(view: T){
+//        this.view = view
+//    }
 
     /**
      * Method called in the presenter lifecycle. Invoked when the component containing the presenter is initialized.

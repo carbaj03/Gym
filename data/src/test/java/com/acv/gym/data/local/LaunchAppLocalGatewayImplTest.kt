@@ -25,7 +25,7 @@ class LaunchAppLocalGatewayImplTest {
     fun shouldNotHappyCaseWhenThrowException() {
         doThrow(Exception::class.java).`when`(sharedPreferences).get(LaunchAppLocalGatewayImpl.KEY_IS_FIRST_TIME_LAUNCH_APP, true)
 
-        val launchAppModel = launchAppLocalGatewayImpl.obtainLaunchApp()
+        val launchAppModel = launchAppLocalGatewayImpl.obtain()
 
         Assert.assertEquals(true, launchAppModel.isLeft())
     }
@@ -35,7 +35,7 @@ class LaunchAppLocalGatewayImplTest {
         `when`(sharedPreferences.get(LaunchAppLocalGatewayImpl.KEY_IS_FIRST_TIME_LAUNCH_APP, true))
                 .thenReturn(true)
 
-        val launchAppModel = launchAppLocalGatewayImpl.obtainLaunchApp()
+        val launchAppModel = launchAppLocalGatewayImpl.obtain()
 
         Assert.assertEquals(true, launchAppModel.isRight())
     }
@@ -45,7 +45,7 @@ class LaunchAppLocalGatewayImplTest {
         `when`(sharedPreferences.get(LaunchAppLocalGatewayImpl.KEY_IS_FIRST_TIME_LAUNCH_APP, true))
                 .thenReturn(true)
 
-        val launchAppModel = launchAppLocalGatewayImpl.obtainLaunchApp()
+        val launchAppModel = launchAppLocalGatewayImpl.obtain()
 
         launchAppModel.map { Assert.assertEquals(true, it.isFirstTime) }
     }
@@ -55,7 +55,7 @@ class LaunchAppLocalGatewayImplTest {
         `when`(sharedPreferences.get(LaunchAppLocalGatewayImpl.KEY_IS_FIRST_TIME_LAUNCH_APP, true))
                 .thenReturn(false)
 
-        val launchAppModel = launchAppLocalGatewayImpl.obtainLaunchApp()
+        val launchAppModel = launchAppLocalGatewayImpl.obtain()
 
         launchAppModel.map { Assert.assertEquals(false, it.isFirstTime) }
     }

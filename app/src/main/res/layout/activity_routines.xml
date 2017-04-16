@@ -4,7 +4,7 @@
     android:id="@+id/activity_routines"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.routines.RoutinesActivity">
+    tools:context=".module.routine.RoutineActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvRoutines"

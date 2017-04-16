@@ -39,9 +39,5 @@ class Future<T> {
     fun <X> flatMap(f: (T) -> Future<X>): Future<X> =
             Future(async(CommonPool) { f(deferred.await()).deferred.await() })
 
-    fun onComplete(f: (T) -> Unit) {
-        launch(UI) {
-            f(deferred.await())
-        }
-    }
+    fun onComplete(f: (T) -> Unit) = launch(UI) { f(deferred.await()) }
 }

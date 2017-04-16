@@ -11,5 +11,5 @@ open class CheckSplashUseCase(val collectionsDataSource: LaunchAppLocalGateway)
     : UseCase<Any, LaunchAppModel, GenericExceptions> {
     
     override fun execute(input: Any): Disjunction<GenericExceptions, LaunchAppModel>
-            =  collectionsDataSource.obtainLaunchApp()
+            =  collectionsDataSource.obtain()
 }

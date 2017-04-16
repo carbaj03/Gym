@@ -12,7 +12,7 @@ class LaunchAppLocalGatewayImpl(private val sharedPreferences: Cache) : LaunchAp
         val KEY_IS_FIRST_TIME_LAUNCH_APP = "key_is_first_time_launch_app"
     }
 
-    override fun obtainLaunchApp(): Disjunction<GenericExceptions, LaunchAppModel> {
+    override fun obtain(): Disjunction<GenericExceptions, LaunchAppModel> {
         try {
             return Disjunction.right(LaunchAppModel(sharedPreferences.get(KEY_IS_FIRST_TIME_LAUNCH_APP, true)))
         } catch (ex: Exception) {
@@ -20,7 +20,7 @@ class LaunchAppLocalGatewayImpl(private val sharedPreferences: Cache) : LaunchAp
         }
     }
 
-    override fun persistLaunchApp(): Disjunction<GenericExceptions, LaunchAppModel> {
+    override fun persist(): Disjunction<GenericExceptions, LaunchAppModel> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

@@ -28,7 +28,7 @@ class GetSessionUseCaseTest {
     @Test
     fun `should return model`() {
         var sessions = getSession()
-        `when`(sessionLocalGateway.obtain()).thenReturn(sessions)
+        `when`(sessionLocalGateway.obtain(any())).thenReturn(sessions)
 
         val response = getSessionUseCase.execute(SessionCommand(""))
 
@@ -38,7 +38,7 @@ class GetSessionUseCaseTest {
     @Test
     fun `should return error`() {
         var sessions = getErrorSession()
-        `when`(sessionLocalGateway.obtain()).thenReturn(sessions)
+        `when`(sessionLocalGateway.obtain(any())).thenReturn(sessions)
 
         val response = getSessionUseCase.execute(SessionCommand(""))
 

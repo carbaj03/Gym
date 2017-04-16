@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.View
 import com.acv.gym.GymApplication
 import com.acv.gym.R
+import com.acv.gym.commons.extension.nav
 import com.acv.gym.di.module.SplashModule
-import com.acv.gym.domain.usecase.EmptyCommand
-import com.acv.gym.presentation.splash.SplashPresenter
-import com.acv.gym.presentation.splash.SplashView
+import com.acv.gym.module.session.SessionActivity
+import com.acv.gym.presentation.module.splash.SplashPresenter
+import com.acv.gym.presentation.module.splash.SplashView
 import com.acv.gym.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_splash.*
-import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 class SplashActivity : BaseActivity(), SplashView {
@@ -25,12 +25,10 @@ class SplashActivity : BaseActivity(), SplashView {
         presenter.attachView(this)
         presenter.loadSplash()
 
-        logoApp.setOnClickListener {
-            navigator.navigateToRoutines(this)
-        }
+        logoApp.setOnClickListener { nav<SessionActivity>() }
     }
 
-    override fun getActivityLayout():Int = R.layout.activity_splash
+    override fun getActivityLayout() = R.layout.activity_splash
 
     override fun showSplash() {
         logoApp.visibility = View.VISIBLE

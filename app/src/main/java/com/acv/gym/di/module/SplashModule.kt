@@ -10,7 +10,7 @@ import com.acv.gym.domain.gateway.LaunchAppLocalGateway
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
 import com.acv.gym.domain.invoker.InteractorInvokerImp
-import com.acv.gym.presentation.splash.SplashPresenter
+import com.acv.gym.presentation.module.splash.SplashPresenter
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

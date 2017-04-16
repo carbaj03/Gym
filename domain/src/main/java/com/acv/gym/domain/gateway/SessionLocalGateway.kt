@@ -8,6 +8,6 @@ import com.acv.gym.domain.model.SessionExerciseModel
 import org.funktionale.either.Disjunction
 
 interface SessionLocalGateway {
-    fun obtain(): Disjunction<GenericExceptions, List<SessionExerciseModel>>
+    fun obtain(date : String): Disjunction<GenericExceptions, List<SessionExerciseModel>>
     fun persist(): Disjunction<GenericExceptions, List<SessionExerciseModel>>
 }

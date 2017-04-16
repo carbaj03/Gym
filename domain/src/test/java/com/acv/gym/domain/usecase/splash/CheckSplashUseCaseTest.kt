@@ -22,6 +22,6 @@ class CheckSplashUseCaseTest {
     fun shouldObtainLaunchAppWhenCallUseCase() {
         checkSplashUseCase.execute(Any())
 
-        verify(gateway, times(1)).obtainLaunchApp()
+        verify(gateway, times(1)).obtain()
     }
 }

@@ -2,8 +2,8 @@ package com.acv.gym.module.session
 
 import android.content.Intent
 import com.acv.gym.framework.AcceptanceTest
-import com.acv.gym.presentation.session.SessionPresenter
-import com.acv.gym.presentation.session.SessionView
+import com.acv.gym.presentation.module.session.SessionPresenter
+import com.acv.gym.presentation.module.session.SessionView
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
@@ -25,6 +25,7 @@ class SessionActivityTest : AcceptanceTest<SessionActivity>(SessionActivity::cla
 //        Mockito.doNothing().`when`<SessionPresenter>(presenter).onFinishSplash()
 
         testRule.launchActivity(Intent())
+
         verify(presenter, times(1)).loadSessions(any())
     }
 }

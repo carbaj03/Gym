@@ -6,6 +6,6 @@ import com.acv.gym.domain.model.LaunchAppModel
 import org.funktionale.either.Disjunction
 
 interface LaunchAppLocalGateway {
-    fun obtainLaunchApp(): Disjunction<GenericExceptions, LaunchAppModel>
-    fun persistLaunchApp(): Disjunction<GenericExceptions, LaunchAppModel>
+    fun obtain(): Disjunction<GenericExceptions, LaunchAppModel>
+    fun persist(): Disjunction<GenericExceptions, LaunchAppModel>
 }
