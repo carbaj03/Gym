@@ -8,4 +8,4 @@ data class SessionExerciseModel(val id : String,
                                 val exercise : String,
                                 val weight : Float,
                                 val reps : Int,
-                                val session : String)
+                                val session : String): Model

@@ -2,33 +2,32 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.RoutineDataSource
-import com.acv.gym.data.SessionDataSource
-import com.acv.gym.data.local.*
+import com.acv.gym.data.DataSource
+import com.acv.gym.data.local.SessionLocalGatewayImpl
+import com.acv.gym.data.local.datasource.SessionExerciseLocalDataSource
+import com.acv.gym.data.model.SessionExerciseDataModel
 import com.acv.gym.di.scope.ActivityScope
-import com.acv.gym.domain.gateway.RoutineLocalGateway
-import com.acv.gym.domain.gateway.LaunchAppLocalGateway
 import com.acv.gym.domain.gateway.SessionLocalGateway
-import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
-import com.acv.gym.presentation.invoker.InteractorInvoker
 import com.acv.gym.domain.invoker.InteractorInvokerImp
-import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
 import com.acv.gym.domain.usecase.session.GetSessionUseCase
-import com.acv.gym.presentation.module.routine.RoutinePresenter
+import com.acv.gym.presentation.invoker.InteractorInvoker
 import com.acv.gym.presentation.module.session.SessionPresenter
-import com.acv.gym.presentation.module.splash.SplashPresenter
+import com.acv.gym.presentation.module.session.SessionView
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 @Module
 class SessionModule(activity: Activity) : ActivityModule(activity) {
 
+    @ActivityScope @Provides
+    fun provideView(): SessionView = activity as SessionView
+
     @ActivityScope
     @Provides
-    fun providePresenter(useCase: GetSessionUseCase,
+    fun providePresenter(view: SessionView,
+                         useCase: GetSessionUseCase,
                          interactorInvoker: InteractorInvoker)
-            = SessionPresenter(useCase, interactorInvoker)
+            = SessionPresenter(view, useCase, interactorInvoker)
 
     @ActivityScope
     @Provides
@@ -37,12 +36,12 @@ class SessionModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideLocalGateway(dataSource: SessionDataSource) : SessionLocalGateway
+    fun provideLocalGateway(dataSource: DataSource<SessionExerciseDataModel>)
             = SessionLocalGatewayImpl(dataSource)
 
     @ActivityScope
     @Provides
-    fun provideDataSource(): SessionDataSource = SessionDataSourceImpl()
+    fun provideDataSource() = SessionExerciseLocalDataSource()
 
     @ActivityScope
     @Provides

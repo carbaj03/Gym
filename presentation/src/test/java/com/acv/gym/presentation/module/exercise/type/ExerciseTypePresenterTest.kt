@@ -1,9 +1,10 @@
 package com.acv.gym.presentation.module.exercise.type
 
+import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.ExerciseTypeModel
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
-import com.acv.gym.presentation.module.splash.TestInteractorInvoker
+import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
@@ -31,11 +32,29 @@ class ExerciseTypePresenterTest {
     @Test
     fun `should show exercise type When call load exercise type`() {
         val exerciseType = getExerciseType()
-        Mockito.`when`(useCase.execute(EmptyCommand())).thenReturn(Disjunction.right(exerciseType))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.right(exerciseType))
 
         presenter.loadExerciseType()
 
         verify(view, times(1)).show(exerciseType)
+    }
+
+    @Test
+    fun `should show error network When is network exception`() {
+        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.NetworkError()))
+
+        presenter.loadExerciseType()
+
+        verify(view, times(1)).showNetworkError()
+    }
+
+    @Test
+    fun `should show error server When is server exception`() {
+        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.ServerError()))
+
+        presenter.loadExerciseType()
+
+        verify(view, times(1)).showServerError()
     }
 
     private fun  getExerciseType() = listOf(ExerciseTypeModel("", ""))

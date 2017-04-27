@@ -4,7 +4,7 @@ import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.SessionExerciseModel
 import com.acv.gym.domain.usecase.session.GetSessionUseCase
 import com.acv.gym.domain.usecase.session.SessionCommand
-import com.acv.gym.presentation.module.splash.TestInteractorInvoker
+import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify

@@ -6,7 +6,7 @@ import com.acv.gym.domain.model.RoutineModel
 import com.acv.gym.domain.model.SessionExerciseModel
 import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
 import com.acv.gym.presentation.module.splash.SplashView
-import com.acv.gym.presentation.module.splash.TestInteractorInvoker
+import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times

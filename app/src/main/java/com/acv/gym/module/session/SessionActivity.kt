@@ -24,7 +24,6 @@ class SessionActivity : BaseActivity(), SessionView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter.attachView(this)
         presenter.loadSessions()
         fab.onClick { nav<MuscleGroupActivity>() }
     }

@@ -4,7 +4,7 @@ import com.acv.gym.domain.model.ExerciseTypeModel
 import com.acv.gym.presentation.View
 
 interface ExerciseTypeView : View {
-    fun show(muscleGroups: List<ExerciseTypeModel>)
+    fun show(exerciseTypes: List<ExerciseTypeModel>)
     fun showNetworkError()
     fun showServerError()
 }

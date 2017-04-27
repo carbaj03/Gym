@@ -9,6 +9,5 @@ import org.funktionale.either.Disjunction
 
 open class GetSessionUseCase(val sessionLocalGateway: SessionLocalGateway) :
         UseCase<SessionCommand, List<SessionExerciseModel>, GenericExceptions> {
-    override fun execute(input: SessionCommand): Disjunction<GenericExceptions, List<SessionExerciseModel>>
-            = sessionLocalGateway.obtain(input.date)
+    override fun execute(input: SessionCommand) = sessionLocalGateway.obtain(input.date)
 }

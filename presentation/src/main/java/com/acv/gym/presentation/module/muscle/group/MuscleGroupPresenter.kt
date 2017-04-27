@@ -8,7 +8,7 @@ import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.InteractorExecution
 import com.acv.gym.presentation.invoker.InteractorInvoker
 
-class MuscleGroupPresenter(view: MuscleGroupView,
+open class MuscleGroupPresenter(view: MuscleGroupView,
                            val useCase: GetMuscleGroupsUseCase,
                            val invoker: InteractorInvoker) : Presenter<MuscleGroupView>(view) {
     fun loadMuscleGroups() {

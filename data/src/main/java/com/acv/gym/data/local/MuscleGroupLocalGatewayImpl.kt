@@ -1,16 +1,17 @@
 package com.acv.gym.data.local
 
-import com.acv.gym.data.MuscleGroupDataSource
+import com.acv.gym.data.local.datasource.MuscleGroupLocalDataSource
+import com.acv.gym.data.model.map
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.gateway.MuscleGroupLocalGateway
 import com.acv.gym.domain.model.MuscleGroupModel
 import org.funktionale.either.Disjunction
 
-class MuscleGroupGatewayImpl(val dataSource: MuscleGroupDataSource) : MuscleGroupLocalGateway {
+class MuscleGroupLocalGatewayImpl(val dataSource: MuscleGroupLocalDataSource) : MuscleGroupLocalGateway {
     override fun obtain(): Disjunction<GenericExceptions, List<MuscleGroupModel>> {
-        try{
-            return Disjunction.right(dataSource.getAll())
-        } catch (ex: Exception){
+        try {
+            return Disjunction.right(dataSource.getAll().map { it.map() })
+        } catch (ex: Exception) {
             return Disjunction.left(GenericExceptions.ServerError())
         }
     }

@@ -8,6 +8,5 @@ import org.funktionale.either.Disjunction
 
 open class SetLaunchAppUseCase(val collectionsDataSource: LaunchAppLocalGateway)
     : UseCase<Any, LaunchAppModel, GenericExceptions> {
-    override fun execute(input: Any): Disjunction<GenericExceptions, LaunchAppModel>
-            =  collectionsDataSource.persist()
+    override fun execute(input: Any) =  collectionsDataSource.persist()
 }

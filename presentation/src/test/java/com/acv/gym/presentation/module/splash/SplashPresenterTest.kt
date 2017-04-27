@@ -4,6 +4,7 @@ import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.LaunchAppModel
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
+import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import org.funktionale.either.Disjunction

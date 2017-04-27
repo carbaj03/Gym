@@ -1,4 +1,4 @@
-package com.acv.gym.presentation.module.splash
+package com.acv.gym.presentation.module
 
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.acv.gym.presentation.invoker.InteractorExecution

@@ -30,7 +30,6 @@ class MuscleGroupActivity: BaseActivity(), MuscleGroupView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        presenter.attachView(this)
         presenter.loadMuscleGroups()
     }
 

@@ -21,7 +21,6 @@ class RoutineActivity : BaseActivity(), RoutineView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter.attachView(this)
         presenter.loadRoutines()
     }
 

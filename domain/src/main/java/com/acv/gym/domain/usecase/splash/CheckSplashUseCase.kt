@@ -9,7 +9,5 @@ import org.funktionale.either.Disjunction
 
 open class CheckSplashUseCase(val collectionsDataSource: LaunchAppLocalGateway)
     : UseCase<Any, LaunchAppModel, GenericExceptions> {
-    
-    override fun execute(input: Any): Disjunction<GenericExceptions, LaunchAppModel>
-            =  collectionsDataSource.obtain()
+    override fun execute(input: Any) =  collectionsDataSource.obtain()
 }

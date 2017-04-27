@@ -1,5 +1,6 @@
 package com.acv.gym.presentation.module.exercise.type
 
+import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.ExerciseTypeModel
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.EmptyCommand
@@ -14,8 +15,14 @@ class ExerciseTypePresenter(view: ExerciseTypeView,
     fun loadExerciseType(command: Command = EmptyCommand()) {
         InteractorExecution(useCase, command)
                 .result { happyCase(it) }
+                .errorResult { manageExceptions(it)}
                 .execute(invoker)
     }
 
-    private fun happyCase(it: List<ExerciseTypeModel>) = view.show(it)
+    private fun happyCase(exerciseTypes: List<ExerciseTypeModel>) = view.show(exerciseTypes)
+
+    private fun manageExceptions(exception: GenericExceptions) = when (exception) {
+        is GenericExceptions.NetworkError -> view.showNetworkError()
+        is GenericExceptions.ServerError -> view.showServerError()
+    }
 }

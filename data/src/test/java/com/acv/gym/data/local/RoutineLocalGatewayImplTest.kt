@@ -1,6 +1,7 @@
 package com.acv.gym.data.local
 
-import com.acv.gym.data.RoutineDataSource
+import com.acv.gym.data.DataSource
+import com.acv.gym.data.model.RoutineDataModel
 import com.acv.gym.domain.gateway.RoutineLocalGateway
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -13,7 +14,7 @@ import java.lang.Exception
 class RoutineLocalGatewayImplTest {
 
     lateinit var gateway: RoutineLocalGateway
-    val dataSource: RoutineDataSource = mock()
+    val dataSource: DataSource<RoutineDataModel> = mock()
 
     @Before
     fun setUp() {
@@ -22,7 +23,7 @@ class RoutineLocalGatewayImplTest {
 
     @Test
     fun shouldNotHappyCaseWhenThrowException() {
-        Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll()
+        Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll(any())
 
         val routines = gateway.obtain()
 
@@ -31,7 +32,7 @@ class RoutineLocalGatewayImplTest {
 
     @Test
     fun shouldHappyCaseWhenGetRoutines() {
-        Mockito.`when`(dataSource.getAll()).thenReturn(listOf())
+        Mockito.`when`(dataSource.getAll(any())).thenReturn(listOf())
 
         val routines = gateway.obtain()
 

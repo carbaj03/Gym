@@ -3,7 +3,7 @@ package com.acv.gym.presentation.module.muscle.group
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.MuscleGroupModel
 import com.acv.gym.domain.usecase.muscle.group.GetMuscleGroupsUseCase
-import com.acv.gym.presentation.module.splash.TestInteractorInvoker
+import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
@@ -47,7 +47,7 @@ class MuscleGroupPresenterTest {
     }
 
     @Test
-    fun `should show error Server When is server exception`() {
+    fun `should show error server When is server exception`() {
         Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.ServerError()))
 
         presenter.loadMuscleGroups()
@@ -55,5 +55,5 @@ class MuscleGroupPresenterTest {
         verify(view, times(1)).showServerError()
     }
 
-    private fun getMuscleGroups() = listOf<MuscleGroupModel>(MuscleGroupModel("", ""))
+    private fun getMuscleGroups() = listOf(MuscleGroupModel("", ""))
 }

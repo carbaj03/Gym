@@ -22,7 +22,6 @@ class SplashActivity : BaseActivity(), SplashView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter.attachView(this)
         presenter.loadSplash()
 
         logoApp.setOnClickListener { nav<SessionActivity>() }
