@@ -2,15 +2,13 @@ package com.acv.gym.presentation.module.exercise.type
 
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.ExerciseTypeModel
-import com.acv.gym.domain.usecase.EmptyCommand
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
-import org.funktionale.either.Disjunction
-import org.junit.Assert.*
+import katz.Either
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
@@ -21,8 +19,8 @@ import org.mockito.Mockito
 class ExerciseTypePresenterTest {
 
     lateinit var presenter: ExerciseTypePresenter
-    val view : ExerciseTypeView = mock()
-    val useCase : GetExerciseTypesUseCase = mock()
+    val view: ExerciseTypeView = mock()
+    val useCase: GetExerciseTypesUseCase = mock()
 
     @Before
     fun setUp() {
@@ -32,7 +30,7 @@ class ExerciseTypePresenterTest {
     @Test
     fun `should show exercise type When call load exercise type`() {
         val exerciseType = getExerciseType()
-        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.right(exerciseType))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Right(exerciseType))
 
         presenter.loadExerciseType()
 
@@ -41,7 +39,7 @@ class ExerciseTypePresenterTest {
 
     @Test
     fun `should show error network When is network exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.NetworkError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.NetworkError()))
 
         presenter.loadExerciseType()
 
@@ -50,12 +48,12 @@ class ExerciseTypePresenterTest {
 
     @Test
     fun `should show error server When is server exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.ServerError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.ServerError()))
 
         presenter.loadExerciseType()
 
         verify(view, times(1)).showServerError()
     }
 
-    private fun  getExerciseType() = listOf(ExerciseTypeModel("", ""))
+    private fun getExerciseType() = listOf(ExerciseTypeModel("", ""))
 }

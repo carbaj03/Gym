@@ -8,7 +8,7 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
-import org.funktionale.either.Disjunction
+import katz.Either
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
@@ -30,7 +30,7 @@ class MuscleGroupPresenterTest {
     @Test
     fun `should show muscle groups When is happy case`() {
         var muscleGroups = getMuscleGroups()
-        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.right(muscleGroups))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Right(muscleGroups))
 
         presenter.loadMuscleGroups()
 
@@ -39,7 +39,7 @@ class MuscleGroupPresenterTest {
 
     @Test
     fun `should show error network When is network exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.NetworkError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.NetworkError()))
 
         presenter.loadMuscleGroups()
 
@@ -48,7 +48,7 @@ class MuscleGroupPresenterTest {
 
     @Test
     fun `should show error server When is server exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.ServerError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.ServerError()))
 
         presenter.loadMuscleGroups()
 

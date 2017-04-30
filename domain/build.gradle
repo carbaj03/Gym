@@ -7,10 +7,9 @@ dependencies {
     testCompile rootProject.ext.testDependencies.junit
     testCompile rootProject.ext.testDependencies.mockitoKotlin
     testCompile rootProject.ext.testDependencies.mockito
-//    testCompile rootProject.ext.testDependencies.junit
-//    testCompile rootProject.ext.testDependencies.mockito
-//    testCompile rootProject.ext.testDependencies.hamcrest
-
+    
+    compile 'com.github.FineCinnamon:Katz:v0.2'
+    compile 'com.github.JMPergar:FutureK:v0.12'
     compile "org.funktionale:funktionale-either:1.0.0-final"
     compile "org.funktionale:funktionale-validation:1.0.0-final"
 

@@ -8,6 +8,7 @@ import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
+import katz.Either
 import org.funktionale.either.Disjunction
 import org.junit.Before
 import org.junit.Test
@@ -32,7 +33,7 @@ class SessionPresenterTest {
     @Test
     fun `should show session When call use case`() {
         var listOf = getSession()
-        Mockito.`when`(useCase.execute(command)).thenReturn(Disjunction.right(getSession()))
+        Mockito.`when`(useCase.execute(command)).thenReturn(Either.Right(getSession()))
 
         presenter.loadSessions(command)
 
@@ -41,7 +42,7 @@ class SessionPresenterTest {
 
     @Test
     fun `should show server error When get session fail`() {
-        Mockito.`when`(useCase.execute(SessionCommand(""))).thenReturn(Disjunction.left(GenericExceptions.ServerError()))
+        Mockito.`when`(useCase.execute(SessionCommand(""))).thenReturn(Either.Left(GenericExceptions.ServerError()))
 
         presenter.loadSessions(SessionCommand(""))
 
@@ -50,7 +51,7 @@ class SessionPresenterTest {
 
     @Test
     fun `should show network error When not connection`() {
-        Mockito.`when`(useCase.execute(SessionCommand(""))).thenReturn(Disjunction.left(GenericExceptions.NetworkError()))
+        Mockito.`when`(useCase.execute(SessionCommand(""))).thenReturn(Either.Left(GenericExceptions.NetworkError()))
 
         presenter.loadSessions(SessionCommand(""))
 

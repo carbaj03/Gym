@@ -5,6 +5,7 @@ import com.acv.gym.domain.gateway.SessionLocalGateway
 import com.acv.gym.domain.model.SessionExerciseModel
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
+import katz.Either
 import org.funktionale.either.Disjunction
 import org.junit.Assert
 import org.junit.Before
@@ -45,8 +46,8 @@ class GetSessionUseCaseTest {
         Assert.assertSame(sessions, response)
     }
 
-    private fun getSession() = Disjunction.right(listOf(SessionExerciseModel("", "", 0f, 0, "")))
+    private fun getSession() = Either.Right(listOf(SessionExerciseModel("", "", 0f, 0, "")))
 
-    private fun getErrorSession() = Disjunction.left(GenericExceptions.NetworkError())
+    private fun getErrorSession() = Either.Left(GenericExceptions.NetworkError())
 
 }

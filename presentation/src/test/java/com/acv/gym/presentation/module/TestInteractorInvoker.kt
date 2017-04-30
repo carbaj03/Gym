@@ -6,6 +6,7 @@ import com.acv.gym.presentation.invoker.InteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doAnswer
 import com.nhaarman.mockito_kotlin.mock
+import katz.Either
 import org.funktionale.either.Disjunction
 
 object TestInteractorInvoker {
@@ -18,8 +19,8 @@ object TestInteractorInvoker {
             val response = execution.interactor.execute(command)
 
             when (response) {
-                is Disjunction.Left -> execution.interactorError(response.swap().get())
-                is Disjunction.Right -> execution.interactorResult(response.value)
+                is Either.Left -> execution.interactorError(response.a)
+                is Either.Right -> execution.interactorResult(response.b)
             }
         }.`when`(interactorInvoker).execute(anyInteractorExecution())
         return interactorInvoker

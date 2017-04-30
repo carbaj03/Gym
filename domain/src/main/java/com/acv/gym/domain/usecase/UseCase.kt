@@ -1,7 +1,7 @@
 package com.acv.gym.domain.usecase
 
-import org.funktionale.either.Disjunction
+import katz.Either
 
-interface UseCase<in I,out R,out E> {
-    fun execute(input: I): Disjunction<E, R>
+interface UseCase<in I, out R, out E> {
+    fun execute(input: I): Either<E, R>
 }

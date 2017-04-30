@@ -4,9 +4,10 @@ package com.acv.gym.domain.gateway
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.LaunchAppModel
 import com.acv.gym.domain.model.RoutineModel
+import katz.Either
 import org.funktionale.either.Disjunction
 
 interface RoutineLocalGateway {
-    fun obtain(): Disjunction<GenericExceptions, List<RoutineModel>>
-    fun persist(): Disjunction<GenericExceptions, List<RoutineModel>>
+    fun obtain(): Either<GenericExceptions, List<RoutineModel>>
+    fun persist(): Either<GenericExceptions, List<RoutineModel>>
 }

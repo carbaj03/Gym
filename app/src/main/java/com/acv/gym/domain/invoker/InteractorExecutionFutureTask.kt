@@ -1,22 +1,22 @@
 package com.acv.gym.domain.invoker
 
-import com.acv.gym.presentation.core.Future
 import com.acv.gym.presentation.invoker.InteractorExecution
-import org.funktionale.either.Disjunction
+import com.jmpergar.futurek.Future
+import katz.Either
 
 class InteractorExecutionFutureTask<I, E, R>(val interactorExecution: InteractorExecution<I, E, R>) {
 
-    lateinit private var future : Future<Disjunction<E, R>>
+    lateinit private var future: Future<Either<E, R>>
 
     fun init() {
         future = Future { interactorExecution.interactor.execute(interactorExecution.params) }
         future.onComplete { renderFeedResult(it) }
     }
 
-    private fun renderFeedResult(result: Disjunction<E, R>): Any =
+    private fun renderFeedResult(result: Either<E, R>): Any =
             when (result) {
-                is Disjunction.Left -> handleError(result.swap().get())
-                is Disjunction.Right -> handleResult(result.value)
+                is Either.Left -> handleError(result.a)
+                is Either.Right -> handleResult(result.b)
             }
 
     private fun handleResult(result: R) {

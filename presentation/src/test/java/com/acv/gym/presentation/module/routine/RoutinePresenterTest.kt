@@ -11,6 +11,7 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
+import katz.Either
 import org.funktionale.either.Disjunction
 import org.junit.Before
 import org.junit.Test
@@ -30,7 +31,7 @@ class RoutinePresenterTest {
     @Test
     fun `should show routines When call use case`() {
         val listOf = getRoutines()
-        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.right(listOf))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Right(listOf))
 
         presenter.loadRoutines()
 
@@ -39,7 +40,7 @@ class RoutinePresenterTest {
 
     @Test
     fun `should show server error When get routines fail`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.ServerError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.ServerError()))
 
         presenter.loadRoutines()
 
@@ -48,7 +49,7 @@ class RoutinePresenterTest {
 
     @Test
     fun `should show network error When not connection`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Disjunction.left(GenericExceptions.NetworkError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.NetworkError()))
 
         presenter.loadRoutines()
 
