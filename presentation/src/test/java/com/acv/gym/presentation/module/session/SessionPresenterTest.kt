@@ -9,7 +9,6 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import katz.Either
-import org.funktionale.either.Disjunction
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito

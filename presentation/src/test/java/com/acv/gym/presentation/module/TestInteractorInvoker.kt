@@ -7,7 +7,6 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doAnswer
 import com.nhaarman.mockito_kotlin.mock
 import katz.Either
-import org.funktionale.either.Disjunction
 
 object TestInteractorInvoker {
 

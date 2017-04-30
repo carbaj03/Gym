@@ -5,7 +5,6 @@ import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.gateway.SessionLocalGateway
 import com.acv.gym.domain.model.SessionExerciseModel
 import com.acv.gym.domain.usecase.UseCase
-import org.funktionale.either.Disjunction
 
 open class GetSessionUseCase(val sessionLocalGateway: SessionLocalGateway) :
         UseCase<SessionCommand, List<SessionExerciseModel>, GenericExceptions> {

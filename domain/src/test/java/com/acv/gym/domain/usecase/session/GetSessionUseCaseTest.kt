@@ -6,7 +6,6 @@ import com.acv.gym.domain.model.SessionExerciseModel
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import katz.Either
-import org.funktionale.either.Disjunction
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
