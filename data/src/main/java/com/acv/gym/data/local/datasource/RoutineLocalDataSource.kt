@@ -5,7 +5,7 @@ import com.acv.gym.data.model.MuscleGroupDataModel
 import com.acv.gym.data.model.RoutineDataModel
 
 
-class RoutineLocalDataSource: DataSource<RoutineDataModel>{
+open class RoutineLocalDataSource: DataSource<RoutineDataModel>{
     override fun getAll() = listOf(RoutineDataModel("1", "Full Body", ""),
             RoutineDataModel("2", "Torso/Pierna", ""), RoutineDataModel("3", "Push/Pull/Leg", ""))
 }

@@ -1,7 +1,6 @@
 package com.acv.gym.data.local
 
-import com.acv.gym.data.DataSource
-import com.acv.gym.data.model.ExerciseTypeDataModel
+import com.acv.gym.data.local.datasource.ExerciseTypeLocalDataSource
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import org.junit.Assert
@@ -12,7 +11,7 @@ import java.lang.Exception
 
 class ExerciseTypeLocalGatewayTest {
     lateinit var gateway: ExerciseTypeLocalGateway
-    val dataSource: DataSource<ExerciseTypeDataModel> = mock()
+    val dataSource: ExerciseTypeLocalDataSource = mock()
 
     @Before
     fun setUp() {
@@ -21,7 +20,7 @@ class ExerciseTypeLocalGatewayTest {
 
     @Test
     fun shouldNotHappyCaseWhenThrowException() {
-        Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll(any())
+        Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll()
 
         val routines = gateway.obtain()
 
@@ -30,7 +29,7 @@ class ExerciseTypeLocalGatewayTest {
 
     @Test
     fun shouldHappyCaseWhenGetRoutines() {
-        Mockito.`when`(dataSource.getAll(any())).thenReturn(listOf())
+        Mockito.`when`(dataSource.getAll()).thenReturn(listOf())
 
         val routines = gateway.obtain()
 

@@ -2,7 +2,7 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.DataSource
+import com.acv.gym.domain.gateway.DataSource
 import com.acv.gym.data.local.ExerciseTypeLocalGateway
 import com.acv.gym.data.model.ExerciseTypeDataModel
 import com.acv.gym.di.scope.ActivityScope

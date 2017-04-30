@@ -1,6 +1,7 @@
 package com.acv.gym.data.local
 
 import com.acv.gym.data.DataSource
+import com.acv.gym.data.local.datasource.SessionExerciseLocalDataSource
 import com.acv.gym.data.model.SessionExerciseDataModel
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -17,7 +18,7 @@ class SessionLocalGatewayImplTest {
 
     lateinit var getSessionLocalGateway: SessionLocalGatewayImpl
 
-    var dataSource: DataSource<SessionExerciseDataModel> = mock()
+    var dataSource: SessionExerciseLocalDataSource = mock()
 
     @Before
     fun setUp() {
@@ -27,7 +28,7 @@ class SessionLocalGatewayImplTest {
     @Test
     fun shouldNotHappyCaseWhenThrowException() {
         val date = ""
-        Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll(any())
+        Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll()
 
         val routines = getSessionLocalGateway.obtain(date)
 
@@ -37,7 +38,7 @@ class SessionLocalGatewayImplTest {
     @Test
     fun shouldHappyCaseWhenGetRoutines() {
         val date = ""
-        Mockito.`when`(dataSource.getAll(any())).thenReturn(listOf())
+        Mockito.`when`(dataSource.getAll()).thenReturn(listOf())
 
         val routines = getSessionLocalGateway.obtain(date)
 

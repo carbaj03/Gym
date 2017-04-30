@@ -1,6 +1,7 @@
 package com.acv.gym.data.local
 
 import com.acv.gym.data.DataSource
+import com.acv.gym.data.local.datasource.MuscleGroupLocalDataSource
 import com.acv.gym.data.model.MuscleGroupDataModel
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -18,7 +19,7 @@ import java.lang.Exception
 class MuscleGroupLocalGatewayImplTest {
 
     lateinit var muscleGroupGatewayImpl: MuscleGroupLocalGatewayImpl
-    val dataSource: DataSource<MuscleGroupDataModel> = mock()
+    val dataSource: MuscleGroupLocalDataSource = mock()
 
     @Before
     fun setUp() {
@@ -27,16 +28,16 @@ class MuscleGroupLocalGatewayImplTest {
 
     @Test
     fun shouldReturnAllMuscleGroupsWhenCallObtain() {
-        Mockito.`when`(dataSource.getAll(any())).thenReturn(listOf())
+        Mockito.`when`(dataSource.getAll()).thenReturn(listOf())
 
         muscleGroupGatewayImpl.obtain()
 
-        verify(dataSource, times(1)).getAll(any())
+        verify(dataSource, times(1)).getAll()
     }
 
     @Test
     fun shouldReturnServerErrorWhenThrowsException() {
-        Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll(any())
+        Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll()
 
         val muscleGroups = muscleGroupGatewayImpl.obtain()
 
