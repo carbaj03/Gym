@@ -5,18 +5,18 @@ import com.acv.gym.data.model.map
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.gateway.MuscleGroupLocalGateway
 import com.acv.gym.domain.model.MuscleGroupModel
-import org.funktionale.either.Disjunction
+import katz.Either
 
 class MuscleGroupLocalGatewayImpl(val dataSource: MuscleGroupLocalDataSource) : MuscleGroupLocalGateway {
-    override fun obtain(): Disjunction<GenericExceptions, List<MuscleGroupModel>> {
+    override fun obtain(): Either<GenericExceptions, List<MuscleGroupModel>> {
         try {
-            return Disjunction.right(dataSource.getAll().map { it.map() })
+            return Either.Right(dataSource.getAll().map { it.map() })
         } catch (ex: Exception) {
-            return Disjunction.left(GenericExceptions.ServerError())
+            return Either.Left(GenericExceptions.ServerError())
         }
     }
 
-    override fun persist(): Disjunction<GenericExceptions, List<MuscleGroupModel>> {
+    override fun persist(): Either<GenericExceptions, List<MuscleGroupModel>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
