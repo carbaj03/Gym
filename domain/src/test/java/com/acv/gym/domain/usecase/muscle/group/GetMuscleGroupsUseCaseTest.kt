@@ -25,8 +25,9 @@ class GetMuscleGroupsUseCaseTest {
 
     @Test
     fun `should get muscle groups When execute`() {
-        getMuscleGroupsUseCase.execute(EmptyCommand())
+        val command = EmptyCommand()
+        getMuscleGroupsUseCase.execute(command)
 
-        verify(muscleGroupGateway, times(1)).obtain()
+        verify(muscleGroupGateway, times(1)).obtain(command)
     }
 }

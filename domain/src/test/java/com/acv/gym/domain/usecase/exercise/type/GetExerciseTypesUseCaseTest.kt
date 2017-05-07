@@ -21,8 +21,9 @@ class GetExerciseTypesUseCaseTest {
 
     @Test
     fun `should return all exercise types When execute`() {
-        useCase.execute(EmptyCommand())
+        val command = EmptyCommand()
+        useCase.execute(command)
 
-        verify(gateway, times(1)).obtain()
+        verify(gateway, times(1)).obtain(command)
     }
 }

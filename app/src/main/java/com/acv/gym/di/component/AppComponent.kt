@@ -16,4 +16,5 @@ interface AppComponent {
     operator fun plus(module: SessionModule): SessionComponent
     operator fun plus(module: MuscleGroupModule): MuscleGroupComponent
     operator fun plus(module: ExerciseTypeModule): ExerciseTypeComponent
+    operator fun plus(module: ExerciseModule): ExerciseComponent
 }

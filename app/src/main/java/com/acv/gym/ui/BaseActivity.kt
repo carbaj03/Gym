@@ -1,31 +1,23 @@
 package com.acv.gym.ui
 
 import android.os.Bundle
-import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
-
-import com.acv.gym.ui.navigation.Navigator
-
+import com.acv.gym.presentation.Presenter
+import com.acv.gym.presentation.View
 import javax.inject.Inject
 
 
-abstract class BaseActivity : AppCompatActivity() {
-
-    @Inject
-    lateinit var navigator: Navigator
+abstract class BaseActivity<out V : View, P : Presenter<V>> : AppCompatActivity() {
+    @Inject lateinit var presenter: P
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupActivityComponent()
-        setupLayout()
+        setContentView(getLayout())
+        setupComponent()
     }
 
-    abstract fun setupActivityComponent()
+    abstract fun setupComponent()
 
-    fun setupLayout() {
-        setContentView(getActivityLayout())
-    }
-
-    abstract fun getActivityLayout() : Int
+    abstract fun getLayout(): Int
 
 }

@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.SessionExerciseModel
+import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.usecase.session.GetSessionUseCase
 import com.acv.gym.domain.usecase.session.SessionCommand
 import com.acv.gym.presentation.module.TestInteractorInvoker
@@ -45,7 +45,7 @@ class SessionPresenterTest {
 
         presenter.loadSessions(SessionCommand(""))
 
-        verify(view, times(1)).renderServerError()
+        verify(view, times(1)).showServerError()
     }
 
     @Test
@@ -54,9 +54,9 @@ class SessionPresenterTest {
 
         presenter.loadSessions(SessionCommand(""))
 
-        verify(view, times(1)).renderNetworkError()
+        verify(view, times(1)).showNetworkError()
     }
 
-    private fun getSession() = listOf(SessionExerciseModel("", "", 0f, 0, ""))
+    private fun getSession() = listOf(SessionExercise("", "", emptyList(), ""))
 
 }

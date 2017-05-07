@@ -1,6 +1,7 @@
 package com.acv.gym.domain.usecase.routine
 
 import com.acv.gym.domain.gateway.RoutineLocalGateway
+import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
@@ -19,8 +20,9 @@ class GetRoutineUseCaseTest {
 
     @Test
     fun shouldCallObtainWhenExecute() {
-        getRoutinesUseCase.execute(Any())
+        val command = EmptyCommand()
+        getRoutinesUseCase.execute(command)
 
-        verify(getRoutinesLocalGateway, times(1)).obtain()
+        verify(getRoutinesLocalGateway, times(1)).obtain(command)
     }
 }

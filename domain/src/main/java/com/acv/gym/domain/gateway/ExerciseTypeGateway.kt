@@ -1,10 +1,7 @@
 package com.acv.gym.domain.gateway
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.ExerciseTypeModel
+import com.acv.gym.domain.model.ExerciseType
 import katz.Either
 
-interface ExerciseTypeGateway {
-    fun obtain(): Either<GenericExceptions, List<ExerciseTypeModel>>
-    fun persist(): Either<GenericExceptions, List<ExerciseTypeModel>>
-}
+interface ExerciseTypeGateway : BaseGateway<GenericExceptions, ExerciseType>

@@ -4,8 +4,9 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.acv.gym.GymApplication
 import com.acv.gym.R
+import com.acv.gym.commons.extension.inject
 import com.acv.gym.di.module.ExerciseTypeModule
-import com.acv.gym.domain.model.ExerciseTypeModel
+import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.module.muscle.group.MuscleGroupAdapter
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypePresenter
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypeView
@@ -13,21 +14,18 @@ import com.acv.gym.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_exercise_type.*
 import javax.inject.Inject
 
-class ExerciseTypeActivity : BaseActivity(), ExerciseTypeView {
-    @Inject lateinit var presenter: ExerciseTypePresenter
+class ExerciseTypeActivity : BaseActivity<ExerciseTypeView, ExerciseTypePresenter>(), ExerciseTypeView {
 
-    override fun setupActivityComponent() {
-        GymApplication.appComponent.plus(ExerciseTypeModule(this)).inject(this)
-    }
+    override fun setupComponent() = inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.loadExerciseType()
     }
 
-    override fun getActivityLayout() = R.layout.activity_exercise_type
+    override fun getLayout() = R.layout.activity_exercise_type
 
-    override fun show(exerciseTypes: List<ExerciseTypeModel>) {
+    override fun show(exerciseTypes: List<ExerciseType>) {
         rvExerciseType.layoutManager = LinearLayoutManager(this)
         rvExerciseType.adapter = ExerciseTypeAdapter(exerciseTypes) {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

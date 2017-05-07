@@ -28,7 +28,7 @@ class RoutineLocalGatewayImplTest {
 
         val routines = gateway.obtain()
 
-        Assert.assertEquals(true, routines.isLeft())
+        Assert.assertEquals(true, routines.isLeft)
     }
 
     @Test
@@ -37,6 +37,6 @@ class RoutineLocalGatewayImplTest {
 
         val routines = gateway.obtain()
 
-        Assert.assertEquals(true, routines.isRight())
+        Assert.assertEquals(true, routines.isRight)
     }
 }

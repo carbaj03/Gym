@@ -4,15 +4,15 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.acv.gym.R
 import com.acv.gym.commons.extension.inflate
-import com.acv.gym.domain.model.ExerciseTypeModel
-import com.acv.gym.domain.model.MuscleGroupModel
-import com.acv.gym.domain.model.SessionExerciseModel
+import com.acv.gym.domain.model.ExerciseType
+import com.acv.gym.domain.model.MuscleGroup
+import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.module.muscle.group.MuscleGroupViewHolder
 import com.acv.gym.module.session.SessionViewHolder
 
 class ExerciseTypeAdapter(
-        val exerciseTypes: List<ExerciseTypeModel>,
-        val listener: (ExerciseTypeModel) -> Unit)
+        val exerciseTypes: List<ExerciseType>,
+        val listener: (ExerciseType) -> Unit)
     : RecyclerView.Adapter<ExerciseTypeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

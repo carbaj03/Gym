@@ -1,8 +1,8 @@
 package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.RoutineModel
-import com.acv.gym.domain.model.SessionExerciseModel
+import com.acv.gym.domain.model.Routine
+import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
@@ -23,17 +23,17 @@ open class SessionPresenter(view: SessionView,
                 .execute(invoker)
 
 
-    private fun happyCase(sessionExercises: List<SessionExerciseModel>) {
+    private fun happyCase(sessionExercises: List<SessionExercise>) {
         view.show(sessionExercises)
     }
 
     private fun manageExceptions(exceptions: GenericExceptions) {
         when (exceptions) {
-            is GenericExceptions.NetworkError -> view.renderNetworkError()
-            is GenericExceptions.ServerError -> view.renderServerError()
+            is GenericExceptions.NetworkError -> view.showNetworkError()
+            is GenericExceptions.ServerError -> view.showServerError()
         }
     }
 
-    fun checkExercise(sessionExercises : SessionExerciseModel) {
+    fun checkExercise(sessionExercises : SessionExercise) {
     }
 }

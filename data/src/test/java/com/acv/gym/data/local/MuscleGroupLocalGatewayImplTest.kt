@@ -41,6 +41,6 @@ class MuscleGroupLocalGatewayImplTest {
 
         val muscleGroups = muscleGroupGatewayImpl.obtain()
 
-        Assert.assertEquals(true, muscleGroups.isLeft())
+        Assert.assertEquals(true, muscleGroups.isLeft)
     }
 }

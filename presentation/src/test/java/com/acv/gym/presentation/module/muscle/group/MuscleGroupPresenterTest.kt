@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module.muscle.group
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.MuscleGroupModel
+import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.domain.usecase.muscle.group.GetMuscleGroupsUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
@@ -55,5 +55,5 @@ class MuscleGroupPresenterTest {
         verify(view, times(1)).showServerError()
     }
 
-    private fun getMuscleGroups() = listOf(MuscleGroupModel("", ""))
+    private fun getMuscleGroups() = listOf(MuscleGroup("", ""))
 }

@@ -3,11 +3,12 @@ package com.acv.gym.domain.usecase.routine
 
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.gateway.RoutineLocalGateway
-import com.acv.gym.domain.model.RoutineModel
+import com.acv.gym.domain.model.Routine
+import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.UseCase
 
 open class GetRoutineUseCase(val getRoutinesLocalGateway: RoutineLocalGateway)
-    : UseCase<Any, List<RoutineModel>, GenericExceptions> {
+    : UseCase<Command, List<Routine>, GenericExceptions> {
 
-    override fun execute(input: Any) = getRoutinesLocalGateway.obtain()
+    override fun execute(input: Command) = getRoutinesLocalGateway.obtain(input)
 }

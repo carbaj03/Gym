@@ -1,8 +1,12 @@
 package com.acv.gym.data.local
 
 import com.acv.gym.data.local.datasource.ExerciseTypeLocalDataSource
+import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.model.ExerciseType
+import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
+import katz.Either
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -24,7 +28,7 @@ class ExerciseTypeLocalGatewayTest {
 
         val routines = gateway.obtain()
 
-        Assert.assertEquals(true, routines.isLeft())
+        Assert.assertEquals(true, routines.isLeft)
     }
 
     @Test
@@ -33,6 +37,6 @@ class ExerciseTypeLocalGatewayTest {
 
         val routines = gateway.obtain()
 
-        Assert.assertEquals(true, routines.isRight())
+        Assert.assertEquals(true, routines.isRight)
     }
 }

@@ -2,6 +2,7 @@ package com.acv.gym.data.local
 
 import com.acv.gym.data.local.Cache
 import com.acv.gym.data.local.LaunchAppLocalGatewayImpl
+import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import org.junit.Assert
 import org.junit.Before
@@ -27,7 +28,7 @@ class LaunchAppLocalGatewayImplTest {
 
         val launchAppModel = launchAppLocalGatewayImpl.obtain()
 
-        Assert.assertEquals(true, launchAppModel.isLeft())
+        Assert.assertEquals(true, launchAppModel.isLeft)
     }
 
     @Test
@@ -37,7 +38,7 @@ class LaunchAppLocalGatewayImplTest {
 
         val launchAppModel = launchAppLocalGatewayImpl.obtain()
 
-        Assert.assertEquals(true, launchAppModel.isRight())
+        Assert.assertEquals(true, launchAppModel.isRight)
     }
 
     @Test
@@ -47,7 +48,7 @@ class LaunchAppLocalGatewayImplTest {
 
         val launchAppModel = launchAppLocalGatewayImpl.obtain()
 
-        launchAppModel.map { Assert.assertEquals(true, it.isFirstTime) }
+        launchAppModel.map { Assert.assertEquals(true, it[0].isFirstTime) }
     }
 
     @Test
@@ -55,8 +56,8 @@ class LaunchAppLocalGatewayImplTest {
         `when`(sharedPreferences.get(LaunchAppLocalGatewayImpl.KEY_IS_FIRST_TIME_LAUNCH_APP, true))
                 .thenReturn(false)
 
-        val launchAppModel = launchAppLocalGatewayImpl.obtain()
+        val launchAppModel = launchAppLocalGatewayImpl.obtain(EmptyCommand())
 
-        launchAppModel.map { Assert.assertEquals(false, it.isFirstTime) }
+        launchAppModel.map { Assert.assertEquals(false, it[0].isFirstTime) }
     }
 }

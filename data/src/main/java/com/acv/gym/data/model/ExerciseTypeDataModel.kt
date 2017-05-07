@@ -1,7 +1,7 @@
 package com.acv.gym.data.model
 
-import com.acv.gym.domain.model.ExerciseTypeModel
+import com.acv.gym.domain.model.ExerciseType
 
 data class ExerciseTypeDataModel(val id : String, val name : String) : DataModel
 
-fun ExerciseTypeDataModel.map() = ExerciseTypeModel(id, name)
+fun ExerciseTypeDataModel.map() = ExerciseType(id, name)

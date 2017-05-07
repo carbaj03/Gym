@@ -4,11 +4,12 @@ import com.acv.gym.data.local.datasource.ExerciseTypeLocalDataSource
 import com.acv.gym.data.model.map
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.gateway.ExerciseTypeGateway
-import com.acv.gym.domain.model.ExerciseTypeModel
+import com.acv.gym.domain.model.ExerciseType
+import com.acv.gym.domain.usecase.Command
 import katz.Either
 
 class ExerciseTypeLocalGateway(val dataSource: ExerciseTypeLocalDataSource) : ExerciseTypeGateway {
-    override fun obtain(): Either<GenericExceptions, List<ExerciseTypeModel>> {
+    override fun obtain(command: Command): Either<GenericExceptions, List<ExerciseType>> {
         try {
             return Either.Right(dataSource.getAll().map { it.map() })
         } catch (ex: Exception) {
@@ -16,7 +17,7 @@ class ExerciseTypeLocalGateway(val dataSource: ExerciseTypeLocalDataSource) : Ex
         }
     }
 
-    override fun persist(): Either<GenericExceptions, List<ExerciseTypeModel>> {
+    override fun persist(): Either<GenericExceptions, List<ExerciseType>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

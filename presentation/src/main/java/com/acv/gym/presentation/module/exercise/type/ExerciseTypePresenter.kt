@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module.exercise.type
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.ExerciseTypeModel
+import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
@@ -19,7 +19,7 @@ class ExerciseTypePresenter(view: ExerciseTypeView,
                 .execute(invoker)
     }
 
-    private fun happyCase(exerciseTypes: List<ExerciseTypeModel>) = view.show(exerciseTypes)
+    private fun happyCase(exerciseTypes: List<ExerciseType>) = view.show(exerciseTypes)
 
     private fun manageExceptions(exception: GenericExceptions) = when (exception) {
         is GenericExceptions.NetworkError -> view.showNetworkError()

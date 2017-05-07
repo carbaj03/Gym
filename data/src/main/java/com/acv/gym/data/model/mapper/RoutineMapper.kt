@@ -2,11 +2,11 @@ package com.acv.gym.data.model.mapper
 
 import com.acv.gym.data.model.RoutineDataModel
 import com.acv.gym.domain.mapper.Mapper
-import com.acv.gym.domain.model.RoutineModel
+import com.acv.gym.domain.model.Routine
 
 
-class RoutineMapper : Mapper<RoutineDataModel, RoutineModel> {
+class RoutineMapper : Mapper<RoutineDataModel, Routine> {
     override fun map(input: RoutineDataModel) = with(input) {
-        RoutineModel(id, name, image)
+        Routine(id, name, image)
     }
 }

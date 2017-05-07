@@ -1,6 +1,7 @@
 package com.acv.gym.domain.usecase.splash
 
 import com.acv.gym.domain.gateway.LaunchAppLocalGateway
+import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import org.junit.Before
 import org.junit.Test
@@ -20,8 +21,9 @@ class CheckSplashUseCaseTest {
 
     @Test
     fun shouldObtainLaunchAppWhenCallUseCase() {
-        checkSplashUseCase.execute(Any())
+        val command = EmptyCommand()
+        checkSplashUseCase.execute(command)
 
-        verify(gateway, times(1)).obtain()
+        verify(gateway, times(1)).obtain(command)
     }
 }

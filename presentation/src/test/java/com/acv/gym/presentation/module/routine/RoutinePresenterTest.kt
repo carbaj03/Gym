@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module.routine
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.RoutineModel
+import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
@@ -40,7 +40,7 @@ class RoutinePresenterTest {
 
         presenter.loadRoutines()
 
-        verify(view, times(1)).renderServerError()
+        verify(view, times(1)).showServerError()
     }
 
     @Test
@@ -49,8 +49,8 @@ class RoutinePresenterTest {
 
         presenter.loadRoutines()
 
-        verify(view, times(1)).renderNetworkError()
+        verify(view, times(1)).showNetworkError()
     }
 
-    private fun getRoutines() = listOf(RoutineModel("", "", ""))
+    private fun getRoutines() = listOf(Routine("", "", ""))
 }

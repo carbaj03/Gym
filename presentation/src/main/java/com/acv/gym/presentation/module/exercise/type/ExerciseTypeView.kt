@@ -1,10 +1,8 @@
 package com.acv.gym.presentation.module.exercise.type
 
-import com.acv.gym.domain.model.ExerciseTypeModel
+import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.presentation.View
+import com.acv.gym.presentation.ViewError
+import com.acv.gym.presentation.ViewShow
 
-interface ExerciseTypeView : View {
-    fun show(exerciseTypes: List<ExerciseTypeModel>)
-    fun showNetworkError()
-    fun showServerError()
-}
+interface ExerciseTypeView : View, ViewShow<ExerciseType>, ViewError

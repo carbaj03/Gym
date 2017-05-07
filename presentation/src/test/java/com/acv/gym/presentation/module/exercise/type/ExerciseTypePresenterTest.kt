@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module.exercise.type
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.ExerciseTypeModel
+import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
@@ -55,5 +55,5 @@ class ExerciseTypePresenterTest {
         verify(view, times(1)).showServerError()
     }
 
-    private fun getExerciseType() = listOf(ExerciseTypeModel("", ""))
+    private fun getExerciseType() = listOf(ExerciseType("", ""))
 }

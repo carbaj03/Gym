@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module.splash
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.LaunchAppModel
+import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
@@ -30,11 +30,11 @@ class SplashPresenterTest {
 
     @Test
     fun `should show splash When call use case`() {
-        `when`(checkSplashUseCase.execute(any)).thenReturn(Either.Right(LaunchAppModel(true)))
+        `when`(checkSplashUseCase.execute(any)).thenReturn(Either.Right(listOf(LaunchApp(true))))
 
         presenter.loadSplash()
 
-        verify(view).showSplash()
+        verify(view).show(emptyList())
     }
 
     @Test
@@ -43,7 +43,7 @@ class SplashPresenterTest {
 
         presenter.loadSplash()
 
-        verify(view).renderServerError()
+        verify(view).showServerError()
     }
 
     @Test
@@ -52,6 +52,6 @@ class SplashPresenterTest {
 
         presenter.loadSplash()
 
-        verify(view).renderNetworkError()
+        verify(view).showNetworkError()
     }
 }

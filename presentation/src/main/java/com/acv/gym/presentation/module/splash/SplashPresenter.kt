@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module.splash
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.LaunchAppModel
+import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
@@ -16,20 +16,21 @@ open class SplashPresenter(view: SplashView,
 
     fun loadSplash(command: Command = EmptyCommand()) {
         InteractorExecution(checkSplashUseCase, command)
-                .result { happyCase(it) }
+                .result { happyCase(it[0]) }
                 .errorResult { manageExceptions(it) }
                 .execute(interactorInvokerImp)
     }
 
-    private fun happyCase(launchAppModel: LaunchAppModel) : Unit {
-        if (launchAppModel.isFirstTime) {
-            view.showSplash()
-        }
-    }
+    private fun happyCase(launchAppModel: LaunchApp) =
+            when (launchAppModel.isFirstTime) {
+                true -> view.show(emptyList())
+                false -> view.showNetworkError()
+            }
+
 
     private fun manageExceptions(exceptions: GenericExceptions) =
             when (exceptions) {
-                is GenericExceptions.NetworkError -> view.renderNetworkError()
-                is GenericExceptions.ServerError -> view.renderServerError()
+                is GenericExceptions.NetworkError -> view.showNetworkError()
+                is GenericExceptions.ServerError -> view.showServerError()
             }
 }

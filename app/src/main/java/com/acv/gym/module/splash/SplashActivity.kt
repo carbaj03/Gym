@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.acv.gym.GymApplication
 import com.acv.gym.R
+import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.nav
 import com.acv.gym.di.module.SplashModule
 import com.acv.gym.module.session.SessionActivity
@@ -13,12 +14,8 @@ import com.acv.gym.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import javax.inject.Inject
 
-class SplashActivity : BaseActivity(), SplashView {
-    @Inject lateinit var presenter: SplashPresenter
-
-    override fun setupActivityComponent() {
-        GymApplication.appComponent.plus(SplashModule(this)).inject(this)
-    }
+class SplashActivity : BaseActivity<SplashView, SplashPresenter>(), SplashView {
+    override fun setupComponent() = inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,17 +24,17 @@ class SplashActivity : BaseActivity(), SplashView {
         logoApp.setOnClickListener { nav<SessionActivity>() }
     }
 
-    override fun getActivityLayout() = R.layout.activity_splash
+    override fun getLayout() = R.layout.activity_splash
 
-    override fun showSplash() {
+    override fun show(data: List<Any>) {
         logoApp.visibility = View.VISIBLE
     }
 
-    override fun renderNetworkError() {
+    override fun showNetworkError() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun renderServerError() {
+    override fun showServerError() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

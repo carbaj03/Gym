@@ -27,21 +27,19 @@ class SessionLocalGatewayImplTest {
 
     @Test
     fun shouldNotHappyCaseWhenThrowException() {
-        val date = ""
         Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll()
 
-        val routines = getSessionLocalGateway.obtain(date)
+        val routines = getSessionLocalGateway.obtain()
 
-        Assert.assertEquals(true, routines.isLeft())
+        Assert.assertEquals(true, routines.isLeft)
     }
 
     @Test
     fun shouldHappyCaseWhenGetRoutines() {
-        val date = ""
         Mockito.`when`(dataSource.getAll()).thenReturn(listOf())
 
-        val routines = getSessionLocalGateway.obtain(date)
+        val routines = getSessionLocalGateway.obtain()
 
-        Assert.assertEquals(true, routines.isRight())
+        Assert.assertEquals(true, routines.isRight)
     }
 }

@@ -29,8 +29,13 @@
             android:launchMode="singleTask"/>
 
         <activity
-            android:name="com.acv.gym.module.muscle.group.MuscleGroupActivity"
+            android:name=".module.muscle.group.MuscleGroupActivity"
             android:launchMode="singleTask"/>
+
+        <activity
+            android:name=".module.exercise.type.ExerciseTypeActivity"
+            android:launchMode="singleTask"/>
+
     </application>
 
 </manifest>

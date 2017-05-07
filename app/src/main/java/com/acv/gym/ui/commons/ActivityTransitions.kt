@@ -5,16 +5,16 @@ import android.content.Intent
 import com.acv.gym.R
 import com.acv.gym.ui.BaseActivity
 
-fun BaseActivity.setFadeInOutAnimation()
+fun Activity.setFadeInOutAnimation()
         = overridePendingTransition(R.anim.anim_fade_in, R.anim.anim_fade_out)
 
-fun BaseActivity.setSlideUpAnimation()
+fun Activity.setSlideUpAnimation()
         = overridePendingTransition(R.anim.anim_slide_up, R.anim.anim_no_change)
 
-fun BaseActivity.setSlideRightAnimation()
+fun Activity.setSlideRightAnimation()
         = overridePendingTransition(R.anim.anim_slide_enter_from_right, R.anim.anim_no_change)
 
-fun BaseActivity.setSlideExitToRightAnimation()
+fun Activity.setSlideExitToRightAnimation()
         = overridePendingTransition(R.anim.anim_no_change, R.anim.anim_slide_exit_to_right)
 
 inline fun <reified T : Activity> Activity.goToActivity(id: String = "Empty") {
