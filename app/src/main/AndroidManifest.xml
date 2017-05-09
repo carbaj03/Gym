@@ -3,8 +3,8 @@
     package="com.acv.gym">
 
     <application
-        android:allowBackup="true"
         android:name=".GymApplication"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -22,20 +22,31 @@
 
         <activity
             android:name=".module.routine.RoutineActivity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
 
         <activity
             android:name=".module.session.SessionActivity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
 
         <activity
             android:name=".module.muscle.group.MuscleGroupActivity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
 
         <activity
             android:name=".module.exercise.type.ExerciseTypeActivity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
 
+        <activity
+            android:name=".module.exercise.ExerciseActivity"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".module.rep.RepActivity"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".module.weight.WeightActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

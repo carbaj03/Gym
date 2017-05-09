@@ -14,12 +14,9 @@ class GymApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        initializeDagger()
+        appComponent = initializeDagger()
     }
 
-    fun initializeDagger() {
-        appComponent = DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .build()
-    }
+    fun initializeDagger() = DaggerAppComponent.builder().appModule(AppModule(this)).build()
+
 }
