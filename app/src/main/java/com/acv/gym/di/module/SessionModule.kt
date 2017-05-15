@@ -2,7 +2,7 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.local.SessionLocalGatewayImpl
+import com.acv.gym.data.local.SessionLocalGateway
 import com.acv.gym.data.local.datasource.SessionExerciseLocalDataSource
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.invoker.InteractorInvokerImp
@@ -28,13 +28,13 @@ class SessionModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideUseCase(localGateway: SessionLocalGatewayImpl)
+    fun provideUseCase(localGateway: SessionLocalGateway)
             = GetSessionUseCase(localGateway)
 
     @ActivityScope
     @Provides
     fun provideLocalGateway(dataSource: SessionExerciseLocalDataSource)
-            = SessionLocalGatewayImpl(dataSource)
+            = SessionLocalGateway(dataSource)
 
     @ActivityScope
     @Provides

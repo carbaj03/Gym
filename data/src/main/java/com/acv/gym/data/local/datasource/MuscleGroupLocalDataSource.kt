@@ -1,7 +1,7 @@
 package com.acv.gym.data.local.datasource
 
 import com.acv.gym.data.DataSource
-import com.acv.gym.data.model.MuscleGroupDataModel
+import com.acv.gym.data.local.model.MuscleGroupDataModel
 
 
 open class MuscleGroupLocalDataSource: DataSource<MuscleGroupDataModel> {

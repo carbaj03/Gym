@@ -6,4 +6,4 @@ import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.model.LaunchApp
 import katz.Either
 
-interface LaunchAppLocalGateway: BaseGateway<GenericExceptions, LaunchApp>
+interface LaunchAppGateway : BaseGateway<GenericExceptions, LaunchApp>

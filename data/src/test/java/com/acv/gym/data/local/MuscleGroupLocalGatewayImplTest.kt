@@ -1,9 +1,6 @@
 package com.acv.gym.data.local
 
-import com.acv.gym.data.DataSource
 import com.acv.gym.data.local.datasource.MuscleGroupLocalDataSource
-import com.acv.gym.data.model.MuscleGroupDataModel
-import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
@@ -18,12 +15,12 @@ import java.lang.Exception
  */
 class MuscleGroupLocalGatewayImplTest {
 
-    lateinit var muscleGroupGatewayImpl: MuscleGroupLocalGatewayImpl
+    lateinit var muscleGroupGatewayImpl: MuscleGroupLocalGateway
     val dataSource: MuscleGroupLocalDataSource = mock()
 
     @Before
     fun setUp() {
-        muscleGroupGatewayImpl = MuscleGroupLocalGatewayImpl(dataSource)
+        muscleGroupGatewayImpl = MuscleGroupLocalGateway(dataSource)
     }
 
     @Test

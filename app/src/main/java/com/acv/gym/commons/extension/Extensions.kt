@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.ViewGroup
+import android.widget.SeekBar
 import com.acv.gym.GymApplication
-import com.acv.gym.R
+import com.acv.gym.commons.listener.SeekBarListener
 import com.acv.gym.di.module.*
 import com.acv.gym.module.exercise.ExerciseActivity
 import com.acv.gym.module.exercise.type.ExerciseTypeActivity
@@ -17,20 +18,31 @@ import com.acv.gym.module.session.SessionActivity
 import com.acv.gym.module.splash.SplashActivity
 import com.acv.gym.module.weight.WeightActivity
 import com.acv.gym.ui.commons.goToActivity
-import com.acv.gym.ui.commons.setFadeInOutAnimation
+import com.acv.gym.ui.commons.setSlideExitToRightAnimation
+import com.acv.gym.ui.commons.setSlideRightAnimation
 
 infix fun ViewGroup.inflate(res: Int) = LayoutInflater.from(context).inflate(res, this, false)
 
 inline fun <reified T : Activity> Activity.nav() {
     goToActivity<T>()
-    setFadeInOutAnimation()
+    finish()
+    setSlideRightAnimation()
+}
+
+inline fun <reified T : Activity> Activity.navStack() {
+    goToActivity<T>()
+    setSlideRightAnimation()
+}
+
+inline fun Activity.navBack() {
+    finish()
+    setSlideExitToRightAnimation()
 }
 
 inline fun <reified T : Activity> Activity.menuNav(): Boolean {
     nav<T>()
     return true
 }
-
 
 fun Activity.inject() {
     when (this) {
@@ -48,4 +60,8 @@ fun Activity.inject() {
 fun MenuInflater.make(menuRes: Int, menu: Menu): Boolean {
     inflate(menuRes, menu)
     return true
+}
+
+fun SeekBar.listener(f: (Int) -> Unit) {
+    setOnSeekBarChangeListener(SeekBarListener { f(it) })
 }

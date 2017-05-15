@@ -17,7 +17,5 @@ abstract class BaseActivity<out V : View, P : Presenter<V>> : AppCompatActivity(
     }
 
     abstract fun setupComponent()
-
     abstract fun getLayout(): Int
-
 }

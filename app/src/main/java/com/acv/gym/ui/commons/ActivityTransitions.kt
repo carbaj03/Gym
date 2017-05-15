@@ -3,7 +3,6 @@ package com.acv.gym.ui.commons
 import android.app.Activity
 import android.content.Intent
 import com.acv.gym.R
-import com.acv.gym.ui.BaseActivity
 
 fun Activity.setFadeInOutAnimation()
         = overridePendingTransition(R.anim.anim_fade_in, R.anim.anim_fade_out)
@@ -19,7 +18,7 @@ fun Activity.setSlideExitToRightAnimation()
 
 inline fun <reified T : Activity> Activity.goToActivity(id: String = "Empty") {
     var intent = Intent(this, T::class.java)
-    if(!id.equals("Empty")){
+    if (!id.equals("Empty")) {
         intent.putExtra("ID", id)
     }
     startActivity(intent)

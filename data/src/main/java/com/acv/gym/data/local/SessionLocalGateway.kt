@@ -2,14 +2,16 @@ package com.acv.gym.data.local
 
 
 import com.acv.gym.data.local.datasource.SessionExerciseLocalDataSource
-import com.acv.gym.data.model.map
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.gateway.SessionLocalGateway
+import com.acv.gym.domain.gateway.SessionGateway
 import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.usecase.Command
 import katz.Either
 
-class SessionLocalGatewayImpl(val dataSource: SessionExerciseLocalDataSource) : SessionLocalGateway {
+class SessionLocalGateway(val dataSource: SessionExerciseLocalDataSource) : SessionGateway {
+    override fun persist(list: List<SessionExercise>): Either<GenericExceptions, List<SessionExercise>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     override fun obtain(input: Command): Either<GenericExceptions, List<SessionExercise>> {
         try {

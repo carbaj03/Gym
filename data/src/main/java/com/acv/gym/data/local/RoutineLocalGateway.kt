@@ -2,14 +2,14 @@ package com.acv.gym.data.local
 
 
 import com.acv.gym.data.local.datasource.RoutineLocalDataSource
-import com.acv.gym.data.model.map
+import com.acv.gym.data.local.model.map
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.gateway.RoutineLocalGateway
+import com.acv.gym.domain.gateway.RoutineGateway
 import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.usecase.Command
 import katz.Either
 
-open class RoutineLocalGatewayImpl(val dataSource: RoutineLocalDataSource) : RoutineLocalGateway {
+open class RoutineLocalGateway(val dataSource: RoutineLocalDataSource) : RoutineGateway {
 
     override fun obtain(command: Command): Either<GenericExceptions, List<Routine>> {
         try {

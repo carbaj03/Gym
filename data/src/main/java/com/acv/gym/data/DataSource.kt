@@ -1,8 +1,9 @@
 package com.acv.gym.data
 
-import com.acv.gym.data.model.DataModel
-import com.acv.gym.data.model.RoutineDataModel
+import com.acv.gym.domain.GenericExceptions
+import katz.Either
 
-interface DataSource<out T: DataModel> {
-    fun getAll(): List<T>
+interface DataSource<T : DataModel> {
+    fun getAll(): Either<GenericExceptions, List<T>>
+    fun persist(data: List<T>): Either<GenericExceptions, List<T>>
 }

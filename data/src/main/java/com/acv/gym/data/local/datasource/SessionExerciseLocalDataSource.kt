@@ -1,8 +1,8 @@
 package com.acv.gym.data.local.datasource
 
 import com.acv.gym.data.DataSource
-import com.acv.gym.data.model.SessionExerciseDataModel
-import com.acv.gym.data.model.SessionSetDataModel
+import com.acv.gym.data.local.model.SessionExerciseDataModel
+import com.acv.gym.data.local.model.SessionSetDataModel
 
 
 open class SessionExerciseLocalDataSource : DataSource<SessionExerciseDataModel> {

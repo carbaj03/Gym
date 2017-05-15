@@ -10,6 +10,5 @@ import dagger.Subcomponent
 @Subcomponent(modules = arrayOf(ExerciseModule::class))
 interface ExerciseComponent {
     fun inject(activity: ExerciseActivity)
-
     val presenter: ExercisePresenter
 }
