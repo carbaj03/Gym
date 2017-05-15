@@ -1,10 +1,11 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion parent.ext.androidCompileSdkVersion
     buildToolsVersion parent.ext.androidBuildToolsVersion
-    
+
     defaultConfig {
         applicationId parent.ext.androidApplicationId
         minSdkVersion parent.ext.androidMinSdkVersion
@@ -22,6 +23,17 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.1.1'
+    }
+}
+
+// Required for annotation processing plugins like Dagger
+kapt {
+    generateStubs = true
+}
+
 dependencies {
     compile project(path: ':presentation')
     compile project(path: ':data')
@@ -37,19 +49,22 @@ dependencies {
     kapt rootProject.ext.dependencies.daggerCompiler
     compile rootProject.ext.dependencies.dagger
 
+    compile rootProject.ext.dependencies.kotlinStdlibJre7
     compile rootProject.ext.dependencies.ankoSdk15
     compile rootProject.ext.dependencies.ankoSupportV4
     compile rootProject.ext.dependencies.ankoCompatV7
 
-    compile rootProject.ext.dependencies.kotlinStdlibJre7
-    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.12"
-    compile "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.13"
+    compile rootProject.ext.dependencies.log
 
-    testCompile rootProject.ext.testDependencies.junit
+    androidTestCompile rootProject.ext.testDependencies.junit
+    androidTestCompile rootProject.ext.testDependencies.mockitoKotlin
+    androidTestCompile rootProject.ext.testDependencies.mockito
+
 
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
     androidTestCompile 'com.android.support:support-annotations:25.3.0'
-//    androidTestCompile 'com.github.fabioCollini:DaggerMock:0.6.3'
-//    testCompile 'com.github.fabioCollini:DaggerMock:0.6.3'
+    androidTestCompile 'com.github.fabioCollini:DaggerMock:0.6.3'
+    testCompile 'com.github.fabioCollini:DaggerMock:0.6.3'
 }
+

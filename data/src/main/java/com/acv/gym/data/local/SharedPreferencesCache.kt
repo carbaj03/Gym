@@ -4,11 +4,11 @@ import android.content.Context
 import android.content.SharedPreferences
 import java.lang.IllegalArgumentException
 
-class SharedPreferencesCache<T>(context: Context) : Cache {
+class SharedPreferencesCache(context: Context) : Cache {
 
     val prefs: SharedPreferences by lazy { context.getSharedPreferences("default", Context.MODE_PRIVATE) }
 
-    override fun <T> get(name: String, default: T): T = with(prefs) {
+    override fun <T> get(name: String, default: T) = with(prefs) {
         val res: Any = when (default) {
             is Long -> getLong(name, default)
             is String -> getString(name, default)

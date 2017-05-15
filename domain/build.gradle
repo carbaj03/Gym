@@ -5,9 +5,12 @@ targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
     testCompile rootProject.ext.testDependencies.junit
+    testCompile rootProject.ext.testDependencies.mockitoKotlin
     testCompile rootProject.ext.testDependencies.mockito
-    testCompile rootProject.ext.testDependencies.hamcrest
 
-    compile "org.funktionale:funktionale-either:1.0.0-final"
-    compile "org.funktionale:funktionale-validation:1.0.0-final"
+    compile 'com.github.FineCinnamon:Katz:v0.2'
+    compile 'com.github.JMPergar:FutureK:v0.12'
+
+    compile rootProject.ext.dependencies.coroutines
+    compile rootProject.ext.dependencies.coroutinesAndroid
 }

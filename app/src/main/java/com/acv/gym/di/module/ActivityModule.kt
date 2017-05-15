@@ -10,7 +10,7 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-open class ActivityModule(protected val activity: Activity) {
+open class ActivityModule(val activity: Activity) {
 
     @Provides fun provideActivity(): Activity  = activity
 

@@ -1,40 +1,40 @@
 package com.acv.gym.module.splash
 
 import android.os.Bundle
-import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.TextView
 import com.acv.gym.GymApplication
-
 import com.acv.gym.R
+import com.acv.gym.commons.extension.inject
+import com.acv.gym.commons.extension.nav
 import com.acv.gym.di.module.SplashModule
-import com.acv.gym.presentation.splash.SplashPresenter
-import com.acv.gym.presentation.splash.SplashView
+import com.acv.gym.module.session.SessionActivity
+import com.acv.gym.presentation.module.splash.SplashPresenter
+import com.acv.gym.presentation.module.splash.SplashView
 import com.acv.gym.ui.BaseActivity
-import org.jetbrains.anko.find
-
+import kotlinx.android.synthetic.main.activity_splash.*
 import javax.inject.Inject
 
-class SplashActivity : BaseActivity(), SplashView {
-    @Inject
-    lateinit var presenter: SplashPresenter
-
-    val logoApp by lazy { find<TextView>(R.id.logoApp) }
-
-    override fun setupActivityComponent() {
-        GymApplication.appComponent.plus(SplashModule(this)).inject(this)
-    }
-
-    override fun getActivityLayout(): Int {
-        return R.layout.activity_splash
-    }
+class SplashActivity : BaseActivity<SplashView, SplashPresenter>(), SplashView {
+    override fun setupComponent() = inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter.attachView(this)
+        presenter.loadSplash()
+
+        logoApp.setOnClickListener { nav<SessionActivity>() }
     }
 
-    override fun showSplash() {
+    override fun getLayout() = R.layout.activity_splash
+
+    override fun show(data: List<Any>) {
         logoApp.visibility = View.VISIBLE
+    }
+
+    override fun showNetworkError() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showServerError() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
