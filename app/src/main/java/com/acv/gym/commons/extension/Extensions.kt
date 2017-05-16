@@ -20,17 +20,18 @@ import com.acv.gym.module.weight.WeightActivity
 import com.acv.gym.ui.commons.goToActivity
 import com.acv.gym.ui.commons.setSlideExitToRightAnimation
 import com.acv.gym.ui.commons.setSlideRightAnimation
+import katz.Option
 
 infix fun ViewGroup.inflate(res: Int) = LayoutInflater.from(context).inflate(res, this, false)
 
-inline fun <reified T : Activity> Activity.nav() {
-    goToActivity<T>()
+inline fun <reified T : Activity> Activity.nav(id: Option<String> = Option.None) {
+    goToActivity<T>(id)
     finish()
     setSlideRightAnimation()
 }
 
-inline fun <reified T : Activity> Activity.navStack() {
-    goToActivity<T>()
+inline fun <reified T : Activity> Activity.navStack(id: Option<String> = Option.None) {
+    goToActivity<T>(id)
     setSlideRightAnimation()
 }
 

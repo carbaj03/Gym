@@ -1,6 +1,6 @@
 package com.acv.gym.domain.usecase.splash
 
-import com.acv.gym.domain.gateway.LaunchAppGateway
+import com.acv.gym.domain.LaunchAppGateway
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import org.junit.Before

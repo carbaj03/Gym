@@ -7,10 +7,6 @@ import katz.Either
 
 
 open class ExercisesLocalDataSource : DataSource<ExerciseDataModel> {
-    override fun persist(data: List<ExerciseDataModel>): Either<GenericExceptions, List<ExerciseDataModel>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun getAll(): Either<GenericExceptions, List<ExerciseDataModel>> =
             Either.Right(
                     listOf(
@@ -21,4 +17,8 @@ open class ExercisesLocalDataSource : DataSource<ExerciseDataModel> {
                             , ExerciseDataModel("5", "Squat")
                     )
             )
+
+    override fun persist(data: List<ExerciseDataModel>): Either<GenericExceptions, List<ExerciseDataModel>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

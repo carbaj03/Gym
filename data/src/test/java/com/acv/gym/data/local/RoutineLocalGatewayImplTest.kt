@@ -1,7 +1,7 @@
 package com.acv.gym.data.local
 
 import com.acv.gym.data.local.datasource.RoutineLocalDataSource
-import com.acv.gym.domain.gateway.RoutineGateway
+import com.acv.gym.domain.RoutineGateway
 import com.nhaarman.mockito_kotlin.mock
 import org.junit.Assert
 import org.junit.Before

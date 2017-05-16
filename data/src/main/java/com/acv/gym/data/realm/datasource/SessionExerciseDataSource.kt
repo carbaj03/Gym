@@ -20,7 +20,7 @@ open class SessionExerciseDataSource : DataSource<SessionExerciseDataModel> {
                 }
             }
 
-    override fun persist(model: List<SessionExerciseDataModel>): Either<GenericExceptions, List<SessionExerciseDataModel>> =
+    override fun persist(model: List<SessionExerciseDataModel>) =
             with(Realm.getDefaultInstance()) {
                 try {
                     beginTransaction()

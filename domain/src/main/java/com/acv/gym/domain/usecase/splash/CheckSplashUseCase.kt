@@ -2,7 +2,7 @@ package com.acv.gym.domain.usecase.splash
 
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.gateway.LaunchAppGateway
+import com.acv.gym.domain.LaunchAppGateway
 import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.UseCase

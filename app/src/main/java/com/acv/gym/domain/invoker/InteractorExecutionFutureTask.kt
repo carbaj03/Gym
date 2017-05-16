@@ -30,5 +30,4 @@ class InteractorExecutionFutureTask<I : Command, E : GenericExceptions, R : List
     private fun handleError(result: E) {
         interactorExecution.interactorError(result)
     }
-
 }

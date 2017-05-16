@@ -1,6 +1,6 @@
 package com.acv.gym.domain.usecase.routine
 
-import com.acv.gym.domain.gateway.RoutineGateway
+import com.acv.gym.domain.RoutineGateway
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times

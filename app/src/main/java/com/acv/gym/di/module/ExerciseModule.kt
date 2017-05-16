@@ -6,6 +6,7 @@ import com.acv.gym.data.local.ExercisesLocalGateway
 import com.acv.gym.data.local.datasource.ExercisesLocalDataSource
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.invoker.InteractorInvokerImp
+import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
 import com.acv.gym.presentation.module.exercise.ExercisePresenter
@@ -24,8 +25,8 @@ class ExerciseModule(activity: Activity) : ActivityModule(activity) {
     fun providePresenter(
             view: ExerciseView
             , getExerciseUseCase: GetExercisesUseCase
-            , interactorInvoker: InteractorInvoker)
-            = ExercisePresenter(view, getExerciseUseCase, interactorInvoker)
+            , interactorInvoker: InteractorInvoker
+    ) = ExercisePresenter(view, getExerciseUseCase, interactorInvoker)
 
     @ActivityScope
     @Provides

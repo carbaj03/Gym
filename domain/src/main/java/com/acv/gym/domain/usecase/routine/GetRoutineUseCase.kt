@@ -2,7 +2,7 @@ package com.acv.gym.domain.usecase.routine
 
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.gateway.RoutineGateway
+import com.acv.gym.domain.RoutineGateway
 import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.UseCase
