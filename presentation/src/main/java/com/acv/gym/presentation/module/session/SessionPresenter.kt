@@ -21,15 +21,11 @@ open class SessionPresenter(
                     .errorResult { manageExceptions(it) }
                     .execute(invoker)
 
-    private fun happyCase(sessionExercises: List<SessionExercise>) {
-        view.show(sessionExercises)
-    }
+    private fun happyCase(sessionExercises: List<SessionExercise>) = view.show(sessionExercises)
 
-    private fun manageExceptions(exceptions: GenericExceptions) {
-        when (exceptions) {
-            is GenericExceptions.NetworkError -> view.showNetworkError()
-            is GenericExceptions.ServerError -> view.showServerError()
-        }
+    private fun manageExceptions(exceptions: GenericExceptions) = when (exceptions) {
+        is GenericExceptions.NetworkError -> view.showNetworkError()
+        is GenericExceptions.ServerError -> view.showServerError()
     }
 
     fun checkExercise(sessionExercises: SessionExercise) {

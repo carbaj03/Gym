@@ -16,9 +16,3 @@ fun Activity.setSlideRightAnimation()
 
 fun Activity.setSlideExitToRightAnimation()
         = overridePendingTransition(R.anim.anim_no_change, R.anim.anim_slide_exit_to_right)
-
-inline fun <reified T : Activity> Activity.goToActivity(id: Option<String>) {
-    val intent = Intent(this, T::class.java)
-    id.map { intent.putExtra("ID", it) }
-    startActivity(intent)
-}

@@ -7,6 +7,7 @@ import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doAnswer
 import com.nhaarman.mockito_kotlin.mock
 import katz.Either
+import katz.Option
 
 object TestInteractorInvoker {
 
@@ -15,7 +16,7 @@ object TestInteractorInvoker {
 
         doAnswer { invocationOnMock ->
             val execution = invocationOnMock.arguments[0] as InteractorExecution<Any, Any, Any>
-            val response = execution.interactor.execute(command)
+            val response = execution.interactor.execute(Option.None)
 
             when (response) {
                 is Either.Left -> execution.interactorError(response.a)

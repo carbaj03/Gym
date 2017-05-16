@@ -1,27 +1,24 @@
 package com.acv.gym.presentation.invoker
 
-import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.Model
-import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.UseCase
 import katz.Option
 
 
-open class InteractorExecution<I : Command, E : GenericExceptions, R : List<Model>>(
+open class InteractorExecution<I, E, R>(
         val interactor: UseCase<I, R, E>, val params: Option<I> = Option.None
 ) {
-    lateinit var interactorResult: (R) -> Any
+    lateinit var interactorResult: (R) -> Unit
         private set
 
-    lateinit var interactorError: (E) -> Any
+    lateinit var interactorError: (E) -> Unit
         private set
 
-    fun result(body: (R) -> Any): InteractorExecution<I, E, R> {
+    fun result(body: (R) -> Unit): InteractorExecution<I, E, R> {
         interactorResult = body
         return this
     }
 
-    fun errorResult(body: (E) -> Any): InteractorExecution<I, E, R> {
+    fun errorResult(body: (E) -> Unit): InteractorExecution<I, E, R> {
         interactorError = body
         return this
     }

@@ -9,6 +9,8 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import katz.Either
+import katz.Option
+import katz.OptionMonad
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
@@ -32,27 +34,27 @@ class SessionPresenterTest {
     @Test
     fun `should show session When call use case`() {
         var listOf = getSession()
-        Mockito.`when`(useCase.execute(command)).thenReturn(Either.Right(getSession()))
+        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Right(getSession()))
 
-        presenter.loadSessions(command)
+        presenter.loadSessions(Option.None)
 
         verify(view, times(1)).show(listOf)
     }
 
     @Test
     fun `should show server error When get session fail`() {
-        Mockito.`when`(useCase.execute(SessionCommand(""))).thenReturn(Either.Left(GenericExceptions.ServerError()))
+        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Left(GenericExceptions.ServerError()))
 
-        presenter.loadSessions(SessionCommand(""))
+        presenter.loadSessions(Option.None)
 
         verify(view, times(1)).showServerError()
     }
 
     @Test
     fun `should show network error When not connection`() {
-        Mockito.`when`(useCase.execute(SessionCommand(""))).thenReturn(Either.Left(GenericExceptions.NetworkError()))
+        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Left(GenericExceptions.NetworkError()))
 
-        presenter.loadSessions(SessionCommand(""))
+        presenter.loadSessions(Option.None)
 
         verify(view, times(1)).showNetworkError()
     }

@@ -1,11 +1,12 @@
 package com.acv.gym.domain.usecase.session
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.gateway.SessionGateway
+import com.acv.gym.domain.SessionGateway
 import com.acv.gym.domain.model.SessionExercise
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import katz.Either
+import katz.Option
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -30,7 +31,7 @@ class GetSessionUseCaseTest {
         var sessions = getSession()
         `when`(sessionLocalGateway.obtain(any())).thenReturn(sessions)
 
-        val response = getSessionUseCase.execute(SessionCommand(""))
+        val response = getSessionUseCase.execute(Option.None)
 
         Assert.assertSame(sessions, response)
     }
@@ -40,7 +41,7 @@ class GetSessionUseCaseTest {
         var sessions = getErrorSession()
         `when`(sessionLocalGateway.obtain(any())).thenReturn(sessions)
 
-        val response = getSessionUseCase.execute(SessionCommand(""))
+        val response = getSessionUseCase.execute(Option.None)
 
         Assert.assertSame(sessions, response)
     }

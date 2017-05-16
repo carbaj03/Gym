@@ -1,10 +1,8 @@
 package com.acv.gym.domain.usecase
 
-import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.Model
 import katz.Either
 import katz.Option
 
-interface UseCase<in I: Command, out R: List<Model>, out E: GenericExceptions> {
+interface UseCase<in I, out R, out E> {
     fun execute(input: Option<I>): Either<E, R>
 }

@@ -12,12 +12,12 @@ open class MuscleGroupPresenter(
         val useCase: GetMuscleGroupsUseCase,
         val invoker: InteractorInvoker
 ) : Presenter<MuscleGroupView>(view) {
-    fun loadMuscleGroups() {
+    fun loadMuscleGroups() =
         InteractorExecution(useCase)
                 .result { happyCase(it) }
                 .errorResult { manageExceptions(it) }
                 .execute(invoker)
-    }
+    
 
     private fun happyCase(muscleGroups: List<MuscleGroup>) = view.show(muscleGroups)
 

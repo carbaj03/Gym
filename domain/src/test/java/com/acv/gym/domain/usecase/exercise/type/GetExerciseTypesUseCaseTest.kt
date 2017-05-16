@@ -5,6 +5,7 @@ import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
+import katz.Option
 import org.junit.Before
 import org.junit.Test
 
@@ -21,7 +22,7 @@ class GetExerciseTypesUseCaseTest {
 
     @Test
     fun `should return all exercise types When execute`() {
-        val command = EmptyCommand()
+        val command = Option.None
         useCase.execute(command)
 
         verify(gateway, times(1)).obtain(command)

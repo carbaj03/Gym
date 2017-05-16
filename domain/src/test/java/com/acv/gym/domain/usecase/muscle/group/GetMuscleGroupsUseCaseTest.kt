@@ -1,10 +1,10 @@
 package com.acv.gym.domain.usecase.muscle.group
 
-import com.acv.gym.domain.gateway.MuscleGroupGateway
-import com.acv.gym.domain.usecase.EmptyCommand
+import com.acv.gym.domain.MuscleGroupGateway
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
+import katz.Option
 import org.junit.Before
 import org.junit.Test
 
@@ -13,8 +13,8 @@ import org.junit.Test
  */
 class GetMuscleGroupsUseCaseTest {
 
-    lateinit var getMuscleGroupsUseCase : GetMuscleGroupsUseCase
-    var muscleGroupGateway : MuscleGroupGateway = mock()
+    lateinit var getMuscleGroupsUseCase: GetMuscleGroupsUseCase
+    var muscleGroupGateway: MuscleGroupGateway = mock()
 
     @Before
     fun setUp() {
@@ -23,7 +23,7 @@ class GetMuscleGroupsUseCaseTest {
 
     @Test
     fun `should get muscle groups When execute`() {
-        val command = EmptyCommand()
+        val command = Option.None
         getMuscleGroupsUseCase.execute(command)
 
         verify(muscleGroupGateway, times(1)).obtain(command)

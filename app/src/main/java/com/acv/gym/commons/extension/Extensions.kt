@@ -1,6 +1,7 @@
 package com.acv.gym.commons.extension
 
 import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -17,12 +18,17 @@ import com.acv.gym.module.routine.RoutineActivity
 import com.acv.gym.module.session.SessionActivity
 import com.acv.gym.module.splash.SplashActivity
 import com.acv.gym.module.weight.WeightActivity
-import com.acv.gym.ui.commons.goToActivity
 import com.acv.gym.ui.commons.setSlideExitToRightAnimation
 import com.acv.gym.ui.commons.setSlideRightAnimation
 import katz.Option
 
 infix fun ViewGroup.inflate(res: Int) = LayoutInflater.from(context).inflate(res, this, false)
+
+inline fun <reified T : Activity> Activity.goToActivity(id: Option<String>) {
+    val intent = Intent(this, T::class.java)
+    id.map { intent.putExtra("ID", it) }
+    startActivity(intent)
+}
 
 inline fun <reified T : Activity> Activity.nav(id: Option<String> = Option.None) {
     goToActivity<T>(id)
@@ -63,6 +69,4 @@ fun MenuInflater.make(menuRes: Int, menu: Menu): Boolean {
     return true
 }
 
-fun SeekBar.listener(f: (Int) -> Unit) {
-    setOnSeekBarChangeListener(SeekBarListener { f(it) })
-}
+fun SeekBar.listener(f: (Int) -> Unit) = setOnSeekBarChangeListener(SeekBarListener { f(it) })

@@ -2,7 +2,6 @@ package com.acv.gym.presentation.module.exercise
 
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.usecase.EmptyCommand
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.InteractorExecution
@@ -15,12 +14,12 @@ open class ExercisePresenter(
         val invoker: InteractorInvoker
 ) : Presenter<ExerciseView>(view) {
 
-    fun loadExercises() {
-        InteractorExecution(useCase)
-                .result { happyCase(it) }
-                .errorResult { manageExceptions(it) }
-                .execute(invoker)
-    }
+    fun loadExercises() =
+            InteractorExecution(useCase)
+                    .result { happyCase(it) }
+                    .errorResult { manageExceptions(it) }
+                    .execute(invoker)
+    
 
     private fun happyCase(exercises: List<Exercise>) = view.show(exercises)
 

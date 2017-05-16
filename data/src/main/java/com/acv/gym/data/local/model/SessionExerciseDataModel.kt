@@ -5,10 +5,10 @@ import com.acv.gym.domain.model.SessionExercise
 
 
 data class SessionExerciseDataModel(
-        val id: String
-        , val exercise: String
-        , val sets: List<SessionSetDataModel>
-        , val session: String
+        val id: String,
+        val exercise: String,
+        val sets: List<SessionSetDataModel>,
+        val session: String
 ) : DataModel
 
 fun SessionExerciseDataModel.map() = SessionExercise(id, exercise, sets.map { it.map() }, session)

@@ -17,5 +17,4 @@ class ExercisesLocalGateway(
     override fun persist(list: List<Exercise>): Either<GenericExceptions, List<Exercise>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
 }

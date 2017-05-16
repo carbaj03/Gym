@@ -8,6 +8,7 @@ import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import katz.Either
+import katz.Option
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.`when`
@@ -30,7 +31,7 @@ class SplashPresenterTest {
 
     @Test
     fun `should show splash When call use case`() {
-        `when`(checkSplashUseCase.execute(any)).thenReturn(Either.Right(listOf(LaunchApp(true))))
+        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Right(listOf(LaunchApp(true))))
 
         presenter.loadSplash()
 
@@ -39,7 +40,7 @@ class SplashPresenterTest {
 
     @Test
     fun `should show server error When splash fail`() {
-        `when`(checkSplashUseCase.execute(any)).thenReturn(Either.Left(GenericExceptions.ServerError()))
+        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericExceptions.ServerError()))
 
         presenter.loadSplash()
 
@@ -48,7 +49,7 @@ class SplashPresenterTest {
 
     @Test
     fun `should show network error When not connection`() {
-        `when`(checkSplashUseCase.execute(any)).thenReturn(Either.Left(GenericExceptions.NetworkError()))
+        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericExceptions.NetworkError()))
 
         presenter.loadSplash()
 
