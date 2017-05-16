@@ -3,10 +3,10 @@ package com.acv.gym.di.module
 
 import android.app.Activity
 import com.acv.gym.data.local.Cache
-import com.acv.gym.data.local.LaunchAppLocalGatewayImpl
+import com.acv.gym.data.local.LaunchAppLocalGateway
 import com.acv.gym.data.local.SharedPreferencesCache
 import com.acv.gym.di.scope.ActivityScope
-import com.acv.gym.domain.gateway.LaunchAppLocalGateway
+import com.acv.gym.domain.LaunchAppGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
@@ -23,25 +23,25 @@ class SplashModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideSplashPresenter(view: SplashView,
-                               checkSplashUseCase: CheckSplashUseCase,
-                               interactorInvoker: InteractorInvoker): SplashPresenter
-            = SplashPresenter(view, checkSplashUseCase, interactorInvoker)
+    fun provideSplashPresenter(
+            view: SplashView,
+            checkSplashUseCase: CheckSplashUseCase,
+            interactorInvoker: InteractorInvoker
+    ): SplashPresenter = SplashPresenter(view, checkSplashUseCase, interactorInvoker)
 
     @ActivityScope
     @Provides
-    fun provideCheckSplashUseCase(localGateway: LaunchAppLocalGateway): CheckSplashUseCase
+    fun provideCheckSplashUseCase(localGateway: LaunchAppGateway): CheckSplashUseCase
             = CheckSplashUseCase(localGateway)
 
     @ActivityScope
     @Provides
-    fun provideLaunchAppLocalGateway(sharedPreferencesCache: Cache): LaunchAppLocalGateway
-            = LaunchAppLocalGatewayImpl(sharedPreferencesCache)
+    fun provideLaunchAppLocalGateway(sharedPreferencesCache: Cache): LaunchAppGateway
+            = LaunchAppLocalGateway(sharedPreferencesCache)
 
     @ActivityScope
     @Provides
-    fun provideCache(): Cache
-            = SharedPreferencesCache(activity.applicationContext)
+    fun provideCache(): Cache = SharedPreferencesCache(activity.applicationContext)
 
     @ActivityScope @Provides
     fun provideInteractorInvoker(): InteractorInvoker = InteractorInvokerImp()

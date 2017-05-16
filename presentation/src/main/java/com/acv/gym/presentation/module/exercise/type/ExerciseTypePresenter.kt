@@ -12,8 +12,8 @@ import com.acv.gym.presentation.invoker.InteractorInvoker
 class ExerciseTypePresenter(view: ExerciseTypeView,
                             val useCase: GetExerciseTypesUseCase,
                             val invoker: InteractorInvoker) : Presenter<ExerciseTypeView>(view) {
-    fun loadExerciseType(command: Command = EmptyCommand()) {
-        InteractorExecution(useCase, command)
+    fun loadExerciseType() {
+        InteractorExecution(useCase)
                 .result { happyCase(it) }
                 .errorResult { manageExceptions(it)}
                 .execute(invoker)

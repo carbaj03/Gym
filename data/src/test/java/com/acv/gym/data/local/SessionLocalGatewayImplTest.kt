@@ -1,9 +1,6 @@
 package com.acv.gym.data.local
 
-import com.acv.gym.data.DataSource
 import com.acv.gym.data.local.datasource.SessionExerciseLocalDataSource
-import com.acv.gym.data.model.SessionExerciseDataModel
-import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import org.junit.Assert
 import org.junit.Before
@@ -16,13 +13,13 @@ import java.lang.Exception
  */
 class SessionLocalGatewayImplTest {
 
-    lateinit var getSessionLocalGateway: SessionLocalGatewayImpl
+    lateinit var getSessionLocalGateway: SessionLocalGateway
 
     var dataSource: SessionExerciseLocalDataSource = mock()
 
     @Before
     fun setUp() {
-        getSessionLocalGateway = SessionLocalGatewayImpl(dataSource)
+        getSessionLocalGateway = SessionLocalGateway(dataSource)
     }
 
     @Test

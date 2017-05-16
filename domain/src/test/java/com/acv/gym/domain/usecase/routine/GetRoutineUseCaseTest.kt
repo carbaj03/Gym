@@ -1,6 +1,6 @@
 package com.acv.gym.domain.usecase.routine
 
-import com.acv.gym.domain.gateway.RoutineLocalGateway
+import com.acv.gym.domain.RoutineGateway
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
@@ -11,7 +11,7 @@ import org.junit.Test
 class GetRoutineUseCaseTest {
 
     lateinit var getRoutinesUseCase: GetRoutineUseCase
-    val getRoutinesLocalGateway: RoutineLocalGateway = mock()
+    val getRoutinesLocalGateway: RoutineGateway = mock()
 
     @Before
     fun setUp() {

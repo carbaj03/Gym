@@ -1,6 +1,6 @@
 package com.acv.gym.domain.usecase.exercise.type
 
-import com.acv.gym.domain.gateway.ExerciseTypeGateway
+import com.acv.gym.domain.ExerciseTypeGateway
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times

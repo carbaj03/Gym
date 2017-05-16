@@ -5,6 +5,7 @@ import android.app.Activity
 import com.acv.gym.data.local.ExerciseTypeLocalGateway
 import com.acv.gym.data.local.datasource.ExerciseTypeLocalDataSource
 import com.acv.gym.di.scope.ActivityScope
+import com.acv.gym.domain.ExerciseTypeGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
@@ -28,12 +29,12 @@ class ExerciseTypeModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideUseCase(localGateway: ExerciseTypeLocalGateway)
+    fun provideUseCase(localGateway: ExerciseTypeGateway)
             = GetExerciseTypesUseCase(localGateway)
 
     @ActivityScope
     @Provides
-    fun provideLocalGateway(dataSource: ExerciseTypeLocalDataSource)
+    fun provideLocalGateway(dataSource: ExerciseTypeLocalDataSource) : ExerciseTypeGateway
             = ExerciseTypeLocalGateway(dataSource)
 
     @ActivityScope

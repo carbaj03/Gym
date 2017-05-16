@@ -1,7 +1,7 @@
 package com.acv.gym.domain.usecase.session
 
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.gateway.SessionLocalGateway
+import com.acv.gym.domain.gateway.SessionGateway
 import com.acv.gym.domain.model.SessionExercise
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -18,7 +18,7 @@ class GetSessionUseCaseTest {
 
     lateinit var getSessionUseCase: GetSessionUseCase
 
-    val sessionLocalGateway: SessionLocalGateway = mock()
+    val sessionLocalGateway: SessionGateway = mock()
 
     @Before
     fun setUp() {

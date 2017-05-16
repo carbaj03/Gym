@@ -1,12 +1,10 @@
 package com.acv.gym.domain.usecase.muscle.group
 
-import com.acv.gym.domain.gateway.MuscleGroupLocalGateway
+import com.acv.gym.domain.gateway.MuscleGroupGateway
 import com.acv.gym.domain.usecase.EmptyCommand
-import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
@@ -16,7 +14,7 @@ import org.junit.Test
 class GetMuscleGroupsUseCaseTest {
 
     lateinit var getMuscleGroupsUseCase : GetMuscleGroupsUseCase
-    var muscleGroupGateway : MuscleGroupLocalGateway = mock()
+    var muscleGroupGateway : MuscleGroupGateway = mock()
 
     @Before
     fun setUp() {

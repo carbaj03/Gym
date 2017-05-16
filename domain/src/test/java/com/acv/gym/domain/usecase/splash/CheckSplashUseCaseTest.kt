@@ -1,6 +1,6 @@
 package com.acv.gym.domain.usecase.splash
 
-import com.acv.gym.domain.gateway.LaunchAppLocalGateway
+import com.acv.gym.domain.LaunchAppGateway
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import org.junit.Before
@@ -10,7 +10,7 @@ import org.mockito.Mockito.verify
 
 class CheckSplashUseCaseTest {
 
-    val gateway: LaunchAppLocalGateway = mock()
+    val gateway: LaunchAppGateway = mock()
 
     lateinit var checkSplashUseCase: CheckSplashUseCase
 

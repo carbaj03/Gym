@@ -13,9 +13,10 @@ import com.acv.gym.presentation.invoker.InteractorInvoker
 
 open class RoutinePresenter(view: RoutineView,
                             val getRoutinesUseCase: GetRoutineUseCase,
-                            val interactorInvokerImp: InteractorInvoker) : Presenter<RoutineView>(view) {
-    fun loadRoutines(command: Command = EmptyCommand()){
-        InteractorExecution(getRoutinesUseCase, command)
+                            val interactorInvokerImp: InteractorInvoker
+) : Presenter<RoutineView>(view) {
+    fun loadRoutines(){
+        InteractorExecution(getRoutinesUseCase)
                 .result { happyCase(it) }
                 .errorResult { manageExceptions(it) }
                 .execute(interactorInvokerImp)
