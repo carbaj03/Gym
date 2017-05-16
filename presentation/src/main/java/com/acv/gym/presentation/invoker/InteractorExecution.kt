@@ -8,7 +8,7 @@ import katz.Option
 
 
 open class InteractorExecution<I : Command, E : GenericExceptions, R : List<Model>>(
-        val interactor: UseCase<I, R, E>, val params: Option<I>
+        val interactor: UseCase<I, R, E>, val params: Option<I> = Option.None
 ) {
     lateinit var interactorResult: (R) -> Any
         private set

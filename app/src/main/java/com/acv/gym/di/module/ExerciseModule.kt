@@ -5,6 +5,8 @@ import android.app.Activity
 import com.acv.gym.data.local.ExercisesLocalGateway
 import com.acv.gym.data.local.datasource.ExercisesLocalDataSource
 import com.acv.gym.di.scope.ActivityScope
+import com.acv.gym.domain.ExerciseGateway
+import com.acv.gym.domain.GenericGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
@@ -30,12 +32,12 @@ class ExerciseModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideUseCase(localGateway: ExercisesLocalGateway)
+    fun provideUseCase(localGateway: ExerciseGateway)
             = GetExercisesUseCase(localGateway)
 
     @ActivityScope
     @Provides
-    fun provideLocalGateway(dataSource: ExercisesLocalDataSource)
+    fun provideLocalGateway(dataSource: ExercisesLocalDataSource): ExerciseGateway
             = ExercisesLocalGateway(dataSource)
 
     @ActivityScope
@@ -43,6 +45,6 @@ class ExerciseModule(activity: Activity) : ActivityModule(activity) {
     fun provideDataSource() = ExercisesLocalDataSource()
 
     @ActivityScope @Provides
-    fun provideInteractorInvoker() = InteractorInvokerImp()
+    fun provideInteractorInvoker(): InteractorInvoker = InteractorInvokerImp()
 
 }

@@ -3,6 +3,7 @@ package com.acv.gym.di.module
 
 import android.app.Activity
 import com.acv.gym.data.local.Cache
+import com.acv.gym.data.local.LaunchAppLocalGateway
 import com.acv.gym.data.local.SharedPreferencesCache
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.LaunchAppGateway
@@ -22,10 +23,11 @@ class SplashModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideSplashPresenter(view: SplashView,
-                               checkSplashUseCase: CheckSplashUseCase,
-                               interactorInvoker: InteractorInvoker): SplashPresenter
-            = SplashPresenter(view, checkSplashUseCase, interactorInvoker)
+    fun provideSplashPresenter(
+            view: SplashView,
+            checkSplashUseCase: CheckSplashUseCase,
+            interactorInvoker: InteractorInvoker
+    ): SplashPresenter = SplashPresenter(view, checkSplashUseCase, interactorInvoker)
 
     @ActivityScope
     @Provides
@@ -35,12 +37,11 @@ class SplashModule(activity: Activity) : ActivityModule(activity) {
     @ActivityScope
     @Provides
     fun provideLaunchAppLocalGateway(sharedPreferencesCache: Cache): LaunchAppGateway
-            = com.acv.gym.data.local.LaunchAppLocalGateway(sharedPreferencesCache)
+            = LaunchAppLocalGateway(sharedPreferencesCache)
 
     @ActivityScope
     @Provides
-    fun provideCache(): Cache
-            = SharedPreferencesCache(activity.applicationContext)
+    fun provideCache(): Cache = SharedPreferencesCache(activity.applicationContext)
 
     @ActivityScope @Provides
     fun provideInteractorInvoker(): InteractorInvoker = InteractorInvokerImp()

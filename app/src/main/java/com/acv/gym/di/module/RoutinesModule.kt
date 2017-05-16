@@ -5,6 +5,7 @@ import android.app.Activity
 import com.acv.gym.data.local.RoutineLocalGateway
 import com.acv.gym.data.local.datasource.RoutineLocalDataSource
 import com.acv.gym.di.scope.ActivityScope
+import com.acv.gym.domain.RoutineGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp
 import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
@@ -28,12 +29,12 @@ class RoutinesModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideUseCase(localGateway: RoutineLocalGateway)
+    fun provideUseCase(localGateway: RoutineGateway)
             = GetRoutineUseCase(localGateway)
 
     @ActivityScope
     @Provides
-    fun provideLocalGateway(dataSource: RoutineLocalDataSource)
+    fun provideLocalGateway(dataSource: RoutineLocalDataSource): RoutineGateway
             = RoutineLocalGateway(dataSource)
 
     @ActivityScope

@@ -16,7 +16,7 @@ open class ExercisePresenter(
 ) : Presenter<ExerciseView>(view) {
 
     fun loadExercises() {
-        InteractorExecution(useCase, EmptyCommand())
+        InteractorExecution(useCase)
                 .result { happyCase(it) }
                 .errorResult { manageExceptions(it) }
                 .execute(invoker)

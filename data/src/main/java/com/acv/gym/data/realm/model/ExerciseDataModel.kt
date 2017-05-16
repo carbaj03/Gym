@@ -7,8 +7,10 @@ import io.realm.annotations.PrimaryKey
 
 
 open class ExerciseDataModel(
-        @PrimaryKey var id: String
-        , var name: String
-) : RealmObject(), DataModel
+        @PrimaryKey var id: String,
+        var name: String
+) : RealmObject(), DataModel {
+    constructor(): this("", "")
+}
 
 fun ExerciseDataModel.map() = Exercise(id, name)

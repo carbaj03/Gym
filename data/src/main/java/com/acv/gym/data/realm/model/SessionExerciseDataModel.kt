@@ -11,7 +11,9 @@ open class SessionExerciseDataModel(
         , var exercise: String
         , var sets: RealmList<SessionSetDataModel>
         , var session: String
-) : RealmObject(), DataModel
+) : RealmObject(), DataModel {
+    constructor() : this("", "", RealmList(), "")
+}
 
 fun SessionExerciseDataModel.map() = SessionExercise(id, exercise, sets.map { it.map() }, session)
 fun SessionExercise.map() = SessionExerciseDataModel(id, exercise, sets.map(), session)

@@ -16,6 +16,6 @@ interface GenericGateway<O : Model> : BaseGateway<Command, GenericExceptions, O>
 interface ExerciseGateway : GenericGateway<Exercise>
 interface ExerciseTypeGateway : GenericGateway<ExerciseType>
 interface LaunchAppGateway : GenericGateway<LaunchApp>
-interface MuscleGateway : GenericGateway<MuscleGroup>
+interface MuscleGroupGateway : GenericGateway<MuscleGroup>
 interface RoutineGateway : GenericGateway<Routine>
 interface SessionGateway : GenericGateway<SessionExercise>

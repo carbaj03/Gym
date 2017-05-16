@@ -6,10 +6,12 @@ import com.acv.gym.R
 import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.navStack
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.usecase.session.SessionCommand
 import com.acv.gym.module.muscle.group.MuscleGroupActivity
 import com.acv.gym.presentation.module.session.SessionPresenter
 import com.acv.gym.presentation.module.session.SessionView
 import com.acv.gym.ui.BaseActivity
+import katz.Option
 import kotlinx.android.synthetic.main.activity_session.*
 import org.jetbrains.anko.onClick
 
@@ -18,7 +20,7 @@ class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionVi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter.loadSessions()
+        presenter.loadSessions(Option.None)
         fab.onClick { navStack<MuscleGroupActivity>() }
     }
 

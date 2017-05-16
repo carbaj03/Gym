@@ -12,8 +12,10 @@ open class SessionSetDataModel(
         , var weight: Float
         , var reps: Int
         , var sessionExercise: String
-) : RealmObject(), DataModel
+) : RealmObject(), DataModel {
+    constructor() : this("", 0f, 0, "")
+}
 
 fun SessionSetDataModel.map() = SessionSet(id, weight, reps, sessionExercise)
 fun SessionSet.map() = SessionSetDataModel(id, weight, reps, sessionExercise)
-fun List<SessionSet>.map() = mapTo(RealmList<SessionSetDataModel>(), { x : SessionSet -> x.map() })
+fun List<SessionSet>.map() = mapTo(RealmList<SessionSetDataModel>(), { x: SessionSet -> x.map() })

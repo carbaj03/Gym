@@ -14,8 +14,8 @@ open class SplashPresenter(view: SplashView,
                            val checkSplashUseCase: CheckSplashUseCase,
                            val interactorInvokerImp: InteractorInvoker) : Presenter<SplashView>(view) {
 
-    fun loadSplash(command: Command = EmptyCommand()) {
-        InteractorExecution(checkSplashUseCase, command)
+    fun loadSplash() {
+        InteractorExecution(checkSplashUseCase)
                 .result { happyCase(it[0]) }
                 .errorResult { manageExceptions(it) }
                 .execute(interactorInvokerImp)

@@ -2,6 +2,7 @@ package com.acv.gym.data.local
 
 import com.acv.gym.data.local.datasource.ExerciseTypeLocalDataSource
 import com.acv.gym.data.local.model.map
+import com.acv.gym.domain.ExerciseTypeGateway
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.GenericGateway
 import com.acv.gym.domain.model.ExerciseType
@@ -11,7 +12,7 @@ import katz.Option
 
 class ExerciseTypeLocalGateway(
         val dataSource: ExerciseTypeLocalDataSource
-) : GenericGateway<ExerciseType> {
+) : ExerciseTypeGateway {
     override fun obtain(command: Option<Command>) = dataSource.getAll().map { it.map { it.map() } }
 
     override fun persist(list: List<ExerciseType>): Either<GenericExceptions, List<ExerciseType>> {

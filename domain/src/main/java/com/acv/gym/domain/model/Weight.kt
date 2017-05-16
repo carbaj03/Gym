@@ -5,4 +5,4 @@ data class Weight(
         val id: String,
         val value: Float,
         val unit: Unit
-)
+) : Model
