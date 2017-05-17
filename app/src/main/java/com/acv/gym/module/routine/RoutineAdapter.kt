@@ -12,7 +12,7 @@ class RoutineAdapter(
 ) : RecyclerView.Adapter<RoutineViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-            = RoutineViewHolder(parent.inflate(R.layout.item_routine))
+            = RoutineViewHolder(parent.inflate(R.layout.item_session))
 
     override fun onBindViewHolder(holder: RoutineViewHolder, position: Int) = with(holder) {
         bind(routines[position])

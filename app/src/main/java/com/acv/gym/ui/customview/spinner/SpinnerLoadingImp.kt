@@ -31,7 +31,7 @@ class SpinnerLoadingImp(private val context: Context) : SpinnerLoading {
         progressBar.id = R.id.spinner_progress_bar
         progressBar.isIndeterminate = true
         progressBar.indeterminateDrawable.setColorFilter(
-                ContextCompat.getColor(context, R.color.colorAccent), PorterDuff.Mode.SRC_IN)
+                ContextCompat.getColor(context, R.color.accent), PorterDuff.Mode.SRC_IN)
         progressBar.setBackgroundResource(android.R.color.transparent)
     }
 

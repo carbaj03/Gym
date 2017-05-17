@@ -2,8 +2,8 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.local.SessionLocalGateway
-import com.acv.gym.data.local.datasource.SessionExerciseLocalDataSource
+import com.acv.gym.data.realm.SessionRealmGateway
+import com.acv.gym.data.realm.datasource.SessionExerciseDataSource
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.SessionGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp
@@ -22,10 +22,11 @@ class SessionModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun providePresenter(view: SessionView,
-                         useCase: GetSessionUseCase,
-                         interactorInvoker: InteractorInvoker)
-            = SessionPresenter(view, useCase, interactorInvoker)
+    fun providePresenter(
+            view: SessionView,
+            useCase: GetSessionUseCase,
+            interactorInvoker: InteractorInvoker
+    ) = SessionPresenter(view, useCase, interactorInvoker)
 
     @ActivityScope
     @Provides
@@ -34,12 +35,12 @@ class SessionModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideLocalGateway(dataSource: SessionExerciseLocalDataSource): SessionGateway
-            = SessionLocalGateway(dataSource)
+    fun provideLocalGateway(dataSource: SessionExerciseDataSource): SessionGateway
+            = SessionRealmGateway(dataSource)
 
     @ActivityScope
     @Provides
-    fun provideDataSource() = SessionExerciseLocalDataSource()
+    fun provideDataSource(): SessionExerciseDataSource = SessionExerciseDataSource()
 
     @ActivityScope
     @Provides

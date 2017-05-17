@@ -1,6 +1,5 @@
 package com.acv.gym.module.rep
 
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.acv.gym.R
@@ -16,8 +15,8 @@ class RepActivity : BaseActivity<RepView, RepPresenter>(), RepView {
 
     override fun getLayout() = R.layout.activity_rep
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun createView() {
+        setTitle(R.string.rep_title)
         sbReps.listener { tvReps.text = it.toString() }
         fab.onClick { navBack() }
     }

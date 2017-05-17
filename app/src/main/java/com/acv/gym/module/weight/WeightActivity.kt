@@ -1,6 +1,5 @@
 package com.acv.gym.module.weight
 
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.acv.gym.R
@@ -14,15 +13,14 @@ import com.acv.gym.presentation.module.weight.WeightView
 import com.acv.gym.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_weight.*
 
+
+
 class WeightActivity : BaseActivity<WeightView, WeightPresenter>(), WeightView {
     override fun setupComponent() = inject()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        sbWeight.listener { tvWeight.text = it.toString() }
-    }
-
     override fun getLayout() = R.layout.activity_weight
+
+    override fun createView() = sbWeight.listener { tvWeight.text = it.toString() }
 
     override fun onCreateOptionsMenu(menu: Menu) = menuInflater.make(R.menu.done, menu)
 

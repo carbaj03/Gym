@@ -1,9 +1,8 @@
 package com.acv.gym.module.exercise
 
-import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import com.acv.gym.R
 import com.acv.gym.commons.extension.inject
+import com.acv.gym.commons.extension.gridLayoutManager
 import com.acv.gym.commons.extension.nav
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.module.weight.WeightActivity
@@ -19,23 +18,15 @@ class ExerciseActivity : BaseActivity<ExerciseView, ExercisePresenter>(), Exerci
 
     override fun getLayout() = R.layout.activity_exercise
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        presenter.loadExercises()
-    }
+    override fun createView() = presenter.loadExercises()
 
     override fun show(data: List<Exercise>) = with(rvExercise) {
-        layoutManager = LinearLayoutManager(context)
-        adapter = ExerciseAdapter(data) { nav<WeightActivity>() }
+        layoutManager = gridLayoutManager()
+        adapter = ExerciseAdapter(data) { nav<WeightActivity>(listOf()) }
     }
 
-    override fun showNetworkError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun showNetworkError() = TODO()
 
-    override fun showServerError() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun showServerError() = TODO()
 
 }

@@ -5,20 +5,14 @@ import android.view.ViewGroup
 import com.acv.gym.R
 import com.acv.gym.commons.extension.inflate
 import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.model.MuscleGroup
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.module.exercise.type.ExerciseTypeViewHolder
-import com.acv.gym.module.muscle.group.MuscleGroupViewHolder
-import com.acv.gym.module.session.SessionViewHolder
 
 class ExerciseAdapter(
         val exercises: List<Exercise>,
         val listener: (Exercise) -> Unit
-): RecyclerView.Adapter<ExercisesViewHolder>() {
+) : RecyclerView.Adapter<ExercisesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            ExercisesViewHolder(parent inflate R.layout.item_session)
+            ExercisesViewHolder(parent inflate R.layout.item_exercise)
 
     override fun onBindViewHolder(holder: ExercisesViewHolder, position: Int) = with(holder) {
         bind(exercises[position])

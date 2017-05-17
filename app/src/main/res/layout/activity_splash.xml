@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_splash"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.splash.SplashActivity">
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/appbar" />
 
     <TextView
         android:id="@+id/logoApp"
-        android:visibility="gone"
-        android:text="@string/app_name"
-        android:textSize="24sp"
-        android:layout_centerVertical="true"
-        android:textAlignment="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:visibility="gone" />
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

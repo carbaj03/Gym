@@ -2,4 +2,6 @@
     <string name="app_name">Gym</string>
 
     <string name="menu_next">Next</string>
+    <string name="session.title">Session</string>
+    <string name="rep.title">Reps</string>
 </resources>

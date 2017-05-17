@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.TextView
 import com.acv.gym.R
 import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.model.MuscleGroup
 import org.jetbrains.anko.find
 
 class ExerciseTypeViewHolder(view: View) : RecyclerView.ViewHolder(view) {

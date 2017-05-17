@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_routines"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".module.routine.RoutineActivity">
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/appbar" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvSession"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -20,4 +21,4 @@
         android:layout_margin="16dp"
         app:srcCompat="@drawable/ic_add_black_24dp" />
 
-</FrameLayout>
+</android.support.design.widget.CoordinatorLayout>

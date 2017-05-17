@@ -4,8 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import java.lang.IllegalArgumentException
 
-class
-SharedPreferencesCache(context: Context) : Cache {
+class SharedPreferencesCache(context: Context) : Cache {
 
     val prefs: SharedPreferences by lazy { context.getSharedPreferences("default", Context.MODE_PRIVATE) }
 
