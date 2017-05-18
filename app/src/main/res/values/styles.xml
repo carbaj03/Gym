@@ -30,6 +30,7 @@
     <style name="Grid">
         <item name="android:layout_margin">1dp</item>
         <item name="android:minHeight">120dp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
     <style name="Grid.Item">

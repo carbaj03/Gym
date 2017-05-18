@@ -9,6 +9,7 @@ import com.acv.gym.module.weight.WeightActivity
 import com.acv.gym.presentation.module.exercise.ExercisePresenter
 import com.acv.gym.presentation.module.exercise.ExerciseView
 import com.acv.gym.ui.BaseActivity
+import com.acv.gym.ui.commons.AVH
 import kotlinx.android.synthetic.main.activity_exercise.*
 
 
@@ -22,7 +23,11 @@ class ExerciseActivity : BaseActivity<ExerciseView, ExercisePresenter>(), Exerci
 
     override fun show(data: List<Exercise>) = with(rvExercise) {
         layoutManager = gridLayoutManager()
-        adapter = ExerciseAdapter(data) { nav<WeightActivity>(listOf()) }
+        adapter = AVH(
+                items = data,
+                listener = { nav<WeightActivity>(listOf()) },
+                holder = ::ExercisesViewHolder,
+                layout = R.layout.item_exercise)
     }
 
     override fun showNetworkError() = TODO()

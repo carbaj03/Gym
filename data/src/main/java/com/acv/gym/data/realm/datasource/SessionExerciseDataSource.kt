@@ -3,8 +3,10 @@ package com.acv.gym.data.realm.datasource
 import com.acv.gym.data.DataSource
 import com.acv.gym.data.realm.model.SessionExerciseDataModel
 import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.usecase.Command
 import io.realm.Realm
 import katz.Either
+import katz.Option
 
 
 open class SessionExerciseDataSource : DataSource<SessionExerciseDataModel> {
@@ -19,6 +21,10 @@ open class SessionExerciseDataSource : DataSource<SessionExerciseDataModel> {
                     close()
                 }
             }
+
+    override fun getBy(command: Option<Command>): Either<GenericExceptions, List<SessionExerciseDataModel>> {
+        TODO("not implemented")
+    }
 
     override fun persist(model: List<SessionExerciseDataModel>) =
             with(Realm.getDefaultInstance()) {

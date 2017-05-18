@@ -5,7 +5,8 @@ import katz.Option
 
 
 open class InteractorExecution<I, E, R>(
-        val interactor: UseCase<I, R, E>, val params: Option<I> = Option.None
+        val interactor: UseCase<I, R, E>,
+        val params: Option<I> = Option.None
 ) {
     lateinit var interactorResult: (R) -> Unit
         private set

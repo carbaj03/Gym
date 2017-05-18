@@ -3,12 +3,14 @@ package com.acv.gym.module.session
 import com.acv.gym.R
 import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.gridLayoutManager
+import com.acv.gym.commons.extension.inflate
 import com.acv.gym.commons.extension.navStack
 import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.module.muscle.group.MuscleGroupActivity
 import com.acv.gym.presentation.module.session.SessionPresenter
 import com.acv.gym.presentation.module.session.SessionView
 import com.acv.gym.ui.BaseActivity
+import com.acv.gym.ui.commons.AVH
 import katz.Option
 import kotlinx.android.synthetic.main.activity_session.*
 import org.jetbrains.anko.onClick
@@ -26,7 +28,11 @@ class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionVi
 
     override fun show(sessionExercise: List<SessionExercise>) = with(rvSession) {
         layoutManager = gridLayoutManager()
-        adapter = SessionAdapter(sessionExercise) { presenter.checkExercise(it) }
+        adapter = AVH(
+                items = sessionExercise,
+                listener = { presenter.checkExercise(it) },
+                holder = ::SessionViewHolder,
+                layout = R.layout.item_session)
     }
 
     override fun showServerError() = TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

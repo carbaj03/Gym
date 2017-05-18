@@ -13,7 +13,7 @@ import katz.Option
 class ExerciseTypeLocalGateway(
         val dataSource: ExerciseTypeLocalDataSource
 ) : ExerciseTypeGateway {
-    override fun obtain(command: Option<Command>) = dataSource.getAll().map { it.map { it.map() } }
+    override fun obtain(command: Option<Command>) = dataSource.getBy(command).map { it.map { it.map() } }
 
     override fun persist(list: List<ExerciseType>): Either<GenericExceptions, List<ExerciseType>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

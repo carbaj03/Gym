@@ -1,15 +1,16 @@
 package com.acv.gym.module.muscle.group
 
 import com.acv.gym.R
-import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.gridLayoutManager
+import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.nav
 import com.acv.gym.domain.model.MuscleGroup
-import com.acv.gym.model.Id
 import com.acv.gym.module.exercise.type.ExerciseTypeActivity
+import com.acv.gym.presentation.Id
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupPresenter
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupView
 import com.acv.gym.ui.BaseActivity
+import com.acv.gym.ui.commons.AVH
 import kotlinx.android.synthetic.main.activity_muscle_group.*
 
 class MuscleGroupActivity : BaseActivity<MuscleGroupView, MuscleGroupPresenter>(), MuscleGroupView {
@@ -17,19 +18,23 @@ class MuscleGroupActivity : BaseActivity<MuscleGroupView, MuscleGroupPresenter>(
 
     override fun getLayout() = R.layout.activity_muscle_group
 
-    override fun createView() = presenter.loadMuscleGroups()
+    override fun createView() {
+        setTitle(R.string.title_muscle_group)
+        presenter.loadMuscleGroups()
+    }
 
     override fun show(muscleGroups: List<MuscleGroup>) = with(rvMuscleGroup) {
         layoutManager = gridLayoutManager()
-        adapter = MuscleGroupAdapter(muscleGroups) {
-            presenter.checkMuscleGroup(it)
-        }
+        adapter = AVH(
+                items = muscleGroups,
+                listener = { presenter.checkMuscleGroup(it) },
+                holder = ::MuscleGroupViewHolder,
+                layout = R.layout.item_muscle_group)
     }
 
-    override fun showNetworkError() = TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showNetworkError() = TODO("not implemented")
 
-    override fun showServerError() = TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showServerError() = TODO("not implemented")
 
-    override fun goToExerciseType() = nav<ExerciseTypeActivity>(listOf("" to Id("")))
-
+    override fun goToExerciseType(id: String) = nav<ExerciseTypeActivity>(listOf("id" to Id(id)))
 }

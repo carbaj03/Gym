@@ -4,7 +4,9 @@ import com.acv.gym.data.DataSource
 import com.acv.gym.data.local.model.SessionExerciseDataModel
 import com.acv.gym.data.local.model.SessionSetDataModel
 import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.usecase.Command
 import katz.Either
+import katz.Option
 
 
 open class SessionExerciseLocalDataSource : DataSource<SessionExerciseDataModel> {
@@ -40,6 +42,10 @@ open class SessionExerciseLocalDataSource : DataSource<SessionExerciseDataModel>
                                     "1")
                     )
             )
+
+    override fun getBy(command: Option<Command>): Either<GenericExceptions, List<SessionExerciseDataModel>> {
+        TODO("not implemented")
+    }
 
 
     override fun persist(data: List<SessionExerciseDataModel>): Either<GenericExceptions, List<SessionExerciseDataModel>> {

@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Grid"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:stateListAnimator="@animator/elevator">
+
     <ImageView
         android:id="@+id/ivBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/tvName"

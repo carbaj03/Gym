@@ -6,5 +6,5 @@ import com.acv.gym.presentation.ViewError
 import com.acv.gym.presentation.ViewShow
 
 interface MuscleGroupView : View, ViewShow<MuscleGroup>, ViewError {
-    fun goToExerciseType()
+    fun goToExerciseType(id: String)
 }

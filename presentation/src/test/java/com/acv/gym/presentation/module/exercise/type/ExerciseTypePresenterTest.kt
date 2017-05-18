@@ -32,7 +32,7 @@ class ExerciseTypePresenterTest {
         val exerciseType = getExerciseType()
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Right(exerciseType))
 
-        presenter.loadExerciseType()
+        presenter.loadExerciseType(intent.getSerializableExtra("id") as IntentModel)
 
         verify(view, times(1)).show(exerciseType)
     }
@@ -41,7 +41,7 @@ class ExerciseTypePresenterTest {
     fun `should show error network When is network exception`() {
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.NetworkError()))
 
-        presenter.loadExerciseType()
+        presenter.loadExerciseType(intent.getSerializableExtra("id") as IntentModel)
 
         verify(view, times(1)).showNetworkError()
     }
@@ -50,7 +50,7 @@ class ExerciseTypePresenterTest {
     fun `should show error server When is server exception`() {
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.ServerError()))
 
-        presenter.loadExerciseType()
+        presenter.loadExerciseType(intent.getSerializableExtra("id") as IntentModel)
 
         verify(view, times(1)).showServerError()
     }

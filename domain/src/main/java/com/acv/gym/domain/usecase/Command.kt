@@ -1,5 +1,7 @@
 package com.acv.gym.domain.usecase
 
-interface Command
+import java.io.Serializable
+
+interface Command : Serializable
 
 class EmptyCommand : Command

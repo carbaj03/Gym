@@ -27,6 +27,6 @@ open class MuscleGroupPresenter(
     }
 
     fun checkMuscleGroup(muscleGroup: MuscleGroup) {
-        view.goToExerciseType()
+        view.goToExerciseType(muscleGroup.id)
     }
 }
