@@ -2,7 +2,6 @@ package com.acv.gym.data.local
 
 import com.acv.gym.data.local.datasource.ExerciseTypeLocalDataSource
 import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock

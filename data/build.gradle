@@ -29,10 +29,14 @@ buildscript {
 
 dependencies {
     compile project(path: ':domain')
-
+    compile "android.arch.persistence.room:runtime:1.0.0-alpha1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha1"
     compile rootProject.ext.dependencies.kotlinStdlibJre7
 
     testCompile rootProject.ext.testDependencies.junit
     testCompile rootProject.ext.testDependencies.mockitoKotlin
     testCompile rootProject.ext.testDependencies.mockito
+}
+repositories {
+    mavenCentral()
 }
