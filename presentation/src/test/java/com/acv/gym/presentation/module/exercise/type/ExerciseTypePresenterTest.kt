@@ -3,6 +3,7 @@ package com.acv.gym.presentation.module.exercise.type
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
+import com.acv.gym.presentation.Id
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -32,7 +33,7 @@ class ExerciseTypePresenterTest {
         val exerciseType = getExerciseType()
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Right(exerciseType))
 
-        presenter.loadExerciseType(intent.getSerializableExtra("id") as IntentModel)
+        presenter.loadExerciseType(Id(""))
 
         verify(view, times(1)).show(exerciseType)
     }
@@ -41,7 +42,7 @@ class ExerciseTypePresenterTest {
     fun `should show error network When is network exception`() {
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.NetworkError()))
 
-        presenter.loadExerciseType(intent.getSerializableExtra("id") as IntentModel)
+        presenter.loadExerciseType(Id(""))
 
         verify(view, times(1)).showNetworkError()
     }
@@ -50,7 +51,7 @@ class ExerciseTypePresenterTest {
     fun `should show error server When is server exception`() {
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.ServerError()))
 
-        presenter.loadExerciseType(intent.getSerializableExtra("id") as IntentModel)
+        presenter.loadExerciseType(Id(""))
 
         verify(view, times(1)).showServerError()
     }

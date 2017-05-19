@@ -9,16 +9,16 @@ import com.acv.gym.presentation.invoker.InteractorInvoker
 
 
 open class RoutinePresenter(
-        view: RoutineView
-        , val getRoutinesUseCase: GetRoutineUseCase
-        , val interactorInvokerImp: InteractorInvoker
+        view: RoutineView,
+        val useCase: GetRoutineUseCase,
+        val invoker: InteractorInvoker
 ) : Presenter<RoutineView>(view) {
-    fun loadRoutines() {
-        InteractorExecution(getRoutinesUseCase)
-                .result { happyCase(it) }
-                .errorResult { manageExceptions(it) }
-                .execute(interactorInvokerImp)
-    }
+    fun loadRoutines() =
+            InteractorExecution(
+                    interactor = useCase,
+                    result = { happyCase(it) },
+                    error = { manageExceptions(it) }
+            ).execute(invoker)
 
     private fun happyCase(routines: List<Routine>) = view.show(routines)
 

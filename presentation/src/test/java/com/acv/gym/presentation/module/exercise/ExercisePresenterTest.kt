@@ -4,6 +4,7 @@ import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
+import com.acv.gym.presentation.Id
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.acv.gym.presentation.module.exercise.ExercisePresenter
 import com.acv.gym.presentation.module.exercise.ExerciseView
@@ -35,7 +36,7 @@ class ExercisePresenterTest {
         val exercise = getExercise()
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Right(exercise))
 
-        presenter.loadExercises()
+        presenter.loadExercises(Id(""))
 
         verify(view, times(1)).show(exercise)
     }
@@ -44,7 +45,7 @@ class ExercisePresenterTest {
     fun `should show error network When is network exception`() {
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.NetworkError()))
 
-        presenter.loadExercises()
+        presenter.loadExercises(Id(""))
 
         verify(view, times(1)).showNetworkError()
     }
@@ -53,7 +54,7 @@ class ExercisePresenterTest {
     fun `should show error server When is server exception`() {
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.ServerError()))
 
-        presenter.loadExercises()
+        presenter.loadExercises(Id(""))
 
         verify(view, times(1)).showServerError()
     }

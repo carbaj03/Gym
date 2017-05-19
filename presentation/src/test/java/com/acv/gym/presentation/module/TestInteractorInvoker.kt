@@ -14,14 +14,18 @@ object TestInteractorInvoker {
     fun create(command: Any = EmptyCommand()): InteractorInvoker {
         val interactorInvoker = mock<InteractorInvoker>()
 
-        doAnswer { invocationOnMock ->
-            val execution = invocationOnMock.arguments[0] as InteractorExecution<Any, Any, Any>
-            val response = execution.interactor.execute(Option.None)
+        doAnswer {
+            val execution = it.arguments[0] as InteractorExecution<Any, Any, Any>
 
-            when (response) {
-                is Either.Left -> execution.interactorError(response.a)
-                is Either.Right -> execution.interactorResult(response.b)
+            with(execution) {
+                val response = interactor.execute(Option.None)
+
+                when (response) {
+                    is Either.Left -> error(response.a)
+                    is Either.Right -> result(response.b)
+                }
             }
+
         }.`when`(interactorInvoker).execute(anyInteractorExecution())
         return interactorInvoker
     }

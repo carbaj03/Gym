@@ -13,11 +13,11 @@ open class MuscleGroupPresenter(
         val invoker: InteractorInvoker
 ) : Presenter<MuscleGroupView>(view) {
     fun loadMuscleGroups() =
-        InteractorExecution(useCase)
-                .result { happyCase(it) }
-                .errorResult { manageExceptions(it) }
-                .execute(invoker)
-    
+            InteractorExecution(
+                    interactor = useCase,
+                    result = { happyCase(it) },
+                    error = { manageExceptions(it) }
+            ).execute(invoker)
 
     private fun happyCase(muscleGroups: List<MuscleGroup>) = view.show(muscleGroups)
 
@@ -26,7 +26,6 @@ open class MuscleGroupPresenter(
         is GenericExceptions.ServerError -> view.showServerError()
     }
 
-    fun checkMuscleGroup(muscleGroup: MuscleGroup) {
-        view.goToExerciseType(muscleGroup.id)
-    }
+    fun checkMuscleGroup(muscleGroup: MuscleGroup) = view.goToExerciseType(muscleGroup.id)
+
 }

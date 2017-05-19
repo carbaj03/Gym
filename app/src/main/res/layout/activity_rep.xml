@@ -26,11 +26,10 @@
         <SeekBar
             android:id="@+id/sbReps"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="100"
-            android:progress="3"
-            tools:layout_constraintLeft_creator="1" />
+            android:progress="3" />
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton

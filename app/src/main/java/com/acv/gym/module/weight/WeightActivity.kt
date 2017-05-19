@@ -20,7 +20,10 @@ class WeightActivity : BaseActivity<WeightView, WeightPresenter>(), WeightView {
 
     override fun getLayout() = R.layout.activity_weight
 
-    override fun createView() = sbWeight.listener { tvWeight.text = it.toString() }
+    override fun createView() {
+        setTitle(R.string.title_weight)
+        sbWeight.listener { tvWeight.text = it.toString() }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu) = menuInflater.make(R.menu.done, menu)
 

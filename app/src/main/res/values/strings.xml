@@ -5,4 +5,7 @@
     <string name="session.title">Session</string>
     <string name="rep.title">Reps</string>
     <string name="title.muscle_group">Muscle Group</string>
+    <string name="title.exercise">Exercise</string>
+    <string name="title.exercise_type">Exercise Type</string>
+    <string name="title.weight">Weight</string>
 </resources>

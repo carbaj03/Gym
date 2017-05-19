@@ -18,7 +18,10 @@ class ExerciseTypeActivity : BaseActivity<ExerciseTypeView, ExerciseTypePresente
 
     override fun getLayout() = R.layout.activity_exercise_type
 
-    override fun createView() = presenter.loadExerciseType(getId())
+    override fun createView() {
+        setTitle(R.string.title_exercise_type)
+        presenter.loadExerciseType(getId())
+    }
 
     override fun show(exerciseTypes: List<ExerciseType>) = setRecycler(exerciseTypes)
 
@@ -26,13 +29,15 @@ class ExerciseTypeActivity : BaseActivity<ExerciseTypeView, ExerciseTypePresente
         layoutManager = gridLayoutManager()
         adapter = AVH(
                 items = exerciseTypes,
-                listener = { nav<ExerciseActivity>(listOf()) },
+                listener = { presenter.checkExercise(it)},
                 holder = ::ExerciseTypeViewHolder,
                 layout = R.layout.item_exercise_type)
     }
 
-    override fun showNetworkError() = TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showNetworkError() = TODO("not implemented")
 
-    override fun showServerError() = TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showServerError() = TODO("not implemented")
+
+    override fun goToExercise(id: Id) = nav<ExerciseActivity>(listOf("id" to id))
 
 }

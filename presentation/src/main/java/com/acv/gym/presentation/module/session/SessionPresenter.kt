@@ -11,15 +11,17 @@ import katz.Option
 
 
 open class SessionPresenter(
-        view: SessionView
-        , val getSessionUseCase: GetSessionUseCase
-        , val invoker: InteractorInvoker
+        view: SessionView,
+        val useCase: GetSessionUseCase,
+        val invoker: InteractorInvoker
 ) : Presenter<SessionView>(view) {
     fun loadSessions(command: Option<SessionCommand>) =
-            InteractorExecution(getSessionUseCase, command)
-                    .result { happyCase(it) }
-                    .errorResult { manageExceptions(it) }
-                    .execute(invoker)
+            InteractorExecution(
+                    interactor = useCase,
+                    params = command,
+                    result = { happyCase(it) },
+                    error = { manageExceptions(it) }
+            ).execute(invoker)
 
     private fun happyCase(sessionExercises: List<SessionExercise>) = view.show(sessionExercises)
 

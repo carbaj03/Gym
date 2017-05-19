@@ -17,12 +17,7 @@ class InteractorExecutionFutureTask<I, E, R>(
     private fun callUseCases() = with(interactorExecution) { interactor.execute(params) }
 
     private fun renderFeedResult(result: Either<E, R>) = when (result) {
-        is Either.Left -> handleError(result.a)
-        is Either.Right -> handleResult(result.b)
+        is Either.Left -> interactorExecution.error(result.a)
+        is Either.Right -> interactorExecution.result(result.b)
     }
-
-    private fun handleResult(result: R) = interactorExecution.interactorResult(result)
-
-    private fun handleError(result: E) = interactorExecution.interactorError(result)
-
 }

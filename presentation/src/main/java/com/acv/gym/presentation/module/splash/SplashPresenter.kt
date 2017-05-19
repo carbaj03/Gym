@@ -10,15 +10,16 @@ import com.acv.gym.presentation.invoker.InteractorInvoker
 
 open class SplashPresenter(
         view: SplashView,
-        val checkSplashUseCase: CheckSplashUseCase,
-        val interactorInvokerImp: InteractorInvoker
+        val useCase: CheckSplashUseCase,
+        val invoker: InteractorInvoker
 ) : Presenter<SplashView>(view) {
 
     fun loadSplash() =
-            InteractorExecution(checkSplashUseCase)
-                    .result { happyCase(it[0]) }
-                    .errorResult { manageExceptions(it) }
-                    .execute(interactorInvokerImp)
+            InteractorExecution(
+                    interactor = useCase,
+                    result = { happyCase(it[0]) },
+                    error = { manageExceptions(it) }
+            ).execute(invoker)
 
     private fun happyCase(launchAppModel: LaunchApp) = when (launchAppModel.isFirstTime) {
         true -> view.show(emptyList())

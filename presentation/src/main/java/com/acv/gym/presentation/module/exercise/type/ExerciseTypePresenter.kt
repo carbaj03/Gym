@@ -15,12 +15,13 @@ class ExerciseTypePresenter(
         val invoker: InteractorInvoker
 ) : Presenter<ExerciseTypeView>(view) {
 
-    fun loadExerciseType(id: Id) {
-        InteractorExecution(useCase, Option(id))
-                .result { happyCase(it) }
-                .errorResult { manageExceptions(it) }
-                .execute(invoker)
-    }
+    fun loadExerciseType(id: Id) =
+        InteractorExecution(
+                interactor = useCase,
+                params = Option(id),
+                result = { happyCase(it) },
+                error = { manageExceptions(it) }
+        ).execute(invoker)
 
     private fun happyCase(exerciseTypes: List<ExerciseType>) = view.show(exerciseTypes)
 
@@ -28,4 +29,6 @@ class ExerciseTypePresenter(
         is GenericExceptions.NetworkError -> view.showNetworkError()
         is GenericExceptions.ServerError -> view.showServerError()
     }
+
+    fun checkExercise(exerciseType: ExerciseType) = view.goToExercise(Id(exerciseType.id))
 }
