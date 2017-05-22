@@ -1,4 +1,4 @@
-package com.acv.gym.data.realm.model
+package com.acv.gym.data.db.realm.model
 
 import com.acv.gym.data.DataModel
 import com.acv.gym.domain.model.SessionSet

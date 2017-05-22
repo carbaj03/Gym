@@ -2,8 +2,8 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.realm.SessionRealmGateway
-import com.acv.gym.data.realm.datasource.SessionExerciseDataSource
+import com.acv.gym.data.db.realm.SessionRealmGateway
+import com.acv.gym.data.db.realm.datasource.SessionExerciseDataSource
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.SessionGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp

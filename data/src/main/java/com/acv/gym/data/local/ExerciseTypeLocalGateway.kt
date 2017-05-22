@@ -5,6 +5,7 @@ import com.acv.gym.data.local.model.map
 import com.acv.gym.domain.ExerciseTypeGateway
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.GenericGateway
+import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.Command
 import katz.Either
 import katz.Option

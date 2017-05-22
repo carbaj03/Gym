@@ -1,8 +1,8 @@
-package com.acv.gym.data.realm
+package com.acv.gym.data.db.realm
 
 
-import com.acv.gym.data.realm.datasource.SessionExerciseDataSource
-import com.acv.gym.data.realm.model.map
+import com.acv.gym.data.db.realm.datasource.SessionExerciseDataSource
+import com.acv.gym.data.db.realm.model.map
 import com.acv.gym.domain.GenericGateway
 import com.acv.gym.domain.SessionGateway
 import com.acv.gym.domain.model.SessionExercise
