@@ -2,7 +2,7 @@ package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.usecase.session.GetSessionUseCase
+import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
 import com.acv.gym.domain.usecase.session.SessionCommand
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.InteractorExecution
@@ -12,7 +12,7 @@ import katz.Option
 
 open class SessionPresenter(
         view: SessionView,
-        val useCase: GetSessionUseCase,
+        val useCase: GetSessionExercisesUseCase,
         val invoker: InteractorInvoker
 ) : Presenter<SessionView>(view) {
     fun loadSessions(command: Option<SessionCommand>) =

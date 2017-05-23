@@ -6,8 +6,7 @@ import android.arch.persistence.room.Room
 import android.content.Context
 import com.acv.gym.GymApplication
 import com.acv.gym.data.db.room.AppDatabase
-import com.acv.gym.data.db.room.ExerciseDao
-import com.acv.gym.data.db.room.SessionExerciseDao
+import com.acv.gym.data.db.room.model.SessionExerciseDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

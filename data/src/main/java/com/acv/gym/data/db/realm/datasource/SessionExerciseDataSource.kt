@@ -1,16 +1,13 @@
 package com.acv.gym.data.db.realm.datasource
 
-import com.acv.gym.data.db.DB
+import com.acv.gym.data.db.SessionExerciseDb
 import com.acv.gym.data.db.realm.model.SessionExerciseDataModel
 import com.acv.gym.domain.GenericExceptions
 import io.realm.Realm
 import katz.Either
 import katz.Id
 
-open class SessionExerciseDataSource : DB<GenericExceptions.ServerError, SessionExerciseDataModel> {
-    override fun getBy(id: Id<String>): Either<GenericExceptions.ServerError, List<SessionExerciseDataModel>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+open class SessionExerciseDataSource: SessionExerciseDb<GenericExceptions.ServerError, SessionExerciseDataModel> {
 
     override fun getAll() =
             with(Realm.getDefaultInstance()) {
@@ -24,13 +21,13 @@ open class SessionExerciseDataSource : DB<GenericExceptions.ServerError, Session
                 }
             }
 
-    override fun persist(models: List<SessionExerciseDataModel>) =
+    override fun persist(sessions: List<SessionExerciseDataModel>) =
             with(Realm.getDefaultInstance()) {
                 try {
                     beginTransaction()
-                    copyToRealmOrUpdate(models)
+                    copyToRealmOrUpdate(sessions)
                     commitTransaction()
-                    return@with Either.Right(models)
+                    return@with Either.Right(sessions)
                 } catch (ex: Exception) {
                     isInTransaction.let { cancelTransaction() }
                     return@with Either.Left(GenericExceptions.ServerError())

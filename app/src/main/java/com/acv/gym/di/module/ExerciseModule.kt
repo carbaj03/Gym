@@ -2,8 +2,8 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.local.ExercisesLocalGateway
-import com.acv.gym.data.local.datasource.ExercisesLocalDataSource
+import com.acv.gym.data.ExercisesGateway
+import com.acv.gym.data.db.cache.datasource.ExercisesLocalDataSource
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.ExerciseGateway
 import com.acv.gym.domain.GenericGateway
@@ -38,7 +38,7 @@ class ExerciseModule(activity: Activity) : ActivityModule(activity) {
     @ActivityScope
     @Provides
     fun provideLocalGateway(dataSource: ExercisesLocalDataSource): ExerciseGateway
-            = ExercisesLocalGateway(dataSource)
+            = ExercisesGateway(dataSource)
 
     @ActivityScope
     @Provides

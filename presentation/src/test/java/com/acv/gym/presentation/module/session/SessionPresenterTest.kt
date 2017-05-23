@@ -2,7 +2,7 @@ package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericExceptions
 import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.usecase.session.GetSessionUseCase
+import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
 import com.acv.gym.domain.usecase.session.SessionCommand
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.mock
@@ -23,7 +23,7 @@ class SessionPresenterTest {
     lateinit var presenter: SessionPresenter
 
     val view: SessionView = mock()
-    val useCase: GetSessionUseCase = mock()
+    val useCase: GetSessionExercisesUseCase = mock()
     val command: SessionCommand = SessionCommand("")
 
     @Before

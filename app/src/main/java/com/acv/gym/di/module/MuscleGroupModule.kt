@@ -2,8 +2,8 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.local.MuscleGroupLocalGateway
-import com.acv.gym.data.local.datasource.MuscleGroupLocalDataSource
+import com.acv.gym.data.MuscleGroupGateway
+import com.acv.gym.data.db.cache.datasource.MuscleGroupLocalDataSource
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.MuscleGroupGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp
@@ -27,12 +27,12 @@ class MuscleGroupModule(activity: Activity) : ActivityModule(activity) {
             = MuscleGroupPresenter(activity, useCase, interactorInvoker)
 
     @ActivityScope @Provides
-    fun provideUseCase(localGateway: MuscleGroupGateway): GetMuscleGroupsUseCase =
+    fun provideUseCase(localGateway: com.acv.gym.domain.MuscleGroupGateway): GetMuscleGroupsUseCase =
             GetMuscleGroupsUseCase(localGateway)
 
     @ActivityScope @Provides
-    fun provideLocalGateway(dataSource: MuscleGroupLocalDataSource): MuscleGroupGateway =
-            MuscleGroupLocalGateway(dataSource)
+    fun provideLocalGateway(dataSource: MuscleGroupLocalDataSource): com.acv.gym.domain.MuscleGroupGateway =
+            com.acv.gym.data.MuscleGroupGateway(dataSource)
 
     @ActivityScope @Provides
     fun provideDataSource() = MuscleGroupLocalDataSource()

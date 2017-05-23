@@ -1,6 +1,7 @@
 package com.acv.gym.domain.usecase.exercise
 
 import com.acv.gym.domain.ExerciseGateway
+import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.usecase.EmptyCommand
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
@@ -13,7 +14,7 @@ class GetExerciseUseCaseTest {
 
 
     lateinit var useCase: GetExercisesUseCase
-    val gateway: ExerciseGateway = mock()
+    val gateway: GymGateway = mock()
 
     @Before
     fun setUp() {
@@ -25,6 +26,6 @@ class GetExerciseUseCaseTest {
         val command = EmptyCommand()
         useCase.execute(Option.None)
 
-        verify(gateway, times(1)).obtain(Option.None)
+        verify(gateway, times(1)).getAllExercises()
     }
 }

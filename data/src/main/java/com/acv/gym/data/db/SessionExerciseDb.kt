@@ -8,8 +8,8 @@ import katz.Id
 /**
  * Created by alejandro on 21/05/2017.
  */
-interface SessionExerciseDb<out E: GenericExceptions, S: DataModel> {
-    fun persist(models: List<S>): Either<E, List<S>>
+interface SessionExerciseDb<out E : GenericExceptions, S : DataModel> {
+    fun persist(sessions: List<S>): Either<E, List<S>>
     fun getAll(): Either<E, List<S>>
-    fun getBy(id: Id<String>): Either<E, List<S>>
+    fun getExercise(id: Id<String>): S
 }

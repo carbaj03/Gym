@@ -2,8 +2,8 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.local.RoutineLocalGateway
-import com.acv.gym.data.local.datasource.RoutineLocalDataSource
+import com.acv.gym.data.RoutineGateway
+import com.acv.gym.data.db.cache.datasource.RoutineLocalDataSource
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.RoutineGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp
@@ -35,7 +35,7 @@ class RoutinesModule(activity: Activity) : ActivityModule(activity) {
     @ActivityScope
     @Provides
     fun provideLocalGateway(dataSource: RoutineLocalDataSource): RoutineGateway
-            = RoutineLocalGateway(dataSource)
+            = RoutineGateway(dataSource)
 
     @ActivityScope
     @Provides
