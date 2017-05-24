@@ -1,6 +1,6 @@
 package com.acv.gym.presentation.module.splash
 
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
@@ -40,7 +40,7 @@ class SplashPresenterTest {
 
     @Test
     fun `should show server error When splash fail`() {
-        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericExceptions.ServerError()))
+        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericError.ServerError()))
 
         presenter.loadSplash()
 
@@ -49,7 +49,7 @@ class SplashPresenterTest {
 
     @Test
     fun `should show network error When not connection`() {
-        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericExceptions.NetworkError()))
+        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericError.NetworkError()))
 
         presenter.loadSplash()
 

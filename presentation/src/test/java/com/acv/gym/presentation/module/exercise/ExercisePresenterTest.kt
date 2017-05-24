@@ -1,6 +1,6 @@
 package com.acv.gym.presentation.module.exercise
 
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
@@ -43,7 +43,7 @@ class ExercisePresenterTest {
 
     @Test
     fun `should show error network When is network exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.NetworkError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.NetworkError()))
 
         presenter.loadExercises(Id(""))
 
@@ -52,7 +52,7 @@ class ExercisePresenterTest {
 
     @Test
     fun `should show error server When is server exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.ServerError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.ServerError()))
 
         presenter.loadExercises(Id(""))
 

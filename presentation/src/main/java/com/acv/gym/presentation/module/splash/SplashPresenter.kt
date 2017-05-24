@@ -1,6 +1,6 @@
 package com.acv.gym.presentation.module.splash
 
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
 import com.acv.gym.presentation.Presenter
@@ -27,8 +27,8 @@ open class SplashPresenter(
     }
 
 
-    private fun manageExceptions(exceptions: GenericExceptions) = when (exceptions) {
-        is GenericExceptions.NetworkError -> view.showNetworkError()
-        is GenericExceptions.ServerError -> view.showServerError()
+    private fun manageExceptions(exceptions: GenericError) = when (exceptions) {
+        is GenericError.NetworkError -> view.showNetworkError()
+        is GenericError.ServerError -> view.showServerError()
     }
 }

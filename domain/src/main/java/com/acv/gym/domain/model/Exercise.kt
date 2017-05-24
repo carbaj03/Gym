@@ -1,7 +1,8 @@
 package com.acv.gym.domain.model
 
 
-public data class Exercise(
+data class Exercise(
         val id: String,
-        val name: String
+        val name: String,
+        val exerciseType: String
 ) : Model

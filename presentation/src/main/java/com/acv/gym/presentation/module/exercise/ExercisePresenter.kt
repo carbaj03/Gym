@@ -1,7 +1,8 @@
 package com.acv.gym.presentation.module.exercise
 
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
 import com.acv.gym.presentation.Id
 import com.acv.gym.presentation.Presenter
@@ -25,9 +26,9 @@ open class ExercisePresenter(
 
     private fun happyCase(exercises: List<Exercise>) = view.show(exercises)
 
-    private fun manageExceptions(exception: GenericExceptions) = when (exception) {
-        is GenericExceptions.NetworkError -> view.showNetworkError()
-        is GenericExceptions.ServerError -> view.showServerError()
+    private fun manageExceptions(exception: GenericError) = when (exception) {
+        is GenericError.NetworkError -> view.showNetworkError()
+        is GenericError.ServerError -> view.showServerError()
     }
 
     fun checkExercise(exercise: Exercise) = view.goToWeight(Id(exercise.id))

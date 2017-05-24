@@ -6,11 +6,18 @@ import com.acv.gym.data.db.room.model.*
 
 @Database(entities =
 arrayOf(
-        SessionExerciseDataModel::class,
-        SessionSetDataModel::class
+        SessionExerciseRoom::class,
+        SessionSetRoom::class,
+        ExerciseRoom::class,
+        ExerciseTypeRoom::class,
+        MuscleGroupRoom::class,
+        SessionRoom::class
 ), version = 1)
 abstract class AppDatabase : RoomDatabase() {
+    abstract fun sessionDao(): SessionDao
     abstract fun sessionExerciseDao(): SessionExerciseDao
-    abstract fun exerciseDao(): ExerciseDao
     abstract fun sessionSetDao(): SessionSetDao
+    abstract fun exerciseDao(): ExerciseDao
+    abstract fun exerciseTypeDao(): ExerciseTypeDao
+    abstract fun muscleGroupDao(): MuscleGroupDao
 }

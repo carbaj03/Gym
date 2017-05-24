@@ -3,10 +3,10 @@ package com.acv.gym.di.module
 
 import android.app.Activity
 import com.acv.gym.data.db.cache.Cache
-import com.acv.gym.data.LaunchAppGateway
+import com.acv.gym.data.db.sharedPreference.LaunchAppGateway
 import com.acv.gym.data.db.cache.SharedPreferencesCache
 import com.acv.gym.di.scope.ActivityScope
-import com.acv.gym.domain.LaunchAppGateway
+import com.acv.gym.domain.SharedPreference
 import com.acv.gym.domain.invoker.InteractorInvokerImp
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
@@ -31,13 +31,13 @@ class SplashModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideCheckSplashUseCase(localGateway: com.acv.gym.domain.LaunchAppGateway): CheckSplashUseCase
+    fun provideCheckSplashUseCase(localGateway: SharedPreference): CheckSplashUseCase
             = CheckSplashUseCase(localGateway)
 
     @ActivityScope
     @Provides
-    fun provideLaunchAppLocalGateway(sharedPreferencesCache: Cache): com.acv.gym.domain.LaunchAppGateway
-            = com.acv.gym.data.LaunchAppGateway(sharedPreferencesCache)
+    fun provideLaunchAppLocalGateway(sharedPreferencesCache: Cache): SharedPreference
+            = LaunchAppGateway(sharedPreferencesCache)
 
     @ActivityScope
     @Provides

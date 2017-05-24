@@ -1,7 +1,6 @@
 package com.acv.gym.domain.usecase.muscle.group
 
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.MuscleGroupGateway
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify

@@ -9,7 +9,9 @@ import javax.inject.Singleton
 import dagger.Component
 
 @Singleton
-@Component(modules = arrayOf(AppModule::class))
+@Component(modules = arrayOf(
+        AppModule::class
+))
 interface AppComponent {
     operator fun plus(module: SplashModule): SplashComponent
     operator fun plus(module: RoutinesModule): RoutinesComponent

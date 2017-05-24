@@ -1,6 +1,6 @@
 package com.acv.gym.domain.usecase.splash
 
-import com.acv.gym.domain.GymGateway
+import com.acv.gym.domain.SharedPreference
 import com.nhaarman.mockito_kotlin.mock
 import katz.Option
 import org.junit.Before
@@ -10,7 +10,7 @@ import org.mockito.Mockito.verify
 
 class CheckSplashUseCaseTest {
 
-    val gateway: GymGateway = mock()
+    val gateway: SharedPreference = mock()
 
     lateinit var checkSplashUseCase: CheckSplashUseCase
 

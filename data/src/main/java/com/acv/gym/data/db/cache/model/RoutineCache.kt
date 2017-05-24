@@ -4,10 +4,10 @@ import com.acv.gym.data.DataModel
 import com.acv.gym.domain.model.Routine
 
 
-data class RoutineDataModel(
+data class RoutineCache(
         val id: String,
         val name: String,
         val image: String
 ) : DataModel
 
-fun RoutineDataModel.map() = Routine(id, name, image)
+fun RoutineCache.map() = Routine(id, name, image)

@@ -1,9 +1,8 @@
 package com.acv.gym.module.session
 
 import com.acv.gym.R
-import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.gridLayoutManager
-import com.acv.gym.commons.extension.inflate
+import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.navStack
 import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.module.muscle.group.MuscleGroupActivity
@@ -14,6 +13,7 @@ import com.acv.gym.ui.commons.AVH
 import katz.Option
 import kotlinx.android.synthetic.main.activity_session.*
 import org.jetbrains.anko.onClick
+import org.jetbrains.anko.toast
 
 class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionView {
     override fun setupComponent() = inject()
@@ -35,7 +35,7 @@ class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionVi
                 layout = R.layout.item_session)
     }
 
-    override fun showServerError() = TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showServerError() = toast("Error")
 
     override fun showNetworkError() = TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 }

@@ -1,8 +1,7 @@
 package com.acv.gym.data.db.cache
 
-import com.acv.gym.data.LaunchAppGateway
+import com.acv.gym.data.db.sharedPreference.LaunchAppGateway
 import com.nhaarman.mockito_kotlin.mock
-import katz.Option
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -25,37 +24,34 @@ class LaunchAppLocalGatewayImplTest {
     fun shouldNotHappyCaseWhenThrowException() {
         doThrow(Exception::class.java).`when`(sharedPreferences).get(LaunchAppGateway.KEY_IS_FIRST_TIME_LAUNCH_APP, true)
 
-        val launchAppModel = launchAppLocalGatewayImpl.obtain(Option.None)
+        val launchAppModel = launchAppLocalGatewayImpl.getLaunchApp()
 
         Assert.assertEquals(true, launchAppModel.isLeft)
     }
 
     @Test
     fun shouldHappyCaseWhenIsFirtsTime() {
-        `when`(sharedPreferences.get(LaunchAppGateway.KEY_IS_FIRST_TIME_LAUNCH_APP, true))
-                .thenReturn(true)
+        `when`(sharedPreferences.get(LaunchAppGateway.KEY_IS_FIRST_TIME_LAUNCH_APP, true)).thenReturn(true)
 
-        val launchAppModel = launchAppLocalGatewayImpl.obtain(Option.None)
+        val launchAppModel = launchAppLocalGatewayImpl.getLaunchApp()
 
         Assert.assertEquals(true, launchAppModel.isRight)
     }
 
     @Test
     fun shouldReturnTrueWhenIsFirtsTime() {
-        `when`(sharedPreferences.get(LaunchAppGateway.KEY_IS_FIRST_TIME_LAUNCH_APP, true))
-                .thenReturn(true)
+        `when`(sharedPreferences.get(LaunchAppGateway.KEY_IS_FIRST_TIME_LAUNCH_APP, true)).thenReturn(true)
 
-        val launchAppModel = launchAppLocalGatewayImpl.obtain(Option.None)
+        val launchAppModel = launchAppLocalGatewayImpl.getLaunchApp()
 
         launchAppModel.map { Assert.assertEquals(true, it[0].isFirstTime) }
     }
 
     @Test
     fun shouldReturnFalseWhenNotIsFirtsTime() {
-        `when`(sharedPreferences.get(LaunchAppGateway.KEY_IS_FIRST_TIME_LAUNCH_APP, true))
-                .thenReturn(false)
+        `when`(sharedPreferences.get(LaunchAppGateway.KEY_IS_FIRST_TIME_LAUNCH_APP, true)).thenReturn(false)
 
-        val launchAppModel = launchAppLocalGatewayImpl.obtain(Option.None)
+        val launchAppModel = launchAppLocalGatewayImpl.getLaunchApp()
 
         launchAppModel.map { Assert.assertEquals(false, it[0].isFirstTime) }
     }

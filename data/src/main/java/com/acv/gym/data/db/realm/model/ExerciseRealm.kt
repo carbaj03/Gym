@@ -6,11 +6,12 @@ import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
 
-open class ExerciseDataModel(
+open class ExerciseRealm(
         @PrimaryKey var id: String,
-        var name: String
+        var name: String,
+        var exerciseType: String
 ) : RealmObject(), DataModel {
-    constructor(): this("", "")
+    constructor() : this("", "", "")
 }
 
-fun ExerciseDataModel.map() = Exercise(id, name)
+fun ExerciseRealm.map() = Exercise(id, name, exerciseType)

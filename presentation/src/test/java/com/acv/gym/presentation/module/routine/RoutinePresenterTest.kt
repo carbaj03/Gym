@@ -1,6 +1,6 @@
 package com.acv.gym.presentation.module.routine
 
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
@@ -36,7 +36,7 @@ class RoutinePresenterTest {
 
     @Test
     fun `should show server error When get routines fail`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.ServerError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.ServerError()))
 
         presenter.loadRoutines()
 
@@ -45,7 +45,7 @@ class RoutinePresenterTest {
 
     @Test
     fun `should show network error When not connection`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.NetworkError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.NetworkError()))
 
         presenter.loadRoutines()
 

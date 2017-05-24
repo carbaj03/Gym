@@ -1,11 +1,11 @@
 package com.acv.gym.data.db.cache.model
 
 import com.acv.gym.data.DataModel
-import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.model.Session
 
-data class ExerciseDataModel(
+data class SessionCache(
         val id: String,
         val name: String
 ) : DataModel
 
-fun ExerciseDataModel.map() = Exercise(id, name)
+fun SessionCache.map() = Session(id, name)

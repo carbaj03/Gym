@@ -1,7 +1,8 @@
 package com.acv.gym.data.db.cache
 
-import com.acv.gym.data.SessionGateway
-import com.acv.gym.data.db.room.datasource.SessionExerciseDataSource
+import com.acv.gym.data.GymGatewayImpl
+import com.acv.gym.data.db.GymDataSource
+import com.acv.gym.domain.GymGateway
 import com.nhaarman.mockito_kotlin.mock
 import katz.Either
 import katz.Option
@@ -15,13 +16,13 @@ import org.mockito.Mockito
  */
 class SessionLocalGatewayImplTest {
 
-    lateinit var getSessionLocalGateway: SessionGateway
+    lateinit var gateway: GymGateway
 
-    var dataSource: SessionExerciseDataSource = mock()
+    var dataSource: GymDataSource = mock()
 
     @Before
     fun setUp() {
-        getSessionLocalGateway = SessionGateway(dataSource)
+        gateway = GymGatewayImpl(dataSource)
     }
 
 //    @Test
@@ -34,10 +35,10 @@ class SessionLocalGatewayImplTest {
 //    }
 
     @Test
-    fun shouldHappyCaseWhenGetRoutines() {
-        Mockito.`when`(dataSource.getAll()).thenReturn(Either.Right(listOf()))
+    fun shouldHappyCaseWhenGetAllSession() {
+        Mockito.`when`(dataSource.getAllSession()).thenReturn(Either.Right(listOf()))
 
-        val routines = getSessionLocalGateway.obtain(Option.None)
+        val routines = gateway.getAllSesion()
 
         Assert.assertEquals(true, routines.isRight)
     }

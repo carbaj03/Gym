@@ -1,10 +1,8 @@
 package com.acv.gym.domain.usecase.session
 
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.SessionGateway
 import com.acv.gym.domain.model.SessionExercise
-import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import katz.Either
 import katz.Option
@@ -49,6 +47,6 @@ class GetSessionExercisesUseCaseTest {
 
     private fun getSession() = Either.Right(listOf(SessionExercise("", "", emptyList(), "")))
 
-    private fun getErrorSession() = Either.Left(GenericExceptions.NetworkError())
+    private fun getErrorSession() = Either.Left(GenericError.NetworkError())
 
 }

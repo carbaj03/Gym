@@ -1,27 +1,22 @@
 package com.acv.gym.data.db.cache
 
-import com.acv.gym.data.ExerciseTypeGateway
-import com.acv.gym.data.db.cache.datasource.ExerciseTypeLocalDataSource
-import com.acv.gym.domain.GenericExceptions
-import com.acv.gym.domain.usecase.EmptyCommand
-import com.nhaarman.mockito_kotlin.any
+import com.acv.gym.data.GymGatewayImpl
+import com.acv.gym.data.db.GymDataSource
+import com.acv.gym.domain.GymGateway
 import com.nhaarman.mockito_kotlin.mock
 import katz.Either
-import katz.Id
-import katz.Option
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
-import java.lang.Exception
 
 class ExerciseTypeLocalGatewayTest {
-    lateinit var gateway: ExerciseTypeGateway
-    val dataSource: ExerciseTypeLocalDataSource = mock()
+    lateinit var gateway: GymGateway
+    val dataSource: GymDataSource = mock()
 
     @Before
     fun setUp() {
-        gateway = ExerciseTypeGateway(dataSource)
+        gateway = GymGatewayImpl(dataSource)
     }
 
 //    @Test
@@ -34,10 +29,10 @@ class ExerciseTypeLocalGatewayTest {
 //    }
 
     @Test
-    fun shouldHappyCaseWhenGetRoutineById() {
-        Mockito.`when`(dataSource.getBy(Id(""))).thenReturn(Either.Right(listOf()))
+    fun shouldHappyCaseWhenGetAllExerciseType() {
+        Mockito.`when`(dataSource.getAllExerciseTypes()).thenReturn(Either.Right(listOf()))
 
-        val routines = gateway.obtain(Option.None)
+        val routines = gateway.getAllRoutines()
 
         Assert.assertEquals(true, routines.isRight)
     }

@@ -1,6 +1,6 @@
 package com.acv.gym.presentation.module.routine
 
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
 import com.acv.gym.presentation.Presenter
@@ -22,9 +22,9 @@ open class RoutinePresenter(
 
     private fun happyCase(routines: List<Routine>) = view.show(routines)
 
-    private fun manageExceptions(exceptions: GenericExceptions) = when (exceptions) {
-        is GenericExceptions.NetworkError -> view.showNetworkError()
-        is GenericExceptions.ServerError -> view.showServerError()
+    private fun manageExceptions(exceptions: GenericError) = when (exceptions) {
+        is GenericError.NetworkError -> view.showNetworkError()
+        is GenericError.ServerError -> view.showServerError()
     }
 
     fun checkRoutines(routine: Routine) = view.goToTemplate(routine.id)

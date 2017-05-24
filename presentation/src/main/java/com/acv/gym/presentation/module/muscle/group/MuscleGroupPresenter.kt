@@ -1,6 +1,6 @@
 package com.acv.gym.presentation.module.muscle.group
 
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.domain.usecase.muscle.group.GetMuscleGroupsUseCase
 import com.acv.gym.presentation.Presenter
@@ -21,9 +21,9 @@ open class MuscleGroupPresenter(
 
     private fun happyCase(muscleGroups: List<MuscleGroup>) = view.show(muscleGroups)
 
-    private fun manageExceptions(exception: GenericExceptions) = when (exception) {
-        is GenericExceptions.NetworkError -> view.showNetworkError()
-        is GenericExceptions.ServerError -> view.showServerError()
+    private fun manageExceptions(exception: GenericError) = when (exception) {
+        is GenericError.NetworkError -> view.showNetworkError()
+        is GenericError.ServerError -> view.showServerError()
     }
 
     fun checkMuscleGroup(muscleGroup: MuscleGroup) = view.goToExerciseType(muscleGroup.id)

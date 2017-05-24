@@ -2,10 +2,8 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.SessionGateway
-import com.acv.gym.data.db.room.datasource.SessionExerciseDataSource
 import com.acv.gym.di.scope.ActivityScope
-import com.acv.gym.domain.SessionGateway
+import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp
 import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
@@ -30,17 +28,7 @@ class SessionModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideUseCase(localGateway: com.acv.gym.domain.SessionGateway)
-            = GetSessionExercisesUseCase(localGateway)
-
-    @ActivityScope
-    @Provides
-    fun provideLocalGateway(dataSource: SessionExerciseDataSource): com.acv.gym.domain.SessionGateway
-            = com.acv.gym.data.SessionGateway(dataSource)
-
-    @ActivityScope
-    @Provides
-    fun provideDataSource(): SessionExerciseDataSource = SessionExerciseDataSource()
+    fun provideUseCase(gateway: GymGateway) = GetSessionExercisesUseCase(gateway)
 
     @ActivityScope
     @Provides
