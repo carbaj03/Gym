@@ -8,4 +8,7 @@
     <string name="title.exercise">Exercise</string>
     <string name="title.exercise_type">Exercise Type</string>
     <string name="title.weight">Weight</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

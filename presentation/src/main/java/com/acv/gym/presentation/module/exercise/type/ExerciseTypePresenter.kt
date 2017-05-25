@@ -2,8 +2,8 @@ package com.acv.gym.presentation.module.exercise.type
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.ExerciseType
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
-import com.acv.gym.presentation.Id
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.InteractorExecution
 import com.acv.gym.presentation.invoker.InteractorInvoker
@@ -16,12 +16,12 @@ class ExerciseTypePresenter(
 ) : Presenter<ExerciseTypeView>(view) {
 
     fun loadExerciseType(id: Id) =
-        InteractorExecution(
-                interactor = useCase,
-                params = Option(id),
-                result = { happyCase(it) },
-                error = { manageExceptions(it) }
-        ).execute(invoker)
+            InteractorExecution(
+                    interactor = useCase,
+                    params = Option(id),
+                    result = { happyCase(it) },
+                    error = { manageExceptions(it) }
+            ).execute(invoker)
 
     private fun happyCase(exerciseTypes: List<ExerciseType>) = view.show(exerciseTypes)
 

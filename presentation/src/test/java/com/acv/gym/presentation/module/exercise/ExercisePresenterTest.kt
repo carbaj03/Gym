@@ -2,12 +2,9 @@ package com.acv.gym.presentation.module.exercise
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.model.ExerciseType
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
-import com.acv.gym.presentation.Id
 import com.acv.gym.presentation.module.TestInteractorInvoker
-import com.acv.gym.presentation.module.exercise.ExercisePresenter
-import com.acv.gym.presentation.module.exercise.ExerciseView
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
@@ -59,5 +56,5 @@ class ExercisePresenterTest {
         verify(view, times(1)).showServerError()
     }
 
-    private fun getExercise() = listOf(Exercise("", ""))
+    private fun getExercise() = listOf(Exercise("", "", ""))
 }

@@ -2,8 +2,8 @@ package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.usecase.SessionCommand
 import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
-import com.acv.gym.domain.usecase.session.SessionCommand
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.InteractorExecution
 import com.acv.gym.presentation.invoker.InteractorInvoker
@@ -30,6 +30,8 @@ open class SessionPresenter(
         is GenericError.ServerError -> view.showServerError()
     }
 
-    fun checkExercise(sessionExercises: SessionExercise) {
+    fun checkExercise(it: SessionExercise) {
+        TODO("not implemented")
     }
+
 }

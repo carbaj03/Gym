@@ -2,6 +2,7 @@ package com.acv.gym.commons.extension
 
 import android.app.Activity
 import android.content.Intent
+import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
@@ -11,13 +12,16 @@ import com.acv.gym.GymApplication
 import com.acv.gym.R
 import com.acv.gym.commons.listener.SeekBarListener
 import com.acv.gym.di.module.*
+import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.model.Model
 import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.module.exercise.ExerciseActivity
 import com.acv.gym.module.exercise.ExercisesViewHolder
 import com.acv.gym.module.exercise.type.ExerciseTypeActivity
+import com.acv.gym.module.exercise.type.ExerciseTypeFragment
 import com.acv.gym.module.muscle.group.MuscleGroupActivity
+import com.acv.gym.module.muscle.group.MuscleGroupFragment
 import com.acv.gym.module.muscle.group.MuscleGroupViewHolder
 import com.acv.gym.module.rep.RepActivity
 import com.acv.gym.module.routine.RoutineActivity
@@ -37,6 +41,12 @@ inline fun <reified T : Activity> Activity.goToActivity(pairs: List<Pair<String,
 }
 
 inline fun <reified T : Activity> Activity.nav(pairs: List<Pair<String, Command>> = listOf()) {
+    goToActivity<T>(pairs)
+    finish()
+    setSlideRightAnimation()
+}
+
+inline fun <reified T : Activity> Fragment.nav(pairs: List<Pair<String, Command>> = listOf()) = with(activity) {
     goToActivity<T>(pairs)
     finish()
     setSlideRightAnimation()
@@ -71,7 +81,15 @@ fun Activity.inject() {
     }
 }
 
+fun Fragment.inject() {
+    when (this) {
+        is MuscleGroupFragment -> GymApplication.appComponent.plus(MuscleGroupFragmentModule(this)).inject(this)
+        is ExerciseTypeFragment -> GymApplication.appComponent.plus(ExerciseTypeFragmentModule(this)).inject(this)
+    }
+}
+
 fun Activity.gridLayoutManager(cels : Int = 2) = GridLayoutManager(this, cels)
+fun Fragment.gridLayoutManager(cels : Int = 2) = GridLayoutManager(context, cels)
 
 fun TextView.visible() { visibility = View.VISIBLE }
 fun TextView.insivible() { visibility = View.INVISIBLE}

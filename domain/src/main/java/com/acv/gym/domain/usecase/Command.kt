@@ -1,7 +1,27 @@
 package com.acv.gym.domain.usecase
 
+import com.acv.gym.domain.commons.extension.now
 import java.io.Serializable
+import java.util.*
 
-interface Command : Serializable
+sealed class Command : Serializable
 
-class EmptyCommand : Command
+object EmptyCommand : Command()
+
+data class Id(
+        val value: String
+) : Command()
+
+data class ExerciseCommand(
+        val id: String
+) : Command()
+
+data class SessionCommand(
+        val date: String = Calendar.getInstance().now()
+) : Command()
+
+
+data class SplashCommand(
+        val any: Any
+) : Command()
+

@@ -1,10 +1,12 @@
 package com.acv.gym.domain.invoker
 
+import com.acv.gym.domain.GenericError
+import com.acv.gym.domain.usecase.Command
 import com.acv.gym.presentation.invoker.InteractorExecution
 import com.jmpergar.futurek.Future
 import katz.Either
 
-class InteractorExecutionFutureTask<I, E, R>(
+class InteractorExecutionFutureTask<I : Command, E : GenericError, R>(
         val interactorExecution: InteractorExecution<I, E, R>
 ) {
     lateinit private var future: Future<Either<E, R>>

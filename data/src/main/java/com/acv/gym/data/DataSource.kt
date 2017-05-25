@@ -1,11 +1,5 @@
 package com.acv.gym.data
 
-import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.usecase.Command
-import com.acv.gym.domain.usecase.session.SessionCommand
-import katz.Either
-import katz.Option
-
 interface DataModel
 
 //interface DataSource<T : DataModel> {

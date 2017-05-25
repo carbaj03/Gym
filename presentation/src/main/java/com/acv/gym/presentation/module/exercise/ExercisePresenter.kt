@@ -2,12 +2,13 @@ package com.acv.gym.presentation.module.exercise
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.usecase.Command
+import com.acv.gym.domain.usecase.ExerciseCommand
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
-import com.acv.gym.presentation.Id
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.InteractorExecution
 import com.acv.gym.presentation.invoker.InteractorInvoker
+import katz.Option
 
 
 open class ExercisePresenter(
@@ -18,6 +19,7 @@ open class ExercisePresenter(
 
     fun loadExercises(id: Id) =
             InteractorExecution(
+                    params = Option(ExerciseCommand(id.value)),
                     interactor = useCase,
                     result = { happyCase(it) },
                     error = { manageExceptions(it) }

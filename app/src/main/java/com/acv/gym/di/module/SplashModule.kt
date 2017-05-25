@@ -3,11 +3,10 @@ package com.acv.gym.di.module
 
 import android.app.Activity
 import com.acv.gym.data.db.cache.Cache
-import com.acv.gym.data.db.sharedPreference.LaunchAppGateway
 import com.acv.gym.data.db.cache.SharedPreferencesCache
+import com.acv.gym.data.db.sharedPreference.LaunchAppGateway
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.SharedPreference
-import com.acv.gym.domain.invoker.InteractorInvokerImp
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
 import com.acv.gym.presentation.module.splash.SplashPresenter
@@ -42,8 +41,4 @@ class SplashModule(activity: Activity) : ActivityModule(activity) {
     @ActivityScope
     @Provides
     fun provideCache(): Cache = SharedPreferencesCache(activity.applicationContext)
-
-    @ActivityScope @Provides
-    fun provideInteractorInvoker(): InteractorInvoker = InteractorInvokerImp()
-
 }
