@@ -30,8 +30,6 @@ open class SessionPresenter(
         is GenericError.ServerError -> view.showServerError()
     }
 
-    fun checkExercise(it: SessionExercise) {
-        TODO("not implemented")
-    }
+    fun checkExercise(it: SessionExercise) = view.showClick()
 
 }

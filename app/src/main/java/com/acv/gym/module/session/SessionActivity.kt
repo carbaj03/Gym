@@ -40,5 +40,7 @@ class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionVi
 
     override fun showServerError() = toast("Error")
 
-    override fun showNetworkError() = TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showNetworkError() = TODO("not implemented")
+
+    override fun showClick() = toast("Click")
 }

@@ -1,5 +1,6 @@
 package com.acv.gym.module.session
 
+import android.widget.Toast
 import com.acv.gym.R
 import com.acv.gym.commons.extension.gridLayoutManager
 import com.acv.gym.commons.extension.inject
@@ -39,6 +40,8 @@ class SessionFragment : BaseFragment<SessionView, SessionPresenter>(), SessionVi
                 holder = ::SessionViewHolder,
                 layout = R.layout.item_session)
     }
+
+    override fun showClick() = Toast.makeText(activity, "Click Fragment", Toast.LENGTH_LONG).show()
 
     override fun showServerError() = toast("Error")
 
