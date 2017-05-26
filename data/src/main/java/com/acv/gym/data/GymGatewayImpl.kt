@@ -25,4 +25,7 @@ class GymGatewayImpl(
     override fun getAllRoutines(): Either<GenericError, List<Routine>> = TODO("not implemented")
 
     override fun getAllSessionExercises() = dataSource.getAllSessionExercises()
+
+    override fun persistSessionExercise(sessionExercises: List<SessionExercise>)
+            = dataSource.persistSessionExercises(sessionExercises)
 }

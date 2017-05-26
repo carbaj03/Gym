@@ -15,10 +15,10 @@ class ExerciseTypePresenter(
         val invoker: InteractorInvoker
 ) : Presenter<ExerciseTypeView>(view) {
 
-    fun loadExerciseType(id: Id) =
+    fun loadExerciseType(id: Option<Id>) =
             InteractorExecution(
                     interactor = useCase,
-                    params = Option(id),
+                    params = id,
                     result = { happyCase(it) },
                     error = { manageExceptions(it) }
             ).execute(invoker)

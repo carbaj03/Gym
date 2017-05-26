@@ -1,6 +1,7 @@
 package com.acv.gym.domain.usecase
 
 import com.acv.gym.domain.commons.extension.now
+import com.acv.gym.domain.model.SessionExercise
 import java.io.Serializable
 import java.util.*
 
@@ -18,6 +19,10 @@ data class ExerciseCommand(
 
 data class SessionCommand(
         val date: String = Calendar.getInstance().now()
+) : Command()
+
+data class NewSessionCommand(
+        val sessionExercises: List<SessionExercise>
 ) : Command()
 
 

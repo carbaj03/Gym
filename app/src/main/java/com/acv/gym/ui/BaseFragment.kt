@@ -14,12 +14,16 @@ abstract class BaseFragment<out V : com.acv.gym.presentation.View, P : Presenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupComponent()
-        onCreate()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         return inflater.inflate(getLayout(), container, false)
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        onCreate()
     }
 
     abstract fun setupComponent()

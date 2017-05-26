@@ -2,7 +2,7 @@ package com.acv.gym.module.splash
 
 import com.acv.gym.R
 import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.nav
+import com.acv.gym.commons.extension.load
 import com.acv.gym.commons.extension.visible
 import com.acv.gym.data.db.room.RoomDB
 import com.acv.gym.data.db.room.model.*
@@ -18,7 +18,7 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenter>(), SplashView {
 
     override fun getLayout() = R.layout.activity_splash
 
-    override fun createView() {
+    override fun onCreate() {
         presenter.loadSplash()
         doAsync {
 
@@ -65,7 +65,7 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenter>(), SplashView {
                     ))
 
         }
-        logoApp.setOnClickListener { nav<SessionActivity>(listOf()) }
+        logoApp.setOnClickListener { load<SessionActivity>(listOf()) }
     }
 
     override fun show(data: List<Any>) = logoApp.visible()

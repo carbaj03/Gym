@@ -2,6 +2,7 @@ package com.acv.gym.module.muscle.group
 
 import com.acv.gym.R
 import com.acv.gym.commons.extension.inject
+import com.acv.gym.commons.extension.load
 import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupPresenter
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupView
@@ -12,12 +13,9 @@ class MuscleGroupActivity : BaseActivity<MuscleGroupView, MuscleGroupPresenter>(
 
     override fun getLayout() = R.layout.activity_muscle_group
 
-    override fun createView() {
+    override fun onCreate() {
         setTitle(R.string.title_muscle_group)
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, MuscleGroupFragment())
-                .commit()
+        load(MuscleGroupFragment())
     }
 
     override fun showNetworkError() {

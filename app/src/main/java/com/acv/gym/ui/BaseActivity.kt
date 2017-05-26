@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.KeyEvent
 import android.view.MenuItem
 import com.acv.gym.commons.extension.navBack
-import com.acv.gym.domain.usecase.Id
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.View
 import kotlinx.android.synthetic.main.toobar.*
@@ -20,10 +19,10 @@ abstract class BaseActivity<out V : View, P : Presenter<V>> : AppCompatActivity(
         setContentView(getLayout())
         setSupportActionBar(toolbar)
         setupComponent()
-        createView()
+        onCreate()
     }
 
-    abstract fun createView()
+    abstract fun onCreate()
     abstract fun setupComponent()
     abstract fun getLayout(): Int
 
@@ -32,8 +31,6 @@ abstract class BaseActivity<out V : View, P : Presenter<V>> : AppCompatActivity(
         supportActionBar!!.title = ""
         tvTitle.text = getString(title)
     }
-
-    fun getId() = intent.getSerializableExtra("id") as Id
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         android.R.id.home -> navBack()

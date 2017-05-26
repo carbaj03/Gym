@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-/* //device/apps/common/res/anim/fade_out.xml
-**
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
 ** Copyright 2007, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,4 @@
 ** limitations under the License.
 */
 -->
-<alpha xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="@android:integer/config_mediumAnimTime"
-    android:fromAlpha="1.0"
-    android:interpolator="@anim/accelerate_quad"
-    android:toAlpha="0.0" />
+<accelerateDecelerateInterpolator />

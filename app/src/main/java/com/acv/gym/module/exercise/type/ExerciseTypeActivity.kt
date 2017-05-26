@@ -3,7 +3,7 @@ package com.acv.gym.module.exercise.type
 import com.acv.gym.R
 import com.acv.gym.commons.extension.gridLayoutManager
 import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.nav
+import com.acv.gym.commons.extension.load
 import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.module.exercise.ExerciseActivity
@@ -20,7 +20,7 @@ class ExerciseTypeActivity : BaseActivity<ExerciseTypeView, ExerciseTypePresente
 
     override fun getLayout() = R.layout.activity_exercise_type
 
-    override fun createView() {
+    override fun onCreate() {
         setTitle(R.string.title_exercise_type)
         supportFragmentManager
                 .beginTransaction()
@@ -43,6 +43,6 @@ class ExerciseTypeActivity : BaseActivity<ExerciseTypeView, ExerciseTypePresente
 
     override fun showServerError() = TODO("not implemented")
 
-    override fun goToExercise(id: Id) = nav<ExerciseActivity>(listOf("id" to id))
+    override fun goToExercise(id: Id) = load<ExerciseActivity>(listOf("id" to id))
 
 }

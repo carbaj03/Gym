@@ -47,6 +47,10 @@
         <activity
             android:name=".module.weight.WeightActivity"
             android:launchMode="singleTask" />
+
+        <activity
+            android:name=".module.session.NewSessionActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

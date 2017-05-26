@@ -1,13 +1,10 @@
 package com.acv.gym.module.muscle.group
 
-import android.app.FragmentTransaction
 import com.acv.gym.R
 import com.acv.gym.commons.extension.gridLayoutManager
 import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.nav
+import com.acv.gym.commons.extension.load
 import com.acv.gym.domain.model.MuscleGroup
-import com.acv.gym.domain.usecase.Id
-import com.acv.gym.module.exercise.type.ExerciseTypeActivity
 import com.acv.gym.module.exercise.type.ExerciseTypeFragment
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupPresenter
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupView
@@ -36,13 +33,5 @@ class MuscleGroupFragment : BaseFragment<MuscleGroupView, MuscleGroupPresenter>(
 
     override fun showServerError() = TODO("not implemented")
 
-    override fun goToExerciseType(id: String) {
-        activity.supportFragmentManager
-                .beginTransaction()
-                .setCustomAnimations(R.anim.slide_enter_from_right,R.anim.slide_exit_to_right)
-                .replace(R.id.container, ExerciseTypeFragment())
-                .commit()
-    }
-
-//            nav<ExerciseTypeActivity>(listOf("id" to Id(id)))
+    override fun goToExerciseType(id: String) = load(ExerciseTypeFragment())
 }

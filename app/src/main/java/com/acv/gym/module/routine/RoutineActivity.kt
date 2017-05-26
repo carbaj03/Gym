@@ -15,7 +15,7 @@ class RoutineActivity : BaseActivity<RoutineView, RoutinePresenter>(), RoutineVi
 
     override fun getLayout() = R.layout.activity_routines
 
-    override fun createView() = presenter.loadRoutines()
+    override fun onCreate() = presenter.loadRoutines()
 
     override fun show(routines: List<Routine>) = with(rvRoutines) {
         layoutManager = gridLayoutManager()
