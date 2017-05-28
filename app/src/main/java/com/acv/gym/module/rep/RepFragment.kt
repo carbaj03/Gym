@@ -5,6 +5,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
+import com.acv.gym.module.session.ExerciseNav
+import com.acv.gym.module.session.NewSessionActivity
+import com.acv.gym.module.session.RepNav
 import com.acv.gym.presentation.module.rep.RepPresenter
 import com.acv.gym.presentation.module.rep.RepView
 import com.acv.gym.ui.BaseFragment
@@ -29,7 +32,12 @@ class RepFragment : BaseFragment<RepView, RepPresenter>(), RepView {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.done -> navMenu(RepFragment())
+        R.id.done -> returnReps()
         else -> super.onOptionsItemSelected(item)
+    }
+
+    private fun returnReps(): Boolean {
+        (activity as NewSessionActivity).loadFr(RepNav(sbReps.progress))
+        return true
     }
 }

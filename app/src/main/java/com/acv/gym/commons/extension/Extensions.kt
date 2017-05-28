@@ -2,12 +2,12 @@ package com.acv.gym.commons.extension
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.view.*
 import android.widget.SeekBar
-import android.widget.TextView
 import com.acv.gym.GymApplication
 import com.acv.gym.R
 import com.acv.gym.commons.listener.SeekBarListener
@@ -33,6 +33,7 @@ import com.acv.gym.ui.commons.setSlideExitToRightAnimation
 import com.acv.gym.ui.commons.setSlideRightAnimation
 import katz.Option
 
+
 infix fun ViewGroup.inflate(res: Int) = LayoutInflater.from(context).inflate(res, this, false)
 
 inline fun <reified T : Activity> Activity.goToActivity(pairs: List<Pair<String, Command>>) {
@@ -40,6 +41,16 @@ inline fun <reified T : Activity> Activity.goToActivity(pairs: List<Pair<String,
     pairs.map { intent.putExtra(it.first, it.second) }
     startActivity(intent)
 }
+
+inline fun <reified T : Fragment> create(ar: List<Pair<String, Command>> = listOf()): T {
+    val exerciseFragment = getFr(T::class.java)
+    val args = Bundle()
+    ar.map { args.putSerializable(it.first, it.second) }
+    exerciseFragment.arguments = args
+    return exerciseFragment
+}
+
+fun <T> getFr(c: Class<T>) = c.newInstance()
 
 fun Fragment.load(f: Fragment) {
     activity.supportFragmentManager
@@ -58,9 +69,11 @@ fun Fragment.navMenu(f: Fragment): Boolean {
     return true
 }
 
-fun AppCompatActivity.load(f: Fragment) {
+inline fun <reified T: Fragment>AppCompatActivity.loadFra(ar: List<Pair<String, Command> = listOf()>) {
+    val f= create<T>(ar)
     supportFragmentManager
             .beginTransaction()
+            .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_right)
             .replace(R.id.container, f)
             .commit()
 }
@@ -99,11 +112,6 @@ inline fun <reified T : Activity> Activity.menuNav(): Boolean {
     return true
 }
 
-inline fun <reified T : Activity> Fragment.menuNav(): Boolean {
-    load<T>(listOf())
-    return true
-}
-
 fun Activity.inject() {
     when (this) {
         is ExerciseActivity -> GymApplication.appComponent.plus(ExerciseModule(this)).inject(this)
@@ -132,11 +140,11 @@ fun Fragment.inject() {
 fun Activity.gridLayoutManager(cels: Int = 2) = GridLayoutManager(this, cels)
 fun Fragment.gridLayoutManager(cels: Int = 2) = GridLayoutManager(context, cels)
 
-fun TextView.visible() {
+fun View.visible() {
     visibility = View.VISIBLE
 }
 
-fun TextView.insivible() {
+fun View.insivible() {
     visibility = View.INVISIBLE
 }
 

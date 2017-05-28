@@ -19,20 +19,11 @@ class ExerciseTypeLocalGatewayTest {
         gateway = GymGatewayImpl(dataSource)
     }
 
-//    @Test
-//    fun shouldNotHappyCaseWhenThrowException() {
-//        Mockito.doThrow(Exception::class.java).`when`(dataSource).getAll()
-//
-//        val routines = gateway.obtain(any())
-//
-//        Assert.assertEquals(true, routines.isLeft)
-//    }
-
     @Test
     fun shouldHappyCaseWhenGetAllExerciseType() {
         Mockito.`when`(dataSource.getAllExerciseTypes()).thenReturn(Either.Right(listOf()))
 
-        val routines = gateway.getAllRoutines()
+        val routines = gateway.getAllExerciseTypes()
 
         Assert.assertEquals(true, routines.isRight)
     }

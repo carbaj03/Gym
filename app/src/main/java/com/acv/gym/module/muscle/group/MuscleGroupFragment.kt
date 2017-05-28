@@ -3,9 +3,11 @@ package com.acv.gym.module.muscle.group
 import com.acv.gym.R
 import com.acv.gym.commons.extension.gridLayoutManager
 import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.load
 import com.acv.gym.domain.model.MuscleGroup
-import com.acv.gym.module.exercise.type.ExerciseTypeFragment
+import com.acv.gym.domain.usecase.Id
+import com.acv.gym.module.session.ExerciseNav
+import com.acv.gym.module.session.MuscleGroupNav
+import com.acv.gym.module.session.NewSessionActivity
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupPresenter
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupView
 import com.acv.gym.ui.BaseFragment
@@ -14,6 +16,7 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 
 class MuscleGroupFragment : BaseFragment<MuscleGroupView, MuscleGroupPresenter>(), MuscleGroupView {
+
     override fun setupComponent() = inject()
 
     override fun onCreate() = presenter.loadMuscleGroups()
@@ -33,5 +36,6 @@ class MuscleGroupFragment : BaseFragment<MuscleGroupView, MuscleGroupPresenter>(
 
     override fun showServerError() = TODO("not implemented")
 
-    override fun goToExerciseType(id: String) = load(ExerciseTypeFragment())
+    override fun goToExerciseType(id: Id) =
+            (activity as NewSessionActivity).loadFr(MuscleGroupNav(id))
 }

@@ -11,9 +11,9 @@ class InteractorExecutionFutureTask<I : Command, E : GenericError, R>(
 ) {
     lateinit private var future: Future<Either<E, R>>
 
-    fun init() {
-        future = Future { callUseCases() }
-        future.onComplete { renderFeedResult(it) }
+    fun init() = with(Future { callUseCases() }) {
+        future = this
+        onComplete { renderFeedResult(it) }
     }
 
     private fun callUseCases() = with(interactorExecution) { interactor.execute(params) }

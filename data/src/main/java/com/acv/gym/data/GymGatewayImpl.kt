@@ -22,7 +22,7 @@ class GymGatewayImpl(
 
     override fun getAllMuscleGroups() = dataSource.getAllMuscleGroups()
 
-    override fun getAllRoutines(): Either<GenericError, List<Routine>> = TODO("not implemented")
+    override fun getAllRoutines() = dataSource.getAllRoutines()
 
     override fun getAllSessionExercises() = dataSource.getAllSessionExercises()
 

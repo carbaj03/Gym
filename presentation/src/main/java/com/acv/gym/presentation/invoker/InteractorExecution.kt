@@ -12,6 +12,5 @@ open class InteractorExecution<I : Command, E : GenericError, R>(
         val result: (R) -> Unit,
         val error: (E) -> Unit
 ) {
-
     fun execute(interactorInvoker: InteractorInvoker) = interactorInvoker.execute(this)
 }

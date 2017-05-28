@@ -17,7 +17,7 @@ open class ExercisePresenter(
         val invoker: InteractorInvoker
 ) : Presenter<ExerciseView>(view) {
 
-    fun loadExercises(id: Option<Id> = Option.None) =
+    fun loadExercises(id: Option<Id>) =
             InteractorExecution(
                     params = id.map { ExerciseCommand(it.value) },
                     interactor = useCase,

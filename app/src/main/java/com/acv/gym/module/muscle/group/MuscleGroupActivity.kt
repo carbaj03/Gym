@@ -4,11 +4,16 @@ import com.acv.gym.R
 import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.load
 import com.acv.gym.domain.model.MuscleGroup
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupPresenter
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupView
 import com.acv.gym.ui.BaseActivity
 
 class MuscleGroupActivity : BaseActivity<MuscleGroupView, MuscleGroupPresenter>(), MuscleGroupView {
+    override fun goToExerciseType(id: Id) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun setupComponent() = inject()
 
     override fun getLayout() = R.layout.activity_muscle_group
@@ -27,10 +32,6 @@ class MuscleGroupActivity : BaseActivity<MuscleGroupView, MuscleGroupPresenter>(
     }
 
     override fun show(data: List<MuscleGroup>) {
-        TODO("not implemented")
-    }
-
-    override fun goToExerciseType(id: String) {
         TODO("not implemented")
     }
 }

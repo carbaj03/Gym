@@ -10,6 +10,7 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
 import katz.Either
+import katz.Option
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
@@ -33,7 +34,7 @@ class ExercisePresenterTest {
         val exercise = getExercise()
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Right(exercise))
 
-        presenter.loadExercises(Id(""))
+        presenter.loadExercises(Option(Id("")))
 
         verify(view, times(1)).show(exercise)
     }
@@ -42,7 +43,7 @@ class ExercisePresenterTest {
     fun `should show error network When is network exception`() {
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.NetworkError()))
 
-        presenter.loadExercises(Id(""))
+        presenter.loadExercises(Option(Id("")))
 
         verify(view, times(1)).showNetworkError()
     }
@@ -51,7 +52,7 @@ class ExercisePresenterTest {
     fun `should show error server When is server exception`() {
         Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.ServerError()))
 
-        presenter.loadExercises(Id(""))
+        presenter.loadExercises(Option(Id("")))
 
         verify(view, times(1)).showServerError()
     }

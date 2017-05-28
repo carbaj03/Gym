@@ -2,6 +2,7 @@ package com.acv.gym.presentation.module.muscle.group
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.MuscleGroup
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.muscle.group.GetMuscleGroupsUseCase
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.InteractorExecution
@@ -26,6 +27,6 @@ open class MuscleGroupPresenter(
         is GenericError.ServerError -> view.showServerError()
     }
 
-    fun checkMuscleGroup(muscleGroup: MuscleGroup) = view.goToExerciseType(muscleGroup.id)
+    fun checkMuscleGroup(muscleGroup: MuscleGroup) = view.goToExerciseType(Id(muscleGroup.id))
 
 }

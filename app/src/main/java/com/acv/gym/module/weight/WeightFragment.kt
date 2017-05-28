@@ -8,10 +8,15 @@ import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.listener
 import com.acv.gym.commons.extension.make
 import com.acv.gym.commons.extension.navMenu
+import com.acv.gym.domain.model.Weight
 import com.acv.gym.module.rep.RepFragment
+import com.acv.gym.module.session.NewSessionActivity
+import com.acv.gym.module.session.RepNav
+import com.acv.gym.module.session.WeightNav
 import com.acv.gym.presentation.module.weight.WeightPresenter
 import com.acv.gym.presentation.module.weight.WeightView
 import com.acv.gym.ui.BaseFragment
+import kotlinx.android.synthetic.main.fragment_rep.*
 import kotlinx.android.synthetic.main.fragment_weight.*
 
 class WeightFragment : BaseFragment<WeightView, WeightPresenter>(), WeightView {
@@ -30,7 +35,13 @@ class WeightFragment : BaseFragment<WeightView, WeightPresenter>(), WeightView {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.done -> navMenu(RepFragment())
+        R.id.done -> returnWeight()
         else -> super.onOptionsItemSelected(item)
     }
+
+    private fun returnWeight(): Boolean {
+        (activity as NewSessionActivity).loadFr(WeightNav(sbWeight.progress))
+        return true
+    }
+
 }
