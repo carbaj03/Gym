@@ -2,9 +2,9 @@ package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.model.SessionSet
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.NewSessionCommand
-import com.acv.gym.domain.usecase.SessionCommand
-import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
 import com.acv.gym.domain.usecase.session.NewSessionExerciseUseCase
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.InteractorExecution
@@ -18,10 +18,14 @@ open class NewSessionPresenter(
         val invoker: InteractorInvoker
 ) : Presenter<NewSessionView>(view) {
 
-    fun persist(command: Option<NewSessionCommand>) =
+    private var session: SessionExercise = SessionExercise()
+    private var sets: List<SessionSet> = listOf()
+    private var sessionSet: SessionSet = SessionSet()
+
+    fun persist() =
             InteractorExecution(
                     interactor = useCase,
-                    params = command,
+                    params = Option(NewSessionCommand(listOf(session))),
                     result = { happyCase(it) },
                     error = { manageExceptions(it) }
             ).execute(invoker)
@@ -33,8 +37,18 @@ open class NewSessionPresenter(
         is GenericError.ServerError -> view.showServerError()
     }
 
-    fun checkExercise(it: SessionExercise) {
-        TODO("not implemented")
+    fun checkExercise(it: Id) {
+        session = session.copy(exercise = it.value)
+    }
+
+    fun checkWeight(num: Float) {
+        sessionSet = sessionSet.copy(weight = num)
+    }
+
+    fun checkRep(num: Int) {
+        sessionSet = sessionSet.copy(reps = num)
+        sets = sets.plus(sessionSet)
+        session = session.copy(sets = sets)
     }
 
 }
