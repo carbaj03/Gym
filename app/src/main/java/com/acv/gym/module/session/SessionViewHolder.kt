@@ -11,6 +11,6 @@ class SessionViewHolder(view: View) : ViewHolder<SessionExercise>(view) {
     var name = view.find<TextView>(R.id.tvName)
 
     override fun bind(session: SessionExercise) {
-        name.text = session.exercise
+        name.text = session.exercise.value
     }
 }

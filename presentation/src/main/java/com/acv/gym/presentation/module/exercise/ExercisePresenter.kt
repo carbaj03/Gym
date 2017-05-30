@@ -19,7 +19,7 @@ open class ExercisePresenter(
 
     fun loadExercises(id: Option<Id>) =
             InteractorExecution(
-                    params = id.map { ExerciseCommand(it.value) },
+                    params = id.map(::ExerciseCommand),
                     interactor = useCase,
                     result = { happyCase(it) },
                     error = { manageExceptions(it) }

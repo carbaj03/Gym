@@ -1,11 +1,10 @@
 package com.acv.gym.module.session
 
 import com.acv.gym.R
-import com.acv.gym.commons.extension.gridLayoutManager
-import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.load
-import com.acv.gym.commons.extension.navStack
+import com.acv.gym.commons.extension.*
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.usecase.SessionCommand
 import com.acv.gym.module.muscle.group.MuscleGroupActivity
 import com.acv.gym.presentation.module.session.SessionPresenter
 import com.acv.gym.presentation.module.session.SessionView
@@ -24,9 +23,9 @@ class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionVi
 
     override fun onCreate() {
         setTitle(R.string.session_title)
-        presenter.loadSessions(Option.None)
-        fab.onClick { navStack<NewSessionActivity>() }
-        load(SessionFragment())
+//        presenter.loadSessions(getId())
+        fab.onClick { navStack<NewSessionActivity>(listOf("id" to Id("1"))) }
+        loadFra<SessionFragment>(listOf("id" to getExtra()))
     }
 
     override fun show(sessionExercise: List<SessionExercise>) = with(rvItems) {
@@ -40,7 +39,7 @@ class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionVi
 
     override fun showServerError() = toast("Error")
 
-    override fun showNetworkError() = TODO("not implemented")
+    override fun showNetworkError() = toast("Error")
 
     override fun showClick() = toast("Click")
 }

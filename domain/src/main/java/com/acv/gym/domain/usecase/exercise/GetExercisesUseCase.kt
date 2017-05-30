@@ -12,8 +12,5 @@ open class GetExercisesUseCase(
         val gateway: GymGateway
 ) : GymUseCase<ExerciseCommand, List<Exercise>> {
 
-    override fun execute(input: Option<ExerciseCommand>) = when (input) {
-        is Option.Some -> gateway.getExercise(Id(input.value.id))
-        is Option.None -> gateway.getAllExercises()
-    }
+    override fun execute(input: Option<ExerciseCommand>) = gateway.getAllExercises()
 }

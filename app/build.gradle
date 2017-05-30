@@ -25,11 +25,10 @@ android {
 
 configurations.all {
     resolutionStrategy {
-        force 'org.jetbrains.kotlin:kotlin-stdlib:1.1.2-3'
+        force "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     }
 }
 
-// Required for annotation processing plugins like Dagger
 kapt {
     generateStubs = true
 }

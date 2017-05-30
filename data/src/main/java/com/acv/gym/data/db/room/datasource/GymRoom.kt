@@ -7,8 +7,8 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.usecase.Id
 import katz.Either
-import katz.Id
 
 class GymRoom : GymDataSource {
     override fun getAllSession() =
@@ -19,9 +19,9 @@ class GymRoom : GymDataSource {
                 Either.Left(GenericError.ServerError())
             }
 
-    override fun getExercise(id: Id<String>) =
+    override fun getExercise(id: Id) =
             try {
-                val all = RoomDB.instance.exerciseDao().getBy(id.value)
+                val all = RoomDB.instance.exerciseDao().getByExerciseType(id.value)
                 Either.Right(all.map { it.map() })
             } catch (ex: Exception) {
                 Either.Left(GenericError.ServerError())
@@ -62,9 +62,20 @@ class GymRoom : GymDataSource {
                 Either.Left(GenericError.ServerError())
             }
 
+    override fun getBySession(id: Id) =
+            try {
+                val all = RoomDB.instance.sessionExerciseDao().getBySession(id.value)
+                Either.Right(all.map { it.map() })
+            } catch (ex: Exception) {
+                Either.Left(GenericError.ServerError())
+            }
+
     override fun persistSessionExercises(sessionExercises: List<SessionExercise>) =
             try {
-                RoomDB.instance.sessionExerciseDao().insertAll(sessionExercises.map { it.map() })
+//                val a = RoomDB.instance.sessionExerciseDao().insertAll(sessionExercises.map { it.map() })
+//                Either.Right(sessionExercises.zip(a, { it, b -> it.copy(id = Id(b.toString())) }))
+                val a = sessionExercises.map { it.map() }
+                RoomDB.instance.sessionExerciseDao().insertAll(a)
                 Either.Right(sessionExercises)
             } catch (ex: Exception) {
                 Either.Left(GenericError.ServerError())

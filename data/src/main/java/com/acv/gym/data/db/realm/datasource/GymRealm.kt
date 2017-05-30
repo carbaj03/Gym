@@ -6,16 +6,20 @@ import com.acv.gym.data.db.realm.model.map
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
+import com.acv.gym.domain.usecase.Id
 import io.realm.Realm
 import katz.Either
-import katz.Id
 
 open class GymRealm : GymDataSource {
+    override fun getBySession(id: Id): GymResult<List<SessionExercise>> {
+        TODO("not implemented")
+    }
+
     override fun getAllSession(): GymResult<List<Session>> {
         TODO("not implemented")
     }
 
-    override fun getExercise(id: Id<String>): Either<GenericError, List<Exercise>> {
+    override fun getExercise(id: Id): Either<GenericError, List<Exercise>> {
         TODO("not implemented")
     }
 

@@ -40,7 +40,7 @@ class WeightFragment : BaseFragment<WeightView, WeightPresenter>(), WeightView {
     }
 
     private fun returnWeight(): Boolean {
-        (activity as NewSessionActivity).loadFr(WeightNav(sbWeight.progress))
+        (activity as NewSessionActivity).loadFr(WeightNav(sbWeight.progress.toFloat()))
         return true
     }
 

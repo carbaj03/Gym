@@ -18,9 +18,9 @@ open class NewSessionPresenter(
         val invoker: InteractorInvoker
 ) : Presenter<NewSessionView>(view) {
 
-    private var session: SessionExercise = SessionExercise()
-    private var sets: List<SessionSet> = listOf()
-    private var sessionSet: SessionSet = SessionSet()
+    private lateinit var session: SessionExercise
+    private lateinit var sets: List<SessionSet>
+    private lateinit var sessionSet: SessionSet
 
     fun persist() =
             InteractorExecution(
@@ -38,7 +38,7 @@ open class NewSessionPresenter(
     }
 
     fun checkExercise(it: Id) {
-        session = session.copy(exercise = it.value)
+        session = session.copy(exercise = it)
     }
 
     fun checkWeight(num: Float) {
@@ -50,5 +50,15 @@ open class NewSessionPresenter(
         sets = sets.plus(sessionSet)
         session = session.copy(sets = sets)
     }
+
+    fun  checkSession(id: Option<Id>) {
+        session = when(id){
+            is Option.None -> SessionExercise()
+            is Option.Some -> SessionExercise(session = id.value)
+        }
+        sets = listOf()
+        sessionSet = SessionSet()
+    }
+
 
 }

@@ -3,6 +3,7 @@ package com.acv.gym.data.db.room.model
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
 import com.acv.gym.domain.model.MuscleGroup
+import java.util.*
 
 
 const val tableMuscleGroup = "muscle_group"
@@ -12,7 +13,7 @@ data class MuscleGroupRoom(
         @PrimaryKey var id: String,
         var name: String
 ) : DataModel {
-    constructor() : this("", "")
+    constructor() : this(UUID.randomUUID().toString(), "")
 }
 
 fun MuscleGroupRoom.map() = MuscleGroup(id, name)

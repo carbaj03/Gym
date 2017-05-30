@@ -6,7 +6,8 @@ import com.acv.gym.domain.model.Exercise
 data class ExerciseCache(
         val id: String,
         val name: String,
-        val exerciseType: String
+        val exerciseType: String,
+        val muscleGroup: String
 ) : DataModel
 
-fun ExerciseCache.map() = Exercise(id, name, exerciseType)
+fun ExerciseCache.map() = Exercise(id, name, exerciseType, muscleGroup)

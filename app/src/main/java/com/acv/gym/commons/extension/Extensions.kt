@@ -69,7 +69,7 @@ fun Fragment.navMenu(f: Fragment): Boolean {
     return true
 }
 
-inline fun <reified T: Fragment>AppCompatActivity.loadFra(ar: List<Pair<String, Command> = listOf()>) {
+inline fun <reified T: Fragment>AppCompatActivity.loadFra(ar: List<Pair<String, Command>> = listOf()) {
     val f= create<T>(ar)
     supportFragmentManager
             .beginTransaction()
@@ -155,5 +155,6 @@ fun MenuInflater.make(menuRes: Int, menu: Menu): Boolean {
 
 fun SeekBar.listener(f: (Int) -> Unit) = setOnSeekBarChangeListener(SeekBarListener { f(it) })
 
+fun Activity.getExtra(): Id = intent?.getSerializableExtra("id")?.let { it as Id } ?: Id("")
 fun Activity.getId(): Option<Id> = intent?.getSerializableExtra("id")?.let { Option(it as Id) } ?: Option.None
 fun Fragment.getArgId(): Option<Id> = arguments?.getSerializable("id")?.let { Option(it as Id) } ?: Option.None

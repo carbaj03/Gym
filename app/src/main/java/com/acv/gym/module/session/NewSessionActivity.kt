@@ -19,11 +19,14 @@ sealed class Nav
 data class MuscleGroupNav(val id: Id) : Nav()
 data class ExerciseTypeNav(val id: Id) : Nav()
 data class ExerciseNav(val id: Id) : Nav()
-data class WeightNav(val num: Int) : Nav()
+data class WeightNav(val num: Float) : Nav()
 data class RepNav(val num: Int) : Nav()
 
 class NewSessionActivity : BaseActivity<NewSessionView, NewSessionPresenter>(), NewSessionView {
-    override fun onCreate() = loadFra<MuscleGroupFragment>()
+    override fun onCreate() {
+        loadFra<MuscleGroupFragment>()
+        presenter.checkSession(getId())
+    }
 
     override fun setupComponent() = inject()
 
@@ -31,23 +34,26 @@ class NewSessionActivity : BaseActivity<NewSessionView, NewSessionPresenter>(), 
 
     override fun showSuccess() = toast("Insertado con éxito")
 
-    override fun showServerError() {
-        TODO("not implemented")
-    }
+    override fun showServerError() = toast("error server")
 
-    override fun showNetworkError() {
-        TODO("not implemented")
-    }
+    override fun showNetworkError() = toast("error network")
 
-    fun loadFr(f: Nav) = when (f) {
+    fun loadFr(nav: Nav) = when (nav) {
         is MuscleGroupNav -> loadFra<ExerciseTypeFragment>()
-        is ExerciseTypeNav -> loadFra<ExerciseFragment>(listOf("id" to f.id))
-        is ExerciseNav -> loadFra<WeightFragment>()
+        is ExerciseTypeNav -> loadFra<ExerciseFragment>(listOf("id" to nav.id))
+        is ExerciseNav -> {
+            loadFra<WeightFragment>()
+            presenter.checkExercise(nav.id)
+        }
         is WeightNav -> {
             loadFra<RepFragment>()
             fab.visible()
             fab.onClick { navStack<NewSessionActivity>() }
+            presenter.checkWeight(nav.num)
         }
-        is RepNav -> toast("save")
+        is RepNav -> {
+            presenter.checkRep(nav.num)
+            presenter.persist()
+        }
     }
 }

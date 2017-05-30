@@ -2,6 +2,7 @@ package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.SessionCommand
 import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
 import com.acv.gym.presentation.Presenter
@@ -15,10 +16,10 @@ open class SessionPresenter(
         val useCase: GetSessionExercisesUseCase,
         val invoker: InteractorInvoker
 ) : Presenter<SessionView>(view) {
-    fun loadSessions(command: Option<SessionCommand>) =
+    fun loadSessions(id: Option<Id>) =
             InteractorExecution(
                     interactor = useCase,
-                    params = command,
+                    params = id.map(::SessionCommand),
                     result = { happyCase(it) },
                     error = { manageExceptions(it) }
             ).execute(invoker)

@@ -2,6 +2,7 @@ package com.acv.gym.data.db.cache.model
 
 import com.acv.gym.data.DataModel
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.usecase.Id
 
 
 data class SessionExerciseCache(
@@ -11,4 +12,4 @@ data class SessionExerciseCache(
         val session: String
 ) : DataModel
 
-fun SessionExerciseCache.map() = SessionExercise(id, exercise, sets.map { it.map() }, session)
+fun SessionExerciseCache.map() = SessionExercise(Id(id), Id(exercise), sets.map { it.map() }, Id(session))

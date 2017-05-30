@@ -2,10 +2,7 @@ package com.acv.gym.module.session
 
 import android.widget.Toast
 import com.acv.gym.R
-import com.acv.gym.commons.extension.gridLayoutManager
-import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.load
-import com.acv.gym.commons.extension.navStack
+import com.acv.gym.commons.extension.*
 import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.module.exercise.type.ExerciseTypeFragment
 import com.acv.gym.module.muscle.group.MuscleGroupActivity
@@ -29,7 +26,7 @@ class SessionFragment : BaseFragment<SessionView, SessionPresenter>(), SessionVi
 
     override fun onCreate() {
         activity.setTitle(R.string.session_title)
-        presenter.loadSessions(Option.None)
+        presenter.loadSessions(getArgId())
     }
 
     override fun show(sessionExercise: List<SessionExercise>) = with(rvItems) {
@@ -43,7 +40,7 @@ class SessionFragment : BaseFragment<SessionView, SessionPresenter>(), SessionVi
 
     override fun showClick() = Toast.makeText(activity, "Click Fragment", Toast.LENGTH_LONG).show()
 
-    override fun showServerError() = toast("Error")
+    override fun showServerError() = Toast.makeText(activity, "Error Fragment", Toast.LENGTH_LONG).show()
 
-    override fun showNetworkError() = TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showNetworkError() = Toast.makeText(activity, "error Fragment", Toast.LENGTH_LONG).show()
 }

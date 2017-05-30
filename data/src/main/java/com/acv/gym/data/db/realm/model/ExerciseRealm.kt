@@ -9,9 +9,10 @@ import io.realm.annotations.PrimaryKey
 open class ExerciseRealm(
         @PrimaryKey var id: String,
         var name: String,
-        var exerciseType: String
+        var exerciseType: String,
+        var muscleGroup: String
 ) : RealmObject(), DataModel {
-    constructor() : this("", "", "")
+    constructor() : this("", "", "", "")
 }
 
-fun ExerciseRealm.map() = Exercise(id, name, exerciseType)
+fun ExerciseRealm.map() = Exercise(id, name, exerciseType, muscleGroup)
