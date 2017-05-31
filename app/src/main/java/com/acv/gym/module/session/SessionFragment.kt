@@ -4,9 +4,11 @@ import android.widget.Toast
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.module.exercise.type.ExerciseTypeFragment
 import com.acv.gym.module.muscle.group.MuscleGroupActivity
 import com.acv.gym.module.muscle.group.MuscleGroupFragment
+import com.acv.gym.module.session.set.SessionSetActivity
 import com.acv.gym.presentation.module.session.SessionPresenter
 import com.acv.gym.presentation.module.session.SessionView
 import com.acv.gym.ui.BaseActivity
@@ -38,7 +40,7 @@ class SessionFragment : BaseFragment<SessionView, SessionPresenter>(), SessionVi
                 layout = R.layout.item_session)
     }
 
-    override fun showClick() = Toast.makeText(activity, "Click Fragment", Toast.LENGTH_LONG).show()
+    override fun showClick(id: Id) = load<SessionSetActivity>(listOf("id" to id))
 
     override fun showServerError() = Toast.makeText(activity, "Error Fragment", Toast.LENGTH_LONG).show()
 

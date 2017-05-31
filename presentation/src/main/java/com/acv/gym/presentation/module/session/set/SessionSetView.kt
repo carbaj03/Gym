@@ -1,0 +1,8 @@
+package com.acv.gym.presentation.module.session.set
+
+import com.acv.gym.domain.model.SessionSet
+import com.acv.gym.presentation.View
+import com.acv.gym.presentation.ViewError
+import com.acv.gym.presentation.ViewShow
+
+interface SessionSetView : View, ViewShow<SessionSet>, ViewError

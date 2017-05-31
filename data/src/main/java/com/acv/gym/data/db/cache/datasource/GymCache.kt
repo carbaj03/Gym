@@ -3,8 +3,10 @@ package com.acv.gym.data.db.cache.datasource
 import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.data.db.cache.model.*
 import com.acv.gym.domain.GenericError
+import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.model.SessionSet
 import com.acv.gym.domain.usecase.Id
 import katz.Either
 import java.util.*
@@ -49,13 +51,13 @@ class GymCache : GymDataSource {
                     ).map { it.map() }
             )
 
-
     override fun getAllMuscleGroups() =
             Either.Right(
                     listOf(
                             MuscleGroupCache("1", "Pecho")
                     ).map { it.map() }
             )
+
 
     override fun getAllRoutines() =
             Either.Right(
@@ -99,6 +101,10 @@ class GymCache : GymDataSource {
     override fun getBySession(id: Id) = sessionExercises
 
     override fun getAllSessionExercises() = sessionExercises
+
+    override fun getSessionSetBySessionExercise(id: Id): GymResult<List<SessionSet>> {
+        TODO("not implemented")
+    }
 
     override fun persistSessionExercises(sessionExercises: List<SessionExercise>): Either<GenericError, List<SessionExercise>> {
         TODO("not implemented")

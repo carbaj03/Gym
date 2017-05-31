@@ -29,6 +29,10 @@
             android:launchMode="singleTask" />
 
         <activity
+            android:name=".module.session.set.SessionSetActivity"
+            android:launchMode="singleTask" />
+
+        <activity
             android:name=".module.muscle.group.MuscleGroupActivity"
             android:launchMode="singleTask" />
 

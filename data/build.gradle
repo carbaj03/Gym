@@ -17,11 +17,6 @@ android {
     }
 }
 
-
-kapt {
-    generateStubs = true
-}
-
 buildscript {
     repositories {
         jcenter()

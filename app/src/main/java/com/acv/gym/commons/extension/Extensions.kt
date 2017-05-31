@@ -26,6 +26,7 @@ import com.acv.gym.module.routine.RoutineActivity
 import com.acv.gym.module.session.NewSessionActivity
 import com.acv.gym.module.session.SessionActivity
 import com.acv.gym.module.session.SessionFragment
+import com.acv.gym.module.session.set.SessionSetActivity
 import com.acv.gym.module.splash.SplashActivity
 import com.acv.gym.module.weight.WeightActivity
 import com.acv.gym.module.weight.WeightFragment
@@ -123,6 +124,7 @@ fun Activity.inject() {
         is WeightActivity -> GymApplication.appComponent.plus(WeightModule(this)).inject(this)
         is RepActivity -> GymApplication.appComponent.plus(RepModule(this)).inject(this)
         is NewSessionActivity -> GymApplication.appComponent.plus(NewSessionModule(this)).inject(this)
+        is SessionSetActivity -> GymApplication.appComponent.plus(SessionSetModule(this)).inject(this)
     }
 }
 

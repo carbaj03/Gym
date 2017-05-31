@@ -4,9 +4,11 @@ import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.data.db.room.RoomDB
 import com.acv.gym.data.db.room.model.map
 import com.acv.gym.domain.GenericError
+import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.model.SessionSet
 import com.acv.gym.domain.usecase.Id
 import katz.Either
 
@@ -43,7 +45,6 @@ class GymRoom : GymDataSource {
                 Either.Left(GenericError.ServerError())
             }
 
-
     override fun getAllMuscleGroups() =
             try {
                 val all = RoomDB.instance.muscleGroupDao().getAll()
@@ -51,6 +52,7 @@ class GymRoom : GymDataSource {
             } catch (ex: Exception) {
                 Either.Left(GenericError.ServerError())
             }
+
 
     override fun getAllRoutines(): Either<GenericError, List<Routine>> = TODO("not implemented")
 
@@ -65,6 +67,14 @@ class GymRoom : GymDataSource {
     override fun getBySession(id: Id) =
             try {
                 val all = RoomDB.instance.sessionExerciseDao().getBySession(id.value)
+                Either.Right(all.map { it.map() })
+            } catch (ex: Exception) {
+                Either.Left(GenericError.ServerError())
+            }
+
+    override fun getSessionSetBySessionExercise(id: Id) =
+            try {
+                val all = RoomDB.instance.sessionSetDao().getBySessionExercise(id.value)
                 Either.Right(all.map { it.map() })
             } catch (ex: Exception) {
                 Either.Left(GenericError.ServerError())

@@ -27,4 +27,5 @@ interface AppComponent {
     operator fun plus(module: WeightFragmentModule): WeightFragmentComponent
     operator fun plus(module: RepModule): RepComponent
     operator fun plus(module: RepFragmentModule): RepFragmentComponent
+    operator fun plus(module: SessionSetModule): SessionSetComponent
 }

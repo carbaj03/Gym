@@ -25,6 +25,8 @@ class GymGatewayImpl(
 
     override fun getSessionExercisesBy(id: Id) = dataSource.getBySession(id)
 
+    override fun getSessionSetBy(id: Id) = dataSource.getSessionSetBySessionExercise(id)
+
     override fun persistSessionExercise(sessionExercises: List<SessionExercise>)
             = dataSource.persistSessionExercises(sessionExercises)
 }

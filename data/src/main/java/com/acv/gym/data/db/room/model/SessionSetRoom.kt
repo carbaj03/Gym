@@ -33,6 +33,13 @@ interface SessionSetDao {
     @Query("SELECT * FROM $tableSessionSet")
     fun getAll(): List<SessionSetRoom>
 
+    @Query("""
+    SELECT *
+    FROM $tableSessionSet
+    INNER JOIN $tableSessionExercises ON sessionExercise = $tableSessionExercises.id
+    WHERE sessionExercise = :arg0 """)
+    fun getBySessionExercise(id: String): List<SessionSetRoom>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(session: List<SessionSetRoom>)
 }
