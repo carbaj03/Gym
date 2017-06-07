@@ -36,7 +36,7 @@ class RoutinePresenterTest {
 
     @Test
     fun `should show server error When get routines fail`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.ServerError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.ServerError))
 
         presenter.loadRoutines()
 
@@ -45,7 +45,7 @@ class RoutinePresenterTest {
 
     @Test
     fun `should show network error When not connection`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.NetworkError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.NetworkError))
 
         presenter.loadRoutines()
 

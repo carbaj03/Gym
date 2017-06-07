@@ -19,7 +19,7 @@ class RoutineActivity : BaseActivity<RoutineView, RoutinePresenter>(), RoutineVi
 
     override fun show(routines: List<Routine>) = with(rvRoutines) {
         layoutManager = gridLayoutManager()
-//        adapter = AVH(
+//        sessionAdapter = AVH(
 //                items = routines,
 //                listener = { presenter.checkRoutines(it) },
 //                holder = ::RoutineViewHolder,

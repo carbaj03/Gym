@@ -3,7 +3,7 @@ package com.acv.gym.module.muscle.group
 import com.acv.gym.R
 import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.load
-import com.acv.gym.commons.extension.loadFra
+import com.acv.gym.commons.extension.loadFr
 import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupPresenter
@@ -21,7 +21,7 @@ class MuscleGroupActivity : BaseActivity<MuscleGroupView, MuscleGroupPresenter>(
 
     override fun onCreate() {
         setTitle(R.string.title_muscle_group)
-        loadFra<MuscleGroupFragment>()
+        loadFr<MuscleGroupFragment>()
     }
 
     override fun showNetworkError() {

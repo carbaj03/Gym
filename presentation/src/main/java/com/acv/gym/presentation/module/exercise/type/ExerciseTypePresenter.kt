@@ -5,7 +5,7 @@ import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.InteractorExecution
+import com.acv.gym.presentation.invoker.Interactor
 import com.acv.gym.presentation.invoker.InteractorInvoker
 import katz.Option
 
@@ -16,7 +16,7 @@ class ExerciseTypePresenter(
 ) : Presenter<ExerciseTypeView>(view) {
 
     fun loadExerciseType(id: Option<Id>) =
-            InteractorExecution(
+            Interactor(
                     interactor = useCase,
                     params = id,
                     result = { happyCase(it) },

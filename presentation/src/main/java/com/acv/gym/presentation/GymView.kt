@@ -1,6 +1,6 @@
 package com.acv.gym.presentation
 
-interface View
+interface GymView
 
 interface ViewError {
     fun showNetworkError()

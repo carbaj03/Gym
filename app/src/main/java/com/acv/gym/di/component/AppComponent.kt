@@ -4,6 +4,7 @@ package com.acv.gym.di.component
 import com.acv.gym.di.module.*
 import com.acv.gym.module.rep.RepFragment
 import com.acv.gym.module.session.SessionFragment
+import com.acv.gym.module.session.set.SessionSetFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -28,4 +29,5 @@ interface AppComponent {
     operator fun plus(module: RepModule): RepComponent
     operator fun plus(module: RepFragmentModule): RepFragmentComponent
     operator fun plus(module: SessionSetModule): SessionSetComponent
+    operator fun plus(module: SessionSetFragmentModule): SessionSetFragmentComponent
 }

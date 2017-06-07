@@ -41,7 +41,7 @@ class ExerciseTypePresenterTest {
 
     @Test
     fun `should show error network When is network exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.NetworkError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.NetworkError))
 
         presenter.loadExerciseType(Option(Id("")))
 
@@ -50,7 +50,7 @@ class ExerciseTypePresenterTest {
 
     @Test
     fun `should show error server When is server exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.ServerError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.ServerError))
 
         presenter.loadExerciseType(Option(Id("")))
 

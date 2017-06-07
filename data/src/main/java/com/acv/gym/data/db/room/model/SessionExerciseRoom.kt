@@ -39,7 +39,7 @@ interface SessionExerciseDao {
     fun getAll(): List<SessionExerciseRoom>
 
     @Query("""
-    SELECT *
+    SELECT session_exercise.id, session_exercise.exercise, session_exercise.session
     FROM $tableSessionExercises
     INNER JOIN $tableSession ON session = $tableSession.id
     WHERE session = :arg0 """)

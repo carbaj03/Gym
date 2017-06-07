@@ -16,5 +16,5 @@ open class SessionExerciseDataModel(
     constructor() : this("", "", RealmList(), "")
 }
 
-fun SessionExerciseDataModel.map() = SessionExercise(Id(id), Id(exercise), sets.map { it.map() }, Id(session))
-fun SessionExercise.map() = SessionExerciseDataModel(id.value, exercise.value, sets.map(), session.value)
+//fun SessionExerciseDataModel.map() = SessionExercise(Id(id), Id(exercise), sets.map { it.map() }, Id(session))
+//fun SessionExercise.map() = SessionExerciseDataModel(id.value, exercise.value, sets.map(), session.value)

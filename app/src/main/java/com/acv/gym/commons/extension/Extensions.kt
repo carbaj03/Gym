@@ -10,6 +10,7 @@ import android.view.*
 import android.widget.SeekBar
 import com.acv.gym.GymApplication
 import com.acv.gym.R
+import com.acv.gym.presentation.GymView
 import com.acv.gym.commons.listener.SeekBarListener
 import com.acv.gym.di.module.*
 import com.acv.gym.domain.usecase.Command
@@ -27,13 +28,45 @@ import com.acv.gym.module.session.NewSessionActivity
 import com.acv.gym.module.session.SessionActivity
 import com.acv.gym.module.session.SessionFragment
 import com.acv.gym.module.session.set.SessionSetActivity
+import com.acv.gym.module.session.set.SessionSetFragment
 import com.acv.gym.module.splash.SplashActivity
 import com.acv.gym.module.weight.WeightActivity
 import com.acv.gym.module.weight.WeightFragment
+import com.acv.gym.presentation.Presenter
+import com.acv.gym.ui.BaseActivity
+import com.acv.gym.ui.BaseFragment
 import com.acv.gym.ui.commons.setSlideExitToRightAnimation
 import com.acv.gym.ui.commons.setSlideRightAnimation
 import katz.Option
+import kotlinx.android.synthetic.main.toobar.*
+import org.jetbrains.anko.backgroundResource
 
+
+const val HOME = android.R.id.home
+const val DONE = R.id.done
+const val DELETE = R.id.delete
+
+fun AppCompatActivity.setToolbar(title: Int) {
+    supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    supportActionBar!!.title = ""
+    tvTitle.text = getString(title)
+}
+
+fun AppCompatActivity.setToolbarIcon(
+        icon: Int = R.drawable.ic_arrow_back_black_24dp,
+        color: Int = R.color.primary
+) {
+    supportActionBar!!.setHomeAsUpIndicator(icon)
+    supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+    toolbar.backgroundResource = color
+}
+
+fun Fragment.setToolbar(title: Int) = (activity as AppCompatActivity).setToolbar(title)
+
+fun Fragment.setToolbarIcon(
+        icon: Int = R.drawable.ic_arrow_back_black_24dp,
+        color: Int = R.color.primary
+) = (activity as AppCompatActivity).setToolbarIcon(icon, color)
 
 infix fun ViewGroup.inflate(res: Int) = LayoutInflater.from(context).inflate(res, this, false)
 
@@ -53,7 +86,15 @@ inline fun <reified T : Fragment> create(ar: List<Pair<String, Command>> = listO
 
 fun <T> getFr(c: Class<T>) = c.newInstance()
 
-fun Fragment.load(f: Fragment) {
+fun Fragment.load(f: Fragment) =
+        activity.supportFragmentManager
+                .beginTransaction()
+                .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_right)
+                .replace(R.id.container, f)
+                .commit()
+
+
+fun Fragment.navMenu(f: Fragment) = Action {
     activity.supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_right)
@@ -61,23 +102,18 @@ fun Fragment.load(f: Fragment) {
             .commit()
 }
 
-fun Fragment.navMenu(f: Fragment): Boolean {
-    activity.supportFragmentManager
-            .beginTransaction()
-            .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_right)
-            .replace(R.id.container, f)
-            .commit()
-    return true
-}
-
-inline fun <reified T: Fragment>AppCompatActivity.loadFra(ar: List<Pair<String, Command>> = listOf()) {
-    val f= create<T>(ar)
+inline fun <reified T : Fragment> AppCompatActivity.loadFr(ar: List<Pair<String, Command>> = listOf()) {
     supportFragmentManager
             .beginTransaction()
             .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_left, R.anim.slide_in_right, R.anim.slide_out_right)
-            .replace(R.id.container, f)
+            .replace(R.id.container, create<T>(ar), T::class.java.simpleName)
             .commit()
 }
+
+inline fun <reified V : GymView, P : Presenter<V>, T : BaseFragment<V, P>> BaseActivity<V, P>.refresh(fragment: T) = fragment.refresh()
+
+inline fun <reified T : Fragment> AppCompatActivity.getFr(): T =
+        supportFragmentManager.findFragmentByTag(T::class.java.simpleName) as T
 
 inline fun <reified T : Activity> Activity.load(pairs: List<Pair<String, Command>> = listOf()) {
     goToActivity<T>(pairs)
@@ -91,25 +127,33 @@ inline fun <reified T : Activity> Fragment.load(pairs: List<Pair<String, Command
     setSlideRightAnimation()
 }
 
+inline fun <reified T : Activity> Fragment.loadStack(pairs: List<Pair<String, Command>> = listOf()) = with(activity) {
+    goToActivity<T>(pairs)
+    setSlideRightAnimation()
+}
+
 inline fun <reified T : Activity> Activity.navStack(pairs: List<Pair<String, Command>> = listOf()) {
     goToActivity<T>(pairs)
     setSlideRightAnimation()
 }
 
-fun Activity.navBack(): Boolean {
+inline fun <reified T : Activity> Activity.nav(pairs: List<Pair<String, Command>> = listOf()) {
+    goToActivity<T>(pairs)
+    setSlideRightAnimation()
     finish()
-    setSlideExitToRightAnimation()
-    return true
 }
 
-fun Fragment.navBack(): Boolean = with(activity) {
+fun Activity.navBack() = Action {
     finish()
     setSlideExitToRightAnimation()
-    return true
 }
 
-inline fun <reified T : Activity> Activity.menuNav(): Boolean {
-    load<T>(listOf())
+fun Fragment.navBack() = activity.navBack()
+
+inline fun <reified T : Activity> Activity.menuNav() = Action { load<T>(listOf()) }
+
+fun Action(f: () -> Unit): Boolean {
+    f()
     return true
 }
 
@@ -136,6 +180,7 @@ fun Fragment.inject() {
         is WeightFragment -> GymApplication.appComponent.plus(WeightFragmentModule(this)).inject(this)
         is RepFragment -> GymApplication.appComponent.plus(RepFragmentModule(this)).inject(this)
         is SessionFragment -> GymApplication.appComponent.plus(SessionFragmentModule(this)).inject(this)
+        is SessionSetFragment -> GymApplication.appComponent.plus(SessionSetFragmentModule(this)).inject(this)
     }
 }
 
@@ -146,14 +191,11 @@ fun View.visible() {
     visibility = View.VISIBLE
 }
 
-fun View.insivible() {
+fun View.invisible() {
     visibility = View.INVISIBLE
 }
 
-fun MenuInflater.make(menuRes: Int, menu: Menu): Boolean {
-    inflate(menuRes, menu)
-    return true
-}
+fun MenuInflater.make(menuRes: Int, menu: Menu) = Action { inflate(menuRes, menu) }
 
 fun SeekBar.listener(f: (Int) -> Unit) = setOnSeekBarChangeListener(SeekBarListener { f(it) })
 

@@ -7,8 +7,8 @@ import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
 import com.acv.gym.domain.usecase.session.NewSessionExerciseUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
-import com.acv.gym.presentation.module.session.NewSessionPresenter
-import com.acv.gym.presentation.module.session.NewSessionView
+import com.acv.gym.presentation.module.session.create.NewSessionPresenter
+import com.acv.gym.presentation.module.session.create.NewSessionView
 import com.acv.gym.presentation.module.session.SessionPresenter
 import com.acv.gym.presentation.module.session.SessionView
 import dagger.Module

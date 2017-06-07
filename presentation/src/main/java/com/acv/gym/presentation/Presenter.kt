@@ -1,7 +1,7 @@
 package com.acv.gym.presentation
 
 
-abstract class Presenter<out T: View>(val view : T) {
+abstract class Presenter<out T : GymView>(val view: T) {
 
 //    lateinit var view: T
 

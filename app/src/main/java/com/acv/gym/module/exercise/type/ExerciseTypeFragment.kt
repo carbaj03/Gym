@@ -4,26 +4,18 @@ import com.acv.gym.R
 import com.acv.gym.commons.extension.getArgId
 import com.acv.gym.commons.extension.gridLayoutManager
 import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.load
 import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.Id
-import com.acv.gym.module.exercise.ExerciseFragment
-import com.acv.gym.module.muscle.group.MuscleGroupFragment
-import com.acv.gym.module.session.ExerciseNav
 import com.acv.gym.module.session.ExerciseTypeNav
-import com.acv.gym.module.session.NewSessionActivity
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypePresenter
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypeView
 import com.acv.gym.ui.BaseFragment
 import com.acv.gym.ui.commons.AVH
+import com.acv.gym.ui.done
 import kotlinx.android.synthetic.main.fragment_list.*
 
 
 class ExerciseTypeFragment : BaseFragment<ExerciseTypeView, ExerciseTypePresenter>(), ExerciseTypeView {
-    companion object {
-        val TAG: String = ExerciseTypeFragment::class.java.simpleName
-    }
-
     override fun setupComponent() = inject()
 
     override fun onCreate() = presenter.loadExerciseType(getArgId())
@@ -45,6 +37,5 @@ class ExerciseTypeFragment : BaseFragment<ExerciseTypeView, ExerciseTypePresente
 
     override fun showServerError() = TODO("not implemented")
 
-    override fun goToExercise(id: Id) =
-            (activity as NewSessionActivity).loadFr(ExerciseTypeNav(id))
+    override fun goToExercise(id: Id) = done(ExerciseTypeNav(id))
 }

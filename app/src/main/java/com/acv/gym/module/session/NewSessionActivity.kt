@@ -8,8 +8,8 @@ import com.acv.gym.module.exercise.type.ExerciseTypeFragment
 import com.acv.gym.module.muscle.group.MuscleGroupFragment
 import com.acv.gym.module.rep.RepFragment
 import com.acv.gym.module.weight.WeightFragment
-import com.acv.gym.presentation.module.session.NewSessionPresenter
-import com.acv.gym.presentation.module.session.NewSessionView
+import com.acv.gym.presentation.module.session.create.NewSessionPresenter
+import com.acv.gym.presentation.module.session.create.NewSessionView
 import com.acv.gym.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_session.*
 import org.jetbrains.anko.onClick
@@ -24,7 +24,7 @@ data class RepNav(val num: Int) : Nav()
 
 class NewSessionActivity : BaseActivity<NewSessionView, NewSessionPresenter>(), NewSessionView {
     override fun onCreate() {
-        loadFra<MuscleGroupFragment>()
+        loadFr<MuscleGroupFragment>()
         presenter.checkSession(getId())
     }
 
@@ -32,23 +32,29 @@ class NewSessionActivity : BaseActivity<NewSessionView, NewSessionPresenter>(), 
 
     override fun getLayout() = R.layout.activity_new_session
 
-    override fun showSuccess() = toast("Insertado con éxito")
+    override fun showSuccess() {
+        toast("Insertado con éxito")
+        nav<SessionActivity>(listOf("id" to Id("1")))
+    }
 
     override fun showServerError() = toast("error server")
 
     override fun showNetworkError() = toast("error network")
 
-    fun loadFr(nav: Nav) = when (nav) {
-        is MuscleGroupNav -> loadFra<ExerciseTypeFragment>()
-        is ExerciseTypeNav -> loadFra<ExerciseFragment>(listOf("id" to nav.id))
+    override fun done(nav: Nav) = when (nav) {
+        is MuscleGroupNav -> loadFr<ExerciseTypeFragment>()
+        is ExerciseTypeNav -> loadFr<ExerciseFragment>(listOf("id" to nav.id))
         is ExerciseNav -> {
-            loadFra<WeightFragment>()
+            loadFr<WeightFragment>()
             presenter.checkExercise(nav.id)
         }
         is WeightNav -> {
-            loadFra<RepFragment>()
+            loadFr<RepFragment>()
             fab.visible()
-            fab.onClick { navStack<NewSessionActivity>() }
+            fab.onClick {
+                presenter.checkRep(getFr<RepFragment>().value().num)
+                loadFr<WeightFragment>()
+            }
             presenter.checkWeight(nav.num)
         }
         is RepNav -> {

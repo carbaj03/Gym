@@ -6,8 +6,7 @@ import android.arch.persistence.room.TypeConverters
 import com.acv.gym.data.db.room.datasource.Converters
 import com.acv.gym.data.db.room.model.*
 
-@Database(entities =
-arrayOf(
+@Database(entities = arrayOf(
         SessionExerciseRoom::class,
         SessionSetRoom::class,
         ExerciseRoom::class,

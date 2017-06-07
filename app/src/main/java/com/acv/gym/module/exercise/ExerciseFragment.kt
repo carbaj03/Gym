@@ -12,6 +12,7 @@ import com.acv.gym.presentation.module.exercise.ExercisePresenter
 import com.acv.gym.presentation.module.exercise.ExerciseView
 import com.acv.gym.ui.BaseFragment
 import com.acv.gym.ui.commons.AVH
+import com.acv.gym.ui.done
 import kotlinx.android.synthetic.main.fragment_list.*
 
 
@@ -31,8 +32,7 @@ class ExerciseFragment : BaseFragment<ExerciseView, ExercisePresenter>(), Exerci
                 layout = R.layout.item_exercise)
     }
 
-    override fun goToWeight(id: Id) =
-            (activity as NewSessionActivity).loadFr(ExerciseNav(id))
+    override fun goToWeight(id: Id) = done(ExerciseNav(id))
 
     override fun showNetworkError() = TODO()
 

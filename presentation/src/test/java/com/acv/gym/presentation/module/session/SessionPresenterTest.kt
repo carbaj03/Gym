@@ -1,7 +1,8 @@
 package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.presentation.model.SessionExercise
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.SessionCommand
 import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
@@ -23,7 +24,7 @@ class SessionPresenterTest {
 
     val view: SessionView = mock()
     val useCase: GetSessionExercisesUseCase = mock()
-    val command: SessionCommand = SessionCommand("")
+    val command: SessionCommand = SessionCommand(Id("1"))
 
     @Before
     fun setUp() {
@@ -42,7 +43,7 @@ class SessionPresenterTest {
 
     @Test
     fun `should show server error When get session fail`() {
-        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Left(GenericError.ServerError()))
+        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Left(GenericError.ServerError))
 
         presenter.loadSessions(Option.None)
 
@@ -51,13 +52,13 @@ class SessionPresenterTest {
 
     @Test
     fun `should show network error When not connection`() {
-        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Left(GenericError.NetworkError()))
+        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Left(GenericError.NetworkError))
 
         presenter.loadSessions(Option.None)
 
         verify(view, times(1)).showNetworkError()
     }
 
-    private fun getSession() = listOf(SessionExercise("", "", emptyList(), ""))
+    private fun getSession() = listOf(SessionExercise(Id("1"), Id("1"), emptyList(), Id("1")))
 
 }

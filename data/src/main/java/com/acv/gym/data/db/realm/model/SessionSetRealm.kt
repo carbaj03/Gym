@@ -2,6 +2,7 @@ package com.acv.gym.data.db.realm.model
 
 import com.acv.gym.data.DataModel
 import com.acv.gym.domain.model.SessionSet
+import com.acv.gym.domain.usecase.Id
 import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
@@ -16,6 +17,6 @@ open class SessionSetDataModel(
     constructor() : this("", 0f, 0, "")
 }
 
-fun SessionSetDataModel.map() = SessionSet(id, weight, reps, sessionExercise)
-fun SessionSet.map() = SessionSetDataModel(id, weight, reps, sessionExercise)
+fun SessionSetDataModel.map() = SessionSet(Id(id), weight, reps, Id(sessionExercise))
+fun SessionSet.map() = SessionSetDataModel(id.value, weight, reps, sessionExercise.value)
 fun List<SessionSet>.map() = mapTo(RealmList<SessionSetDataModel>(), { x: SessionSet -> x.map() })

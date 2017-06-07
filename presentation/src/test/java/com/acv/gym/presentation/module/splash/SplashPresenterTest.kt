@@ -40,7 +40,7 @@ class SplashPresenterTest {
 
     @Test
     fun `should show server error When splash fail`() {
-        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericError.ServerError()))
+        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericError.ServerError))
 
         presenter.loadSplash()
 
@@ -49,7 +49,7 @@ class SplashPresenterTest {
 
     @Test
     fun `should show network error When not connection`() {
-        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericError.NetworkError()))
+        `when`(checkSplashUseCase.execute(Option.None)).thenReturn(Either.Left(GenericError.NetworkError))
 
         presenter.loadSplash()
 

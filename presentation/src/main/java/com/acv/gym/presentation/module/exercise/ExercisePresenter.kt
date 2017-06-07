@@ -6,7 +6,7 @@ import com.acv.gym.domain.usecase.ExerciseCommand
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.InteractorExecution
+import com.acv.gym.presentation.invoker.Interactor
 import com.acv.gym.presentation.invoker.InteractorInvoker
 import katz.Option
 
@@ -18,7 +18,7 @@ open class ExercisePresenter(
 ) : Presenter<ExerciseView>(view) {
 
     fun loadExercises(id: Option<Id>) =
-            InteractorExecution(
+            Interactor(
                     params = id.map(::ExerciseCommand),
                     interactor = useCase,
                     result = { happyCase(it) },

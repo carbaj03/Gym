@@ -15,8 +15,10 @@ open class NewSessionExerciseUseCase(
         val gateway: GymGateway
 ) : GymUseCase<NewSessionCommand, List<SessionExercise>> {
     override fun execute(input: Option<NewSessionCommand>) = when(input){
-        is Option.None -> Either.Left(GenericError.ServerError())
-        is Option.Some -> gateway.persistSessionExercise(input.value.sessionExercises)
+        is Option.None -> Either.Left(GenericError.ServerError)
+        is Option.Some -> {
+            gateway.persistSessionExercise(input.value.sessionExercises)
+        }
     }
 
 }

@@ -43,32 +43,36 @@ open class GymRealm : GymDataSource {
         TODO("not implemented")
     }
 
-    override fun getAllSessionExercises() =
-            with(Realm.getDefaultInstance()) {
-                try {
-                    val objects = where(SessionExerciseDataModel::class.java).findAll()
-                    return@with Either.Right(objects.map { it.map() })
-                } catch (ex: Exception) {
-                    return@with Either.Left(GenericError.ServerError())
-                } finally {
-                    close()
-                }
-            }
+    override fun getAllSessionExercises() : Either<GenericError, List<SessionExercise>> {
+        TODO("not implemented")
+    }
+//            with(Realm.getDefaultInstance()) {
+//                try {
+//                    val objects = where(SessionExerciseDataModel::class.java).findAll()
+//                    return@with Either.Right(objects.map { it.map() })
+//                } catch (ex: Exception) {
+//                    return@with Either.Left(GenericError.ServerError)
+//                } finally {
+//                    close()
+//                }
+//            }
 
-    override fun persistSessionExercises(sessionExercises: List<SessionExercise>) =
-            with(Realm.getDefaultInstance()) {
-                try {
-                    beginTransaction()
-                    copyToRealmOrUpdate(sessionExercises.map { it.map() })
-                    commitTransaction()
-                    return@with Either.Right(sessionExercises)
-                } catch (ex: Exception) {
-                    isInTransaction.let { cancelTransaction() }
-                    return@with Either.Left(GenericError.ServerError())
-                } finally {
-                    close()
-                }
-            }
+    override fun persistSessionExercises(sessionExercises: List<SessionExercise>) : Either<GenericError, List<SessionExercise>> {
+        TODO("not implemented")
+    }
+//            with(Realm.getDefaultInstance()) {
+//                try {
+//                    beginTransaction()
+//                    copyToRealmOrUpdate(sessionExercises.map { it.map() })
+//                    commitTransaction()
+//                    return@with Either.Right(sessionExercises)
+//                } catch (ex: Exception) {
+//                    isInTransaction.let { cancelTransaction() }
+//                    return@with Either.Left(GenericError.ServerError)
+//                } finally {
+//                    close()
+//                }
+//            }
 
     override fun getLaunchApp(): Either<GenericError, List<LaunchApp>> {
         TODO("not implemented")

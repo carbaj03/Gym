@@ -4,13 +4,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.acv.gym.commons.extension.inflate
-import com.acv.gym.domain.model.Model
 
-abstract class ViewHolder<in M: Model>(view: View) : RecyclerView.ViewHolder(view) {
+abstract class ViewHolder<in M>(view: View) : RecyclerView.ViewHolder(view) {
     abstract fun bind(model: M)
 }
 
-class AVH<VH : ViewHolder<M>, M : Model>(
+open class AVH<VH : ViewHolder<M>, M>(
         val items: List<M>,
         val listener: (M) -> Unit,
         val holder: (view: View) -> VH,

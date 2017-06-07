@@ -1,5 +1,5 @@
 package com.acv.gym.presentation.module.weight
 
-import com.acv.gym.presentation.View
+import com.acv.gym.presentation.GymView
 
-interface WeightView : View
+interface WeightView : GymView

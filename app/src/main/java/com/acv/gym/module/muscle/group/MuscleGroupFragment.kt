@@ -12,6 +12,7 @@ import com.acv.gym.presentation.module.muscle.group.MuscleGroupPresenter
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupView
 import com.acv.gym.ui.BaseFragment
 import com.acv.gym.ui.commons.AVH
+import com.acv.gym.ui.done
 import kotlinx.android.synthetic.main.fragment_list.*
 
 
@@ -36,6 +37,5 @@ class MuscleGroupFragment : BaseFragment<MuscleGroupView, MuscleGroupPresenter>(
 
     override fun showServerError() = TODO("not implemented")
 
-    override fun goToExerciseType(id: Id) =
-            (activity as NewSessionActivity).loadFr(MuscleGroupNav(id))
+    override fun goToExerciseType(id: Id) = done(MuscleGroupNav(id))
 }
