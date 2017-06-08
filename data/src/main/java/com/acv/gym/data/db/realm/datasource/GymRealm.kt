@@ -11,6 +11,14 @@ import io.realm.Realm
 import katz.Either
 
 open class GymRealm : GymDataSource {
+    override fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id): GymResult<List<Exercise>> {
+        TODO("not implemented")
+    }
+
+    override fun getExerciseTypesBy(idMuscleGroup: Id): GymResult<List<ExerciseType>> {
+        TODO("not implemented")
+    }
+
     override fun getSessionSetBySessionExercise(id: Id): GymResult<List<SessionSet>> {
         TODO("not implemented")
     }

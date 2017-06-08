@@ -24,6 +24,14 @@ interface ExerciseTypeDao {
     @Query("SELECT * FROM $tableExerciseType")
     fun getAll(): List<ExerciseTypeRoom>
 
+    @Query("""SELECT $tableExerciseType.id, $tableExerciseType.name
+            FROM $tableExerciseType
+            INNER JOIN $tableExercise ON exerciseType = $tableExerciseType.id
+            WHERE exercise.muscleGroup = :arg0
+            GROUP BY exercise.exerciseType
+            """)
+    fun getBy(idMuscleGroup: String): List<ExerciseTypeRoom>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(listOf: List<ExerciseTypeRoom>)
 }

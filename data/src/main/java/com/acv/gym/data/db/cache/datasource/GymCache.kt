@@ -4,9 +4,7 @@ import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.data.db.cache.model.*
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymResult
-import com.acv.gym.domain.model.LaunchApp
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.model.SessionSet
+import com.acv.gym.domain.model.*
 import com.acv.gym.domain.usecase.Id
 import katz.Either
 import java.util.*
@@ -15,6 +13,14 @@ import java.util.*
  * Created by alejandro on 21/05/2017.
  */
 class GymCache : GymDataSource {
+    override fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id): GymResult<List<Exercise>> {
+        TODO("not implemented")
+    }
+
+    override fun getExerciseTypesBy(idMuscleGroup: Id): GymResult<List<ExerciseType>> {
+        TODO("not implemented")
+    }
+
     override fun getAllSession() =
             Either.Right(
                     listOf(
@@ -70,7 +76,7 @@ class GymCache : GymDataSource {
             listOf(
                     SessionExerciseCache(
                             "1",
-                            "Press Banca Plano",
+                            ExerciseCache("1", "Curl", "1", "1"),
                             listOf(
                                     SessionSetCache("1", 20f, 10, ""),
                                     SessionSetCache("2", 20f, 10, "")
@@ -79,7 +85,7 @@ class GymCache : GymDataSource {
                     ),
                     SessionExerciseCache(
                             "2",
-                            "Militar DB",
+                            ExerciseCache("1", "Curl", "1", "1"),
                             listOf(
                                     SessionSetCache("1", 20f, 10, ""),
                                     SessionSetCache("2", 20f, 10, "")
@@ -89,7 +95,7 @@ class GymCache : GymDataSource {
                     ,
                     SessionExerciseCache(
                             "3",
-                            "Press Inclinado DB",
+                            ExerciseCache("1", "Curl", "1", "1"),
                             listOf(
                                     SessionSetCache("1", 20f, 10, ""),
                                     SessionSetCache("2", 20f, 10, "")

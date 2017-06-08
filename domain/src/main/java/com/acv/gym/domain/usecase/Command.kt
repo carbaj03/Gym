@@ -1,8 +1,6 @@
 package com.acv.gym.domain.usecase
 
-import com.acv.gym.domain.commons.extension.now
 import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.model.SessionSet
 import java.io.Serializable
 import java.util.*
 
@@ -15,6 +13,11 @@ data class Id(
 ) : Command()
 
 data class ExerciseCommand(
+        val idMuscleGroup: Id,
+        val idExerciseType: Id
+) : Command()
+
+data class ExerciseTypeCommand(
         val id: Id
 ) : Command()
 

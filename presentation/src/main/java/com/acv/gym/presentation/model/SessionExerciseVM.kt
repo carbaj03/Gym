@@ -6,11 +6,9 @@ import com.acv.gym.domain.usecase.Id
 
 data class SessionExerciseVM(
         val id: Id = Id(),
-        val exercise: Id = Id(""),
+        val exercise: String,
         val sets: List<SessionSet> = listOf(),
-        val session: Id = Id(""),
-        val name : String
+        val session: Id = Id("")
 ) : ViewModel
 
-fun SessionExerciseVM.map() = SessionExercise(id, exercise, sets, session)
-fun SessionExercise.map() = SessionExerciseVM(id, exercise, sets, session, "")
+fun SessionExercise.map() = SessionExerciseVM(id, exercise.name, sets, session)

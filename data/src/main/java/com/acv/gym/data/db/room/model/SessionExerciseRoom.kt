@@ -2,6 +2,7 @@ package com.acv.gym.data.db.room.model
 
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
+import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.usecase.Id
 import java.util.*
@@ -25,23 +26,25 @@ const val tableSessionExercises = "session_exercise"
 data class SessionExerciseRoom(
         @PrimaryKey var id: String,
         var exercise: String,
-        var session: String
+        var session: String,
+
+        var name: String
 ) : DataModel {
-    constructor() : this(UUID.randomUUID().toString(), "", "")
+    constructor() : this(UUID.randomUUID().toString(), "", "", "")
 }
 
-fun SessionExerciseRoom.map() = SessionExercise(Id(id), Id(exercise), listOf(), Id(session))
-fun SessionExercise.map() = SessionExerciseRoom(id.value, exercise.value, session.value)
+fun SessionExerciseRoom.map() = SessionExercise(Id(id), Exercise(exercise, name, "", ""), listOf(), Id(session))
+fun SessionExercise.map() = SessionExerciseRoom(id.value, exercise.id, session.value, exercise.name)
 
-@Dao
-interface SessionExerciseDao {
+@Dao interface SessionExerciseDao {
     @Query("SELECT * FROM $tableSessionExercises")
     fun getAll(): List<SessionExerciseRoom>
 
     @Query("""
-    SELECT session_exercise.id, session_exercise.exercise, session_exercise.session
+    SELECT session_exercise.id, session_exercise.exercise, session_exercise.session, exercise.name
     FROM $tableSessionExercises
     INNER JOIN $tableSession ON session = $tableSession.id
+    INNER JOIN $tableExercise ON exercise = $tableExercise.id
     WHERE session = :arg0 """)
     fun getBySession(id: String): List<SessionExerciseRoom>
 

@@ -1,6 +1,7 @@
 package com.acv.gym.presentation.module.session.create
 
 import com.acv.gym.domain.GenericError
+import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.model.SessionSet
 import com.acv.gym.domain.usecase.Id
@@ -38,11 +39,11 @@ open class NewSessionPresenter(
     }
 
     fun checkExercise(it: Id) {
-        session = session.copy(exercise = it)
+        session = session.copy(exercise = Exercise(it.value, "","",""))
     }
 
     fun checkWeight(num: Float) {
-        sessionSet = SessionSet(sessionExercise = session.id)
+        sessionSet = SessionSet(weight = num, sessionExercise = session.id)
     }
 
     fun checkRep(num: Int) {

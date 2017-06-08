@@ -1,13 +1,12 @@
 package com.acv.gym.module.exercise.type
 
 import com.acv.gym.R
-import com.acv.gym.commons.extension.gridLayoutManager
-import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.load
+import com.acv.gym.commons.extension.*
 import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.module.exercise.ExerciseActivity
 import com.acv.gym.module.muscle.group.MuscleGroupFragment
+import com.acv.gym.module.session.SessionFragment
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypePresenter
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypeView
 import com.acv.gym.ui.BaseActivity
@@ -21,11 +20,8 @@ class ExerciseTypeActivity : BaseActivity<ExerciseTypeView, ExerciseTypePresente
     override fun getLayout() = R.layout.activity_exercise_type
 
     override fun onCreate() {
-        setTitle(R.string.title_exercise_type)
-        supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.container, ExerciseTypeFragment())
-                .commit()
+        setToolbar(R.string.title_exercise_type)
+        loadFr<ExerciseTypeFragment>(listOf("id" to getExtra()))
     }
 
     override fun show(exerciseTypes: List<ExerciseType>) = setRecycler(exerciseTypes)

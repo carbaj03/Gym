@@ -21,9 +21,10 @@ class GetExerciseUseCaseTest {
 
     @Test
     fun `should return all exercises When execute`() {
-        val command = Option.Some(ExerciseCommand(Id("1")))
+        val id = Id("1")
+        val command = Option.Some(ExerciseCommand(id))
         useCase.execute(command)
 
-        verify(gateway, times(1)).getExercise(Id(""))
+        verify(gateway, times(1)).getAllExercises()
     }
 }

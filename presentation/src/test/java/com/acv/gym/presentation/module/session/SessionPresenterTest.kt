@@ -1,10 +1,12 @@
 package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.presentation.model.SessionExercise
+import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.SessionCommand
 import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
+import com.acv.gym.presentation.model.SessionExerciseVM
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
@@ -33,12 +35,11 @@ class SessionPresenterTest {
 
     @Test
     fun `should show session When call use case`() {
-        var listOf = getSession()
-        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Right(getSession()))
+        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Right(listOf()))
 
         presenter.loadSessions(Option.None)
 
-        verify(view, times(1)).show(listOf)
+        verify(view, times(1)).show(listOf())
     }
 
     @Test
@@ -58,7 +59,4 @@ class SessionPresenterTest {
 
         verify(view, times(1)).showNetworkError()
     }
-
-    private fun getSession() = listOf(SessionExercise(Id("1"), Id("1"), emptyList(), Id("1")))
-
 }

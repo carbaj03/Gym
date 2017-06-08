@@ -42,7 +42,7 @@ class NewSessionActivity : BaseActivity<NewSessionView, NewSessionPresenter>(), 
     override fun showNetworkError() = toast("error network")
 
     override fun done(nav: Nav) = when (nav) {
-        is MuscleGroupNav -> loadFr<ExerciseTypeFragment>()
+        is MuscleGroupNav -> loadFr<ExerciseTypeFragment>(listOf("id" to nav.id))
         is ExerciseTypeNav -> loadFr<ExerciseFragment>(listOf("id" to nav.id))
         is ExerciseNav -> {
             loadFr<WeightFragment>()

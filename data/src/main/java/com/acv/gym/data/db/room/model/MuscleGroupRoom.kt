@@ -23,6 +23,13 @@ fun MuscleGroup.map() = MuscleGroupRoom(id, name)
     @Query("SELECT * FROM $tableMuscleGroup")
     fun getAll(): List<MuscleGroupRoom>
 
+
+    @Query("""SELECT muscle_group.id, muscle_group.name
+            FROM $tableMuscleGroup
+            INNER JOIN $tableExercise ON muscleGroup = $tableMuscleGroup.id
+            GROUP BY exercise.muscleGroup""")
+    fun getExist(): List<MuscleGroupRoom>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(muscleGroups: List<MuscleGroupRoom>)
 

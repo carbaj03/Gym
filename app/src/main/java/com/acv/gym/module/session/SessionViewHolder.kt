@@ -20,7 +20,7 @@ class SessionViewHolder(view: View) : VHS<SessionExerciseVM>(view) {
     var chkItem = view.find<CheckBox>(R.id.chkItem)
 
     override fun bind(session: SessionExerciseVM, checked: Boolean, visivility: Visivility) {
-        name.text = session.exercise.value
+        name.text = session.exercise
         chkItem.isChecked = checked
         chkItem.visibility = visivility.value
     }

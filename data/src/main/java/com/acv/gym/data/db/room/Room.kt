@@ -14,5 +14,7 @@ class RoomDB{
         fun create(context: Context) {
             instance = Room.databaseBuilder(context, AppDatabase::class.java, "gym.db").build()
         }
+
+        fun a() = RoomDB.instance.sessionSetDao()
     }
 }

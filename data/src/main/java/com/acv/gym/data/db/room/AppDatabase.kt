@@ -12,8 +12,7 @@ import com.acv.gym.data.db.room.model.*
         ExerciseRoom::class,
         ExerciseTypeRoom::class,
         MuscleGroupRoom::class,
-        SessionRoom::class,
-        ExerciseTypeMuscleGroupRoom::class
+        SessionRoom::class
 ), version = 1)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
@@ -23,5 +22,4 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun exerciseDao(): ExerciseDao
     abstract fun exerciseTypeDao(): ExerciseTypeDao
     abstract fun muscleGroupDao(): MuscleGroupDao
-    abstract fun ExerciseTypeMuscleGroupDao(): ExerciseTypeMuscleGroupDao
 }

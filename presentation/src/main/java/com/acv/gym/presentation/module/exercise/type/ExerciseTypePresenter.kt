@@ -2,6 +2,7 @@ package com.acv.gym.presentation.module.exercise.type
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.ExerciseType
+import com.acv.gym.domain.usecase.ExerciseTypeCommand
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.Presenter
@@ -18,7 +19,7 @@ class ExerciseTypePresenter(
     fun loadExerciseType(id: Option<Id>) =
             Interactor(
                     interactor = useCase,
-                    params = id,
+                    params = id.map(::ExerciseTypeCommand),
                     result = { happyCase(it) },
                     error = { manageExceptions(it) }
             ).execute(invoker)

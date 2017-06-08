@@ -15,7 +15,11 @@ class GymGatewayImpl(
 
     override fun getAllExercises() = dataSource.getAllExercises()
 
+    override fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id) = dataSource.getExercisesBy(idMuscleGroup, idExerciseType)
+
     override fun getAllExerciseTypes() = dataSource.getAllExerciseTypes()
+
+    override fun getExerciseTypesBy(id: Id) = dataSource.getExerciseTypesBy(id)
 
     override fun getAllMuscleGroups() = dataSource.getAllMuscleGroups()
 
