@@ -1,6 +1,10 @@
 package com.acv.gym.domain.model
 
-data class SessionExercise(val id : String,
-                           val exercise : String,
-                           val sets: List<SessionSet>,
-                           val session : String): Model
+import com.acv.gym.domain.usecase.Id
+
+data class SessionExercise(
+        val id: Id = Id(),
+        val exercise: Exercise = Exercise("","","",""),
+        val sets: List<SessionSet> = listOf(),
+        val session: Id = Id("")
+) : Model

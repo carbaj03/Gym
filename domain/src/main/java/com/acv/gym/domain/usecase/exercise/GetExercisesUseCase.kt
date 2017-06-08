@@ -1,14 +1,21 @@
 package com.acv.gym.domain.usecase.exercise
 
-import com.acv.gym.domain.ExerciseGateway
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
+import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.usecase.Command
-import com.acv.gym.domain.usecase.UseCase
+import com.acv.gym.domain.usecase.ExerciseCommand
+import com.acv.gym.domain.usecase.GymUseCase
+import katz.Either
 import katz.Option
 
+
 open class GetExercisesUseCase(
-        val gateway: ExerciseGateway
-) : UseCase<Command, List<Exercise>, GenericExceptions> {
-    override fun execute(input: Option<Command>) = gateway.obtain(input)
+        val gateway: GymGateway
+) : GymUseCase<ExerciseCommand, List<Exercise>> {
+
+    override fun execute(input: Option<ExerciseCommand>) = when (input) {
+        is Option.None -> Either.Left(GenericError.NetworkError)
+        is Option.Some -> gateway.getExercisesBy(input.value.idMuscleGroup, input.value.idExerciseType)
+    }
+
 }

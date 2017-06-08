@@ -1,39 +1,42 @@
 package com.acv.gym.module.session
 
-import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import com.acv.gym.R
-import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.navStack
+import com.acv.gym.commons.extension.*
 import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.usecase.session.SessionCommand
-import com.acv.gym.module.muscle.group.MuscleGroupActivity
+import com.acv.gym.domain.usecase.Id
+import com.acv.gym.module.session.set.SessionSetActivity
+import com.acv.gym.presentation.model.SessionExerciseVM
 import com.acv.gym.presentation.module.session.SessionPresenter
 import com.acv.gym.presentation.module.session.SessionView
 import com.acv.gym.ui.BaseActivity
-import katz.Option
 import kotlinx.android.synthetic.main.activity_session.*
 import org.jetbrains.anko.onClick
+import org.jetbrains.anko.toast
 
 class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionView {
     override fun setupComponent() = inject()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        presenter.loadSessions(Option.None)
-        fab.onClick { navStack<MuscleGroupActivity>() }
-    }
-
     override fun getLayout() = R.layout.activity_session
 
-    override fun show(sessionExercise: List<SessionExercise>) = with(rvSession) {
-        layoutManager = LinearLayoutManager(applicationContext)
-        adapter = SessionAdapter(sessionExercise) { presenter.checkExercise(it) }
+    override fun onCreate() {
+        setToolbar(R.string.session_title)
+        fab.onClick { navStack<NewSessionActivity>(listOf("id" to Id("1"))) }
+        loadFr<SessionFragment>(listOf("id" to getExtra()))
     }
 
-    override fun showServerError() =
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onNewIntent() = refresh(getFr<SessionFragment>())
 
-    override fun showNetworkError() =
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun show(sessionExercise: List<SessionExerciseVM>) {}
+
+    override fun showServerError() = toast("Error")
+
+    override fun showNetworkError() = toast("Error")
+
+    override fun showClick(id: Id) = load<SessionSetActivity>(listOf("id" to id))
+
+    override fun enabledDeleteMode() = toast("Error")
+
+    override fun disabledDeleteMode() = toast("Error")
+
+    override fun goBack() = true
 }

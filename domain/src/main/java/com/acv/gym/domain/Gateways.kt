@@ -1,21 +1,25 @@
 package com.acv.gym.domain
 
 import com.acv.gym.domain.model.*
-import com.acv.gym.domain.usecase.Command
+import com.acv.gym.domain.usecase.Id
 import katz.Either
-import katz.Option
 
 
-interface BaseGateway<in I : Command, out E, S> {
-    fun obtain(command: Option<I>): Either<E, List<S>>
-    fun persist(list: List<S>): Either<E, List<S>>
+interface SharedPreference {
+    fun getLaunchApp(): Either<GenericError, List<LaunchApp>>
 }
 
-interface GenericGateway<O : Model> : BaseGateway<Command, GenericExceptions, O>
-
-interface ExerciseGateway : GenericGateway<Exercise>
-interface ExerciseTypeGateway : GenericGateway<ExerciseType>
-interface LaunchAppGateway : GenericGateway<LaunchApp>
-interface MuscleGroupGateway : GenericGateway<MuscleGroup>
-interface RoutineGateway : GenericGateway<Routine>
-interface SessionGateway : GenericGateway<SessionExercise>
+interface GymGateway {
+    fun getExercise(id: Id): GymResult<List<Exercise>>
+    fun getAllSesion(): GymResult<List<Session>>
+    fun getSessionExercisesBy(id: Id): GymResult<List<SessionExercise>>
+    fun getSessionSetBy(id: Id): GymResult<List<SessionSet>>
+    fun getAllExercises(): GymResult<List<Exercise>>
+    fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id): GymResult<List<Exercise>>
+    fun getAllExerciseTypes(): GymResult<List<ExerciseType>>
+    fun getExerciseTypesBy(id: Id): GymResult<List<ExerciseType>>
+    fun getAllMuscleGroups(): GymResult<List<MuscleGroup>>
+    fun getAllRoutines(): GymResult<List<Routine>>
+    fun getAllSessionExercises(): GymResult<List<SessionExercise>>
+    fun persistSessionExercise(sessionExercises: List<SessionExercise>): GymResult<List<SessionExercise>>
+}

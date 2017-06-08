@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".module.splash.SplashActivity"
             android:label="@string/app_name">
@@ -26,6 +26,10 @@
 
         <activity
             android:name=".module.session.SessionActivity"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".module.session.set.SessionSetActivity"
             android:launchMode="singleTask" />
 
         <activity
@@ -46,6 +50,10 @@
 
         <activity
             android:name=".module.weight.WeightActivity"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".module.session.NewSessionActivity"
             android:launchMode="singleTask" />
     </application>
 

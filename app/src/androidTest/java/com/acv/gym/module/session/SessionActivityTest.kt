@@ -21,7 +21,7 @@ class SessionActivityTest : AcceptanceTest<SessionActivity>(SessionActivity::cla
 
     @Test
     fun shouldLoadSessionWhenCreateView() {
-        Mockito.doNothing().`when`<SessionPresenter>(presenter).attachView(Matchers.any<SessionView>())
+//        Mockito.doNothing().`when`<SessionPresenter>(presenter).attachView(Matchers.any<SessionView>())
 //        Mockito.doNothing().`when`<SessionPresenter>(presenter).onFinishSplash()
 
         testRule.launchActivity(Intent())

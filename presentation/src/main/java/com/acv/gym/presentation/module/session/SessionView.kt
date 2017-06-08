@@ -1,8 +1,14 @@
 package com.acv.gym.presentation.module.session
 
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.presentation.View
+import com.acv.gym.domain.usecase.Id
+import com.acv.gym.presentation.GymView
 import com.acv.gym.presentation.ViewError
 import com.acv.gym.presentation.ViewShow
+import com.acv.gym.presentation.model.SessionExerciseVM
 
-interface SessionView : View , ViewShow<SessionExercise>, ViewError
+interface SessionView : GymView, ViewShow<SessionExerciseVM>, ViewError {
+    fun showClick(id: Id)
+    fun enabledDeleteMode()
+    fun disabledDeleteMode()
+    fun goBack(): Boolean
+}

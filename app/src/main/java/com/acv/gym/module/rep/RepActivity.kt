@@ -1,6 +1,5 @@
 package com.acv.gym.module.rep
 
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.acv.gym.R
@@ -9,6 +8,7 @@ import com.acv.gym.presentation.module.rep.RepPresenter
 import com.acv.gym.presentation.module.rep.RepView
 import com.acv.gym.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_rep.*
+import kotlinx.android.synthetic.main.fragment_rep.*
 import org.jetbrains.anko.onClick
 
 class RepActivity : BaseActivity<RepView, RepPresenter>(), RepView {
@@ -16,8 +16,8 @@ class RepActivity : BaseActivity<RepView, RepPresenter>(), RepView {
 
     override fun getLayout() = R.layout.activity_rep
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onCreate() {
+        setTitle(R.string.rep_title)
         sbReps.listener { tvReps.text = it.toString() }
         fab.onClick { navBack() }
     }

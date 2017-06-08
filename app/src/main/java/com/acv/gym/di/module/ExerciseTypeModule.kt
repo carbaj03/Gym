@@ -2,11 +2,8 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.local.ExerciseTypeLocalGateway
-import com.acv.gym.data.local.datasource.ExerciseTypeLocalDataSource
 import com.acv.gym.di.scope.ActivityScope
-import com.acv.gym.domain.ExerciseTypeGateway
-import com.acv.gym.domain.invoker.InteractorInvokerImp
+import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypePresenter
@@ -29,19 +26,5 @@ class ExerciseTypeModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideUseCase(localGateway: ExerciseTypeGateway)
-            = GetExerciseTypesUseCase(localGateway)
-
-    @ActivityScope
-    @Provides
-    fun provideLocalGateway(dataSource: ExerciseTypeLocalDataSource) : ExerciseTypeGateway
-            = ExerciseTypeLocalGateway(dataSource)
-
-    @ActivityScope
-    @Provides
-    fun provideDataSource() = ExerciseTypeLocalDataSource()
-
-    @ActivityScope @Provides
-    fun provideInteractorInvoker(): InteractorInvoker = InteractorInvokerImp()
-
+    fun provideUseCase(gateway: GymGateway) = GetExerciseTypesUseCase(gateway)
 }

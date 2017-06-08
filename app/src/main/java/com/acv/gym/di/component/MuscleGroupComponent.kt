@@ -10,6 +10,5 @@ import dagger.Subcomponent
 @Subcomponent(modules = arrayOf(MuscleGroupModule::class))
 interface MuscleGroupComponent {
     val presenter: MuscleGroupPresenter
-
     fun inject(activity: MuscleGroupActivity)
 }

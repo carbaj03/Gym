@@ -1,8 +1,8 @@
 package com.acv.gym.domain.usecase.splash
 
-import com.acv.gym.domain.LaunchAppGateway
-import com.acv.gym.domain.usecase.EmptyCommand
+import com.acv.gym.domain.SharedPreference
 import com.nhaarman.mockito_kotlin.mock
+import katz.Option
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.times
@@ -10,7 +10,7 @@ import org.mockito.Mockito.verify
 
 class CheckSplashUseCaseTest {
 
-    val gateway: LaunchAppGateway = mock()
+    val gateway: SharedPreference = mock()
 
     lateinit var checkSplashUseCase: CheckSplashUseCase
 
@@ -21,9 +21,9 @@ class CheckSplashUseCaseTest {
 
     @Test
     fun shouldObtainLaunchAppWhenCallUseCase() {
-        val command = EmptyCommand()
+        val command = Option.None
         checkSplashUseCase.execute(command)
 
-        verify(gateway, times(1)).obtain(command)
+        verify(gateway, times(1)).getLaunchApp()
     }
 }

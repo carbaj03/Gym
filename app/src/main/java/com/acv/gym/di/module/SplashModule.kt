@@ -2,12 +2,11 @@ package com.acv.gym.di.module
 
 
 import android.app.Activity
-import com.acv.gym.data.local.Cache
-import com.acv.gym.data.local.LaunchAppLocalGateway
-import com.acv.gym.data.local.SharedPreferencesCache
+import com.acv.gym.data.db.cache.Cache
+import com.acv.gym.data.db.cache.SharedPreferencesCache
+import com.acv.gym.data.db.sharedPreference.LaunchAppGateway
 import com.acv.gym.di.scope.ActivityScope
-import com.acv.gym.domain.LaunchAppGateway
-import com.acv.gym.domain.invoker.InteractorInvokerImp
+import com.acv.gym.domain.SharedPreference
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
 import com.acv.gym.presentation.invoker.InteractorInvoker
 import com.acv.gym.presentation.module.splash.SplashPresenter
@@ -31,19 +30,15 @@ class SplashModule(activity: Activity) : ActivityModule(activity) {
 
     @ActivityScope
     @Provides
-    fun provideCheckSplashUseCase(localGateway: LaunchAppGateway): CheckSplashUseCase
+    fun provideCheckSplashUseCase(localGateway: SharedPreference): CheckSplashUseCase
             = CheckSplashUseCase(localGateway)
 
     @ActivityScope
     @Provides
-    fun provideLaunchAppLocalGateway(sharedPreferencesCache: Cache): LaunchAppGateway
-            = LaunchAppLocalGateway(sharedPreferencesCache)
+    fun provideLaunchAppLocalGateway(sharedPreferencesCache: Cache): SharedPreference
+            = LaunchAppGateway(sharedPreferencesCache)
 
     @ActivityScope
     @Provides
     fun provideCache(): Cache = SharedPreferencesCache(activity.applicationContext)
-
-    @ActivityScope @Provides
-    fun provideInteractorInvoker(): InteractorInvoker = InteractorInvokerImp()
-
 }

@@ -1,6 +1,6 @@
 package com.acv.gym.presentation.module.muscle.group
 
-import com.acv.gym.domain.GenericExceptions
+import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.domain.usecase.muscle.group.GetMuscleGroupsUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
@@ -39,7 +39,7 @@ class MuscleGroupPresenterTest {
 
     @Test
     fun `should show error network When is network exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.NetworkError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.NetworkError))
 
         presenter.loadMuscleGroups()
 
@@ -48,7 +48,7 @@ class MuscleGroupPresenterTest {
 
     @Test
     fun `should show error server When is server exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericExceptions.ServerError()))
+        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.ServerError))
 
         presenter.loadMuscleGroups()
 
