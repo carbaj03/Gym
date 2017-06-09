@@ -42,10 +42,7 @@ open class SessionPresenter(
 
     fun checkExercise(it: SessionExerciseVM) = view.showClick(it.id)
 
-    fun delete() {
-        changeMode()
-
-    }
+    fun delete() = changeMode()
 
     fun sessionSelected(sessionExercise: SessionExerciseVM) {
         if (selected.contains(sessionExercise))
@@ -71,7 +68,6 @@ open class SessionPresenter(
             selectable = Status.View
         }
         Status.View -> view.goBack()
-
     }
 
 }

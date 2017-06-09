@@ -8,5 +8,5 @@ interface ViewError {
 }
 
 interface ViewShow<in T> {
-    fun show(data: List<T>)
+    fun show(sessionSets: List<T>)
 }

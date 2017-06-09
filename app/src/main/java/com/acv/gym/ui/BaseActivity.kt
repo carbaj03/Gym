@@ -44,6 +44,3 @@ abstract class BaseActivity<out V : GymView, P : Presenter<V>> : AppCompatActivi
 //        else -> super.onKeyDown(keyCode, event)
 //    }
 }
-
-
-fun <V : GymView, P : Presenter<V>> BaseFragment<V, P>.done(nav: Nav) = (activity as BaseActivity<V, P>).done(nav)

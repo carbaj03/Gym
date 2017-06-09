@@ -8,6 +8,9 @@ import com.acv.gym.domain.usecase.session.GetSessionSetUseCase
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.Interactor
 import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.invoke
+import com.acv.gym.presentation.model.SessionSetVM
+import com.acv.gym.presentation.model.map
 import katz.Option
 
 open class SessionSetPresenter(
@@ -16,20 +19,18 @@ open class SessionSetPresenter(
         val invoker: InteractorInvoker
 ) : Presenter<SessionSetView>(view) {
 
-    fun loadSessionSet(id: Option<Id>) =
-            Interactor(
-                    interactor = useCase,
-                    params = id.map(::SessionCommand),
-                    result = { happyCase(it) },
-                    error = { manageExceptions(it) }
-            ).execute(invoker)
+    fun loadSessionSet(id: Option<Id>) = invoker invoke Interactor(
+            interactor = useCase,
+            params = id.map(::SessionCommand),
+            result = { happyCase(it) },
+            error = { manageExceptions(it) })
 
-    private fun happyCase(sessionSet: List<SessionSet>) = view.show(sessionSet)
+    private fun happyCase(sessionSet: List<SessionSet>) = view.show(sessionSet.map { it.map() })
 
     private fun manageExceptions(exceptions: GenericError) = when (exceptions) {
         is GenericError.NetworkError -> view.showNetworkError()
         is GenericError.ServerError -> view.showServerError()
     }
 
-    fun checkSessionSet(it: SessionSet) = view.showClick(it.id)
+    fun checkSessionSet(it: SessionSetVM) = view.showClick(it.id)
 }

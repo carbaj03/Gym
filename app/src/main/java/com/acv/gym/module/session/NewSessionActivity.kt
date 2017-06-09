@@ -2,6 +2,7 @@ package com.acv.gym.module.session
 
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
+import com.acv.gym.domain.usecase.ExerciseCommand
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.module.exercise.ExerciseFragment
 import com.acv.gym.module.exercise.type.ExerciseTypeFragment
@@ -42,24 +43,30 @@ class NewSessionActivity : BaseActivity<NewSessionView, NewSessionPresenter>(), 
     override fun showNetworkError() = toast("error network")
 
     override fun done(nav: Nav) = when (nav) {
-        is MuscleGroupNav -> loadFr<ExerciseTypeFragment>(listOf("id" to nav.id))
-        is ExerciseTypeNav -> loadFr<ExerciseFragment>(listOf("id" to nav.id))
-        is ExerciseNav -> {
-            loadFr<WeightFragment>()
-            presenter.checkExercise(nav.id)
-        }
-        is WeightNav -> {
-            loadFr<RepFragment>()
-            fab.visible()
-            fab.onClick {
-                presenter.checkRep(getFr<RepFragment>().value().num)
-                loadFr<WeightFragment>()
-            }
-            presenter.checkWeight(nav.num)
-        }
+        is MuscleGroupNav -> presenter.checkMuscleGroup(nav.id)
+        is ExerciseTypeNav -> presenter.checkExerciseType(nav.id)
+        is ExerciseNav -> presenter.checkExercise(nav.id)
+        is WeightNav -> presenter.checkWeight(nav.num)
         is RepNav -> {
             presenter.checkRep(nav.num)
             presenter.persist()
         }
+    }
+
+    override fun goToExerciseType(id: Id) =
+            loadFr<ExerciseTypeFragment>(listOf(extra to id))
+
+    override fun goToExercise(exerciseCommand: ExerciseCommand) =
+            loadFr<ExerciseFragment>(listOf(extra to exerciseCommand))
+
+    override fun goToWeight() =
+            loadFr<WeightFragment>()
+
+    override fun goToReps() =
+            loadFr<RepFragment>()
+
+    override fun showFab() {
+        fab.visible()
+        fab.onClick { presenter.checkRep(getFr<RepFragment>().value().num) }
     }
 }

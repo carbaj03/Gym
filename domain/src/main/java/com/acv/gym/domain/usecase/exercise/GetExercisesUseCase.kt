@@ -17,5 +17,4 @@ open class GetExercisesUseCase(
         is Option.None -> Either.Left(GenericError.NetworkError)
         is Option.Some -> gateway.getExercisesBy(input.value.idMuscleGroup, input.value.idExerciseType)
     }
-
 }

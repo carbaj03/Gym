@@ -9,7 +9,6 @@ import com.acv.gym.module.session.RepNav
 import com.acv.gym.presentation.module.rep.RepPresenter
 import com.acv.gym.presentation.module.rep.RepView
 import com.acv.gym.ui.BaseFragment
-import com.acv.gym.ui.done
 import kotlinx.android.synthetic.main.fragment_rep.*
 
 class RepFragment : BaseFragment<RepView, RepPresenter>(), RepView {
@@ -28,7 +27,7 @@ class RepFragment : BaseFragment<RepView, RepPresenter>(), RepView {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.done -> Action { done(RepNav(sbReps.progress)) }
+        DONE -> Action { done(RepNav(sbReps.progress)) }
         else -> super.onOptionsItemSelected(item)
     }
 

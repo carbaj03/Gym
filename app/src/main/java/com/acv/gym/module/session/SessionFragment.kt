@@ -55,7 +55,7 @@ class SessionFragment : BaseFragment<SessionView, SessionPresenter>(), SessionVi
         else -> super.onOptionsItemSelected(item)
     }
 
-    override fun showClick(id: Id) = loadStack<SessionSetActivity>(listOf("id" to id))
+    override fun showClick(id: Id) = loadStack<SessionSetActivity>(listOf(extra to id))
 
     override fun showServerError() = Toast.makeText(activity, "Error Fragment", Toast.LENGTH_LONG).show()
 

@@ -20,8 +20,8 @@ class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionVi
 
     override fun onCreate() {
         setToolbar(R.string.session_title)
-        fab.onClick { navStack<NewSessionActivity>(listOf("id" to Id("1"))) }
-        loadFr<SessionFragment>(listOf("id" to getExtra()))
+        fab.onClick { navStack<NewSessionActivity>(listOf(extra to Id("1"))) }
+        loadFr<SessionFragment>(listOf(extra to getExtra()))
     }
 
     override fun onNewIntent() = refresh(getFr<SessionFragment>())
@@ -32,7 +32,7 @@ class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionVi
 
     override fun showNetworkError() = toast("Error")
 
-    override fun showClick(id: Id) = load<SessionSetActivity>(listOf("id" to id))
+    override fun showClick(id: Id) = load<SessionSetActivity>(listOf(extra to id))
 
     override fun enabledDeleteMode() = toast("Error")
 

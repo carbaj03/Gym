@@ -2,8 +2,10 @@ package com.acv.gym.presentation.module.exercise
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.ExerciseCommand
 import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.usecase.SessionCommand
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.Interactor
@@ -18,8 +20,8 @@ open class ExercisePresenter(
         val invoker: InteractorInvoker
 ) : Presenter<ExerciseView>(view) {
 
-    fun loadExercises(id: Option<Id>) = invoker invoke Interactor(
-            params = id.map(::ExerciseCommand),
+    fun loadExercises(params: Option<ExerciseCommand>) = invoker invoke Interactor(
+            params = params,
             interactor = useCase,
             result = { happyCase(it) },
             error = { manageExceptions(it) }

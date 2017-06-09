@@ -1,10 +1,7 @@
 package com.acv.gym.module.exercise
 
 import com.acv.gym.R
-import com.acv.gym.commons.extension.getId
-import com.acv.gym.commons.extension.gridLayoutManager
-import com.acv.gym.commons.extension.inject
-import com.acv.gym.commons.extension.load
+import com.acv.gym.commons.extension.*
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.module.weight.WeightActivity

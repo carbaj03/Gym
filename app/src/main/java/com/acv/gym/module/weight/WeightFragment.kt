@@ -5,16 +5,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
-import com.acv.gym.domain.model.Weight
-import com.acv.gym.module.rep.RepFragment
-import com.acv.gym.module.session.NewSessionActivity
-import com.acv.gym.module.session.RepNav
 import com.acv.gym.module.session.WeightNav
 import com.acv.gym.presentation.module.weight.WeightPresenter
 import com.acv.gym.presentation.module.weight.WeightView
 import com.acv.gym.ui.BaseFragment
-import com.acv.gym.ui.done
-import kotlinx.android.synthetic.main.fragment_rep.*
 import kotlinx.android.synthetic.main.fragment_weight.*
 
 class WeightFragment : BaseFragment<WeightView, WeightPresenter>(), WeightView {
@@ -33,7 +27,7 @@ class WeightFragment : BaseFragment<WeightView, WeightPresenter>(), WeightView {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.done -> Action { done(WeightNav(sbWeight.progress.toFloat())) }
+        DONE -> Action { done(WeightNav(sbWeight.progress.toFloat())) }
         else -> super.onOptionsItemSelected(item)
     }
 }

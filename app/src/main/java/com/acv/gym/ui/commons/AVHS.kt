@@ -4,12 +4,15 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.acv.gym.commons.extension.inflate
+import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.module.exercise.type.ExerciseTypeViewHolder
 import com.acv.gym.module.session.SessionViewHolder
 import com.acv.gym.module.session.Visivility
 import com.acv.gym.presentation.model.SessionExerciseVM
 
 typealias SessionAdapter = AVHS<SessionViewHolder, SessionExerciseVM>
+typealias ExerciseTypeAdapter = AVH<ExerciseTypeViewHolder, ExerciseType>
 
 abstract class VHS<in M>(view: View) : RecyclerView.ViewHolder(view) {
     abstract fun bind(model: M, checked: Boolean, visivility: Visivility)

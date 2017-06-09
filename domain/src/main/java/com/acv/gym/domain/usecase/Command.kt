@@ -8,6 +8,11 @@ sealed class Command : Serializable
 
 object EmptyCommand : Command()
 
+data class Activity(
+        val value: Command
+) : Command()
+
+
 data class Id(
         val value: String = UUID.randomUUID().toString()
 ) : Command()

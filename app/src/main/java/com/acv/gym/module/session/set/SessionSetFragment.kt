@@ -12,6 +12,7 @@ import com.acv.gym.module.muscle.group.MuscleGroupActivity
 import com.acv.gym.module.muscle.group.MuscleGroupFragment
 import com.acv.gym.module.session.SessionViewHolder
 import com.acv.gym.module.session.set.SessionSetActivity
+import com.acv.gym.presentation.model.SessionSetVM
 import com.acv.gym.presentation.module.session.SessionPresenter
 import com.acv.gym.presentation.module.session.SessionView
 import com.acv.gym.presentation.module.session.set.SessionSetPresenter
@@ -19,6 +20,7 @@ import com.acv.gym.presentation.module.session.set.SessionSetView
 import com.acv.gym.ui.BaseActivity
 import com.acv.gym.ui.BaseFragment
 import com.acv.gym.ui.commons.AVH
+import com.acv.gym.ui.commons.AVHS
 import katz.Option
 import kotlinx.android.synthetic.main.activity_session.*
 import kotlinx.android.synthetic.main.fragment_list.*
@@ -36,23 +38,23 @@ class SessionSetFragment : BaseFragment<SessionSetView, SessionSetPresenter>(), 
         presenter.loadSessionSet(getArgId())
     }
 
-    override fun show(data: List<SessionSet>) = with(rvItems) {
+    override fun show(data: List<SessionSetVM>) = with(rvItems) {
         layoutManager = gridLayoutManager()
-        adapter = AVH(
+        adapter = AVHS(
                 items = data,
-                listener = { presenter.checkSessionSet(it) },
+                listener = { sessionSet, _ -> presenter.checkSessionSet(sessionSet) },
                 holder = ::SessionSetViewHolder,
                 layout = R.layout.item_session)
     }
 
-    override fun showClick(id: Id) = loadStack<SessionSetActivity>(listOf("id" to id))
+    override fun showClick(id: Id) = loadStack<SessionSetActivity>(listOf(extra to id))
 
     override fun showServerError() = Toast.makeText(activity, "Error Fragment", Toast.LENGTH_LONG).show()
 
     override fun showNetworkError() = Toast.makeText(activity, "error Fragment", Toast.LENGTH_LONG).show()
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        android.R.id.home -> navBack()
+        HOME -> navBack()
         else -> super.onOptionsItemSelected(item)
     }
 }

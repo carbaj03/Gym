@@ -4,6 +4,7 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.model.SessionSet
+import com.acv.gym.domain.usecase.ExerciseCommand
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.NewSessionCommand
 import com.acv.gym.domain.usecase.session.NewSessionExerciseUseCase
@@ -23,33 +24,38 @@ open class NewSessionPresenter(
     private lateinit var session: SessionExercise
     private lateinit var sets: List<SessionSet>
     private lateinit var sessionSet: SessionSet
+    private lateinit var idMuscleGroup: Id
 
     fun persist() = invoker invoke Interactor(
             interactor = useCase,
             params = Option(NewSessionCommand(listOf(session))),
-            result = { happyCase(it) },
+            result = { happyCase() },
             error = { manageExceptions(it) }
     )
 
-    private fun happyCase(sessionExercises: List<SessionExercise>) = view.showSuccess()
+    private fun happyCase() = view.showSuccess()
 
     private fun manageExceptions(exceptions: GenericError) = when (exceptions) {
-        is GenericError.NetworkError -> view.showNetworkError()
-        is GenericError.ServerError -> view.showServerError()
+        GenericError.NetworkError -> view.showNetworkError()
+        GenericError.ServerError -> view.showServerError()
     }
 
-    fun checkExercise(it: Id) {
-        session = session.copy(exercise = Exercise(it.value, "","",""))
+    fun checkExercise(id: Id) {
+        session = session.copy(exercise = Exercise(id.value, "", "", ""))
+        view.goToWeight()
     }
 
     fun checkWeight(num: Float) {
         sessionSet = SessionSet(weight = num, sessionExercise = session.id)
+        view.goToReps()
+        view.showFab()
     }
 
     fun checkRep(num: Int) {
         sessionSet = sessionSet.copy(reps = num)
         sets = sets.plus(sessionSet)
         session = session.copy(sets = sets)
+        view.goToReps()
     }
 
     fun checkSession(id: Option<Id>) {
@@ -60,4 +66,11 @@ open class NewSessionPresenter(
         sets = listOf()
     }
 
+    fun checkMuscleGroup(id: Id) {
+        idMuscleGroup = id
+        view.goToExerciseType(id)
+    }
+
+    fun checkExerciseType(idExerciseType: Id) =
+            view.goToExercise(ExerciseCommand(idMuscleGroup, idExerciseType))
 }

@@ -1,6 +1,7 @@
 package com.acv.gym.module.splash
 
 import com.acv.gym.R
+import com.acv.gym.commons.extension.extra
 import com.acv.gym.commons.extension.inject
 import com.acv.gym.commons.extension.load
 import com.acv.gym.commons.extension.visible
@@ -23,7 +24,7 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenter>(), SplashView {
     override fun onCreate() {
         presenter.loadSplash()
         insertData()
-        logoApp.setOnClickListener { load<SessionActivity>(listOf("id" to Id("1"))) }
+        logoApp.setOnClickListener { load<SessionActivity>(listOf(extra to Id("1"))) }
     }
 
     private fun insertData() {
@@ -72,7 +73,7 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenter>(), SplashView {
         }
     }
 
-    override fun show(data: List<Any>) = logoApp.visible()
+    override fun show(sessionSets: List<Any>) = logoApp.visible()
 
     override fun showNetworkError() = TODO()
 
