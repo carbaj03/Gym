@@ -10,6 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"/>
+    <TextView
+        android:id="@+id/tvSets"
+        style="@style/Grid.Item"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        tools:text="Sets" />
 
     <CheckBox
         android:id="@+id/chkItem"
