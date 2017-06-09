@@ -10,7 +10,6 @@ import android.view.*
 import android.widget.SeekBar
 import com.acv.gym.GymApplication
 import com.acv.gym.R
-import com.acv.gym.presentation.GymView
 import com.acv.gym.commons.listener.SeekBarListener
 import com.acv.gym.di.module.*
 import com.acv.gym.domain.usecase.Command
@@ -24,6 +23,7 @@ import com.acv.gym.module.muscle.group.MuscleGroupFragment
 import com.acv.gym.module.rep.RepActivity
 import com.acv.gym.module.rep.RepFragment
 import com.acv.gym.module.routine.RoutineActivity
+import com.acv.gym.module.session.Nav
 import com.acv.gym.module.session.NewSessionActivity
 import com.acv.gym.module.session.SessionActivity
 import com.acv.gym.module.session.SessionFragment
@@ -32,6 +32,7 @@ import com.acv.gym.module.session.set.SessionSetFragment
 import com.acv.gym.module.splash.SplashActivity
 import com.acv.gym.module.weight.WeightActivity
 import com.acv.gym.module.weight.WeightFragment
+import com.acv.gym.presentation.GymView
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.ui.BaseActivity
 import com.acv.gym.ui.BaseFragment
@@ -45,6 +46,8 @@ import org.jetbrains.anko.backgroundResource
 const val HOME = android.R.id.home
 const val DONE = R.id.done
 const val DELETE = R.id.delete
+
+fun <V : GymView, P : Presenter<V>> BaseFragment<V, P>.done(nav: Nav) = (activity as BaseActivity<V, P>).done(nav)
 
 fun AppCompatActivity.setToolbar(title: Int) {
     supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -199,6 +202,10 @@ fun MenuInflater.make(menuRes: Int, menu: Menu) = Action { inflate(menuRes, menu
 
 fun SeekBar.listener(f: (Int) -> Unit) = setOnSeekBarChangeListener(SeekBarListener { f(it) })
 
-fun Activity.getExtra(): Id = intent?.getSerializableExtra("id")?.let { it as Id } ?: Id("")
-fun Activity.getId(): Option<Id> = intent?.getSerializableExtra("id")?.let { Option(it as Id) } ?: Option.None
-fun Fragment.getArgId(): Option<Id> = arguments?.getSerializable("id")?.let { Option(it as Id) } ?: Option.None
+fun Activity.getExtra(): Id = intent?.getSerializableExtra(extra)?.let { it as Id } ?: Id("")
+//fun Activity.getId(): Option<Id> = intent?.getSerializableExtra("id")?.let { Option(it as Id) } ?: Option.None
+fun <E : Command> Activity.getId(): Option<E> = intent?.getSerializableExtra(extra)?.let { Option(it as E) } ?: Option.None
+//fun Fragment.getArgId(): Option<Id> = arguments?.getSerializable("id")?.let { Option(it as Id) } ?: Option.None
+fun <E : Command> Fragment.getArgId(): Option<E> = arguments?.getSerializable(extra)?.let { Option(it as E) } ?: Option.None
+
+const val extra: String = "EXTRA"
