@@ -1,14 +1,11 @@
 package com.acv.gym.data.db.realm.datasource
 
 import com.acv.gym.data.db.GymDataSource
-import com.acv.gym.data.db.realm.model.SessionExerciseDataModel
-import com.acv.gym.data.db.realm.model.map
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
 import com.acv.gym.domain.usecase.Id
-import io.realm.Realm
-import katz.Either
+import kategory.Either
 
 open class GymRealm : GymDataSource {
     override fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id): GymResult<List<Exercise>> {
@@ -51,7 +48,7 @@ open class GymRealm : GymDataSource {
         TODO("not implemented")
     }
 
-    override fun getAllSessionExercises() : Either<GenericError, List<SessionExercise>> {
+    override fun getAllSessionExercises(): Either<GenericError, List<SessionExercise>> {
         TODO("not implemented")
     }
 //            with(Realm.getDefaultInstance()) {
@@ -65,7 +62,7 @@ open class GymRealm : GymDataSource {
 //                }
 //            }
 
-    override fun persistSessionExercises(sessionExercises: List<SessionExercise>) : Either<GenericError, List<SessionExercise>> {
+    override fun persistSessionExercises(sessionExercises: List<SessionExercise>): Either<GenericError, List<SessionExercise>> {
         TODO("not implemented")
     }
 //            with(Realm.getDefaultInstance()) {

@@ -8,8 +8,7 @@ dependencies {
     testCompile rootProject.ext.testDependencies.mockitoKotlin
     testCompile rootProject.ext.testDependencies.mockito
 
-    compile 'com.github.FineCinnamon:Katz:v0.2'
-    compile 'com.github.JMPergar:FutureK:v0.12'
+    compile 'io.kategory:kategory:0.3.3'
 
     compile rootProject.ext.dependencies.coroutines
     compile rootProject.ext.dependencies.coroutinesAndroid

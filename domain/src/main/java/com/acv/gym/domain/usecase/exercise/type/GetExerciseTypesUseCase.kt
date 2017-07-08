@@ -5,8 +5,8 @@ import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.usecase.ExerciseTypeCommand
 import com.acv.gym.domain.usecase.GymUseCase
-import katz.Either
-import katz.Option
+import kategory.Either
+import kategory.Option
 
 
 open class GetExerciseTypesUseCase(

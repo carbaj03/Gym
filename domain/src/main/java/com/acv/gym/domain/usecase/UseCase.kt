@@ -1,8 +1,8 @@
 package com.acv.gym.domain.usecase
 
 import com.acv.gym.domain.GenericError
-import katz.Either
-import katz.Option
+import kategory.Either
+import kategory.Option
 
 typealias GymUseCase<I, R> = UseCase<I, R, GenericError>
 

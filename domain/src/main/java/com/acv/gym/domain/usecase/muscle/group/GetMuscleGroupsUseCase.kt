@@ -4,7 +4,7 @@ import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.GymUseCase
-import katz.Option
+import kategory.Option
 
 open class GetMuscleGroupsUseCase(
         val muscleGroupGateway: GymGateway

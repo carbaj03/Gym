@@ -4,29 +4,13 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.model.SessionSet
 import com.acv.gym.domain.usecase.Id
-import com.acv.gym.module.exercise.type.ExerciseTypeFragment
-import com.acv.gym.module.muscle.group.MuscleGroupActivity
-import com.acv.gym.module.muscle.group.MuscleGroupFragment
-import com.acv.gym.module.session.SessionViewHolder
-import com.acv.gym.module.session.set.SessionSetActivity
 import com.acv.gym.presentation.model.SessionSetVM
-import com.acv.gym.presentation.module.session.SessionPresenter
-import com.acv.gym.presentation.module.session.SessionView
 import com.acv.gym.presentation.module.session.set.SessionSetPresenter
 import com.acv.gym.presentation.module.session.set.SessionSetView
-import com.acv.gym.ui.BaseActivity
 import com.acv.gym.ui.BaseFragment
-import com.acv.gym.ui.commons.AVH
 import com.acv.gym.ui.commons.AVHS
-import katz.Option
-import kotlinx.android.synthetic.main.activity_session.*
 import kotlinx.android.synthetic.main.fragment_list.*
-import org.jetbrains.anko.onClick
-import org.jetbrains.anko.support.v4.toast
-import org.jetbrains.anko.toast
 
 class SessionSetFragment : BaseFragment<SessionSetView, SessionSetPresenter>(), SessionSetView {
     override fun setupComponent() = inject()

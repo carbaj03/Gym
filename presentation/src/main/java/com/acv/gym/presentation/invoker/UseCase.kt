@@ -1,11 +1,10 @@
 package com.acv.gym.presentation.invoker
 
+
 import com.acv.gym.domain.GenericError
-
-
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.UseCase
-import katz.Option
+import kategory.Option
 
 interface UseCaseInvoker {
     fun <I : Command, E : GenericError, R> execute(interactor: com.acv.gym.presentation.invoker.UseCase<I, E, R>)

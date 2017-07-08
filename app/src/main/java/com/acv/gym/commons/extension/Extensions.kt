@@ -38,7 +38,7 @@ import com.acv.gym.ui.BaseActivity
 import com.acv.gym.ui.BaseFragment
 import com.acv.gym.ui.commons.setSlideExitToRightAnimation
 import com.acv.gym.ui.commons.setSlideRightAnimation
-import katz.Option
+import kategory.Option
 import kotlinx.android.synthetic.main.toobar.*
 import org.jetbrains.anko.backgroundResource
 
@@ -205,6 +205,7 @@ fun SeekBar.listener(f: (Int) -> Unit) = setOnSeekBarChangeListener(SeekBarListe
 fun Activity.getExtra(): Id = intent?.getSerializableExtra(extra)?.let { it as Id } ?: Id("")
 //fun Activity.getId(): Option<Id> = intent?.getSerializableExtra("id")?.let { Option(it as Id) } ?: Option.None
 fun <E : Command> Activity.getId(): Option<E> = intent?.getSerializableExtra(extra)?.let { Option(it as E) } ?: Option.None
+
 //fun Fragment.getArgId(): Option<Id> = arguments?.getSerializable("id")?.let { Option(it as Id) } ?: Option.None
 fun <E : Command> Fragment.getArgId(): Option<E> = arguments?.getSerializable(extra)?.let { Option(it as E) } ?: Option.None
 

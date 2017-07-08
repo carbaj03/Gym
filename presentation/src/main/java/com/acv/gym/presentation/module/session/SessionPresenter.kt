@@ -11,7 +11,7 @@ import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.invoker.invoke
 import com.acv.gym.presentation.model.SessionExerciseVM
 import com.acv.gym.presentation.model.map
-import katz.Option
+import kategory.Option
 
 sealed class Status {
     object Edit : Status()

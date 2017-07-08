@@ -12,7 +12,7 @@ import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.invoker.invoke
-import katz.Option
+import kategory.Option
 
 
 open class NewSessionPresenter(

@@ -5,7 +5,7 @@ import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.usecase.Command
 import com.acv.gym.domain.usecase.GymUseCase
-import katz.Option
+import kategory.Option
 
 open class GetRoutineUseCase(
         val gateway: GymGateway

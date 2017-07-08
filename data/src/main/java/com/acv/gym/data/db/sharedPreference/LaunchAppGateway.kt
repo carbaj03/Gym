@@ -5,7 +5,7 @@ import com.acv.gym.data.db.cache.Cache
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.SharedPreference
 import com.acv.gym.domain.model.LaunchApp
-import katz.Either
+import kategory.Either
 
 class LaunchAppGateway(
         private val sharedPreferences: Cache

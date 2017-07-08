@@ -6,7 +6,7 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
 import com.acv.gym.domain.usecase.Id
-import katz.Either
+import kategory.Either
 import java.util.*
 
 /**

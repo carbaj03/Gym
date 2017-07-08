@@ -8,7 +8,7 @@ import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.usecase.Id
-import katz.Either
+import kategory.Either
 
 class GymRoom : GymDataSource {
     override fun getAllSession() = try {

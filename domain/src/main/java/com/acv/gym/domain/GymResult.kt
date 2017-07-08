@@ -1,6 +1,7 @@
 package com.acv.gym.domain
 
-import katz.Either
+import kategory.Either
+
 
 typealias GymResult<T> = Either<GenericError, T>
 

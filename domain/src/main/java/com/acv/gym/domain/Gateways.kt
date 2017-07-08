@@ -2,7 +2,7 @@ package com.acv.gym.domain
 
 import com.acv.gym.domain.model.*
 import com.acv.gym.domain.usecase.Id
-import katz.Either
+import kategory.Either
 
 
 interface SharedPreference {

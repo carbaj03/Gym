@@ -1,9 +1,7 @@
 package com.acv.gym.ui.commons
 
 import android.app.Activity
-import android.content.Intent
 import com.acv.gym.R
-import katz.Option
 
 fun Activity.setFadeInOutAnimation()
         = overridePendingTransition(R.anim.fade_in, R.anim.fade_out)

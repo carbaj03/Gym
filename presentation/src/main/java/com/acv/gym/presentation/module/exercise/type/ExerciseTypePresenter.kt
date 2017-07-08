@@ -8,7 +8,7 @@ import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
-import katz.Option
+import kategory.Option
 
 class ExerciseTypePresenter(
         view: ExerciseTypeView,

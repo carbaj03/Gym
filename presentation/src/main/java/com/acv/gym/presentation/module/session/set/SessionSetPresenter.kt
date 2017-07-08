@@ -11,7 +11,7 @@ import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.invoker.invoke
 import com.acv.gym.presentation.model.SessionSetVM
 import com.acv.gym.presentation.model.map
-import katz.Option
+import kategory.Option
 
 open class SessionSetPresenter(
         view: SessionSetView,
