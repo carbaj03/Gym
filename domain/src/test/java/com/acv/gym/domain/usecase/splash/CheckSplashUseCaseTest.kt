@@ -2,7 +2,7 @@ package com.acv.gym.domain.usecase.splash
 
 import com.acv.gym.domain.SharedPreference
 import com.nhaarman.mockito_kotlin.mock
-import katz.Option
+import kategory.Option
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.times

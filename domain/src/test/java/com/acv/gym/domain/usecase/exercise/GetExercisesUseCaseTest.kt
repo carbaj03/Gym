@@ -6,7 +6,7 @@ import com.acv.gym.domain.usecase.Id
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
-import katz.Option
+import kategory.Option
 import org.junit.Before
 import org.junit.Test
 
@@ -22,9 +22,9 @@ class GetExerciseUseCaseTest {
     @Test
     fun `should return all exercises When execute`() {
         val id = Id("1")
-        val command = Option.Some(ExerciseCommand(id))
+        val command = Option.Some(ExerciseCommand(id, id))
         useCase.execute(command)
 
-        verify(gateway, times(1)).getAllExercises()
+        verify(gateway, times(1)).getExercisesBy(id,id)
     }
 }

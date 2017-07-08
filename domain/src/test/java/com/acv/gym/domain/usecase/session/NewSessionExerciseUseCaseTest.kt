@@ -8,8 +8,8 @@ import com.acv.gym.domain.usecase.NewSessionCommand
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
-import katz.Either
-import katz.Option
+import kategory.Either
+import kategory.Option
 import org.junit.Before
 import org.junit.Test
 

@@ -4,8 +4,8 @@ import com.acv.gym.data.GymGatewayImpl
 import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.domain.GymGateway
 import com.nhaarman.mockito_kotlin.mock
-import katz.Either
-import katz.Option
+import kategory.Either
+import kategory.Option
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test

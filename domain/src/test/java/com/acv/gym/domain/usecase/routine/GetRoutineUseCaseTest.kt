@@ -4,7 +4,7 @@ import com.acv.gym.domain.GymGateway
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
-import katz.Option
+import kategory.Option
 import org.junit.Before
 import org.junit.Test
 

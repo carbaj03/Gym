@@ -1,18 +1,15 @@
 package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.SessionCommand
 import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
-import com.acv.gym.presentation.model.SessionExerciseVM
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
-import katz.Either
-import katz.Option
+import kategory.Either
+import kategory.Option
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito

@@ -7,8 +7,8 @@ import com.acv.gym.domain.model.SessionExercise
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.SessionCommand
 import com.nhaarman.mockito_kotlin.mock
-import katz.Either
-import katz.Option
+import kategory.Either
+import kategory.Option
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Ignore
