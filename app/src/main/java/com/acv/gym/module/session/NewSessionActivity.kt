@@ -59,11 +59,9 @@ class NewSessionActivity : BaseActivity<NewSessionView, NewSessionPresenter>(), 
     override fun goToExercise(exerciseCommand: ExerciseCommand) =
             loadFr<ExerciseFragment>(listOf(extra to exerciseCommand))
 
-    override fun goToWeight() =
-            loadFr<WeightFragment>()
+    override fun goToWeight() = loadFr<WeightFragment>()
 
-    override fun goToReps() =
-            loadFr<RepFragment>()
+    override fun goToReps() = loadFr<RepFragment>()
 
     override fun showFab() {
         fab.visible()

@@ -8,7 +8,7 @@ import com.acv.gym.data.db.sharedPreference.LaunchAppGateway
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.SharedPreference
 import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.splash.SplashPresenter
 import com.acv.gym.presentation.module.splash.SplashView
 import dagger.Module
@@ -25,7 +25,7 @@ class SplashModule(activity: Activity) : ActivityModule(activity) {
     fun provideSplashPresenter(
             view: SplashView,
             checkSplashUseCase: CheckSplashUseCase,
-            interactorInvoker: InteractorInvoker
+            interactorInvoker: UseCaseInvoker
     ): SplashPresenter = SplashPresenter(view, checkSplashUseCase, interactorInvoker)
 
     @ActivityScope

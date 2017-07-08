@@ -6,18 +6,18 @@ import com.acv.gym.domain.usecase.ExerciseTypeCommand
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.Interactor
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCase
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import katz.Option
 
 class ExerciseTypePresenter(
         view: ExerciseTypeView,
         val useCase: GetExerciseTypesUseCase,
-        val invoker: InteractorInvoker
+        val invoker: UseCaseInvoker
 ) : Presenter<ExerciseTypeView>(view) {
 
     fun loadExerciseType(id: Option<Id>) =
-            Interactor(
+            UseCase(
                     interactor = useCase,
                     params = id.map(::ExerciseTypeCommand),
                     result = { happyCase(it) },

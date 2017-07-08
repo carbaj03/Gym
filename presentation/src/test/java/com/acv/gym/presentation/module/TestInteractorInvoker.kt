@@ -2,8 +2,8 @@ package com.acv.gym.presentation.module
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.usecase.EmptyCommand
-import com.acv.gym.presentation.invoker.Interactor
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCase
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doAnswer
 import com.nhaarman.mockito_kotlin.mock
@@ -12,11 +12,11 @@ import katz.Option
 
 object TestInteractorInvoker {
 
-    fun create(command: Any = EmptyCommand): InteractorInvoker {
-        val interactorInvoker = mock<InteractorInvoker>()
+    fun create(command: Any = EmptyCommand): UseCaseInvoker {
+        val interactorInvoker = mock<UseCaseInvoker>()
 
         doAnswer {
-            val execution = it.arguments[0] as Interactor<EmptyCommand, GenericError, Any>
+            val execution = it.arguments[0] as UseCase<EmptyCommand, GenericError, Any>
 
             with(execution) {
                 val response = interactor.execute(Option.None)
@@ -31,5 +31,5 @@ object TestInteractorInvoker {
         return interactorInvoker
     }
 
-    private fun anyInteractorExecution(): Interactor<EmptyCommand, GenericError, Any> = any()
+    private fun anyInteractorExecution(): UseCase<EmptyCommand, GenericError, Any> = any()
 }

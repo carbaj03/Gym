@@ -5,7 +5,7 @@ import android.app.Activity
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.usecase.exercise.GetExercisesUseCase
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.exercise.ExercisePresenter
 import com.acv.gym.presentation.module.exercise.ExerciseView
 import dagger.Module
@@ -22,7 +22,7 @@ class ExerciseModule(activity: Activity) : ActivityModule(activity) {
     fun providePresenter(
             view: ExerciseView,
             getExerciseUseCase: GetExercisesUseCase,
-            interactorInvoker: InteractorInvoker
+            interactorInvoker: UseCaseInvoker
     ) = ExercisePresenter(view, getExerciseUseCase, interactorInvoker)
 
     @ActivityScope

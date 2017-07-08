@@ -5,16 +5,16 @@ import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.muscle.group.GetMuscleGroupsUseCase
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.Interactor
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCase
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 
 open class MuscleGroupPresenter(
         view: MuscleGroupView,
         val useCase: GetMuscleGroupsUseCase,
-        val invoker: InteractorInvoker
+        val invoker: UseCaseInvoker
 ) : Presenter<MuscleGroupView>(view) {
     fun loadMuscleGroups() =
-            Interactor(
+            UseCase(
                     interactor = useCase,
                     result = { happyCase(it) },
                     error = { manageExceptions(it) }

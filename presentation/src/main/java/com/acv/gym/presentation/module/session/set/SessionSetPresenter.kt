@@ -6,8 +6,8 @@ import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.SessionCommand
 import com.acv.gym.domain.usecase.session.GetSessionSetUseCase
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.Interactor
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCase
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.invoker.invoke
 import com.acv.gym.presentation.model.SessionSetVM
 import com.acv.gym.presentation.model.map
@@ -16,10 +16,10 @@ import katz.Option
 open class SessionSetPresenter(
         view: SessionSetView,
         val useCase: GetSessionSetUseCase,
-        val invoker: InteractorInvoker
+        val invoker: UseCaseInvoker
 ) : Presenter<SessionSetView>(view) {
 
-    fun loadSessionSet(id: Option<Id>) = invoker invoke Interactor(
+    fun loadSessionSet(id: Option<Id>) = invoker invoke UseCase(
             interactor = useCase,
             params = id.map(::SessionCommand),
             result = { happyCase(it) },

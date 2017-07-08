@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import com.acv.gym.di.scope.FragmentScope
 import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypePresenter
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypeView
 import dagger.Module
@@ -22,7 +22,7 @@ class ExerciseTypeFragmentModule(fragment: Fragment) : FragmentModule(fragment) 
     fun providePresenter(
             view: ExerciseTypeView,
             getExerciseTypesUseCase: GetExerciseTypesUseCase,
-            interactorInvoker: InteractorInvoker
+            interactorInvoker: UseCaseInvoker
     ) = ExerciseTypePresenter(view, getExerciseTypesUseCase, interactorInvoker)
 
     @FragmentScope

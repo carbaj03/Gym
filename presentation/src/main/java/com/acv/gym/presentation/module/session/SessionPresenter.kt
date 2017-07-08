@@ -6,8 +6,8 @@ import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.SessionCommand
 import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.Interactor
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCase
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.invoker.invoke
 import com.acv.gym.presentation.model.SessionExerciseVM
 import com.acv.gym.presentation.model.map
@@ -21,12 +21,12 @@ sealed class Status {
 open class SessionPresenter(
         view: SessionView,
         val useCase: GetSessionExercisesUseCase,
-        val invoker: InteractorInvoker
+        val invoker: UseCaseInvoker
 ) : Presenter<SessionView>(view) {
     var selectable: Status = Status.View
     var selected: List<SessionExerciseVM> = listOf()
 
-    fun loadSessions(id: Option<Id>) = invoker invoke Interactor(
+    fun loadSessions(id: Option<Id>) = invoker invoke UseCase(
             interactor = useCase,
             params = id.map(::SessionCommand),
             result = { happyCase(it) },

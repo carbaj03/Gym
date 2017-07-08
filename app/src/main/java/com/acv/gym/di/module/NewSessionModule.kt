@@ -4,13 +4,10 @@ package com.acv.gym.di.module
 import android.app.Activity
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
 import com.acv.gym.domain.usecase.session.NewSessionExerciseUseCase
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.session.create.NewSessionPresenter
 import com.acv.gym.presentation.module.session.create.NewSessionView
-import com.acv.gym.presentation.module.session.SessionPresenter
-import com.acv.gym.presentation.module.session.SessionView
 import dagger.Module
 import dagger.Provides
 
@@ -25,7 +22,7 @@ class NewSessionModule(activity: Activity) : ActivityModule(activity) {
     fun providePresenter(
             view: NewSessionView,
             useCase: NewSessionExerciseUseCase,
-            interactorInvoker: InteractorInvoker
+            interactorInvoker: UseCaseInvoker
     ) = NewSessionPresenter(view, useCase, interactorInvoker)
 
     @ActivityScope

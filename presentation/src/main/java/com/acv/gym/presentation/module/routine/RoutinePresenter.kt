@@ -4,17 +4,17 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Routine
 import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.Interactor
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCase
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 
 
 open class RoutinePresenter(
         view: RoutineView,
         val useCase: GetRoutineUseCase,
-        val invoker: InteractorInvoker
+        val invoker: UseCaseInvoker
 ) : Presenter<RoutineView>(view) {
     fun loadRoutines() =
-            Interactor(
+            UseCase(
                     interactor = useCase,
                     result = { happyCase(it) },
                     error = { manageExceptions(it) }

@@ -5,7 +5,7 @@ import android.app.Activity
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.routine.RoutinePresenter
 import com.acv.gym.presentation.module.routine.RoutineView
 import dagger.Module
@@ -22,7 +22,7 @@ class RoutinesModule(activity: Activity) : ActivityModule(activity) {
     fun provideRoutinesPresenter(
             view: RoutineView,
             useCase: GetRoutineUseCase,
-            interactorInvoker: InteractorInvoker
+            interactorInvoker: UseCaseInvoker
     ) = RoutinePresenter(view, useCase, interactorInvoker)
 
     @ActivityScope

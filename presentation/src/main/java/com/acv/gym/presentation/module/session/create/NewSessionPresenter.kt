@@ -9,8 +9,8 @@ import com.acv.gym.domain.usecase.Id
 import com.acv.gym.domain.usecase.NewSessionCommand
 import com.acv.gym.domain.usecase.session.NewSessionExerciseUseCase
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.Interactor
-import com.acv.gym.presentation.invoker.InteractorInvoker
+import com.acv.gym.presentation.invoker.UseCase
+import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.invoker.invoke
 import katz.Option
 
@@ -18,7 +18,7 @@ import katz.Option
 open class NewSessionPresenter(
         view: NewSessionView,
         val useCase: NewSessionExerciseUseCase,
-        val invoker: InteractorInvoker
+        val invoker: UseCaseInvoker
 ) : Presenter<NewSessionView>(view) {
 
     private lateinit var session: SessionExercise
@@ -26,7 +26,7 @@ open class NewSessionPresenter(
     private lateinit var sessionSet: SessionSet
     private lateinit var idMuscleGroup: Id
 
-    fun persist() = invoker invoke Interactor(
+    fun persist() = invoker invoke UseCase(
             interactor = useCase,
             params = Option(NewSessionCommand(listOf(session))),
             result = { happyCase() },
