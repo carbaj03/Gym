@@ -180,6 +180,11 @@ fun Fragment.inject() {
     }
 }
 
+fun MenuInflater.load(res : Int, menu: Menu ) : Menu {
+    make(res, menu)
+    return menu
+}
+
 fun Activity.gridLayoutManager(cels: Int = 2) = GridLayoutManager(this, cels)
 fun Fragment.gridLayoutManager(cels: Int = 2) = GridLayoutManager(context, cels)
 

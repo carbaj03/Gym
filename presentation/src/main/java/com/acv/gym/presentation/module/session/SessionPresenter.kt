@@ -13,9 +13,9 @@ import com.acv.gym.presentation.model.SessionExerciseVM
 import com.acv.gym.presentation.model.map
 import kategory.Option
 
-sealed class Status {
-    object Edit : Status()
-    object View : Status()
+sealed class Mode {
+    object Edit : Mode()
+    object View : Mode()
 }
 
 open class SessionPresenter(
@@ -23,7 +23,7 @@ open class SessionPresenter(
         val useCase: GetSessionExercisesUseCase,
         val invoker: UseCaseInvoker
 ) : Presenter<SessionView>(view) {
-    var selectable: Status = Status.View
+    var mode: Mode = Mode.View
     var selected: List<SessionExerciseVM> = listOf()
 
     fun loadSessions(id: Option<Id>) = invoker invoke UseCase(
@@ -33,7 +33,8 @@ open class SessionPresenter(
             error = { manageExceptions(it) }
     )
 
-    private fun happyCase(sessionExercises: List<SessionExercise>) = view.show(sessionExercises.map { it.map() })
+    private fun happyCase(sessionExercises: List<SessionExercise>) =
+            view.show(sessionExercises.map { it.map() })
 
     private fun manageExceptions(exceptions: GenericError) = when (exceptions) {
         GenericError.NetworkError -> view.showNetworkError()
@@ -42,32 +43,38 @@ open class SessionPresenter(
 
     fun checkExercise(it: SessionExerciseVM) = view.showClick(it.id)
 
-    fun delete() = changeMode()
-
-    fun sessionSelected(sessionExercise: SessionExerciseVM) {
-        if (selected.contains(sessionExercise))
-            selected -= sessionExercise
-        else
-            selected += sessionExercise
+    fun delete() {
+        mode = changeMode()
     }
 
-    fun changeMode() = when (selectable) {
-        Status.Edit -> {
-            view.disabledDeleteMode()
-            selectable = Status.View
-        }
-        Status.View -> {
+    fun changeMode(): Mode = when (mode) {
+        Mode.Edit -> disbledDeleteMode()
+        Mode.View -> {
             view.enabledDeleteMode()
-            selectable = Status.Edit
+            Mode.Edit
         }
     }
 
-    fun back() = when (selectable) {
-        Status.Edit -> {
-            view.disabledDeleteMode()
-            selectable = Status.View
-        }
-        Status.View -> view.goBack()
+    private fun disbledDeleteMode(): Mode {
+        view.disabledDeleteMode()
+        return Mode.View
     }
+
+    fun back() {
+        mode = disabledMode()
+    }
+
+    fun disabledMode() = when (mode) {
+        Mode.Edit -> disbledDeleteMode()
+        Mode.View -> {
+            view.goBack()
+            Mode.Edit
+        }
+    }
+
+    fun sessionSelected(sessionExercise: SessionExerciseVM) =
+            selected.contains(sessionExercise)
+                    .apply { selected -= sessionExercise }
+                    .also { selected += sessionExercise }
 
 }

@@ -19,16 +19,16 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 class SessionFragment : BaseFragment<SessionView, SessionPresenter>(), SessionView {
     lateinit var sessionAdapter: SessionAdapter
-    lateinit var menu: Menu
-
-    override fun setupComponent() = inject()
-
-    override fun getLayout() = R.layout.fragment_list
+    lateinit var menuDelete: MenuDelete
 
     override fun onCreate() {
         setToolbar(R.string.session_title)
         presenter.loadSessions(getArgId())
     }
+
+    override fun setupComponent() = inject()
+
+    override fun getLayout() = R.layout.fragment_list
 
     override fun refresh() = presenter.loadSessions(getArgId())
 
@@ -44,8 +44,7 @@ class SessionFragment : BaseFragment<SessionView, SessionPresenter>(), SessionVi
     }
 
     override fun onCreateOptionsMenu(m: Menu, inflater: MenuInflater) {
-        inflater.make(R.menu.session, m)
-        menu = m
+        menuDelete = MenuDelete(inflater.load(R.menu.session, m))
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
@@ -68,16 +67,14 @@ class SessionFragment : BaseFragment<SessionView, SessionPresenter>(), SessionVi
             chk[position] = !chk[position]
             notifyItemChanged(position)
         }
-        menu.findItem(DELETE).isVisible = true
-        menu.findItem(DONE).isVisible = false
+        menuDelete.enabled()
         setToolbarIcon(R.drawable.ic_close_black_24dp, R.color.accent)
     }
 
     override fun disabledDeleteMode() = with(sessionAdapter) {
         disabledDeleteMode()
         listener = { session, _ -> presenter.checkExercise(session) }
-        menu.findItem(DELETE).isVisible = false
-        menu.findItem(DONE).isVisible = true
+        menuDelete.disabled()
         setToolbarIcon()
     }
 

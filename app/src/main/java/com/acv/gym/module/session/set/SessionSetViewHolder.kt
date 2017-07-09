@@ -13,8 +13,8 @@ class SessionSetViewHolder(view: View) : VHS<SessionSetVM>(view) {
     var name = view.find<TextView>(R.id.tvName)
     var chkItem = view.find<CheckBox>(R.id.chkItem)
 
-    override fun bind(session: SessionSetVM, checked: Boolean, visivility: Visivility) {
-        name.text = session.name
+    override fun bind(model: SessionSetVM, checked: Boolean, visivility: Visivility) {
+        name.text = model.name
         chkItem.isChecked = checked
         chkItem.visibility = visivility.value
     }

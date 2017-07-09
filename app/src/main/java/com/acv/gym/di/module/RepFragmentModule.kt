@@ -17,5 +17,4 @@ class RepFragmentModule(fragment: Fragment) : FragmentModule(fragment) {
     @FragmentScope
     @Provides
     fun providePresenter(view: RepView) = RepPresenter(view)
-
 }

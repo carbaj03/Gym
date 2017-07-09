@@ -6,24 +6,26 @@ import android.view.ViewGroup
 import com.acv.gym.commons.extension.inflate
 import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.usecase.Id
 import com.acv.gym.module.exercise.type.ExerciseTypeViewHolder
 import com.acv.gym.module.session.SessionViewHolder
 import com.acv.gym.module.session.Visivility
 import com.acv.gym.presentation.model.SessionExerciseVM
+import com.acv.gym.presentation.model.ViewModel
 
 typealias SessionAdapter = AVHS<SessionViewHolder, SessionExerciseVM>
 typealias ExerciseTypeAdapter = AVH<ExerciseTypeViewHolder, ExerciseType>
 
-abstract class VHS<in M>(view: View) : RecyclerView.ViewHolder(view) {
+abstract class VHS<in M : ViewModel>(view: View) : RecyclerView.ViewHolder(view) {
     abstract fun bind(model: M, checked: Boolean, visivility: Visivility)
 }
 
-open class AVHS<VH : VHS<M>, M>(
+open class AVHS<VH : VHS<M>, M : ViewModel>(
         val items: List<M>,
         var listener: (M, Int) -> Unit,
         val holder: (view: View) -> VH,
         val layout: Int,
-        var chk: BooleanArray = kotlin.BooleanArray(items.size)
+        var chk: BooleanArray = BooleanArray(items.size)
 ) : RecyclerView.Adapter<VH>() {
     var visible: Visivility = Visivility.Invisible
 
@@ -45,4 +47,7 @@ open class AVHS<VH : VHS<M>, M>(
         visible = Visivility.Invisible
         notifyDataSetChanged()
     }
+
+    fun getSelected() : List<M> =
+        items.filterIndexed { index, m -> chk[index] }
 }

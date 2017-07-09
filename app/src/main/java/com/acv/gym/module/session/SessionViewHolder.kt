@@ -19,9 +19,9 @@ class SessionViewHolder(view: View) : VHS<SessionExerciseVM>(view) {
     var sets = view.find<TextView>(R.id.tvSets)
     var chkItem = view.find<CheckBox>(R.id.chkItem)
 
-    override fun bind(session: SessionExerciseVM, checked: Boolean, visivility: Visivility) {
-        name.text = session.exercise
-        sets.text = session.sets.joinToString { it.name }
+    override fun bind(model: SessionExerciseVM, checked: Boolean, visivility: Visivility) {
+        name.text = model.exercise
+        sets.text = model.sets.joinToString { it.name }
         chkItem.isChecked = checked
         chkItem.visibility = visivility.value
     }
