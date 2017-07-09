@@ -25,11 +25,10 @@ data class RepNav(val num: Int) : Nav()
 
 class NewSessionActivity : BaseActivity<NewSessionView, NewSessionPresenter>(), NewSessionView {
     override fun onCreate() {
+        inject()
         loadFr<MuscleGroupFragment>()
         presenter.checkSession(getId())
     }
-
-    override fun setupComponent() = inject()
 
     override fun getLayout() = R.layout.activity_new_session
 
@@ -59,9 +58,11 @@ class NewSessionActivity : BaseActivity<NewSessionView, NewSessionPresenter>(), 
     override fun goToExercise(exerciseCommand: ExerciseCommand) =
             loadFr<ExerciseFragment>(listOf(extra to exerciseCommand))
 
-    override fun goToWeight() = loadFr<WeightFragment>()
+    override fun goToWeight() =
+            loadFr<WeightFragment>()
 
-    override fun goToReps() = loadFr<RepFragment>()
+    override fun goToReps() =
+            loadFr<RepFragment>()
 
     override fun showFab() {
         fab.visible()

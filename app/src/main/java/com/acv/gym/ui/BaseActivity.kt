@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import com.acv.gym.module.session.Nav
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.GymView
+import kategory.inject
 import kotlinx.android.synthetic.main.toobar.*
 import javax.inject.Inject
 
@@ -17,7 +18,7 @@ abstract class BaseActivity<out V : GymView, P : Presenter<V>> : AppCompatActivi
         super.onCreate(savedInstanceState)
         setContentView(getLayout())
         setSupportActionBar(toolbar)
-        setupComponent()
+
         onCreate()
     }
 
@@ -27,7 +28,7 @@ abstract class BaseActivity<out V : GymView, P : Presenter<V>> : AppCompatActivi
     }
 
     abstract fun onCreate()
-    abstract fun setupComponent()
+
     abstract fun getLayout(): Int
 
     open fun onNewIntent(){}

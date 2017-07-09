@@ -11,9 +11,7 @@ import kotlinx.android.synthetic.main.activity_rep.*
 import kotlinx.android.synthetic.main.fragment_rep.*
 import org.jetbrains.anko.onClick
 
-class RepActivity : BaseActivity<RepView, RepPresenter>(), RepView {
-    override fun setupComponent() = inject()
-
+class RepActivity : BaseActivity<RepView, RepPresenter>() {
     override fun getLayout() = R.layout.activity_rep
 
     override fun onCreate() {
@@ -25,7 +23,7 @@ class RepActivity : BaseActivity<RepView, RepPresenter>(), RepView {
     override fun onCreateOptionsMenu(menu: Menu) = menuInflater.make(R.menu.done, menu)
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.done -> menuNav<RepActivity>()
+        DONE -> menuNav<RepActivity>()
         else -> super.onOptionsItemSelected(item)
     }
 }

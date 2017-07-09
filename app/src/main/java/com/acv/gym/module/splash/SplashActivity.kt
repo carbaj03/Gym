@@ -17,15 +17,14 @@ import org.jetbrains.anko.doAsync
 import java.util.*
 
 class SplashActivity : BaseActivity<SplashView, SplashPresenter>(), SplashView {
-    override fun setupComponent() = inject()
-
-    override fun getLayout() = R.layout.activity_splash
-
     override fun onCreate() {
+        inject()
         presenter.loadSplash()
         insertData()
         logoApp.setOnClickListener { load<SessionActivity>(listOf(extra to Id("1"))) }
     }
+
+    override fun getLayout() = R.layout.activity_splash
 
     private fun insertData() {
         doAsync {

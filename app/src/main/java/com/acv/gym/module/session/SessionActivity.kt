@@ -13,9 +13,7 @@ import kotlinx.android.synthetic.main.activity_session.*
 import org.jetbrains.anko.onClick
 import org.jetbrains.anko.toast
 
-class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionView {
-    override fun setupComponent() = inject()
-
+class SessionActivity : BaseActivity<SessionView, SessionPresenter>() {
     override fun getLayout() = R.layout.activity_session
 
     override fun onCreate() {
@@ -25,18 +23,4 @@ class SessionActivity : BaseActivity<SessionView, SessionPresenter>(), SessionVi
     }
 
     override fun onNewIntent() = refresh(getFr<SessionFragment>())
-
-    override fun show(sessionExercise: List<SessionExerciseVM>) {}
-
-    override fun showServerError() = toast("Error")
-
-    override fun showNetworkError() = toast("Error")
-
-    override fun showClick(id: Id) = load<SessionSetActivity>(listOf(extra to id))
-
-    override fun enabledDeleteMode() = toast("Error")
-
-    override fun disabledDeleteMode() = toast("Error")
-
-    override fun goBack() = true
 }

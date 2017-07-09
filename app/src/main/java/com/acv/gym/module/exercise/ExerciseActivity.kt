@@ -12,29 +12,11 @@ import com.acv.gym.ui.commons.AVH
 import kotlinx.android.synthetic.main.activity_exercise.*
 
 
-class ExerciseActivity : BaseActivity<ExerciseView, ExercisePresenter>(), ExerciseView {
-    override fun setupComponent() = inject()
-
+class ExerciseActivity : BaseActivity<ExerciseView, ExercisePresenter>() {
     override fun getLayout() = R.layout.activity_exercise
 
     override fun onCreate() {
         setTitle(R.string.title_exercise)
         presenter.loadExercises(getId())
     }
-
-    override fun show(data: List<Exercise>) = with(rvExercise) {
-        layoutManager = gridLayoutManager()
-        adapter = AVH(
-                items = data,
-                listener = { presenter.checkExercise(it) },
-                holder = ::ExercisesViewHolder,
-                layout = R.layout.item_exercise)
-    }
-
-    override fun goToWeight(id: Id) = load<WeightActivity>(listOf())
-
-    override fun showNetworkError() = TODO()
-
-    override fun showServerError() = TODO()
-
 }
