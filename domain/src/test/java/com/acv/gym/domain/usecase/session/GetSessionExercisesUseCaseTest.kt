@@ -32,9 +32,10 @@ class GetSessionExercisesUseCaseTest {
     @Test
     fun `should return model`() {
         val sessions = getSession()
-        `when`(gateway.getSessionExercisesBy(Id(""))).thenReturn(sessions)
+        val id = Id("")
+        `when`(gateway.getSessionExercisesBy(id)).thenReturn(sessions)
 
-        val response = getSessionUseCase.execute(Option.Some(SessionCommand(Id(""))))
+        val response = getSessionUseCase.execute(Option.Some(SessionCommand(id)))
 
         Assert.assertSame(sessions, response)
     }
@@ -49,7 +50,7 @@ class GetSessionExercisesUseCaseTest {
         Assert.assertSame(sessions, response)
     }
 
-    private fun getSession() = Either.Right(listOf(SessionExercise(Id(), Exercise("","","",""), emptyList(), Id())))
+    private fun getSession() = Either.Right(listOf(SessionExercise(Id(""), Exercise("","","",""), emptyList(), Id(""))))
 
     private fun getErrorSession() = Either.Left(GenericError.NetworkError)
 
