@@ -22,5 +22,4 @@ interface GymGateway {
     fun getAllRoutines(): GymResult<List<Routine>>
     fun getAllSessionExercises(): GymResult<List<SessionExercise>>
     fun persistSessionExercise(sessionExercises: List<SessionExercise>): GymResult<List<SessionExercise>>
-    fun deleteSessionExercise(sessionExercises: List<SessionExercise>)
 }
