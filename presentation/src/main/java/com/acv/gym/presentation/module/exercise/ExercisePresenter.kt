@@ -4,7 +4,7 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
-import com.acv.gym.domain.service.exercise.GetExercisesUseCase
+import com.acv.gym.domain.service.exercise.ViewAllExercise
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
@@ -14,7 +14,7 @@ import kategory.Option
 
 open class ExercisePresenter(
         view: ExerciseView,
-        val useCase: GetExercisesUseCase,
+        val useCase: ViewAllExercise,
         val invoker: UseCaseInvoker
 ) : Presenter<ExerciseView>(view) {
 

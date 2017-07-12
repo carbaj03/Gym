@@ -4,7 +4,7 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
-import com.acv.gym.domain.service.exercise.GetExercisesUseCase
+import com.acv.gym.domain.service.exercise.ViewAllExercise
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -23,7 +23,7 @@ class ExercisePresenterTest {
 
     lateinit var presenter: ExercisePresenter
     val view: ExerciseView = mock()
-    val useCase: GetExercisesUseCase = mock()
+    val useCase: ViewAllExercise = mock()
 
     @Before
     fun setUp() {
