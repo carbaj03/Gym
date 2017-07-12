@@ -4,9 +4,8 @@ import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
+import com.acv.gym.domain.model.session.*
 import com.acv.gym.domain.model.session.Set
-import com.acv.gym.domain.model.session.Session
-import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.service.Id
 import kategory.Either
 
@@ -19,11 +18,11 @@ open class GymRealm : GymDataSource {
         TODO("not implemented")
     }
 
-    override fun getSessionSetBySessionExercise(id: Id): GymResult<List<Set>> {
+    override fun getSessionSetBySessionExercise(id: SessionExerciseId): GymResult<List<Set>> {
         TODO("not implemented")
     }
 
-    override fun getBySession(id: Id): GymResult<List<SessionExercise>> {
+    override fun getBySession(id: SessionId): GymResult<List<SessionExercise>> {
         TODO("not implemented")
     }
 
@@ -44,10 +43,6 @@ open class GymRealm : GymDataSource {
     }
 
     override fun getAllMuscleGroups(): Either<GenericError, List<MuscleGroup>> {
-        TODO("not implemented")
-    }
-
-    override fun getAllRoutines(): Either<GenericError, List<Routine>> {
         TODO("not implemented")
     }
 

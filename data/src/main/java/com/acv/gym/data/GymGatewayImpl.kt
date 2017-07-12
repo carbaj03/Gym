@@ -4,6 +4,8 @@ package com.acv.gym.data
 import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.model.session.SessionExerciseId
+import com.acv.gym.domain.model.session.SessionId
 import com.acv.gym.domain.service.Id
 
 class GymGatewayImpl(
@@ -15,7 +17,8 @@ class GymGatewayImpl(
 
     override fun getAllExercises() = dataSource.getAllExercises()
 
-    override fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id) = dataSource.getExercisesBy(idMuscleGroup, idExerciseType)
+    override fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id)
+            = dataSource.getExercisesBy(idMuscleGroup, idExerciseType)
 
     override fun getAllExerciseTypes() = dataSource.getAllExerciseTypes()
 
@@ -23,13 +26,11 @@ class GymGatewayImpl(
 
     override fun getAllMuscleGroups() = dataSource.getAllMuscleGroups()
 
-    override fun getAllRoutines() = dataSource.getAllRoutines()
-
     override fun getAllSessionExercises() = dataSource.getAllSessionExercises()
 
-    override fun getSessionExercisesBy(id: Id) = dataSource.getBySession(id)
+    override fun getSessionExercisesBy(id: SessionId) = dataSource.getBySession(id)
 
-    override fun getSessionSetBy(id: Id) = dataSource.getSessionSetBySessionExercise(id)
+    override fun getSessionSetBy(id: SessionExerciseId) = dataSource.getSessionSetBySessionExercise(id)
 
     override fun persistSessionExercise(sessionExercises: List<SessionExercise>)
             = dataSource.persistSessionExercises(sessionExercises)

@@ -15,13 +15,12 @@ interface GymGateway {
     fun getExercise(id: Id): GymResult<List<Exercise>>
     fun getAllSesion(): GymResult<List<Session>>
     fun getSessionExercisesBy(id: SessionId): GymResult<List<SessionExercise>>
-    fun getSessionSetBy(id: SetId): GymResult<List<Set>>
+    fun getSessionSetBy(id: SessionExerciseId): GymResult<List<Set>>
     fun getAllExercises(): GymResult<List<Exercise>>
     fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id): GymResult<List<Exercise>>
     fun getAllExerciseTypes(): GymResult<List<ExerciseType>>
     fun getExerciseTypesBy(id: Id): GymResult<List<ExerciseType>>
     fun getAllMuscleGroups(): GymResult<List<MuscleGroup>>
-    fun getAllRoutines(): GymResult<List<Routine>>
     fun getAllSessionExercises(): GymResult<List<SessionExercise>>
     fun persistSessionExercise(sessionExercises: List<SessionExercise>): GymResult<List<SessionExercise>>
 }

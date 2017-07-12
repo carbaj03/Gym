@@ -3,6 +3,7 @@ package com.acv.gym.domain.service.session
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymGateway
+import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.model.session.SessionId
 import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.model.session.SetId
@@ -17,10 +18,10 @@ open class ViewSet(
 ) : GymUseCase<ViewSetRequest, List<Set>> {
     override fun execute(input: Option<ViewSetRequest>) = when (input) {
         is Option.None -> Either.Left(GenericError.NetworkError)
-        is Option.Some -> gateway.getSessionSetBy(input.value.idSet)
+        is Option.Some -> gateway.getSessionSetBy(input.value.id)
     }
 }
 
 data class ViewSetRequest(
-        val idSet: SetId
+        val id: SessionExerciseId
 ) : Request

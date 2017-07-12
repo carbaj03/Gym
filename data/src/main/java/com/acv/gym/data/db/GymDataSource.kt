@@ -2,9 +2,8 @@ package com.acv.gym.data.db
 
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
+import com.acv.gym.domain.model.session.*
 import com.acv.gym.domain.model.session.Set
-import com.acv.gym.domain.model.session.Session
-import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.service.Id
 
 interface GymDataSource {
@@ -15,10 +14,9 @@ interface GymDataSource {
     fun getAllExerciseTypes(): GymResult<List<ExerciseType>>
     fun getExerciseTypesBy(idMuscleGroup: Id): GymResult<List<ExerciseType>>
     fun getAllMuscleGroups(): GymResult<List<MuscleGroup>>
-    fun getAllRoutines(): GymResult<List<Routine>>
     fun getAllSessionExercises(): GymResult<List<SessionExercise>>
-    fun getBySession(id: Id): GymResult<List<SessionExercise>>
+    fun getBySession(id: SessionId): GymResult<List<SessionExercise>>
     fun persistSessionExercises(sessionExercises: List<SessionExercise>): GymResult<List<SessionExercise>>
     fun getLaunchApp(): GymResult<List<LaunchApp>>
-    fun getSessionSetBySessionExercise(id: Id): GymResult<List<Set>>
+    fun getSessionSetBySessionExercise(id: SessionExerciseId): GymResult<List<Set>>
 }

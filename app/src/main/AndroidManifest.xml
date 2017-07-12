@@ -21,10 +21,6 @@
         </activity>
 
         <activity
-            android:name=".module.routine.RoutineActivity"
-            android:launchMode="singleTask" />
-
-        <activity
             android:name=".module.session.SessionActivity"
             android:launchMode="singleTask" />
 

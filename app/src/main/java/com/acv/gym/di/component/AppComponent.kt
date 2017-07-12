@@ -14,7 +14,6 @@ import javax.inject.Singleton
 ))
 interface AppComponent {
     operator fun plus(module: SplashModule): SplashComponent
-    operator fun plus(module: RoutinesModule): RoutinesComponent
     operator fun plus(module: SessionModule): SessionComponent
     operator fun plus(module: NewSessionModule): NewSessionComponent
     operator fun plus(module: SessionFragmentModule): SessionFragmentComponent

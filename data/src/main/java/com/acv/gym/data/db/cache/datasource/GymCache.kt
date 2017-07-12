@@ -7,6 +7,8 @@ import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
 import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.model.session.SessionExerciseId
+import com.acv.gym.domain.model.session.SessionId
 import com.acv.gym.domain.service.Id
 import kategory.Either
 import java.util.*
@@ -67,13 +69,6 @@ class GymCache : GymDataSource {
             )
 
 
-    override fun getAllRoutines() =
-            Either.Right(
-                    listOf(
-                            RoutineCache("1", "Full Body", "")
-                    ).map { it.map() }
-            )
-
     val sessionExercises = Either.Right(
             listOf(
                     SessionExerciseCache(
@@ -106,11 +101,11 @@ class GymCache : GymDataSource {
             ).map { it.map() }
     )
 
-    override fun getBySession(id: Id) = sessionExercises
+    override fun getBySession(id: SessionId) = sessionExercises
 
     override fun getAllSessionExercises() = sessionExercises
 
-    override fun getSessionSetBySessionExercise(id: Id): GymResult<List<Set>> {
+    override fun getSessionSetBySessionExercise(id: SessionExerciseId): GymResult<List<Set>> {
         TODO("not implemented")
     }
 
