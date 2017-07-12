@@ -3,10 +3,11 @@ package com.acv.gym.domain.invoker
 import com.acv.gym.domain.Future
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.service.Command
+import com.acv.gym.domain.service.Request
 import com.acv.gym.presentation.invoker.Logic
 import kategory.Either
 
-class InteractorExecutionFutureTask<I : Command, E : GenericError, R>(
+class ServiceExecutionFutureTask<I : Request, E : GenericError, R>(
         val interactorExecution: Logic<I, E, R>
 ) {
     fun init() = with(Future { callUseCases() }) { onComplete { renderFeedResult(it) } }
