@@ -3,14 +3,14 @@ package com.acv.gym.presentation.module.muscle.group
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.domain.service.Id
-import com.acv.gym.domain.service.muscle.group.GetMuscleGroupsUseCase
+import com.acv.gym.domain.service.muscle.group.ViewMuscleGroup
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 
 open class MuscleGroupPresenter(
         view: MuscleGroupView,
-        val useCase: GetMuscleGroupsUseCase,
+        val useCase: ViewMuscleGroup,
         val invoker: UseCaseInvoker
 ) : Presenter<MuscleGroupView>(view) {
     fun loadMuscleGroups() =

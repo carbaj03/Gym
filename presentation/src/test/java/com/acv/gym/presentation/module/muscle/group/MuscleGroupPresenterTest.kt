@@ -2,7 +2,7 @@ package com.acv.gym.presentation.module.muscle.group
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.MuscleGroup
-import com.acv.gym.domain.service.muscle.group.GetMuscleGroupsUseCase
+import com.acv.gym.domain.service.muscle.group.ViewMuscleGroup
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock
@@ -20,7 +20,7 @@ class MuscleGroupPresenterTest {
 
     lateinit var presenter: MuscleGroupPresenter
     val view: MuscleGroupView = mock()
-    val useCase: GetMuscleGroupsUseCase = mock()
+    val useCase: ViewMuscleGroup = mock()
 
     @Before
     fun setUp() {

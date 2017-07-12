@@ -13,12 +13,12 @@ import org.junit.Test
  */
 class GetMuscleGroupsUseCaseTest {
 
-    lateinit var getMuscleGroupsUseCase: GetMuscleGroupsUseCase
+    lateinit var getMuscleGroupsUseCase: ViewMuscleGroup
     var muscleGroupGateway: GymGateway = mock()
 
     @Before
     fun setUp() {
-        getMuscleGroupsUseCase = GetMuscleGroupsUseCase(muscleGroupGateway)
+        getMuscleGroupsUseCase = ViewMuscleGroup(muscleGroupGateway)
     }
 
     @Test
