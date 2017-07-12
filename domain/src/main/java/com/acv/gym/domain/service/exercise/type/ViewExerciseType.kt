@@ -9,7 +9,7 @@ import kategory.Either
 import kategory.Option
 
 
-open class GetExerciseTypesUseCase(
+open class ViewExerciseType(
         val gateway: GymGateway
 ) : GymUseCase<ExerciseTypeCommand, List<ExerciseType>> {
     override fun execute(input: Option<ExerciseTypeCommand>) = when (input) {

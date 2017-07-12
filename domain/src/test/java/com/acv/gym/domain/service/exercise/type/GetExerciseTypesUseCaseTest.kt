@@ -13,12 +13,12 @@ import org.junit.Before
 import org.junit.Test
 
 class GetExerciseTypesUseCaseTest {
-    lateinit var useCase: GetExerciseTypesUseCase
+    lateinit var useCase: ViewExerciseType
     val gateway: GymGateway = mock()
 
     @Before
     fun setUp() {
-        useCase = GetExerciseTypesUseCase(gateway)
+        useCase = ViewExerciseType(gateway)
     }
 
     @Test

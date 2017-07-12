@@ -4,7 +4,7 @@ package com.acv.gym.di.module
 import android.support.v4.app.Fragment
 import com.acv.gym.di.scope.FragmentScope
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.service.exercise.type.GetExerciseTypesUseCase
+import com.acv.gym.domain.service.exercise.type.ViewExerciseType
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypePresenter
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypeView
@@ -21,11 +21,11 @@ class ExerciseTypeFragmentModule(fragment: Fragment) : FragmentModule(fragment) 
     @Provides
     fun providePresenter(
             view: ExerciseTypeView,
-            getExerciseTypesUseCase: GetExerciseTypesUseCase,
+            getExerciseTypesUseCase: ViewExerciseType,
             interactorInvoker: UseCaseInvoker
     ) = ExerciseTypePresenter(view, getExerciseTypesUseCase, interactorInvoker)
 
     @FragmentScope
     @Provides
-    fun provideUseCase(gateway: GymGateway) = GetExerciseTypesUseCase(gateway)
+    fun provideUseCase(gateway: GymGateway) = ViewExerciseType(gateway)
 }
