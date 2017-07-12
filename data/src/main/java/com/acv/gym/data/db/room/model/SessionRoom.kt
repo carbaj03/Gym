@@ -2,8 +2,8 @@ package com.acv.gym.data.db.room.model
 
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
-import com.acv.gym.domain.model.Session
-import com.acv.gym.domain.model.SessionId
+import com.acv.gym.domain.model.session.Session
+import com.acv.gym.domain.model.session.SessionId
 import com.acv.gym.domain.usecase.Id
 import java.util.*
 
@@ -15,7 +15,7 @@ data class SessionRoom(
         var name: String,
         var date: Date
 ) : DataModel {
-    constructor() : this(UUID.randomUUID().toString(), "", Date())
+    constructor() : this(SessionId().value, "", Date())
 }
 
 fun SessionRoom.map() = Session(SessionId(id), name, date)

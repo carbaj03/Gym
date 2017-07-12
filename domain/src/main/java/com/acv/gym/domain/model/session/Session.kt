@@ -1,5 +1,6 @@
-package com.acv.gym.domain.model
+package com.acv.gym.domain.model.session
 
+import com.acv.gym.domain.model.Model
 import java.util.*
 
 data class Session(

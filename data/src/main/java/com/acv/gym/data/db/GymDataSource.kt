@@ -2,6 +2,7 @@ package com.acv.gym.data.db
 
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
+import com.acv.gym.domain.model.session.Session
 import com.acv.gym.domain.usecase.Id
 
 interface GymDataSource {
