@@ -1,10 +1,12 @@
 package com.acv.gym.presentation.module.session.set
 
 import com.acv.gym.domain.GenericError
+import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.SessionCommand
 import com.acv.gym.domain.service.session.ViewSet
+import com.acv.gym.domain.service.session.ViewSetRequest
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.Logic
 import com.acv.gym.presentation.invoker.ServiceInvoker
@@ -21,7 +23,7 @@ open class SessionSetPresenter(
 
     fun loadSessionSet(id: Option<Id>) = invoker invoke Logic(
             service = useCase,
-            params = id.map(::SessionCommand),
+            params = id.map { ViewSetRequest(SessionExerciseId(it.value)) } ,
             result = { happyCase(it) },
             error = { manageExceptions(it) })
 

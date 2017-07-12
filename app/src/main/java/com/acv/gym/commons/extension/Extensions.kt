@@ -11,27 +11,18 @@ import android.widget.SeekBar
 import com.acv.gym.GymApplication
 import com.acv.gym.R
 import com.acv.gym.commons.listener.SeekBarListener
-import com.acv.gym.di.component.AppComponent
 import com.acv.gym.di.module.*
 import com.acv.gym.domain.service.Command
 import com.acv.gym.domain.service.Id
-import com.acv.gym.module.exercise.ExerciseActivity
 import com.acv.gym.module.exercise.ExerciseFragment
-import com.acv.gym.module.exercise.type.ExerciseTypeActivity
 import com.acv.gym.module.exercise.type.ExerciseTypeFragment
-import com.acv.gym.module.muscle.group.MuscleGroupActivity
 import com.acv.gym.module.muscle.group.MuscleGroupFragment
-import com.acv.gym.module.rep.RepActivity
 import com.acv.gym.module.rep.RepFragment
-import com.acv.gym.module.routine.RoutineActivity
 import com.acv.gym.module.session.Nav
 import com.acv.gym.module.session.NewSessionActivity
-import com.acv.gym.module.session.SessionActivity
 import com.acv.gym.module.session.SessionFragment
-import com.acv.gym.module.session.set.SessionSetActivity
 import com.acv.gym.module.session.set.SessionSetFragment
 import com.acv.gym.module.splash.SplashActivity
-import com.acv.gym.module.weight.WeightActivity
 import com.acv.gym.module.weight.WeightFragment
 import com.acv.gym.presentation.GymView
 import com.acv.gym.presentation.Presenter
@@ -180,7 +171,7 @@ fun Fragment.inject() {
     }
 }
 
-fun MenuInflater.load(res : Int, menu: Menu ) : Menu {
+fun MenuInflater.load(res: Int, menu: Menu): Menu {
     make(res, menu)
     return menu
 }

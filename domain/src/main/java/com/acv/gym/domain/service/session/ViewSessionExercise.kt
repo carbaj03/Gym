@@ -12,13 +12,13 @@ import kategory.Option
 
 open class ViewSessionExercise(
         val gateway: GymGateway
-) : GymUseCase<ViewSessionRequest, List<SessionExercise>> {
-    override fun execute(input: Option<ViewSessionRequest>) = when (input) {
+) : GymUseCase<ViewSessionExerciseRequest, List<SessionExercise>> {
+    override fun execute(input: Option<ViewSessionExerciseRequest>) = when (input) {
         is Option.None -> Either.Left(GenericError.NetworkError)
         is Option.Some -> gateway.getSessionExercisesBy(input.value.idSession)
     }
 }
 
-data class ViewSessionRequest(
+data class ViewSessionExerciseRequest(
         val idSession: SessionId
 ) : Request

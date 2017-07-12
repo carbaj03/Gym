@@ -2,9 +2,11 @@ package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.model.session.SessionId
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.SessionCommand
 import com.acv.gym.domain.service.session.ViewSessionExercise
+import com.acv.gym.domain.service.session.ViewSessionExerciseRequest
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.Logic
 import com.acv.gym.presentation.invoker.ServiceInvoker
@@ -20,15 +22,15 @@ sealed class Mode {
 
 open class SessionPresenter(
         view: SessionView,
-        val useCase: ViewSessionExercise,
+        val service: ViewSessionExercise,
         val invoker: ServiceInvoker
 ) : Presenter<SessionView>(view) {
     var mode: Mode = Mode.View
     var selected: List<SessionExerciseVM> = listOf()
 
     fun loadSessions(id: Option<Id>) = invoker invoke Logic(
-            service = useCase,
-            params = id.map(::SessionCommand),
+            service = service,
+            params = id.map { ViewSessionExerciseRequest(SessionId(it.value)) },
             result = { happyCase(it) },
             error = { manageExceptions(it) }
     )

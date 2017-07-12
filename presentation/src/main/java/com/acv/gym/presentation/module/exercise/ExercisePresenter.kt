@@ -5,6 +5,7 @@ import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.exercise.ViewAllExercise
+import com.acv.gym.domain.service.exercise.ViewAllExerciseRequest
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.Logic
 import com.acv.gym.presentation.invoker.ServiceInvoker
@@ -19,7 +20,7 @@ open class ExercisePresenter(
 ) : Presenter<ExerciseView>(view) {
 
     fun loadExercises(params: Option<ExerciseCommand>) = invoker invoke Logic(
-            params = params,
+            params = params.map { ViewAllExerciseRequest(it.idMuscleGroup, it.idMuscleGroup) },
             service = useCase,
             result = { happyCase(it) },
             error = { manageExceptions(it) }

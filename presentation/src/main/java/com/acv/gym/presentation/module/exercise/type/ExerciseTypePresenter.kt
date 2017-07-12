@@ -5,9 +5,11 @@ import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.service.ExerciseTypeCommand
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.exercise.type.ViewExerciseType
+import com.acv.gym.domain.service.exercise.type.ViewExerciseTypeRequest
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.Logic
 import com.acv.gym.presentation.invoker.ServiceInvoker
+import com.acv.gym.presentation.invoker.invoke
 import kategory.Option
 
 class ExerciseTypePresenter(
@@ -16,13 +18,12 @@ class ExerciseTypePresenter(
         val invoker: ServiceInvoker
 ) : Presenter<ExerciseTypeView>(view) {
 
-    fun loadExerciseType(id: Option<Id>) =
-            Logic(
-                    service = useCase,
-                    params = id.map(::ExerciseTypeCommand),
-                    result = { happyCase(it) },
-                    error = { manageExceptions(it) }
-            ).execute(invoker)
+    fun loadExerciseType(id: Option<Id>) = invoker invoke Logic(
+            service = useCase,
+            params = id.map(::ViewExerciseTypeRequest),
+            result = { happyCase(it) },
+            error = { manageExceptions(it) }
+    )
 
     private fun happyCase(exerciseTypes: List<ExerciseType>) = view.show(exerciseTypes)
 

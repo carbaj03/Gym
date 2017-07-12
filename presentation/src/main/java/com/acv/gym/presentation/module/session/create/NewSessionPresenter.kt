@@ -8,6 +8,7 @@ import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.NewSessionCommand
 import com.acv.gym.domain.service.session.AddSessionExercise
+import com.acv.gym.domain.service.session.AddSessionRequest
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.Logic
 import com.acv.gym.presentation.invoker.ServiceInvoker
@@ -28,7 +29,7 @@ open class NewSessionPresenter(
 
     fun persist() = invoker invoke Logic(
             service = useCase,
-            params = Option(NewSessionCommand(listOf(session))),
+            params = Option(AddSessionRequest(listOf(session))),
             result = { happyCase() },
             error = { manageExceptions(it) }
     )
