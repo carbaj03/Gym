@@ -4,6 +4,7 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.ExerciseType
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.exercise.type.ViewExerciseType
+import com.acv.gym.domain.service.exercise.type.ViewExerciseTypeRequest
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock

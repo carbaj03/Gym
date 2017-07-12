@@ -3,6 +3,7 @@ package com.acv.gym.domain.service.session
 import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.NewSessionCommand
 import com.nhaarman.mockito_kotlin.mock
@@ -17,23 +18,23 @@ import org.junit.Test
  * Created by alejandro on 8/06/17.
  */
 class NewSessionExerciseUseCaseTest {
-    lateinit var useCase: AddSessionExercise
+    lateinit var service: AddSessionExercise
 
     val gateway: GymGateway = mock()
 
     @Before
     fun setUp() {
-        useCase = AddSessionExercise(gateway)
+        service = AddSessionExercise(gateway)
     }
 
     @Test
     fun `should persist all exercises When execute`() {
-        val command = Option.Some(NewSessionCommand(listOf()))
-        useCase.execute(command)
+        val command = Option.Some(AddSessionRequest(listOf()))
+        service.execute(command)
 
         verify(gateway, times(1)).persistSessionExercise(listOf())
     }
 
 
-    private fun getSessionExercises() = Either.Right(listOf(SessionExercise(Id(), Exercise("", "", "", ""), emptyList(), Id())))
+    private fun getSessionExercises() = Either.Right(listOf(SessionExercise(SessionExerciseId(""), Exercise("", "", "", ""), emptyList(), Id())))
 }

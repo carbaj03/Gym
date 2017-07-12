@@ -11,19 +11,19 @@ import org.junit.Before
 import org.junit.Test
 
 class GetExerciseUseCaseTest {
-    lateinit var useCase: ViewAllExercise
+    lateinit var service: ViewAllExercise
     val gateway: GymGateway = mock()
 
     @Before
     fun setUp() {
-        useCase = ViewAllExercise(gateway)
+        service = ViewAllExercise(gateway)
     }
 
     @Test
     fun `should return all exercises When execute`() {
         val id = Id("1")
-        val command = Option.Some(ExerciseCommand(id, id))
-        useCase.execute(command)
+        val command = Option.Some(ViewAllExerciseRequest(id, id))
+        service.execute(command)
 
         verify(gateway, times(1)).getExercisesBy(id,id)
     }

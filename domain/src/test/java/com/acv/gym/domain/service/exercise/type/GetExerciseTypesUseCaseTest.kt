@@ -24,7 +24,7 @@ class GetExerciseTypesUseCaseTest {
     @Test
     fun `should return all exercise types When execute`() {
         val id = Id("1")
-        val command = Option.Some(ExerciseTypeCommand(id))
+        val command = Option.Some(ViewExerciseTypeRequest(id))
         useCase.execute(command)
 
         verify(gateway, times(1)).getExerciseTypesBy(id)

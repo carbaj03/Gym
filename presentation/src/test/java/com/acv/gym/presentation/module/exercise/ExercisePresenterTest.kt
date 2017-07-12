@@ -33,27 +33,27 @@ class ExercisePresenterTest {
     @Test
     fun `should show exercises When call load exercise`() {
         val exercise = getExercise()
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Right(exercise))
+        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Right(exercise))
 
-        presenter.loadExercises(Option(any()))
+        presenter.loadExercises(Option.None)
 
         verify(view, times(1)).show(exercise)
     }
 
     @Test
     fun `should show error network When is network exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.NetworkError))
+        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Left(GenericError.NetworkError))
 
-        presenter.loadExercises(Option(any()))
+        presenter.loadExercises(Option.None)
 
         verify(view, times(1)).showNetworkError()
     }
 
     @Test
     fun `should show error server When is server exception`() {
-        Mockito.`when`(useCase.execute(any())).thenReturn(Either.Left(GenericError.ServerError))
+        Mockito.`when`(useCase.execute(Option.None)).thenReturn(Either.Left(GenericError.ServerError))
 
-        presenter.loadExercises(Option(any()))
+        presenter.loadExercises(Option.None)
 
         verify(view, times(1)).showServerError()
     }
