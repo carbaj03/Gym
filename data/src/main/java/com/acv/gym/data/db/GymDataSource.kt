@@ -2,6 +2,7 @@ package com.acv.gym.data.db
 
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
+import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.model.session.Session
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.service.Id
@@ -19,5 +20,5 @@ interface GymDataSource {
     fun getBySession(id: Id): GymResult<List<SessionExercise>>
     fun persistSessionExercises(sessionExercises: List<SessionExercise>): GymResult<List<SessionExercise>>
     fun getLaunchApp(): GymResult<List<LaunchApp>>
-    fun getSessionSetBySessionExercise(id: Id): GymResult<List<SessionSet>>
+    fun getSessionSetBySessionExercise(id: Id): GymResult<List<Set>>
 }

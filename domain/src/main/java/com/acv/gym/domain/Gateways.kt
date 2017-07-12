@@ -1,6 +1,7 @@
 package com.acv.gym.domain
 
 import com.acv.gym.domain.model.*
+import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.model.session.Session
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.service.Id
@@ -15,7 +16,7 @@ interface GymGateway {
     fun getExercise(id: Id): GymResult<List<Exercise>>
     fun getAllSesion(): GymResult<List<Session>>
     fun getSessionExercisesBy(id: Id): GymResult<List<SessionExercise>>
-    fun getSessionSetBy(id: Id): GymResult<List<SessionSet>>
+    fun getSessionSetBy(id: Id): GymResult<List<Set>>
     fun getAllExercises(): GymResult<List<Exercise>>
     fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id): GymResult<List<Exercise>>
     fun getAllExerciseTypes(): GymResult<List<ExerciseType>>

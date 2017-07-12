@@ -5,6 +5,7 @@ import com.acv.gym.data.db.cache.model.*
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
+import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.service.Id
 import kategory.Either
@@ -109,7 +110,7 @@ class GymCache : GymDataSource {
 
     override fun getAllSessionExercises() = sessionExercises
 
-    override fun getSessionSetBySessionExercise(id: Id): GymResult<List<SessionSet>> {
+    override fun getSessionSetBySessionExercise(id: Id): GymResult<List<Set>> {
         TODO("not implemented")
     }
 

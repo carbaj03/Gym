@@ -4,6 +4,7 @@ import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
+import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.model.session.Session
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.service.Id
@@ -18,7 +19,7 @@ open class GymRealm : GymDataSource {
         TODO("not implemented")
     }
 
-    override fun getSessionSetBySessionExercise(id: Id): GymResult<List<SessionSet>> {
+    override fun getSessionSetBySessionExercise(id: Id): GymResult<List<Set>> {
         TODO("not implemented")
     }
 

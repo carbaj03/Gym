@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module.session.set
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.model.SessionSet
+import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.SessionCommand
 import com.acv.gym.domain.service.session.ViewSet
@@ -25,7 +25,7 @@ open class SessionSetPresenter(
             result = { happyCase(it) },
             error = { manageExceptions(it) })
 
-    private fun happyCase(sessionSet: List<SessionSet>) = view.show(sessionSet.map { it.map() })
+    private fun happyCase(sessionSet: List<Set>) = view.show(sessionSet.map { it.map() })
 
     private fun manageExceptions(exceptions: GenericError) = when (exceptions) {
         is GenericError.NetworkError -> view.showNetworkError()

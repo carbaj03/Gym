@@ -2,7 +2,7 @@ package com.acv.gym.data.db.room.model
 
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
-import com.acv.gym.domain.model.SessionSet
+import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.service.Id
 import java.util.*
 
@@ -26,8 +26,8 @@ data class SessionSetRoom(
     constructor() : this(UUID.randomUUID().toString(), 0f, 0, "")
 }
 
-fun SessionSetRoom.map() = SessionSet(Id(id), weight, reps, Id(sessionExercise))
-fun SessionSet.map() = SessionSetRoom(id.value, weight, reps, sessionExercise.value)
+fun SessionSetRoom.map() = Set(Id(id), weight, reps, Id(sessionExercise))
+fun Set.map() = SessionSetRoom(id.value, weight, reps, sessionExercise.value)
 
 @Dao interface SessionSetDao {
     @Query("SELECT * FROM $tableSessionSet")

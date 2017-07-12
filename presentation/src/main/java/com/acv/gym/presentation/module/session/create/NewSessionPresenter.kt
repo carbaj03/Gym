@@ -3,7 +3,7 @@ package com.acv.gym.presentation.module.session.create
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.model.session.SessionExercise
-import com.acv.gym.domain.model.SessionSet
+import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.NewSessionCommand
@@ -22,8 +22,8 @@ open class NewSessionPresenter(
 ) : Presenter<NewSessionView>(view) {
 
     private lateinit var session: SessionExercise
-    private lateinit var sets: List<SessionSet>
-    private lateinit var sessionSet: SessionSet
+    private lateinit var sets: List<Set>
+    private lateinit var sessionSet: Set
     private lateinit var idMuscleGroup: Id
 
     fun persist() = invoker invoke UseCase(
@@ -46,7 +46,7 @@ open class NewSessionPresenter(
     }
 
     fun checkWeight(num: Float) {
-        sessionSet = SessionSet(weight = num, sessionExercise = Id(session.id.value))
+        sessionSet = Set(weight = num, sessionExercise = Id(session.id.value))
         view.goToReps()
         view.showFab()
     }
