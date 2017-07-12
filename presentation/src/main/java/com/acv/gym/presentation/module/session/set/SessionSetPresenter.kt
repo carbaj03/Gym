@@ -6,8 +6,8 @@ import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.SessionCommand
 import com.acv.gym.domain.service.session.ViewSet
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.UseCase
-import com.acv.gym.presentation.invoker.UseCaseInvoker
+import com.acv.gym.presentation.invoker.Logic
+import com.acv.gym.presentation.invoker.ServiceInvoker
 import com.acv.gym.presentation.invoker.invoke
 import com.acv.gym.presentation.model.SessionSetVM
 import com.acv.gym.presentation.model.map
@@ -16,11 +16,11 @@ import kategory.Option
 open class SessionSetPresenter(
         view: SessionSetView,
         val useCase: ViewSet,
-        val invoker: UseCaseInvoker
+        val invoker: ServiceInvoker
 ) : Presenter<SessionSetView>(view) {
 
-    fun loadSessionSet(id: Option<Id>) = invoker invoke UseCase(
-            interactor = useCase,
+    fun loadSessionSet(id: Option<Id>) = invoker invoke Logic(
+            service = useCase,
             params = id.map(::SessionCommand),
             result = { happyCase(it) },
             error = { manageExceptions(it) })

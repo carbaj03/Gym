@@ -6,8 +6,8 @@ import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.SessionCommand
 import com.acv.gym.domain.service.session.ViewSessionExercise
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.UseCase
-import com.acv.gym.presentation.invoker.UseCaseInvoker
+import com.acv.gym.presentation.invoker.Logic
+import com.acv.gym.presentation.invoker.ServiceInvoker
 import com.acv.gym.presentation.invoker.invoke
 import com.acv.gym.presentation.model.SessionExerciseVM
 import com.acv.gym.presentation.model.map
@@ -21,13 +21,13 @@ sealed class Mode {
 open class SessionPresenter(
         view: SessionView,
         val useCase: ViewSessionExercise,
-        val invoker: UseCaseInvoker
+        val invoker: ServiceInvoker
 ) : Presenter<SessionView>(view) {
     var mode: Mode = Mode.View
     var selected: List<SessionExerciseVM> = listOf()
 
-    fun loadSessions(id: Option<Id>) = invoker invoke UseCase(
-            interactor = useCase,
+    fun loadSessions(id: Option<Id>) = invoker invoke Logic(
+            service = useCase,
             params = id.map(::SessionCommand),
             result = { happyCase(it) },
             error = { manageExceptions(it) }

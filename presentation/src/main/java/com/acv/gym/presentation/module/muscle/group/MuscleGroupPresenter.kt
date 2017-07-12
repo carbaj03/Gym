@@ -5,17 +5,17 @@ import com.acv.gym.domain.model.MuscleGroup
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.muscle.group.ViewMuscleGroup
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.UseCase
-import com.acv.gym.presentation.invoker.UseCaseInvoker
+import com.acv.gym.presentation.invoker.Logic
+import com.acv.gym.presentation.invoker.ServiceInvoker
 
 open class MuscleGroupPresenter(
         view: MuscleGroupView,
         val useCase: ViewMuscleGroup,
-        val invoker: UseCaseInvoker
+        val invoker: ServiceInvoker
 ) : Presenter<MuscleGroupView>(view) {
     fun loadMuscleGroups() =
-            UseCase(
-                    interactor = useCase,
+            Logic(
+                    service = useCase,
                     result = { happyCase(it) },
                     error = { manageExceptions(it) }
             ).execute(invoker)

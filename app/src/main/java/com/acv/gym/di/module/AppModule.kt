@@ -11,7 +11,7 @@ import com.acv.gym.data.db.room.AppDatabase
 import com.acv.gym.data.db.room.datasource.GymRoom
 import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.invoker.InteractorInvokerImp
-import com.acv.gym.presentation.invoker.UseCaseInvoker
+import com.acv.gym.presentation.invoker.ServiceInvoker
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -33,7 +33,7 @@ class AppModule(private val application: GymApplication) {
 //    fun provideUserDao(db: AppDatabase): SessionExerciseDao = db.exerciseDao()
 
     @Singleton @Provides
-    fun provideInteractorInvoker(): UseCaseInvoker = InteractorInvokerImp()
+    fun provideInteractorInvoker(): ServiceInvoker = InteractorInvokerImp()
 
     @Singleton
     @Provides

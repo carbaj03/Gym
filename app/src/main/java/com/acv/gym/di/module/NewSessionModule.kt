@@ -5,7 +5,7 @@ import android.app.Activity
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.service.session.AddSessionExercise
-import com.acv.gym.presentation.invoker.UseCaseInvoker
+import com.acv.gym.presentation.invoker.ServiceInvoker
 import com.acv.gym.presentation.module.session.create.NewSessionPresenter
 import com.acv.gym.presentation.module.session.create.NewSessionView
 import dagger.Module
@@ -22,7 +22,7 @@ class NewSessionModule(activity: Activity) : ActivityModule(activity) {
     fun providePresenter(
             view: NewSessionView,
             useCase: AddSessionExercise,
-            interactorInvoker: UseCaseInvoker
+            interactorInvoker: ServiceInvoker
     ) = NewSessionPresenter(view, useCase, interactorInvoker)
 
     @ActivityScope

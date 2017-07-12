@@ -6,8 +6,8 @@ import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.exercise.ViewAllExercise
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.UseCase
-import com.acv.gym.presentation.invoker.UseCaseInvoker
+import com.acv.gym.presentation.invoker.Logic
+import com.acv.gym.presentation.invoker.ServiceInvoker
 import com.acv.gym.presentation.invoker.invoke
 import kategory.Option
 
@@ -15,12 +15,12 @@ import kategory.Option
 open class ExercisePresenter(
         view: ExerciseView,
         val useCase: ViewAllExercise,
-        val invoker: UseCaseInvoker
+        val invoker: ServiceInvoker
 ) : Presenter<ExerciseView>(view) {
 
-    fun loadExercises(params: Option<ExerciseCommand>) = invoker invoke UseCase(
+    fun loadExercises(params: Option<ExerciseCommand>) = invoker invoke Logic(
             params = params,
-            interactor = useCase,
+            service = useCase,
             result = { happyCase(it) },
             error = { manageExceptions(it) }
     )

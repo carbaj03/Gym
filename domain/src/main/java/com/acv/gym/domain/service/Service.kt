@@ -4,8 +4,8 @@ import com.acv.gym.domain.GenericError
 import kategory.Either
 import kategory.Option
 
-typealias GymUseCase<I, R> = UseCase<I, R, GenericError>
+typealias GymUseCase<I, R> = Service<I, R, GenericError>
 
-interface UseCase<in I : Request, out R, out E : GenericError> {
+interface Service<in I : Request, out R, out E : GenericError> {
     fun execute(input: Option<I>): Either<E, R>
 }

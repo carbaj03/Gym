@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import com.acv.gym.di.scope.FragmentScope
 import com.acv.gym.domain.GymGateway
 import com.acv.gym.domain.service.exercise.ViewAllExercise
-import com.acv.gym.presentation.invoker.UseCaseInvoker
+import com.acv.gym.presentation.invoker.ServiceInvoker
 import com.acv.gym.presentation.module.exercise.ExercisePresenter
 import com.acv.gym.presentation.module.exercise.ExerciseView
 import dagger.Module
@@ -21,7 +21,7 @@ class ExerciseFragmentModule(fragment: Fragment) : FragmentModule(fragment) {
     fun providePresenter(
             view: ExerciseView,
             getExerciseUseCase: ViewAllExercise,
-            interactorInvoker: UseCaseInvoker
+            interactorInvoker: ServiceInvoker
     ) = ExercisePresenter(view, getExerciseUseCase, interactorInvoker)
 
     @FragmentScope @Provides

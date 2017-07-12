@@ -9,4 +9,4 @@ data class SessionSetVM(
         val name: String
 ) : ViewModel
 
-fun Set.map() = SessionSetVM(id, "$weight / $reps")
+fun Set.map() = SessionSetVM(Id(id.value), "$weight / $reps")

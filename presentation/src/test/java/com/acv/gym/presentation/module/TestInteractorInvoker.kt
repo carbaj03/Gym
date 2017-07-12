@@ -2,8 +2,8 @@ package com.acv.gym.presentation.module
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.service.EmptyCommand
-import com.acv.gym.presentation.invoker.UseCase
-import com.acv.gym.presentation.invoker.UseCaseInvoker
+import com.acv.gym.presentation.invoker.Logic
+import com.acv.gym.presentation.invoker.ServiceInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.doAnswer
 import com.nhaarman.mockito_kotlin.mock
@@ -12,14 +12,14 @@ import kategory.Option
 
 object TestInteractorInvoker {
 
-    fun create(command: Any = EmptyCommand): UseCaseInvoker {
-        val interactorInvoker = mock<UseCaseInvoker>()
+    fun create(command: Any = EmptyCommand): ServiceInvoker {
+        val interactorInvoker = mock<ServiceInvoker>()
 
         doAnswer {
-            val execution = it.arguments[0] as UseCase<EmptyCommand, GenericError, Any>
+            val execution = it.arguments[0] as Logic<EmptyCommand, GenericError, Any>
 
             with(execution) {
-                val response = interactor.execute(Option.None)
+                val response = service.execute(Option.None)
 
                 when (response) {
                     is Either.Left -> error(response.a)
@@ -31,5 +31,5 @@ object TestInteractorInvoker {
         return interactorInvoker
     }
 
-    private fun anyInteractorExecution(): UseCase<EmptyCommand, GenericError, Any> = any()
+    private fun anyInteractorExecution(): Logic<EmptyCommand, GenericError, Any> = any()
 }

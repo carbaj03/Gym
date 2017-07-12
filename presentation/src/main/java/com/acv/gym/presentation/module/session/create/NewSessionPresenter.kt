@@ -9,8 +9,8 @@ import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.NewSessionCommand
 import com.acv.gym.domain.service.session.AddSessionExercise
 import com.acv.gym.presentation.Presenter
-import com.acv.gym.presentation.invoker.UseCase
-import com.acv.gym.presentation.invoker.UseCaseInvoker
+import com.acv.gym.presentation.invoker.Logic
+import com.acv.gym.presentation.invoker.ServiceInvoker
 import com.acv.gym.presentation.invoker.invoke
 import kategory.Option
 
@@ -18,7 +18,7 @@ import kategory.Option
 open class NewSessionPresenter(
         view: NewSessionView,
         val useCase: AddSessionExercise,
-        val invoker: UseCaseInvoker
+        val invoker: ServiceInvoker
 ) : Presenter<NewSessionView>(view) {
 
     private lateinit var session: SessionExercise
@@ -26,8 +26,8 @@ open class NewSessionPresenter(
     private lateinit var sessionSet: Set
     private lateinit var idMuscleGroup: Id
 
-    fun persist() = invoker invoke UseCase(
-            interactor = useCase,
+    fun persist() = invoker invoke Logic(
+            service = useCase,
             params = Option(NewSessionCommand(listOf(session))),
             result = { happyCase() },
             error = { manageExceptions(it) }
