@@ -20,13 +20,13 @@ import org.mockito.Mockito.`when`
  */
 class GetSessionExercisesUseCaseTest {
 
-    lateinit var getSessionUseCase: GetSessionExercisesUseCase
+    lateinit var getSessionUseCase: ViewSessionExercise
 
     val gateway: GymGateway = mock()
 
     @Before
     fun setUp() {
-        getSessionUseCase = GetSessionExercisesUseCase(gateway)
+        getSessionUseCase = ViewSessionExercise(gateway)
     }
 
     @Test

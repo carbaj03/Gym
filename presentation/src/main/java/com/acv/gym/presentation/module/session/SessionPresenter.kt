@@ -4,7 +4,7 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.SessionCommand
-import com.acv.gym.domain.service.session.GetSessionExercisesUseCase
+import com.acv.gym.domain.service.session.ViewSessionExercise
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
@@ -20,7 +20,7 @@ sealed class Mode {
 
 open class SessionPresenter(
         view: SessionView,
-        val useCase: GetSessionExercisesUseCase,
+        val useCase: ViewSessionExercise,
         val invoker: UseCaseInvoker
 ) : Presenter<SessionView>(view) {
     var mode: Mode = Mode.View

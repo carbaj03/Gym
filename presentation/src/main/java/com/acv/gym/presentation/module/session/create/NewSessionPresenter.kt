@@ -7,7 +7,7 @@ import com.acv.gym.domain.model.SessionSet
 import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.NewSessionCommand
-import com.acv.gym.domain.service.session.NewSessionExerciseUseCase
+import com.acv.gym.domain.service.session.AddSessionExercise
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
@@ -17,7 +17,7 @@ import kategory.Option
 
 open class NewSessionPresenter(
         view: NewSessionView,
-        val useCase: NewSessionExerciseUseCase,
+        val useCase: AddSessionExercise,
         val invoker: UseCaseInvoker
 ) : Presenter<NewSessionView>(view) {
 

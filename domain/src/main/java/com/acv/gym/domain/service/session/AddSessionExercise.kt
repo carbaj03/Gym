@@ -9,7 +9,7 @@ import com.acv.gym.domain.service.NewSessionCommand
 import kategory.Either
 import kategory.Option
 
-open class NewSessionExerciseUseCase(
+open class AddSessionExercise(
         val gateway: GymGateway
 ) : GymUseCase<NewSessionCommand, List<SessionExercise>> {
     override fun execute(input: Option<NewSessionCommand>) = when (input) {

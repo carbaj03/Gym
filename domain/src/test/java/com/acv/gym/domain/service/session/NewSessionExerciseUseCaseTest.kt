@@ -17,13 +17,13 @@ import org.junit.Test
  * Created by alejandro on 8/06/17.
  */
 class NewSessionExerciseUseCaseTest {
-    lateinit var useCase: NewSessionExerciseUseCase
+    lateinit var useCase: AddSessionExercise
 
     val gateway: GymGateway = mock()
 
     @Before
     fun setUp() {
-        useCase = NewSessionExerciseUseCase(gateway)
+        useCase = AddSessionExercise(gateway)
     }
 
     @Test

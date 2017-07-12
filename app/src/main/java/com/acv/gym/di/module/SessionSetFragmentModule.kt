@@ -4,7 +4,7 @@ package com.acv.gym.di.module
 import android.support.v4.app.Fragment
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.service.session.GetSessionSetUseCase
+import com.acv.gym.domain.service.session.ViewSet
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.session.set.SessionSetPresenter
 import com.acv.gym.presentation.module.session.set.SessionSetView
@@ -21,11 +21,11 @@ class SessionSetFragmentModule(fragment: Fragment) : FragmentModule(fragment) {
     @Provides
     fun providePresenter(
             view: SessionSetView,
-            useCase: GetSessionSetUseCase,
+            useCase: ViewSet,
             interactorInvoker: UseCaseInvoker
     ) = SessionSetPresenter(view, useCase, interactorInvoker)
 
     @ActivityScope
     @Provides
-    fun provideUseCase(gateway: GymGateway) = GetSessionSetUseCase(gateway)
+    fun provideUseCase(gateway: GymGateway) = ViewSet(gateway)
 }

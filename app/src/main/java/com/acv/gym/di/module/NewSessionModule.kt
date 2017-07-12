@@ -4,7 +4,7 @@ package com.acv.gym.di.module
 import android.app.Activity
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.service.session.NewSessionExerciseUseCase
+import com.acv.gym.domain.service.session.AddSessionExercise
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.session.create.NewSessionPresenter
 import com.acv.gym.presentation.module.session.create.NewSessionView
@@ -21,11 +21,11 @@ class NewSessionModule(activity: Activity) : ActivityModule(activity) {
     @Provides
     fun providePresenter(
             view: NewSessionView,
-            useCase: NewSessionExerciseUseCase,
+            useCase: AddSessionExercise,
             interactorInvoker: UseCaseInvoker
     ) = NewSessionPresenter(view, useCase, interactorInvoker)
 
     @ActivityScope
     @Provides
-    fun provideUseCase(gateway: GymGateway) = NewSessionExerciseUseCase(gateway)
+    fun provideUseCase(gateway: GymGateway) = AddSessionExercise(gateway)
 }

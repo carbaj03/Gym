@@ -4,7 +4,7 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.SessionSet
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.SessionCommand
-import com.acv.gym.domain.service.session.GetSessionSetUseCase
+import com.acv.gym.domain.service.session.ViewSet
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
@@ -15,7 +15,7 @@ import kategory.Option
 
 open class SessionSetPresenter(
         view: SessionSetView,
-        val useCase: GetSessionSetUseCase,
+        val useCase: ViewSet,
         val invoker: UseCaseInvoker
 ) : Presenter<SessionSetView>(view) {
 
