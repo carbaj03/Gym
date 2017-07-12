@@ -46,7 +46,7 @@ open class NewSessionPresenter(
     }
 
     fun checkWeight(num: Float) {
-        sessionSet = SessionSet(weight = num, sessionExercise = session.id)
+        sessionSet = SessionSet(weight = num, sessionExercise = Id(session.id.value))
         view.goToReps()
         view.showFab()
     }

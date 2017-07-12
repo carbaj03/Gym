@@ -1,6 +1,7 @@
 package com.acv.gym.presentation.model
 
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.model.SessionExerciseId
 import com.acv.gym.domain.usecase.Id
 
 data class SessionExerciseVM(
@@ -10,4 +11,4 @@ data class SessionExerciseVM(
         val session: Id = Id("")
 ) : ViewModel
 
-fun SessionExercise.map() = SessionExerciseVM(id, exercise.name, sets.map { it.map() }, session)
+fun SessionExercise.map() = SessionExerciseVM(Id(id.value), exercise.name, sets.map { it.map() }, session)

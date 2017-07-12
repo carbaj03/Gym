@@ -4,6 +4,7 @@ import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
 import com.acv.gym.domain.model.Exercise
 import com.acv.gym.domain.model.SessionExercise
+import com.acv.gym.domain.model.SessionExerciseId
 import com.acv.gym.domain.usecase.Id
 import java.util.*
 
@@ -23,17 +24,17 @@ const val tableSessionExercises = "session_exercise"
                         childColumns = arrayOf("exercise"),
                         onDelete = ForeignKey.CASCADE))
 )
+
 data class SessionExerciseRoom(
         @PrimaryKey var id: String,
         var exercise: String,
         var session: String,
-
         var name: String
 ) : DataModel {
-    constructor() : this(UUID.randomUUID().toString(), "", "", "")
+    constructor() : this(SessionExerciseId().value, "", "", "")
 }
 
-fun SessionExerciseRoom.map() = SessionExercise(Id(id), Exercise(exercise, name, "", ""), listOf(), Id(session))
+fun SessionExerciseRoom.map() = SessionExercise(SessionExerciseId(id), Exercise(exercise, name, "", ""), listOf(), Id(session))
 fun SessionExercise.map() = SessionExerciseRoom(id.value, exercise.id, session.value, exercise.name)
 
 @Dao interface SessionExerciseDao {
