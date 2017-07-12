@@ -3,7 +3,7 @@ package com.acv.gym.module.exercise.type
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
 import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.Id
 import com.acv.gym.module.exercise.ExerciseActivity
 import com.acv.gym.module.muscle.group.MuscleGroupFragment
 import com.acv.gym.module.session.SessionFragment

@@ -1,9 +1,9 @@
 package com.acv.gym.presentation.module.session
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.usecase.Id
-import com.acv.gym.domain.usecase.SessionCommand
-import com.acv.gym.domain.usecase.session.GetSessionExercisesUseCase
+import com.acv.gym.domain.service.Id
+import com.acv.gym.domain.service.SessionCommand
+import com.acv.gym.domain.service.session.GetSessionExercisesUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times

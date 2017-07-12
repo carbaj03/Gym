@@ -3,9 +3,9 @@ package com.acv.gym.data.db.room.model
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
 import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.model.SessionExerciseId
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.model.session.SessionExerciseId
+import com.acv.gym.domain.service.Id
 import java.util.*
 
 

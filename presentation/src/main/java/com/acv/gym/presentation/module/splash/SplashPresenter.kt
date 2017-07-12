@@ -2,7 +2,7 @@ package com.acv.gym.presentation.module.splash
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.LaunchApp
-import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
+import com.acv.gym.domain.service.splash.CheckSplashUseCase
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker

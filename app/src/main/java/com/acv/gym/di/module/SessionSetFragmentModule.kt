@@ -4,7 +4,7 @@ package com.acv.gym.di.module
 import android.support.v4.app.Fragment
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.usecase.session.GetSessionSetUseCase
+import com.acv.gym.domain.service.session.GetSessionSetUseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.session.set.SessionSetPresenter
 import com.acv.gym.presentation.module.session.set.SessionSetView

@@ -3,8 +3,8 @@ package com.acv.gym.data
 
 import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.service.Id
 
 class GymGatewayImpl(
         val dataSource: GymDataSource

@@ -1,8 +1,8 @@
 package com.acv.gym.data.db.realm.model
 
 import com.acv.gym.data.DataModel
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.service.Id
 import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

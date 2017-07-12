@@ -4,7 +4,7 @@ package com.acv.gym.di.module
 import android.app.Activity
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
+import com.acv.gym.domain.service.routine.GetRoutineUseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.routine.RoutinePresenter
 import com.acv.gym.presentation.module.routine.RoutineView

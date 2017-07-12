@@ -1,8 +1,8 @@
 package com.acv.gym.presentation.model
 
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.model.SessionExerciseId
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.model.session.SessionExerciseId
+import com.acv.gym.domain.service.Id
 
 data class SessionExerciseVM(
         val id: Id = Id(),

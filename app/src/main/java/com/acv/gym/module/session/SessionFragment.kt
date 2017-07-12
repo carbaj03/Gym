@@ -7,8 +7,8 @@ import android.widget.Toast
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
 import com.acv.gym.commons.listener.OnItemTouchListener
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.service.Id
 import com.acv.gym.module.session.set.SessionSetActivity
 import com.acv.gym.presentation.model.SessionExerciseVM
 import com.acv.gym.presentation.module.session.SessionPresenter

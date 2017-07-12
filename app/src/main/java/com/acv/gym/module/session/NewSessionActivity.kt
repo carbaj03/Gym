@@ -2,8 +2,8 @@ package com.acv.gym.module.session
 
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
-import com.acv.gym.domain.usecase.ExerciseCommand
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.ExerciseCommand
+import com.acv.gym.domain.service.Id
 import com.acv.gym.module.exercise.ExerciseFragment
 import com.acv.gym.module.exercise.type.ExerciseTypeFragment
 import com.acv.gym.module.muscle.group.MuscleGroupFragment

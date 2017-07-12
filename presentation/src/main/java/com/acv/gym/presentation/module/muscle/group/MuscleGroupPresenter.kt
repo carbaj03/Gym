@@ -2,8 +2,8 @@ package com.acv.gym.presentation.module.muscle.group
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.MuscleGroup
-import com.acv.gym.domain.usecase.Id
-import com.acv.gym.domain.usecase.muscle.group.GetMuscleGroupsUseCase
+import com.acv.gym.domain.service.Id
+import com.acv.gym.domain.service.muscle.group.GetMuscleGroupsUseCase
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker

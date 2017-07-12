@@ -4,7 +4,7 @@ package com.acv.gym.di.module
 import android.app.Activity
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
+import com.acv.gym.domain.service.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypePresenter
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypeView

@@ -7,7 +7,7 @@ import com.acv.gym.commons.extension.load
 import com.acv.gym.commons.extension.visible
 import com.acv.gym.data.db.room.RoomDB
 import com.acv.gym.data.db.room.model.*
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.Id
 import com.acv.gym.module.session.SessionActivity
 import com.acv.gym.presentation.module.splash.SplashPresenter
 import com.acv.gym.presentation.module.splash.SplashView

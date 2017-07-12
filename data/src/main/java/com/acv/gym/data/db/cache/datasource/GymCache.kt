@@ -5,7 +5,8 @@ import com.acv.gym.data.db.cache.model.*
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.service.Id
 import kategory.Either
 import java.util.*
 

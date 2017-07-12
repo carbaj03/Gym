@@ -1,6 +1,6 @@
 package com.acv.gym.domain.model
 
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.Id
 
 
 data class SessionSet(

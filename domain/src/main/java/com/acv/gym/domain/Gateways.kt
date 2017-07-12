@@ -2,7 +2,8 @@ package com.acv.gym.domain
 
 import com.acv.gym.domain.model.*
 import com.acv.gym.domain.model.session.Session
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.service.Id
 import kategory.Either
 
 

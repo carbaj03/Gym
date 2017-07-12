@@ -2,7 +2,7 @@ package com.acv.gym.domain.invoker
 
 import com.acv.gym.domain.Future
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.usecase.Command
+import com.acv.gym.domain.service.Command
 import com.acv.gym.presentation.invoker.UseCase
 import kategory.Either
 

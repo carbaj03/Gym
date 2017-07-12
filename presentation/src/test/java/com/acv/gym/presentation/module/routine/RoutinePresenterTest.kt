@@ -2,7 +2,7 @@ package com.acv.gym.presentation.module.routine
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Routine
-import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
+import com.acv.gym.domain.service.routine.GetRoutineUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock

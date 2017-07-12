@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.model
 
 import com.acv.gym.domain.model.SessionSet
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.Id
 
 
 data class SessionSetVM(

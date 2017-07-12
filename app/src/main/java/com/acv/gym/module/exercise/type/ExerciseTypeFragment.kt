@@ -6,7 +6,7 @@ import com.acv.gym.commons.extension.getArgId
 import com.acv.gym.commons.extension.gridLayoutManager
 import com.acv.gym.commons.extension.inject
 import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.Id
 import com.acv.gym.module.session.ExerciseTypeNav
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypePresenter
 import com.acv.gym.presentation.module.exercise.type.ExerciseTypeView

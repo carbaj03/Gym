@@ -6,8 +6,8 @@ import com.acv.gym.data.db.room.model.map
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.model.Routine
-import com.acv.gym.domain.model.SessionExercise
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.service.Id
 import kategory.Either
 
 class GymRoom : GymDataSource {

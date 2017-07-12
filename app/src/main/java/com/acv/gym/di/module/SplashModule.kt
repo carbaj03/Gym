@@ -7,7 +7,7 @@ import com.acv.gym.data.db.cache.SharedPreferencesCache
 import com.acv.gym.data.db.sharedPreference.LaunchAppGateway
 import com.acv.gym.di.scope.ActivityScope
 import com.acv.gym.domain.SharedPreference
-import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
+import com.acv.gym.domain.service.splash.CheckSplashUseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.acv.gym.presentation.module.splash.SplashPresenter
 import com.acv.gym.presentation.module.splash.SplashView

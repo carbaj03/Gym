@@ -2,7 +2,7 @@ package com.acv.gym.presentation.module.routine
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Routine
-import com.acv.gym.domain.usecase.routine.GetRoutineUseCase
+import com.acv.gym.domain.service.routine.GetRoutineUseCase
 import com.acv.gym.presentation.Presenter
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker

@@ -4,7 +4,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.Id
 import com.acv.gym.presentation.model.SessionSetVM
 import com.acv.gym.presentation.module.session.set.SessionSetPresenter
 import com.acv.gym.presentation.module.session.set.SessionSetView

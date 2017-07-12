@@ -13,8 +13,8 @@ import com.acv.gym.R
 import com.acv.gym.commons.listener.SeekBarListener
 import com.acv.gym.di.component.AppComponent
 import com.acv.gym.di.module.*
-import com.acv.gym.domain.usecase.Command
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.Command
+import com.acv.gym.domain.service.Id
 import com.acv.gym.module.exercise.ExerciseActivity
 import com.acv.gym.module.exercise.ExerciseFragment
 import com.acv.gym.module.exercise.type.ExerciseTypeActivity

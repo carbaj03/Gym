@@ -3,7 +3,7 @@ package com.acv.gym.module.exercise
 import com.acv.gym.R
 import com.acv.gym.commons.extension.*
 import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.Id
 import com.acv.gym.module.weight.WeightActivity
 import com.acv.gym.presentation.module.exercise.ExercisePresenter
 import com.acv.gym.presentation.module.exercise.ExerciseView

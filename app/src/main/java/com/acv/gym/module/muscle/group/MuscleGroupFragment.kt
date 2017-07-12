@@ -5,7 +5,7 @@ import com.acv.gym.commons.extension.done
 import com.acv.gym.commons.extension.gridLayoutManager
 import com.acv.gym.commons.extension.inject
 import com.acv.gym.domain.model.MuscleGroup
-import com.acv.gym.domain.usecase.Id
+import com.acv.gym.domain.service.Id
 import com.acv.gym.module.session.MuscleGroupNav
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupPresenter
 import com.acv.gym.presentation.module.muscle.group.MuscleGroupView

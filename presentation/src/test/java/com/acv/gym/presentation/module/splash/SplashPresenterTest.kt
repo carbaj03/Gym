@@ -2,8 +2,8 @@ package com.acv.gym.presentation.module.splash
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.LaunchApp
-import com.acv.gym.domain.usecase.Command
-import com.acv.gym.domain.usecase.splash.CheckSplashUseCase
+import com.acv.gym.domain.service.Command
+import com.acv.gym.domain.service.splash.CheckSplashUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify

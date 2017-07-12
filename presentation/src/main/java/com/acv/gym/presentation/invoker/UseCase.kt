@@ -2,8 +2,8 @@ package com.acv.gym.presentation.invoker
 
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.usecase.Command
-import com.acv.gym.domain.usecase.UseCase
+import com.acv.gym.domain.service.Command
+import com.acv.gym.domain.service.UseCase
 import kategory.Option
 
 interface UseCaseInvoker {

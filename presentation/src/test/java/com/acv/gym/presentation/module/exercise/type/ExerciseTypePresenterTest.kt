@@ -2,8 +2,8 @@ package com.acv.gym.presentation.module.exercise.type
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.usecase.Id
-import com.acv.gym.domain.usecase.exercise.type.GetExerciseTypesUseCase
+import com.acv.gym.domain.service.Id
+import com.acv.gym.domain.service.exercise.type.GetExerciseTypesUseCase
 import com.acv.gym.presentation.module.TestInteractorInvoker
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.mock

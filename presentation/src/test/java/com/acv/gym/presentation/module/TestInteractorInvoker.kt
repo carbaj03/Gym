@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.usecase.EmptyCommand
+import com.acv.gym.domain.service.EmptyCommand
 import com.acv.gym.presentation.invoker.UseCase
 import com.acv.gym.presentation.invoker.UseCaseInvoker
 import com.nhaarman.mockito_kotlin.any
