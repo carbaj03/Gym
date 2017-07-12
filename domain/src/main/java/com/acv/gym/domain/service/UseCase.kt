@@ -6,6 +6,6 @@ import kategory.Option
 
 typealias GymUseCase<I, R> = UseCase<I, R, GenericError>
 
-interface UseCase<in I : Command, out R, out E : GenericError> {
+interface UseCase<in I : Request, out R, out E : GenericError> {
     fun execute(input: Option<I>): Either<E, R>
 }
