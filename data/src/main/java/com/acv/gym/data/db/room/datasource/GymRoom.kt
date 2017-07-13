@@ -4,6 +4,7 @@ import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.data.db.room.RoomDB
 import com.acv.gym.data.db.room.model.map
 import com.acv.gym.domain.GenericError
+import com.acv.gym.domain.model.ExerciseId
 import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.SessionExerciseId
@@ -19,7 +20,7 @@ class GymRoom : GymDataSource {
         Either.Left(GenericError.ServerError)
     }
 
-    override fun getExercise(id: Id) = try {
+    override fun getExercise(id: ExerciseId) = try {
         val all = RoomDB.instance.exerciseDao().getByExerciseType(id.value)
         Either.Right(all.map { it.map() })
     } catch (ex: Exception) {

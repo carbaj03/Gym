@@ -3,6 +3,7 @@ package com.acv.gym.data.db.room.model
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
 import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.model.ExerciseId
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.service.Id
@@ -34,8 +35,8 @@ data class SessionExerciseRoom(
     constructor() : this(SessionExerciseId().value, "", "", "")
 }
 
-fun SessionExerciseRoom.map() = SessionExercise(SessionExerciseId(id), Exercise(exercise, name, "", ""), listOf(), Id(session))
-fun SessionExercise.map() = SessionExerciseRoom(id.value, exercise.id, session.value, exercise.name)
+fun SessionExerciseRoom.map() = SessionExercise(SessionExerciseId(id), Exercise(ExerciseId(exercise), name, "", ""), listOf(), Id(session))
+fun SessionExercise.map() = SessionExerciseRoom(id.value, exercise.id.value, session.value, exercise.name)
 
 @Dao interface SessionExerciseDao {
     @Query("SELECT * FROM $tableSessionExercises")

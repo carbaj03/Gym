@@ -32,7 +32,7 @@ class GymCache : GymDataSource {
                     ).map { it.map() }
             )
 
-    override fun getExercise(id: Id) =
+    override fun getExercise(id: ExerciseId) =
             Either.Right(
                     listOf(
                             ExerciseCache("1", "Curl", "1", "1")

@@ -2,6 +2,7 @@ package com.acv.gym.presentation.module.session.create
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.model.ExerciseId
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.service.ExerciseCommand
@@ -42,7 +43,7 @@ open class NewSessionPresenter(
     }
 
     fun checkExercise(id: Id) {
-        session = session.copy(exercise = Exercise(id.value, "", "", ""))
+        session = session.copy(exercise = Exercise(ExerciseId(id.value), "", "", ""))
         view.goToWeight()
     }
 

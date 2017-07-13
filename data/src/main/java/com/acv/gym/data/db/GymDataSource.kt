@@ -8,7 +8,7 @@ import com.acv.gym.domain.service.Id
 
 interface GymDataSource {
     fun getAllSession(): GymResult<List<Session>>
-    fun getExercise(id: Id): GymResult<List<Exercise>>
+    fun getExercise(id: ExerciseId): GymResult<List<Exercise>>
     fun getAllExercises(): GymResult<List<Exercise>>
     fun getExercisesBy(idMuscleGroup: Id, idExerciseType: Id): GymResult<List<Exercise>>
     fun getAllExerciseTypes(): GymResult<List<ExerciseType>>

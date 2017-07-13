@@ -1,6 +1,7 @@
 package com.acv.gym.domain.model.session
 
 import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.model.ExerciseId
 import com.acv.gym.domain.model.Model
 import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.service.Id
@@ -8,7 +9,7 @@ import java.util.*
 
 data class SessionExercise(
         val id: SessionExerciseId = SessionExerciseId(),
-        val exercise: Exercise = Exercise("","","",""),
+        val exercise: Exercise = Exercise(ExerciseId(""),"","",""),
         val sets: List<Set> = listOf(),
         val session: Id = Id("")
 ) : Model

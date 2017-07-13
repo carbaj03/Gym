@@ -33,5 +33,5 @@ open class ExercisePresenter(
         is GenericError.ServerError -> view.showServerError()
     }
 
-    fun checkExercise(exercise: Exercise) = view.goToWeight(Id(exercise.id))
+    fun checkExercise(exercise: Exercise) = view.goToWeight(Id(exercise.id.value))
 }

@@ -3,6 +3,7 @@ package com.acv.gym.data
 
 import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.domain.GymGateway
+import com.acv.gym.domain.model.ExerciseId
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.model.session.SessionId
@@ -13,7 +14,7 @@ class GymGatewayImpl(
 ) : GymGateway {
     override fun getAllSesion() = dataSource.getAllSession()
 
-    override fun getExercise(id: Id) = dataSource.getExercise(id)
+    override fun getExercise(id: ExerciseId) = dataSource.getExercise(id)
 
     override fun getAllExercises() = dataSource.getAllExercises()
 

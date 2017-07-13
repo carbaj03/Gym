@@ -12,7 +12,7 @@ interface SharedPreference {
 }
 
 interface GymGateway {
-    fun getExercise(id: Id): GymResult<List<Exercise>>
+    fun getExercise(id: ExerciseId): GymResult<List<Exercise>>
     fun getAllSesion(): GymResult<List<Session>>
     fun getSessionExercisesBy(id: SessionId): GymResult<List<SessionExercise>>
     fun getSessionSetBy(id: SessionExerciseId): GymResult<List<Set>>

@@ -30,7 +30,7 @@ open class GymRealm : GymDataSource {
         TODO("not implemented")
     }
 
-    override fun getExercise(id: Id): Either<GenericError, List<Exercise>> {
+    override fun getExercise(id: ExerciseId): Either<GenericError, List<Exercise>> {
         TODO("not implemented")
     }
 
