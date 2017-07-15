@@ -3,6 +3,7 @@ package com.acv.gym.data.db.room.model
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
 import com.acv.gym.domain.model.ExerciseType
+import com.acv.gym.domain.model.ExerciseTypeId
 import java.util.*
 
 
@@ -16,8 +17,8 @@ data class ExerciseTypeRoom(
     constructor() : this(UUID.randomUUID().toString(), "")
 }
 
-fun ExerciseTypeRoom.map() = ExerciseType(id, name)
-fun ExerciseType.map() = ExerciseTypeRoom(id, name)
+fun ExerciseTypeRoom.map() = ExerciseType(ExerciseTypeId(id), name)
+fun ExerciseType.map() = ExerciseTypeRoom(id.value, name)
 
 @Dao
 interface ExerciseTypeDao {

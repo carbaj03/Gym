@@ -32,5 +32,5 @@ class ExerciseTypePresenter(
         is GenericError.ServerError -> view.showServerError()
     }
 
-    fun checkExercise(exerciseType: ExerciseType) = view.goToExercise(Id(exerciseType.id))
+    fun checkExercise(exerciseType: ExerciseType) = view.goToExercise(Id(exerciseType.id.value))
 }
