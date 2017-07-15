@@ -1,8 +1,7 @@
 package com.acv.gym.presentation.module.exercise.type
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.service.ExerciseTypeCommand
+import com.acv.gym.domain.model.exercise.ExerciseType
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.exercise.type.ViewExerciseType
 import com.acv.gym.domain.service.exercise.type.ViewExerciseTypeRequest
@@ -17,7 +16,6 @@ class ExerciseTypePresenter(
         val useCase: ViewExerciseType,
         val invoker: ServiceInvoker
 ) : Presenter<ExerciseTypeView>(view) {
-
     fun loadExerciseType(id: Option<Id>) = invoker invoke Logic(
             service = useCase,
             params = id.map(::ViewExerciseTypeRequest),

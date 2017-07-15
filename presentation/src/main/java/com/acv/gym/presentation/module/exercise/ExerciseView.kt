@@ -1,6 +1,6 @@
 package com.acv.gym.presentation.module.exercise
 
-import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.model.exercise.Exercise
 import com.acv.gym.domain.service.Id
 import com.acv.gym.presentation.GymView
 import com.acv.gym.presentation.ViewError

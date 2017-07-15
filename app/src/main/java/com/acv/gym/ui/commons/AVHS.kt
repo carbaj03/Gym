@@ -4,9 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.acv.gym.commons.extension.inflate
-import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.model.session.SessionExercise
-import com.acv.gym.domain.service.Id
+import com.acv.gym.domain.model.exercise.ExerciseType
 import com.acv.gym.module.exercise.type.ExerciseTypeViewHolder
 import com.acv.gym.module.session.SessionViewHolder
 import com.acv.gym.module.session.Visivility

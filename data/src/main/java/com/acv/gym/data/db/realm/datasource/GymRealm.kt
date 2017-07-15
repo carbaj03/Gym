@@ -4,6 +4,9 @@ import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymResult
 import com.acv.gym.domain.model.*
+import com.acv.gym.domain.model.exercise.Exercise
+import com.acv.gym.domain.model.exercise.ExerciseId
+import com.acv.gym.domain.model.exercise.ExerciseType
 import com.acv.gym.domain.model.session.*
 import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.service.Id

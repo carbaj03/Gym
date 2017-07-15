@@ -1,5 +1,6 @@
-package com.acv.gym.domain.model
+package com.acv.gym.domain.model.exercise
 
+import com.acv.gym.domain.model.Model
 import java.util.*
 
 

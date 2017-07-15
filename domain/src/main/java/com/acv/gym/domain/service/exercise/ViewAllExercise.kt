@@ -2,9 +2,8 @@ package com.acv.gym.domain.service.exercise
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.model.exercise.Exercise
 import com.acv.gym.domain.service.*
-import com.acv.gym.domain.service.ExerciseCommand
 import kategory.Either
 import kategory.Option
 

@@ -2,8 +2,7 @@ package com.acv.gym.domain.service.exercise.type
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.service.ExerciseTypeCommand
+import com.acv.gym.domain.model.exercise.ExerciseType
 import com.acv.gym.domain.service.GymUseCase
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.Request

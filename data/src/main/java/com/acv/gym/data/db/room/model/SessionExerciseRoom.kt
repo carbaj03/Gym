@@ -2,12 +2,11 @@ package com.acv.gym.data.db.room.model
 
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
-import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.model.ExerciseId
+import com.acv.gym.domain.model.exercise.Exercise
+import com.acv.gym.domain.model.exercise.ExerciseId
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.service.Id
-import java.util.*
 
 
 const val tableSessionExercises = "session_exercise"

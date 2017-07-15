@@ -3,7 +3,7 @@ package com.acv.gym.data
 
 import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.model.ExerciseId
+import com.acv.gym.domain.model.exercise.ExerciseId
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.model.session.SessionId

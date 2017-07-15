@@ -3,7 +3,7 @@ package com.acv.gym.module.exercise.type
 import android.view.View
 import android.widget.TextView
 import com.acv.gym.R
-import com.acv.gym.domain.model.ExerciseType
+import com.acv.gym.domain.model.exercise.ExerciseType
 import com.acv.gym.ui.commons.ViewHolder
 import org.jetbrains.anko.find
 

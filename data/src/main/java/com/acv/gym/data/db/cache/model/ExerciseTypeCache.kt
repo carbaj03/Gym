@@ -1,8 +1,8 @@
 package com.acv.gym.data.db.cache.model
 
 import com.acv.gym.data.DataModel
-import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.model.ExerciseTypeId
+import com.acv.gym.domain.model.exercise.ExerciseType
+import com.acv.gym.domain.model.exercise.ExerciseTypeId
 
 data class ExerciseTypeCache(
         val id : String,

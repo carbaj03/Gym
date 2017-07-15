@@ -4,7 +4,7 @@ import com.acv.gym.data.db.GymDataSource
 import com.acv.gym.data.db.room.RoomDB
 import com.acv.gym.data.db.room.model.map
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.model.ExerciseId
+import com.acv.gym.domain.model.exercise.ExerciseId
 import com.acv.gym.domain.model.LaunchApp
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.SessionExerciseId

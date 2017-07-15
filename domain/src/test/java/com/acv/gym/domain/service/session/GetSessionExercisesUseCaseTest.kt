@@ -2,13 +2,11 @@ package com.acv.gym.domain.service.session
 
 import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.model.session.Session
+import com.acv.gym.domain.model.exercise.Exercise
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.model.session.SessionId
 import com.acv.gym.domain.service.Id
-import com.acv.gym.domain.service.SessionCommand
 import com.nhaarman.mockito_kotlin.mock
 import kategory.Either
 import kategory.Option
@@ -53,7 +51,7 @@ class GetSessionExercisesUseCaseTest {
         Assert.assertSame(sessions, response)
     }
 
-    private fun getSession() = Either.Right(listOf(SessionExercise(SessionExerciseId(""), Exercise("","","",""), emptyList(), Id(""))))
+    private fun getSession() = Either.Right(listOf(SessionExercise(SessionExerciseId(""), Exercise("", "", "", ""), emptyList(), Id(""))))
 
     private fun getErrorSession() = Either.Left(GenericError.NetworkError)
 

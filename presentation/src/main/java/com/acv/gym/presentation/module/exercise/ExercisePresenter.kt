@@ -1,7 +1,7 @@
 package com.acv.gym.presentation.module.exercise
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.model.exercise.Exercise
 import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
 import com.acv.gym.domain.service.exercise.ViewAllExercise

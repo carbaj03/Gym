@@ -2,8 +2,8 @@ package com.acv.gym.data.db.room.model
 
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
-import com.acv.gym.domain.model.ExerciseType
-import com.acv.gym.domain.model.ExerciseTypeId
+import com.acv.gym.domain.model.exercise.ExerciseType
+import com.acv.gym.domain.model.exercise.ExerciseTypeId
 import java.util.*
 
 

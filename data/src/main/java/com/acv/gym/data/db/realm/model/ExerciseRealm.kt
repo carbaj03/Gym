@@ -1,8 +1,8 @@
 package com.acv.gym.data.db.realm.model
 
 import com.acv.gym.data.DataModel
-import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.model.ExerciseId
+import com.acv.gym.domain.model.exercise.Exercise
+import com.acv.gym.domain.model.exercise.ExerciseId
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 

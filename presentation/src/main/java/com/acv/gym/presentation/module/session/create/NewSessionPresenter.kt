@@ -1,13 +1,12 @@
 package com.acv.gym.presentation.module.session.create
 
 import com.acv.gym.domain.GenericError
-import com.acv.gym.domain.model.Exercise
-import com.acv.gym.domain.model.ExerciseId
+import com.acv.gym.domain.model.exercise.Exercise
+import com.acv.gym.domain.model.exercise.ExerciseId
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
-import com.acv.gym.domain.service.NewSessionCommand
 import com.acv.gym.domain.service.session.AddSessionExercise
 import com.acv.gym.domain.service.session.AddSessionRequest
 import com.acv.gym.presentation.Presenter

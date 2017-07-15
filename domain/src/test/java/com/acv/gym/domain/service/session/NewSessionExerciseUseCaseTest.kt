@@ -1,11 +1,10 @@
 package com.acv.gym.domain.service.session
 
 import com.acv.gym.domain.GymGateway
-import com.acv.gym.domain.model.Exercise
+import com.acv.gym.domain.model.exercise.Exercise
 import com.acv.gym.domain.model.session.SessionExercise
 import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.service.Id
-import com.acv.gym.domain.service.NewSessionCommand
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
