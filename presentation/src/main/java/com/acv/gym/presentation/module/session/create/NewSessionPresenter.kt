@@ -4,6 +4,7 @@ import com.acv.gym.domain.GenericError
 import com.acv.gym.domain.model.exercise.Exercise
 import com.acv.gym.domain.model.exercise.ExerciseId
 import com.acv.gym.domain.model.session.SessionExercise
+import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.service.ExerciseCommand
 import com.acv.gym.domain.service.Id
@@ -47,7 +48,7 @@ open class NewSessionPresenter(
     }
 
     fun checkWeight(num: Float) {
-        sessionSet = Set(weight = num, sessionExercise = Id(session.id.value))
+        sessionSet = Set(weight = num, sessionExercise = SessionExerciseId(session.id.value))
         view.goToReps()
         view.showFab()
     }

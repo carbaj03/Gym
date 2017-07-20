@@ -2,6 +2,7 @@ package com.acv.gym.data.db.room.model
 
 import android.arch.persistence.room.*
 import com.acv.gym.data.DataModel
+import com.acv.gym.domain.model.session.SessionExerciseId
 import com.acv.gym.domain.model.session.Set
 import com.acv.gym.domain.model.session.SetId
 import com.acv.gym.domain.service.Id
@@ -27,7 +28,7 @@ data class SessionSetRoom(
     constructor() : this(SetId().value, 0f, 0, "")
 }
 
-fun SessionSetRoom.map() = Set(SetId(id), weight, reps, Id(sessionExercise))
+fun SessionSetRoom.map() = Set(SetId(id), weight, reps, SessionExerciseId(sessionExercise))
 fun Set.map() = SessionSetRoom(id.value, weight, reps, sessionExercise.value)
 
 @Dao interface SessionSetDao {
